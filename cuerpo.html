@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="icon" href="Icono.png" type="image/png">
+    <title>Cuerpo | Esmeralda's Cosmetic</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'bebas': ['"Bebas Neue"', 'sans-serif'],
+                        'sans': ['"Montserrat"', 'sans-serif'],
+                        'script': ['"Playlist Script"', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            rose: '#c58c85',       
+                            roseDark: '#a66e68',   
+                            pale: '#fdf2f4',       
+                            black: '#151515',      
+                            whatsapp: '#25D366',
+                            footerPink: '#f9c5dc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Playlist Script';
+            src: url('Playlist Script.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body { background-color: #ffffff; color: #151515; -webkit-tap-highlight-color: transparent; }
+        
+        .nav-hidden { transform: translateY(-100%); }
+        #main-header { transition: transform 0.4s ease-in-out; }
+
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .grab-cursor { cursor: grab; }
+        .grab-cursor:active { cursor: grabbing; }
+
+        /* Modal Transitions */
+        #product-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #product-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+        #product-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
+        
+        .modal-content-enter { transform: scale(0.95); opacity: 0; transition: all 0.3s ease-out; }
+        .visible-modal .modal-content-enter { transform: scale(1); opacity: 1; }
+
+        /* Estilos específicos del modal avanzado */
+        .tono-btn.selected {
+            border-color: #c58c85; 
+            background-color: #fdf2f4;
+            color: #151515;
+            font-weight: 700;
+        }
+        .thumb-img.selected {
+            border: 2px solid #c58c85;
+            opacity: 1;
+        }
+        .thumb-img {
+            opacity: 0.6;
+            transition: all 0.2s;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen"> 
+
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-white shadow-sm h-[110px] md:h-[130px]">
+        <div class="bg-brand-black text-white py-2 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase flex justify-center items-center gap-2 h-[30px]">
+            <span>Catálogo Exclusivo - Envíos a todo el país</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="GT" class="h-3 w-auto">
+        </div>
+
+        <nav class="bg-white/95 backdrop-blur-md border-b border-gray-100 relative z-50 h-[80px] md:h-[100px] flex items-center">
+            <div class="w-full max-w-7xl mx-auto px-4 md:px-6">
+                <div class="flex items-center justify-between">
+                    
+                    <button id="mobile-btn" class="md:hidden text-2xl text-brand-black p-2 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <a href="index.html" class="flex-shrink-0 text-center flex-grow md:flex-grow-0 md:text-left">
+                        <h3 class="font-script text-brand-rose logo-text text-[1.8rem] md:text-[3rem] leading-none">
+                            Esmeralda's Cosmetic
+                        </h3>
+                    </a>
+
+                    <div class="hidden md:flex items-center space-x-6 lg:space-x-8 mx-auto">
+                        <a href="rostro.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ROSTRO</a>
+                        <a href="ojos.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">OJOS</a>
+                        <a href="labios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">LABIOS</a>
+                        <a href="skincare.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">SKIN CARE</a>
+                        <a href="cuerpo.html" class="font-bebas text-xl text-brand-rose tracking-wide border-b-2 border-brand-rose">CUERPO</a>
+                        <a href="accesorios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ACCESORIOS</a>
+                        <a href="collabs.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">COLLABS</a>
+                    </div>
+
+                    <div class="md:hidden w-8"></div>
+                </div>
+            </div>
+
+            <div id="mobile-text-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 top-full shadow-lg z-40">
+                <div class="flex flex-col p-6 space-y-4 font-bebas text-xl tracking-wide text-brand-black">
+                    <a href="index.html" class="border-b border-gray-50 pb-2">Inicio</a>
+                    <a href="nuestrahistoria.html" class="border-b border-gray-50 pb-2">Nuestra Historia</a>
+                    <a href="contacto.html" class="pb-2">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="md:hidden bg-white border-b border-gray-200 py-3 shadow-sm z-30 relative mt-[110px]">
+        <div id="drag-scroll" class="flex overflow-x-auto gap-5 px-4 scrollbar-hide snap-x snap-mandatory grab-cursor select-none">
+            
+            <a href="rostro.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n1.webp" alt="Rostro" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ROSTRO</span>
+            </a>
+
+            <a href="ojos.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n2.webp" alt="Ojos" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">OJOS</span>
+            </a>
+            
+            <a href="labios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n3.webp" alt="Labios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">LABIOS</span>
+            </a>
+
+            <a href="skincare.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n4.webp" alt="Skin Care" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black whitespace-nowrap">SKIN CARE</span>
+            </a>
+
+            <a href="cuerpo.html" class="flex flex-col items-center min-w-[70px] snap-center pointer-events-auto draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-rose mb-1 pointer-events-none">
+                    <img src="n5.webp" alt="Cuerpo" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-rose">CUERPO</span>
+            </a>
+
+            <a href="accesorios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n6.webp" alt="Accesorios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ACCESORIOS</span>
+            </a>
+
+            <a href="collabs.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n7.webp" alt="Collabs" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">COLLABS</span>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="hidden md:block h-[130px]"></div>
+
+    <main class="flex-grow bg-white py-10 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            
+            <div class="text-center mb-8">
+                <h1 class="font-bebas text-5xl md:text-6xl text-brand-black tracking-wide">CUERPO</h1>
+                <p class="font-sans text-sm md:text-base text-gray-500 mt-2 tracking-widest uppercase">Cremas, Exfoliantes, Splashes y Bronceadores</p>
+                <div class="w-16 h-1 bg-brand-rose mx-auto mt-4"></div>
+            </div>
+
+            <div class="flex justify-end mb-8 border-b border-gray-100 pb-4">
+                <div class="relative inline-block text-left group">
+                    <div class="flex items-center gap-3">
+                        <label for="sort-select" class="font-bebas text-lg text-gray-500 tracking-wide">Ordenar Por:</label>
+                        <div class="relative">
+                            <select id="sort-select" class="appearance-none bg-gray-50 border border-gray-200 text-gray-700 text-sm font-sans font-medium py-2 pl-4 pr-10 rounded-full focus:outline-none focus:border-brand-rose focus:ring-1 focus:ring-brand-rose cursor-pointer transition shadow-sm hover:border-brand-rose/50">
+                                <option value="default">Relevancia</option>
+                                <option value="az">Nombre: A - Z</option>
+                                <option value="za">Nombre: Z - A</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="grid-productos" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
+                </div>
+
+        </div>
+    </main>
+
+    <div id="product-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden-modal">
+        
+        <div class="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl relative flex flex-col md:flex-row modal-content-enter">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 hover:bg-brand-black hover:text-white rounded-full flex items-center justify-center transition shadow-md">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <div class="w-full md:w-1/2 bg-gray-50 flex flex-col">
+                <div class="relative aspect-square md:aspect-auto md:h-[400px] w-full">
+                    <img id="modal-img" src="" alt="Detalle Producto" class="w-full h-full object-cover">
+                    <span id="modal-tag" class="absolute top-4 left-4 bg-brand-rose text-white text-[10px] px-3 py-1 uppercase font-bold tracking-widest rounded hidden">
+                        Best Seller
+                    </span>
+                </div>
+                <div id="modal-gallery" class="flex gap-2 p-4 overflow-x-auto scrollbar-hide h-[80px]">
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 p-6 md:p-10 flex flex-col text-left">
+                <span class="text-xs font-bold text-gray-400 tracking-[0.2em] uppercase mb-2">Esmeralda's Cosmetic</span>
+                
+                <h2 id="modal-title" class="font-bebas text-4xl md:text-5xl text-brand-black leading-none mb-4">
+                    NOMBRE
+                </h2>
+                
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-xs text-green-600 bg-green-50 px-2 py-1 rounded font-bold uppercase tracking-wider">Disponible</span>
+                </div>
+
+                <div class="w-full h-px bg-gray-100 mb-4"></div>
+
+                <div class="mb-6">
+                    <h4 class="font-bold text-xs uppercase tracking-widest mb-2">Descripción</h4>
+                    <p id="modal-desc" class="font-sans text-sm text-gray-600 leading-relaxed">
+                        Descripción...
+                    </p>
+                </div>
+
+                <div id="modal-tonos-container" class="mb-8 hidden">
+                    <h4 class="font-bold text-xs uppercase tracking-widest mb-3">Selecciona tu variante:</h4>
+                    <div id="modal-tonos-list" class="flex flex-wrap gap-2">
+                    </div>
+                    <p id="tono-feedback" class="text-xs text-brand-rose mt-2 font-medium h-4"></p>
+                </div>
+
+                <div class="mt-auto">
+                    <a id="modal-btn" href="#" target="_blank" class="w-full bg-brand-black text-white py-4 text-center font-bold text-sm uppercase tracking-[0.2em] hover:bg-brand-rose transition duration-300 rounded-sm shadow-lg flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> Consultar
+                    </a>
+                    <p class="text-[10px] text-center text-gray-400 mt-4 uppercase tracking-widest">Envíos a todo el país</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-brand-footerPink text-brand-black pt-16 pb-8 border-t border-white/50 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Esmeralda's</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="nuestrahistoria.html" class="hover:text-white transition">Sobre Nosotros</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Ayuda</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="contacto.html" class="hover:text-white transition">Envíos</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Devoluciones</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Síguenos</h4>
+                    <div class="flex justify-center md:justify-start space-x-4 text-xl">
+                        <a href="https://www.instagram.com/esmeraldascosmetic/" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/EsmeraldasCosmeticOficial" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@esmeraldascosmetic" target="_blank" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Contacto</h4>
+                    <div class="flex flex-col gap-2 items-center md:items-start">
+                        <a href="https://wa.me/50235739640" class="w-full md:w-auto bg-black text-white py-3 px-6 text-xs font-bold uppercase tracking-widest text-center hover:opacity-80 transition rounded-full">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-black/10 pt-8 text-center text-xs opacity-60">
+                <p>&copy; 2024 Esmeralda's Cosmetic. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. BASE DE DATOS DE PRODUCTOS (CUERPO) ---
+        const productosCuerpo = [
+           {
+                id: 1,
+                nombre: "Bratz Forever Shimmerin Hair & Body Shimmer",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/Hair_and_Body_Glitter_Spray_1.jpg?v=1731038043&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/HAIR-_-BODY-GLITTER-SPRAY.1.jpg?v=1730415385&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/HAIR-_-BODY-GLITTER-SPRAY.jpg?v=1730415385&width=500"
+                ],
+                descripcion: `Brilla como una estrella con el brillo Forever Shimmerin' para cabello y cuerpo de Bratz X Beauty Creations. Su fórmula ligera y no pegajosa está repleta de purpurina ultrafina que le da a tu piel y cabello un brillo radiante, propio de Bratz.
+
+Perfecto para festivales, conciertos, fiestas o cualquier momento en el que quieras ser el centro de atención, este spray brillante aporta el brillo perfecto, sin ensuciar ni dejar una sensación pegajosa. Ya sea que quieras resaltar tus clavículas o añadir brillo a tus ondas, es tu opción ideal para un acabado brillante y glamuroso.
+
+Por qué te encantará:
+
+Sensación ligera y no pegajosa.
+
+Brillo ultrafino para un brillo suave y uniforme.
+
+Seguro tanto para el cabello como para el cuerpo.
+
+Perfecto para todos los tonos y estilos de piel.
+
+SIN CRUELDAD, SIN
+SULFATOS,
+SIN PARABENOS`,
+                tag: "Tendencia",
+                tonos: null,
+            },
+            {
+                id: 2,
+                nombre: "The Powerpuff Girls El Dorado Hair & Body Glitter Spray",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/PPG-SPRAY.jpg?v=1753984646&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/Screenshot2025-05-08at2.59.12PM.png?v=1753733031&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/GLITTER-SPRAY-BOX.jpg?v=1753732078&width=500"
+                ],
+                descripcion: `¡Ilumina tu cabello y cuerpo con el spray con brillo para cabello y cuerpo El Dorado de The Powerpuff Girls X Beauty Creations!
+
+Esta purpurina dorada te dará un brillo duradero que te hará brillar como una auténtica Supernena. Dale un toque de brillo a tu estilo y haz que tu belleza sea inolvidable.
+
+Te encantará porque:
+
+Es ligero
+No es pegajoso
+Tiene destellos ultrafinos.
+Es para cabello y cuerpo.
+Entre sus principales cualidades, este spray también es: libre de crueldad animal, libre de sulfatos y libre de parabenos.`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 3,
+                nombre: "Sweet Dose Double Layer Lotion",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/Body_Lotion.jpg?v=1740703163&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/MELON-TIMES-LOTION.jpg?v=1740703163&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/BERRY-INTO-YOU-LOTION.jpg?v=1740703163&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/MANGO-WITH-IT-LOTION.jpg?v=1740703163&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/APPLE-SOLUTELY-FOR-YOU-LOTION.jpg?v=1740703163&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/LIFES-A-PEACH-LOTION.jpg?v=1740703163&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SWEET-AS-CHERRY-LOTION.jpg?v=1740703163&width=500"
+
+                ],
+                descripcion: `Indulge your skin with our Sweet Dose Double Layer Lotion, a nourishing formula designed to hydrate while leaving a refreshing, fruity scent. 
+
+Key Features
+Dual-layer formula for deep hydration without the greasy feel
+Fast-absorbing and lightweight for all-day softness
+Infused with skin-loving ingredients for a healthy glow
+Scents
+Melon Times Better – Watermelon scented
+Berry Into You – Sweet Strawberry scented
+Mango With It – Tropical mango scented
+Apple-solutely For You – Crisp apple scented
+Life's A Peach – Ripe peach scented
+Sweet As Cherry – Lush cherry scented
+
+Why You'll Love It
+Vegan
+Cruelty-free
+Paraben-free`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 4,
+                nombre: "Loción corporal Better Together de My Little Pony",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/beauty-creations-x-my-little-pony-better-together-body-lotion-beauty-creations-mlp-bl-406436.jpg?v=1768579190&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/beauty-creations-x-my-little-pony-better-together-body-lotion-beauty-creations-mlp-bl-879351.jpg?v=1768579190&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/BETTER-TOGETHER-BODY-LOTION.jpg?v=1768579190&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/beauty-creations-x-my-little-pony-better-together-body-lotion-beauty-creations-mlp-bl-382568.jpg?v=1768579190&width=500"
+                ],
+                descripcion: `Descubre la magia y el brillo con la nueva Loción Corporal "Better Together" de Beauty Creations x My Little Pony. Esta encantadora colección incorpora a tus personajes favoritos de My Little Pony directamente a tu rutina de belleza. Esta loción hidrata profundamente, dejando tu piel suave y radiante como un arcoíris. Tu piel no solo lucirá increíble, sino que también irradiará un brillo mágico.
+
+
+¡Prepárate para brillar con la magia de My Little Pony y deja que tu piel brille cada día!`,
+                tag: null,
+                tonos: null,
+            },
+            
+        ];
+
+        // --- 2. RENDERIZADO Y ORDENAMIENTO ---
+        const gridContainer = document.getElementById('grid-productos');
+        const sortSelect = document.getElementById('sort-select');
+
+        function renderizarProductos(lista = productosCuerpo) {
+            gridContainer.innerHTML = ''; 
+            gridContainer.style.opacity = '0';
+            
+            setTimeout(() => {
+                lista.forEach(prod => {
+                    const tagHTML = prod.tag 
+                        ? `<div class="absolute top-2 left-2 bg-brand-rose text-white text-[9px] px-2 py-1 uppercase font-bold rounded shadow-sm z-10">${prod.tag}</div>` 
+                        : '';
+                    
+                    const imagenPrincipal = Array.isArray(prod.imagenes) ? prod.imagenes[0] : prod.imagenes;
+
+                    const card = `
+                        <div class="group cursor-pointer flex flex-col" onclick="openModal(${prod.id})">
+                            <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 rounded-xl mb-3 shadow-sm hover:shadow-md transition duration-300">
+                                ${tagHTML}
+                                <img src="${imagenPrincipal}" alt="${prod.nombre}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-in-out">
+                                <div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition duration-300 flex justify-center">
+                                    <button class="bg-white/95 text-brand-black text-[10px] uppercase font-bold tracking-widest py-3 px-6 rounded-full shadow-lg hover:bg-brand-black hover:text-white transition w-full">
+                                        Ver Detalles
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="font-bebas text-xl text-brand-black tracking-wide group-hover:text-brand-rose transition">${prod.nombre}</h3>
+                                </div>
+                        </div>
+                    `;
+                    gridContainer.innerHTML += card;
+                });
+                gridContainer.style.transition = 'opacity 0.5s ease';
+                gridContainer.style.opacity = '1';
+            }, 50);
+        }
+
+        sortSelect.addEventListener('change', (e) => {
+            const criterio = e.target.value;
+            let productosOrdenados = [...productosCuerpo]; 
+            if (criterio === 'az') productosOrdenados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            else if (criterio === 'za') productosOrdenados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+            // Ordenar por precio eliminado
+            renderizarProductos(productosOrdenados);
+        });
+
+        // --- 3. LÓGICA DEL MODAL ---
+        const modal = document.getElementById('product-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalGallery = document.getElementById('modal-gallery');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalTag = document.getElementById('modal-tag');
+        const modalBtn = document.getElementById('modal-btn');
+        
+        const tonosContainer = document.getElementById('modal-tonos-container');
+        const tonosList = document.getElementById('modal-tonos-list');
+        const feedbackTono = document.getElementById('tono-feedback');
+        
+        let tonoSeleccionadoActual = ''; 
+
+        function openModal(id) {
+            const producto = productosCuerpo.find(p => p.id === id);
+            if(!producto) return;
+
+            // 1. Imágenes
+            const imgs = Array.isArray(producto.imagenes) ? producto.imagenes : [producto.imagenes];
+            modalImg.src = imgs[0];
+            
+            modalGallery.innerHTML = '';
+            if (imgs.length > 1) {
+                imgs.forEach((src, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = src;
+                    thumb.className = `w-16 h-16 object-cover rounded-md cursor-pointer border border-transparent hover:opacity-100 thumb-img ${index === 0 ? 'selected' : ''}`;
+                    thumb.onclick = function() {
+                        modalImg.src = src;
+                        document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('selected'));
+                        this.classList.add('selected');
+                    };
+                    modalGallery.appendChild(thumb);
+                });
+                modalGallery.classList.remove('hidden');
+            } else {
+                modalGallery.classList.add('hidden');
+            }
+
+            // 2. Info
+            modalTitle.innerText = producto.nombre;
+            modalDesc.innerText = producto.descripcion;
+            
+            if(producto.tag) {
+                modalTag.innerText = producto.tag;
+                modalTag.classList.remove('hidden');
+            } else {
+                modalTag.classList.add('hidden');
+            }
+
+            // 3. Tonos/Variantes
+            tonosList.innerHTML = '';
+            tonoSeleccionadoActual = '';
+            feedbackTono.innerText = '';
+
+            if (producto.tonos && producto.tonos.length > 0) {
+                tonosContainer.classList.remove('hidden');
+                
+                producto.tonos.forEach((item, index) => {
+                    const nombreTono = typeof item === 'object' ? item.nombre : item;
+                    const colorHex = typeof item === 'object' ? item.hex : null;
+
+                    const btnTono = document.createElement('button');
+                    btnTono.className = 'flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-gray-700 text-xs uppercase font-bold rounded-full transition hover:border-brand-rose focus:outline-none tono-btn';
+                    
+                    let swatchHTML = '';
+                    if(colorHex) {
+                        swatchHTML = `<span class="w-3 h-3 rounded-full border border-gray-200 shadow-sm" style="background-color: ${colorHex};"></span>`;
+                    }
+
+                    btnTono.innerHTML = `${swatchHTML} ${nombreTono}`;
+                    
+                    if (index === 0) {
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                    }
+
+                    btnTono.onclick = () => {
+                        document.querySelectorAll('.tono-btn').forEach(b => b.classList.remove('selected'));
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                        actualizarLinkWhatsapp(producto);
+                    };
+                    tonosList.appendChild(btnTono);
+                });
+            } else {
+                tonosContainer.classList.add('hidden');
+            }
+
+            actualizarLinkWhatsapp(producto);
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function actualizarLinkWhatsapp(producto) {
+            let mensaje = `Hola, me interesa el producto de CUERPO: ${producto.nombre}`;
+            if (tonoSeleccionadoActual) {
+                mensaje += ` - Variante: ${tonoSeleccionadoActual}`;
+            }
+            modalBtn.href = `https://wa.me/50235739640?text=${encodeURIComponent(mensaje)}`;
+        }
+
+        function closeModal() {
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = 'auto'; 
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Inicializar
+        renderizarProductos();
+
+        // --- Scripts Interfaz ---
+        const btn = document.getElementById('mobile-btn');
+        const textMenu = document.getElementById('mobile-text-menu');
+        btn.addEventListener('click', () => {
+            textMenu.classList.toggle('hidden');
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times');
+        });
+
+        const slider = document.getElementById('drag-scroll');
+        let isDown = false; let startX; let scrollLeft;
+        slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('active'); startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk; });
+
+        let lastScrollTop = 0;
+        const mainHeader = document.getElementById('main-header');
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) { mainHeader.classList.add('nav-hidden'); textMenu.classList.add('hidden'); } 
+            else { mainHeader.classList.remove('nav-hidden'); }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>

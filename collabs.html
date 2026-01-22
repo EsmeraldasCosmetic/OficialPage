@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="icon" href="Icono.png" type="image/png">
+    <title>Collabs Exclusivas | Esmeralda's Cosmetic</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'bebas': ['"Bebas Neue"', 'sans-serif'],
+                        'sans': ['"Montserrat"', 'sans-serif'],
+                        'script': ['"Playlist Script"', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            rose: '#c58c85',       
+                            roseDark: '#a66e68',   
+                            pale: '#fdf2f4',       
+                            black: '#151515',      
+                            whatsapp: '#25D366',
+                            footerPink: '#f9c5dc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Playlist Script';
+            src: url('Playlist Script.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body { background-color: #ffffff; color: #151515; -webkit-tap-highlight-color: transparent; }
+        
+        .nav-hidden { transform: translateY(-100%); }
+        #main-header { transition: transform 0.4s ease-in-out; }
+
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .grab-cursor { cursor: grab; }
+        .grab-cursor:active { cursor: grabbing; }
+
+        /* Modal Transitions */
+        #product-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #product-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+        #product-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
+        
+        .modal-content-enter { transform: scale(0.95); opacity: 0; transition: all 0.3s ease-out; }
+        .visible-modal .modal-content-enter { transform: scale(1); opacity: 1; }
+
+        /* Estilos del Slider Hero */
+        .hero-slide {
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 10;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        /* Estilos del Modal Avanzado */
+        .tono-btn.selected {
+            border-color: #c58c85; 
+            background-color: #fdf2f4;
+            color: #151515;
+            font-weight: 700;
+        }
+        .thumb-img.selected {
+            border: 2px solid #c58c85;
+            opacity: 1;
+        }
+        .thumb-img {
+            opacity: 0.6;
+            transition: all 0.2s;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen"> 
+
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-white shadow-sm h-[110px] md:h-[130px]">
+        <div class="bg-brand-black text-white py-2 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase flex justify-center items-center gap-2 h-[30px]">
+            <span>Catálogo Exclusivo - Envíos a todo el país</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="GT" class="h-3 w-auto">
+        </div>
+
+        <nav class="bg-white/95 backdrop-blur-md border-b border-gray-100 relative z-50 h-[80px] md:h-[100px] flex items-center">
+            <div class="w-full max-w-7xl mx-auto px-4 md:px-6">
+                <div class="flex items-center justify-between">
+                    
+                    <button id="mobile-btn" class="md:hidden text-2xl text-brand-black p-2 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <a href="index.html" class="flex-shrink-0 text-center flex-grow md:flex-grow-0 md:text-left">
+                        <h3 class="font-script text-brand-rose logo-text text-[1.8rem] md:text-[3rem] leading-none">
+                            Esmeralda's Cosmetic
+                        </h3>
+                    </a>
+
+                    <div class="hidden md:flex items-center space-x-6 lg:space-x-8 mx-auto">
+                        <a href="rostro.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ROSTRO</a>
+                        <a href="ojos.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">OJOS</a>
+                        <a href="labios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">LABIOS</a>
+                        <a href="skincare.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">SKIN CARE</a>
+                        <a href="cuerpo.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">CUERPO</a>
+                        <a href="accesorios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ACCESORIOS</a>
+                        <a href="collabs.html" class="font-bebas text-xl text-brand-rose font-bold tracking-wide border-b-2 border-brand-rose">COLLABS</a>
+                    </div>
+
+                    <div class="md:hidden w-8"></div>
+                </div>
+            </div>
+
+            <div id="mobile-text-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 top-full shadow-lg z-40">
+                <div class="flex flex-col p-6 space-y-4 font-bebas text-xl tracking-wide text-brand-black">
+                    <a href="index.html" class="border-b border-gray-50 pb-2">Inicio</a>
+                    <a href="nuestrahistoria.html" class="border-b border-gray-50 pb-2">Nuestra Historia</a>
+                    <a href="contacto.html" class="pb-2">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="md:hidden bg-white border-b border-gray-200 py-3 shadow-sm z-30 relative mt-[110px]">
+        <div id="drag-scroll" class="flex overflow-x-auto gap-5 px-4 scrollbar-hide snap-x snap-mandatory grab-cursor select-none">
+            
+            <a href="rostro.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n1.webp" alt="Rostro" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ROSTRO</span>
+            </a>
+
+            <a href="ojos.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n2.webp" alt="Ojos" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">OJOS</span>
+            </a>
+            
+            <a href="labios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n3.webp" alt="Labios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">LABIOS</span>
+            </a>
+
+            <a href="skincare.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n4.webp" alt="Skin Care" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black whitespace-nowrap">SKIN CARE</span>
+            </a>
+
+            <a href="cuerpo.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n5.webp" alt="Cuerpo" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">CUERPO</span>
+            </a>
+
+            <a href="accesorios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n6.webp" alt="Accesorios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ACCESORIOS</span>
+            </a>
+
+            <a href="collabs.html" class="flex flex-col items-center min-w-[70px] snap-center pointer-events-auto draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-rose mb-1 pointer-events-none">
+                    <img src="n7.webp" alt="Collabs" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-rose font-bold">COLLABS</span>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="hidden md:block h-[130px]"></div>
+
+    <div id="hero-slider" class="relative w-full h-[55vh] md:h-[65vh] bg-brand-black overflow-hidden group mt-[0px] md:mt-0">
+        
+        <div class="hero-slide active">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 z-10"></div>
+            <img src="https://www.beautycreationscosmetics.com/cdn/shop/products/yerimua-bad-btch-lip-duo-lips-beauty-creations-yml2-344849.jpg?v=1738014978&width=850" alt="Collab 1" class="w-full h-full object-cover">
+            
+        </div>
+
+        <div class="hero-slide">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 z-10"></div>
+            <img src="https://www.beautycreationscosmetics.com/cdn/shop/files/PhotoNov162025_13432PM_b676f574-5418-48e9-88f1-53d2cbe8ccbf.jpg?v=1763663770&width=500" alt="Collab 2" class="w-full h-full object-cover">
+        </div>
+
+        <div class="hero-slide">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 z-10"></div>
+            <img src="https://www.beautycreationscosmetics.com/cdn/shop/files/VIC09_RESIZED_17179b6d-ce40-4b9f-9ff4-224a35aa4d57.png?v=1747265736&width=850" alt="Collab 3" class="w-full h-full object-cover">
+        </div>
+
+        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-3xl md:text-5xl transition z-30 focus:outline-none hover:bg-black/20 p-2 rounded-full">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-3xl md:text-5xl transition z-30 focus:outline-none hover:bg-black/20 p-2 rounded-full">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="absolute bottom-6 left-0 w-full flex justify-center gap-3 z-30">
+            <div class="w-2 h-2 rounded-full bg-white opacity-100 transition indicator"></div>
+            <div class="w-2 h-2 rounded-full bg-white opacity-40 transition indicator"></div>
+            <div class="w-2 h-2 rounded-full bg-white opacity-40 transition indicator"></div>
+        </div>
+    </div>
+    <main class="flex-grow bg-white py-10 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            
+            <div class="text-center mb-12">
+                <h1 class="font-bebas text-4xl md:text-5xl text-brand-black tracking-wide">COLECCIONES & COLABORACIONES</h1>
+                <p class="font-sans text-sm md:text-base text-gray-500 mt-2 tracking-widest uppercase">Productos exclusivos de tus influencers favoritos</p>
+                <div class="w-16 h-1 bg-brand-rose mx-auto mt-4"></div>
+            </div>
+
+            <div class="flex justify-end mb-8 border-b border-gray-100 pb-4">
+                <div class="relative inline-block text-left group">
+                    <div class="flex items-center gap-3">
+                        <label for="sort-select" class="font-bebas text-lg text-gray-500 tracking-wide">Ordenar Por:</label>
+                        <div class="relative">
+                            <select id="sort-select" class="appearance-none bg-gray-50 border border-gray-200 text-gray-700 text-sm font-sans font-medium py-2 pl-4 pr-10 rounded-full focus:outline-none focus:border-brand-rose focus:ring-1 focus:ring-brand-rose cursor-pointer transition shadow-sm hover:border-brand-rose/50">
+                                <option value="default">Relevancia</option>
+                                <option value="az">Nombre: A - Z</option>
+                                <option value="za">Nombre: Z - A</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="grid-productos" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
+                </div>
+
+        </div>
+    </main>
+
+    <div id="product-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden-modal">
+        
+        <div class="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl relative flex flex-col md:flex-row modal-content-enter">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 hover:bg-brand-black hover:text-white rounded-full flex items-center justify-center transition shadow-md">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <div class="w-full md:w-1/2 bg-gray-50 flex flex-col">
+                <div class="relative aspect-square md:aspect-auto md:h-[400px] w-full">
+                    <img id="modal-img" src="" alt="Detalle Producto" class="w-full h-full object-cover">
+                    <span id="modal-tag" class="absolute top-4 left-4 bg-brand-rose text-white text-[10px] px-3 py-1 uppercase font-bold tracking-widest rounded hidden">
+                        Best Seller
+                    </span>
+                </div>
+                <div id="modal-gallery" class="flex gap-2 p-4 overflow-x-auto scrollbar-hide h-[80px]">
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 p-6 md:p-10 flex flex-col text-left">
+                <span class="text-xs font-bold text-gray-400 tracking-[0.2em] uppercase mb-2">Esmeralda's Collabs</span>
+                
+                <h2 id="modal-title" class="font-bebas text-4xl md:text-5xl text-brand-black leading-none mb-4">
+                    NOMBRE
+                </h2>
+                
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-xs text-brand-rose border border-brand-rose bg-white px-2 py-1 rounded font-bold uppercase tracking-wider">Edición Limitada</span>
+                </div>
+
+                <div class="w-full h-px bg-gray-100 mb-4"></div>
+
+                <div class="mb-6">
+                    <h4 class="font-bold text-xs uppercase tracking-widest mb-2">Descripción</h4>
+                    <p id="modal-desc" class="font-sans text-sm text-gray-600 leading-relaxed">
+                        Descripción...
+                    </p>
+                </div>
+
+                <div id="modal-tonos-container" class="mb-8 hidden">
+                    <h4 class="font-bold text-xs uppercase tracking-widest mb-3">Selecciona opción:</h4>
+                    <div id="modal-tonos-list" class="flex flex-wrap gap-2">
+                    </div>
+                    <p id="tono-feedback" class="text-xs text-brand-rose mt-2 font-medium h-4"></p>
+                </div>
+
+                <div class="mt-auto">
+                    <a id="modal-btn" href="#" target="_blank" class="w-full bg-brand-black text-white py-4 text-center font-bold text-sm uppercase tracking-[0.2em] hover:bg-brand-rose transition duration-300 rounded-sm shadow-lg flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> Consultar Disponibilidad
+                    </a>
+                    <p class="text-[10px] text-center text-gray-400 mt-4 uppercase tracking-widest">Envíos a todo el país</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-brand-footerPink text-brand-black pt-16 pb-8 border-t border-white/50 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Esmeralda's</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="nuestrahistoria.html" class="hover:text-white transition">Sobre Nosotros</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Ayuda</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="contacto.html" class="hover:text-white transition">Envíos</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Devoluciones</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Síguenos</h4>
+                    <div class="flex justify-center md:justify-start space-x-4 text-xl">
+                        <a href="https://www.instagram.com/esmeraldascosmetic/" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/EsmeraldasCosmeticOficial" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@esmeraldascosmetic" target="_blank" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Contacto</h4>
+                    <div class="flex flex-col gap-2 items-center md:items-start">
+                        <a href="https://wa.me/50235739640" class="w-full md:w-auto bg-black text-white py-3 px-6 text-xs font-bold uppercase tracking-widest text-center hover:opacity-80 transition rounded-full">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-black/10 pt-8 text-center text-xs opacity-60">
+                <p>&copy; 2024 Esmeralda's Cosmetic. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. LÓGICA DEL HERO SLIDER ---
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
+        let slideInterval;
+
+        function showSlide(index) {
+            if (index >= totalSlides) currentSlide = 0;
+            else if (index < 0) currentSlide = totalSlides - 1;
+            else currentSlide = index;
+
+            slides.forEach((slide, i) => {
+                if (i === currentSlide) {
+                    slide.classList.add('active');
+                    slide.classList.remove('opacity-0');
+                } else {
+                    slide.classList.remove('active');
+                    slide.classList.add('opacity-0');
+                }
+            });
+
+            indicators.forEach((ind, i) => {
+                ind.classList.toggle('opacity-100', i === currentSlide);
+                ind.classList.toggle('opacity-40', i !== currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+            resetInterval();
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+            resetInterval();
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000); 
+        }
+
+        resetInterval();
+
+        // --- 2. BASE DE DATOS DE PRODUCTOS (COLLABS) ---
+        const productosCollabs = [
+            {
+                id: 1,
+                nombre: "YeriMua X Beauty Creations - PR Colección Completa - PR BOX",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-x-yerimua-pr-coleccion-completa-yerimua-pr-cosmetics-ympr-799586.webp?v=1723545758&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-x-yerimua-pr-coleccion-completa-yerimua-pr-cosmetics-ympr-425585.jpg?v=1723545785&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-x-yerimua-pr-coleccion-completa-yerimua-pr-cosmetics-ympr-869565.jpg?v=1723545802&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-x-yerimua-pr-coleccion-completa-yerimua-pr-cosmetics-ympr-939133.jpg?v=1723545819&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-x-yerimua-pr-coleccion-completa-yerimua-pr-cosmetics-ympr-192746.jpg?v=1723545845&width=500"
+                ],
+                descripcion: `Beauty Creations X Yerimua - PR Colección Completa Yerimua - PR ¿Podrás? ¡Jamás! 💋 Esta aquí la colección que te hará sentir como una verdadera muñeca, logra un maquillaje super glam y encuentra tu energía más bad b*tch, esta colección tiene todo lo que necesario para sentirte como una super estrella; Dos kits con labiales, glitter para cuerpo y rostro, paleta de sombras con rubores e iluminadores y por supuesto un fijador de maquillaje para que tu look quede intacto toda la noche.
+
+Los productos de edición limitada de esta colección se convertirán sin duda en tus favoritos, consigue esta exclusiva colección YeriMua X Beauty Creations. 
+
+NOTA: ❌Al ser un articulo de edición especial y piezas limitadas, no aceptamos cambios, cancelaciones o devoluciones. Las fotos son ilustrativas y el empaque puede variar, stickers y llaveros hasta agotar existencias. 
+
+Esta colección incluye: 
+
+-Paleta de sombras Yeri's Palette
+-Trío de tinta y gloss de labios My Faves Lip Trio
+-Set de Glitters y pegamento para glitter Secret Fantasy Glitter Set 
+-Dúo de labial y delineador de labios Bad B*tch Lip Duo
+-Fijador de maquillaje Unique Setting Spray
+-¡Lentes de sol de regalo para completar tu look!
+
+
+* Este PR no incluye llavero de colección. `,
+                tag: "PR BOX",
+                tonos: null,
+            },
+            {
+                id: 2,
+                nombre: "Rosy McMichael x Beauty Creations Rosy's Essentials Vol. 1",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/COLLECTION1-RESIZE_16c1ad29-8012-4152-ac46-60aebf3bf4c2.jpg?v=1763443598&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/PhotoNov162025_13432PM_b676f574-5418-48e9-88f1-53d2cbe8ccbf.jpg?v=1763663770&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/PALETTE_ef115e70-b745-48d8-a335-596f9eed0ae0.jpg?v=1763442167&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/ARMSWTCHGRAPHICSROSYMCSHADOWENGLISH.jpg?v=1763442167&width=500"
+                ],
+                descripcion: `Beauty Creations y Rosy McMichael se han unido una vez más para traer de vuelta uno de los productos favoritos de sus fans, con un toque especial. Presentamos Rosy's Essentials Volume 1 (Mini Edición): Rosy ha elegido sus 12 tonos favoritos de la paleta original para traerlos de vuelta en un formato compacto, práctico y lleno de amor.`,
+                tag: "PR BOX",
+                tonos: null,
+            },
+            {
+                id: 3,
+                nombre: "Víctor Guadarrama Por Siempre Agua Hidratante de Rosas",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SPRAY-RESIZED.png?v=1747259750&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/VIC10_RESIZED.png?v=1747259759&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/VIC12_RESIZED.png?v=1747259764&width=850",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/MIST.jpg?v=1747259775&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/MIST-BOX.jpg?v=1747259777&width=500"
+                ],
+                descripcion: `Refresca e hidrata tu piel con el Agua de Rosas Hidratante Vico Por Siempre , una lujosa bruma facial infundida con agua de rosas y aloe vera.
+
+Esta bruma ligera y fina proporciona una dosis instantánea de hidratación, ayudando a tonificar, equilibrar y calmar la piel. El agua de rosas proporciona una hidratación suave y un aroma floral calmante, mientras que el aloe vera nutre y calma, lo que la hace perfecta para todo tipo de piel.
+
+Ingredientes clave : Agua de rosas, aloe vera
+
+Libre de crueldad
+
+Beneficios : Hidratante, calmante, refrescante.`,
+                tag: "Colección",
+                tonos: null,
+            },
+            {
+                id: 4,
+                nombre: "Trío de Labios Seduceme de Víctor Guadarrama",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/LIP-TRIO-RESIZED.png?v=1747259149&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/VIC07_RESIZED.png?v=1748627617&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/VIC13_RESIZED.png?v=1747259367&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/GLOSS-OPEN.jpg?v=1747259183&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/LINER-OPEN.jpg?v=1747259183&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/LIPSTICK-OPEN.jpg?v=1747259570&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/LIP-TRIP-CLOSED.jpg?v=1747259570&width=500"
+                ],
+                descripcion: `Realza tus labios con el Trío Labial Sedúceme , un set imprescindible diseñado para un glamour natural y unos labios atrevidos y hermosos. Presentado en un elegante envase dorado, este trío incluye:
+
+Lápiz labial con acabado satinado CÓMEME : un tono nude melocotón cremoso y rico en pigmentos que se desliza suavemente y ofrece un color lujoso con un acabado satinado cómodo.
+
+Brillo de labios voluminizador ENAMÓRATE : Un brillo de labios voluminizador de alto brillo en dorado con toques rosas y lilas. Proporciona un efecto voluminizador instantáneo con un acabado suave y no pegajoso.
+
+Delineador de labios retráctil BÉSAME MUCHO : Un delineador marrón melocotón que define y realza los labios con una textura cremosa que se difumina fácilmente. Su diseño retráctil lo hace perfecto para retoques en cualquier lugar.
+
+Libre de crueldad animal y cuidadosamente seleccionado por Vico Guadarrama, este trío ofrece la armonía perfecta de definición, color y brillo, todo en un lujoso conjunto.`,
+                tag: null,
+                tonos: null,
+            },
+             {
+                id: 5,
+                nombre: "Polvos faciales Perfection de Victor Guadarrama",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/POWDER1-RESIZED_19327d36-c397-42f7-8b6b-918a3bd81c1f.png?v=1747265729&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/POWDER2-RESIZED_377b48c5-3ffd-4083-858d-8890aa02e002.png?v=1747265732&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/VIC09_RESIZED_17179b6d-ce40-4b9f-9ff4-224a35aa4d57.png?v=1747265736&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/POWDER_ef8cf39f-6968-498c-9e46-4c1e37703567.jpg?v=1747265750&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/POWDER-CLOSED_b9115cde-9d02-4b6c-ae6f-0993e644e2f2.jpg?v=1747265752&width=500"
+                ],
+                descripcion: `Mejora tu rutina de belleza con Perfection Face Powder, una fórmula finamente molida alojada en un elegante y lujoso compacto dorado.
+
+Este polvo ligero y translúcido está diseñado para absorber el exceso de grasa, eliminar el brillo y ofrecer un acabado suave y mate. Difumina las imperfecciones sin acumularse en las líneas de expresión, dejando tu cutis impecable y fresco durante todo el día.
+
+Perfecto para retoques en cualquier lugar, este elegante compacto cabe perfectamente en tu bolso, combinando belleza, funcionalidad y sofisticación en un artículo esencial imprescindible.`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 6,
+                nombre: "Set de rubor en barra Pretty Desperados de Las Chicas Superpoderosas",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/RUBORES_EN_BARRA.jpg?v=1753984625&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/BLUSH_SWATCHES_PALETTE.jpg?v=1753984625&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/Screenshot2025-05-08at2.23.48PM.png?v=1753733125&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/BLUSH-STICKS-BOX.jpg?v=1753733125&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/PPG-COLECCION.jpg?v=1753732343&width=500"
+                ],
+                descripcion: `Dale un toque de color intenso y energía femenina a tus mejillas con los rubores en barra Pretty Desperados . Inspirados en las icónicas Chicas Superpoderosas, estos rubores en crema y polvo ofrecen un acabado mate suave, una textura ligera y una pigmentación vibrante.
+
+Tonos disponibles:
+
+Desert Bloom – Rosa rosado de tonos fríos
+
+Romance Rouge – Fucsia de tonos fríos
+
+Por qué te encantará:
+
+Con aroma a maracuyá
+
+Acabado mate suave, de crema a polvo.
+
+Ligero y armable.
+
+Infundido con manteca de mango, aceite de semilla de espuma de pradera, aceite de almendras dulces, aceite de camelia y vitamina E.
+
+Fórmula limpia:
+
+Vegano
+
+Libre de crueldad
+
+Sin parabenos
+
+Sin sulfatos`,
+                tag: null,
+                tonos: null,
+            },
+             {
+                id: 7,
+                nombre: "The Powerpuff Girls El Dorado Hair & Body Glitter Spray",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/PPG-SPRAY.jpg?v=1753984646&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/Screenshot2025-05-08at2.59.12PM.png?v=1753733031&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/GLITTER-SPRAY-BOX.jpg?v=1753732078&width=500"
+                ],
+                descripcion: `¡Ilumina tu cabello y cuerpo con el spray con brillo para cabello y cuerpo El Dorado de The Powerpuff Girls X Beauty Creations!
+
+Esta purpurina dorada te dará un brillo duradero que te hará brillar como una auténtica Supernena. Dale un toque de brillo a tu estilo y haz que tu belleza sea inolvidable.
+
+Te encantará porque:
+
+Es ligero
+No es pegajoso
+Tiene destellos ultrafinos.
+Es para cabello y cuerpo.
+Entre sus principales cualidades, este spray también es: libre de crueldad animal, libre de sulfatos y libre de parabenos.`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 8,
+                nombre: "The Powerpuff Girls X Beauty Creations - Set De Colección Completa",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/PPG-COLECCION_COMPLETA_3.jpg?v=1753489039&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/PPG-COLECCION.jpg?v=1753492783&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/Powerpuff-girls-coleccion-completa-pr-2.png?v=1753492783&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/PPG-COLECCION_COMPLETA.jpg?v=1753492783&width=700"
+                     ],
+                descripcion: `Consigue la colección completa de Las Chicas Superpoderosas por Beauty Creations. Este set todo en uno te trae el encanto del Viejo Oeste con un toque Superpoderoso, incluye todos los artículos de la colección para ayudarte a crear looks atrevidos, divertidos y radiantes.
+
+El set incluye:
+
+"Cowgirl Cuties" Paleta de sombras
+"Pretty Desperados" Rubores en barra (2 pz)
+"Western Wake-Up" Parches de hidrogel para ojeras y labios
+"Sugar" Aceite labial con aroma a azúcar
+"Everything Nice" Aceite labial con aroma a mango
+"Spice" Aceite labial con aroma a guayaba
+"El Dorado" Spray de glitter para cabello y cuerpo
+"Bronco Babe" Bálsamo labial con color
+"Horseshoe Hunny" Bálsamo labial con color`,
+                tag: "PR BOX",
+                tonos: null,
+            },
+            {
+                id: 9,
+                nombre: "Velvet Stay - Set De Labiales Líquidos Lip Paint - Bundle",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-440497.jpg?v=1723578184&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-255747.jpg?v=1723578201&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-121041.jpg?v=1723578219&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-404837.jpg?v=1723578245&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-316549.jpg?v=1723578261&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-383827.jpg?v=1723578278&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-851722.jpg?v=1723578304&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-110359.jpg?v=1723578320&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-355806.jpg?v=1723578339&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-541246.jpg?v=1723578365&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-379311.jpg?v=1723578380&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-275824.jpg?v=1723578398&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-594054.jpg?v=1723578424&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-452444.jpg?v=1723578441&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-654261.jpg?v=1723578457&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-565484.jpg?v=1723578484&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-114354.jpg?v=1723578501&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-705869.jpg?v=1723578518&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-649280.jpg?v=1723578545&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-746101.jpg?v=1723578561&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-284659.jpg?v=1723578578&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-800638.jpg?v=1723578605&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-991620.jpg?v=1723578622&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-130450.jpg?v=1723578637&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-479428.jpg?v=1723578664&width=700"
+                     ],
+                descripcion: `LOS TINTES LABIALES SON PERFECTOS CUANDO SE DESEA DAR UN TOQUE DE COLOR A LOS LABIOS SIN TENER LA SENSACIÓN DE LLEVAR UNA BARRA DE LABIOS. LAS PINTURAS LABIALES VELVET STAY TAMBIÉN PUEDEN UTILIZARSE COMO COLORETE Y SOMBRA DE OJOS.
+
+¡Ordena el tuyo ahora! 💋`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 10,
+                nombre: "Barbie X Beauty Creations - Bálsamo Llavero Lipgloss pH - Sunny & Stylish",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/BARBIE3957.jpg?v=1743029066&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/KEYCHAIN.png?v=1740697645&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/SUNNY_STYLISH-2.jpg?v=1743029066&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/SUNNY_STYLISH-3.jpg?v=1743029066&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/SUNNY_STYLISH-1.jpg?v=1743029066&width=700"
+                     ],
+                descripcion: `¡Brillante, elegante y más colorido que nunca! Hidrata y da color a tus labios con el bálsamo labial de pH Sunny & Stylish. Su innovadora fórmula transparente reacciona con el pH de tu piel para transformarse en un hermoso tono rosa vibrante, dándote el brillo perfecto al estilo Barbie. Con un delicioso aroma a fresa, este labial es tan divertido como nutritivo para tus labios.
+
+Características Principales:
+Reacciona al pH – Se adapta a tus labios para un tono rosa personalizado.
+Fórmula Hidratante – Mantiene los labios suaves y humectados.
+Tonos Rosa Vibrante – Aporta un color natural con un acabado brillante ideal para cualquier tono de piel.
+Libre de Crueldad Animal – Belleza sin compromisos.
+Incluye Llavero – Engánchalo a tu bolso o llaves para llevarlo contigo a todos lados.`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 11,
+                nombre: "Barbie X Beauty Creations - Set De 5 Esponjas - Me & My BFF'S",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/BARBIE3534LESSSHINE.jpg?v=1743029124&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/SPONGES-1.png?v=1740686863&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/SPONGES-2.png?v=1743029124&width=700"
+                     ],
+                descripcion: `Di ¡hola! a tus nuevas mejores amigas con este perfecto conjunto de esponjas, diseñado para ayudarte a crear looks de maquillaje impecables. Ideales para productos líquidos, en crema o polvo, este set de 5 piezas tiene todo lo que necesitas para una aplicación precisa.
+
+Características Clave:
+Reutilizables – Ecológicas y diseñadas para durar, hacen de tu rutina de belleza sostenible y eficiente.
+Para Líquidos, Cremas y Polvos – Esponjas versátiles que funcionan con diversas fórmulas de maquillaje para un acabado impecable.
+Incluido en el Set:
+Esponja para Corrector – Perfecta para tratar áreas debajo de los ojos ó comisuras de la nariz.
+Esponja para Contorno – Diseñada para esculpir y definir tus rasgos con facilidad.
+Esponja Rectangular – Ideal para aplicar base y polvo fijador con precisión.
+Esponja Angulada para Difuminar – Ideal para difuminar los bordes y lograr un acabado suave y aireado.
+Esponja Doble para Difuminar – Esponja de doble uso para un difuminado impecable y acabados suaves.`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 12,
+                nombre: "Barbie X Beauty Creations - Polvo Suelto Fijador - Future Is Bright",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/BARBIE3785.jpg?v=1753389631&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/SETTINGPOWDER.png?v=1754415872&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/FUTURE-IS_BRIGHT.jpg?v=1743029178&width=700"
+                     ],
+                descripcion: `Fija, difumina y perfecciona tu maquillaje con el Polvo Suelto Rosa "Future Is Bright. Este polvo de larga duración tiene un subtono frío color rosa bebé con reflejos plateados que iluminan y dan un brillo radiante al rostro. Su acabado satinado con un resplandor aperlado ayuda a crear un look impecable, inspirado en Barbie, que dura todo el día.
+
+Características Clave:
+Tono Frío – Rosa claro bebé con reflejos plateados para un efecto iluminador.
+Cobertura Ligera – Ideal para fijar el maquillaje con un acabado natural y suave.
+Larga Duración – Se mantiene todo el día para un look fresco y pulido.
+Acabado Satinado con Resplandor Aperlado – Un resplandor sutil para un rostro luminoso.
+Fija, Difumina e Ilumina – Ayuda a perfeccionar tu maquillaje mientras difumina imperfecciones.
+Detalles de la Fórmula:
+Libre de Crueldad Animal
+Libre de Parabenos
+Libre de Sulfatos
+Detalles Adicionales:
+Nuevo Tono Edición Limitada – Un producto exclusivo que no puede faltar en tu colección.`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 13,
+                nombre: "Betty Boop X Beauty Creations - Set Dúo De Labiales - Classy & Sassy",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/LIP_DUO_STORY_SIZE_v2.jpg?v=1738860037&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/12.png?v=1738860037&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/1-LipDuo.png?v=1738860037&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/2-LipDuo.png?v=1738860037&width=700"
+                     ],
+                descripcion: `Cuando tengas dudas... ¡dale un toque con el Dúo de Labios Elegante y Atrevido! 
+Este dúo para labios con fragancia a cereza incluye un lápiz labial de gel pH-reactivo y un aceite labial transparente nutritivo para mantener tus labios frescos, hidratados y súper glamurosos.
+
+¿Qué incluye?:
+
+Trendy (Lápiz Labial de Gel pH): Se adapta a tu pH natural para un tono rosado personalizado.
+Stylish (Aceite Labial): Un aceite claro y ligero infundido con aceite de semilla de jojoba y vitamina E para nutrir e hidratar.
+Características principales:
+
+Lápiz Labial de Gel:
+
+Fórmula pH-reactiva para un tono rosado personalizado
+Hidrata los labios para un confort duradero
+Fragancia a cereza
+Aceite Labial:
+
+Infundido con aceite de jojoba y vitamina E para una nutrición profunda
+Fórmula clara y no pegajosa para un brillo natural y luminoso
+Fragancia a cereza
+¿Por qué te encantará?
+
+Un dúo perfecto para un color personalizado y un brillo nutritivo
+Hidratación, ligereza y comodidad durante todo el día
+Ingredientes que cuidan tu piel
+Fácil de usar y apto para viajes, ideal para un look aprobado por Betty todos los días
+Cruelty-free`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 14,
+                nombre: "Spongebob X Beauty Creations - Espejo De Mano - I'm Ready",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/MIRRORSPONGEBOB.jpg?v=1733775611&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/I_M-READY-HAND-MIRROR-2.jpg?v=1742253210&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/I_M-READY-HAND-MIRROR-4.jpg?v=1733170143&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/I_M-READY-HAND-MIRROR.jpg?v=1733170143&width=700"
+                     ],
+                descripcion: `¡Prepárate para brillar con el Espejo de Mano I'm Ready de la colección de Bob Esponja Pantalones Cuadrados X Beauty Creations! 
+
+Lleno de la energía contagiante de Bob Esponja, este espejo divertido hará que tu rutina de belleza sea mucho más DIVERTIDA. 
+Con un diseño vibrante inspirado en tu esponja favorita, es el accesorio perfecto para ver cómo te queda el look, ya sea para un día de aventuras en Fondo de Bikini o para lucir tu última creación de belleza. 
+
+Características:
+
+Ligero
+Compacto
+Lleno de Personalidad 
+Este espejo te sacará una sonrisa cada vez que lo uses. ¿Entonces, estás listo para reflejar tu mejor versión? 
+
+Tip: ¡Lleva el Espejo I'm Ready contigo a todas partes y agrega un toque divertido a tu rutina de belleza! Perfecto para retocar tu look en cualquier momento. `,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 15,
+                nombre: "Bratz X Beauty Creations - Espejo De Mano - Lookin' Good",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/Mirror_Collection_Bratz.jpg?v=1757109131&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/espejo-bratz-1.jpg?v=1757109131&width=700"
+                     ],
+                descripcion: `¡Para estar siempre luciendo increíble, necesitas este espejo de mano de Bratz X Beauty Creations!
+
+Con un diseño único inspirado en las Bratz, este espejo es perfecto para retocar tu maquillaje y asegurarte de que siempre te veas increíble.
+
+¡No podrás resistir a su encanto!`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 16,
+                nombre: "My Little Pony X Beauty Creations - Espejo De Mano - Sky's the Limit",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-skys-the-limit-handheld-mirror-mlp-hm-902266.jpg?v=1723537000&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-skys-the-limit-handheld-mirror-mlp-hm-592583.jpg?v=1723545338&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-skys-the-limit-handheld-mirror-mlp-hm-336001.jpg?v=1723545365&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-skys-the-limit-handheld-mirror-mlp-hm-220054.jpg?v=1723545381&width=700"
+                     ],
+                descripcion: `Descubre la magia del cielo con el nuevo espejo de mano "Sky's the Limit" de Beauty Creations x My Little Pony. Con un estilo inspirado en el arcoíris y las estrellas, este espejo es el accesorio perfecto para una experiencia de belleza llena de fantasía.
+
+¡Deja que la magia del cielo y el brillo de My Little Pony iluminen tu rutina de belleza con cada vistazo en tu nuevo espejo "Sky's the Limit"!`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 17,
+                nombre: `Candy Land x Beauty Creations Sugar High Shadow Palette & 4-Piece Brush Set`,
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SHADOW_BRUSHES.jpg?v=1761608531&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SUGAR-HIGH.jpg?v=1761608531&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/BEAUTYCREATIONSRESTOFSHADES_ARM_LIP_EYEMACROS0318.jpg?v=1762457782&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SUGARHIGHARMUS.jpg?v=1762464560&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SUGARHIGHUS.png?v=1762464560&width=600"
+                     ],
+                descripcion: `Experimenta una explosión de color con el set de sombras y pinceles Sugar High, inspirado en el fantástico mundo de Candyland. Esta paleta de ensueño de 9 tonos incluye pasteles fáciles de usar en acabados mate y brillantes. Desde suaves rosas algodón de azúcar hasta brillantes verdes menta, estos dulces tonos son perfectos para añadir un toque de color alegre a cualquier look.
+
+¿Qué hay dentro?
+Paleta de sombras
+Juego de 4 pinceles para ojos
+La paleta incluye 9 tonos de sombra:
+Princesa Lolly → amarillo mantequilla mate
+Jolly Gumdrop → lavanda mate
+¡Bubblegum Pop! → rosa chicle mate
+Frostine → azul hielo brillante con reflejos verde azulado
+Candy Coated → brillo jaspeado rosa, azul y blanco que se combinan en un lila helado
+Manzana Ácida → brillo verde-amarillo con destellos dorados
+King Kandy → melocotón suave mate
+Choco-Wish → marrón suave mate
+Cookie Crunch → marrón cacao mate
+El juego incluye 4 pinceles:
+1 Pincel definidor plano
+1 brocha aplicadora
+1 brocha grande de precisión puntiaguda
+1 brocha grande para difuminar
+Por qué te encantará:
+Completo con 4 pinceles esenciales para ojos diseñados para mezclar, sombrear y aplicar pigmento, este set tiene todo lo que necesitas para crear infinitos looks llamativos. `,
+                tag: "nuevo",
+                tonos: null,
+            },
+            {
+                id: 18,
+                nombre: `Candy Land x Beauty Creations Triple Treat Lip Balm Set`,
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/LIPBALMS.jpg?v=1761591706&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/TRIPLE-TREAT-BOX.jpg?v=1762476272&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/TRIPLE-TREAT-OPEN-CAP.jpg?v=1762476272&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SOSOURUS.png?v=1762476272&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/BERRYJOLLYUS.png?v=1762476272&width=600"
+                     ],
+                descripcion: `¡Prepárate para una experiencia labial deliciosa y divertida con el Set de Bálsamos Labiales Triple Treat! Inspirado en el querido universo Candyland™, cada bálsamo presenta tres capas de color inspirado en los dulces y está enriquecido con una mezcla nutritiva de ingredientes que hidratan, suavizan y añaden un toque de diversión a tus labios con cada aplicación. 
+
+El juego incluye:
+¡Tan ácido! → Con aroma a manzana ácida
+Berry Jolly → Con aroma a bayas dulces
+Características principales:
+Vitamina E
+Aceite de semilla de jojoba
+Manteca de karité
+Niacinamida
+Aceite de semilla de espuma de la pradera
+Cica
+SIN CRUELDAD
+
+Por qué te encantará:
+¡El set de labios hidratante perfecto para ti! Disfruta de esta fórmula de lujo a un precio accesible.`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 19,
+                nombre: `Candy Land x Beauty Creations Sweet Swirl Cream and Powder Blush & Brush Set`,
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/BLUSH_BRUSH.jpg?v=1762457782&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/CANDYLAND-SWEET-SWIRL.jpg?v=1761608125&width=600",
+                    ""
+                     ],
+                descripcion: `Atrévete con este dúo de rubores inspirado en Candy Land, que incluye nuestro bálsamo-rubor estrella, Stay Blushin' Cute, y nuestro icónico Blush Hush. El bálsamo-rubor en crema se funde con la piel para un brillo radiante y húmedo, mientras que el polvo proporciona un acabado suave y aerografiado. Contiene ingredientes que cuidan la piel, como manteca de karité, aceite de camelia y vitamina E, para mantener tus mejillas frescas y nutridas
+
+¿Qué contiene?
+Rubor en crema Royally Sweet
+Rosa de tono medio con subtono frío
+Infundido con aceite de Camellia Japonica y vitamina E
+Fórmula multiusos para labios y mejillas.
+Ligero
+Difumina los poros y la textura
+Acabado natural
+Rubor en polvo rosa Bon Bon
+Rosa de tono medio con subtono cálido
+Polvos suaves y sedosos
+Acabado mate
+Altamente pigmentado
+Brocha para colorete de doble cara
+Perfecto para mezclar diferentes fórmulas de rubor.
+VEGANO Y CRUELTY FREE
+
+Por qué te encantará:
+Viene con un pincel para rubor de doble cara: el extremo denso es perfecto para mezclar la crema, mientras que el extremo esponjoso aplica el polvo como un sueño.`,
+                tag: "nuevo",
+                tonos: null,
+            },
+            {
+                id: 20,
+                nombre: `Candy Land x Beauty Creations Sweet Tooth Wooden Lip Liner Set (6PC)`,
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/LIP_LINERS.jpg?v=1761608281&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SWEETTOOTH.jpg?v=1761608281&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SWEETTOOTHUS.jpg?v=1762476045&width=600"
+                     ],
+                descripcion: `Inspirado en el colorido mundo de Candy Land, este set de 6 delineadores de labios de madera presenta nuestros tonos más vendidos y favoritos de los fans en una colección deliciosamente dulce. Cada lápiz cremoso y de alta pigmentación se desliza sin esfuerzo para definir, dar forma y realzar tus labios con un color duradero que se mantiene intacto, sin manchas, sin decoloración, solo una definición deliciosamente precisa
+
+Tonos:
+Toffee Bites → Marrón medio con subtonos rojos
+Nice and Toasty → Marrón medio con subtonos dorados
+Agítalo como gelatina → Rosa malva
+Truffle Maker → Rosa con subtono amarillo
+Me conquistaste con un Espresso → Marrón cacao intenso
+Ur Cherry Sweet → Rojo azulado brillante
+Características principales:
+Larga duración
+Difuminable
+Suave-mate
+VEGANO Y CRUELTY FREE
+
+Por qué te encantará:
+Ahora en un empaque de edición limitada de Candy Land, dile sí a la dulce vida con nuestros lápices labiales de madera más vendidos en tonos marrones tostados y rojos y rosas frutales, ¡todo en un solo juego!`,
+                tag: null,
+                tonos: null,
+            },
+        
+
+        ];
+
+        // --- 3. RENDERIZADO Y ORDENAMIENTO ---
+        const gridContainer = document.getElementById('grid-productos');
+        const sortSelect = document.getElementById('sort-select');
+
+        function renderizarProductos(lista = productosCollabs) {
+            gridContainer.innerHTML = ''; 
+            gridContainer.style.opacity = '0';
+            
+            setTimeout(() => {
+                lista.forEach(prod => {
+                    const tagHTML = prod.tag 
+                        ? `<div class="absolute top-2 left-2 bg-black text-white text-[9px] px-2 py-1 uppercase font-bold rounded shadow-sm z-10 border border-white/20">x ${prod.tag}</div>` 
+                        : '';
+                    
+                    const imagenPrincipal = Array.isArray(prod.imagenes) ? prod.imagenes[0] : prod.imagenes;
+
+                    const card = `
+                        <div class="group cursor-pointer flex flex-col" onclick="openModal(${prod.id})">
+                            <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 rounded-xl mb-3 shadow-sm hover:shadow-md transition duration-300">
+                                ${tagHTML}
+                                <img src="${imagenPrincipal}" alt="${prod.nombre}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-in-out">
+                                <div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition duration-300 flex justify-center">
+                                    <button class="bg-white/95 text-brand-black text-[10px] uppercase font-bold tracking-widest py-3 px-6 rounded-full shadow-lg hover:bg-brand-black hover:text-white transition w-full">
+                                        Ver Detalles
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="font-bebas text-xl text-brand-black tracking-wide group-hover:text-brand-rose transition">${prod.nombre}</h3>
+                                </div>
+                        </div>
+                    `;
+                    gridContainer.innerHTML += card;
+                });
+                gridContainer.style.transition = 'opacity 0.5s ease';
+                gridContainer.style.opacity = '1';
+            }, 50);
+        }
+
+        sortSelect.addEventListener('change', (e) => {
+            const criterio = e.target.value;
+            let productosOrdenados = [...productosCollabs]; 
+            if (criterio === 'az') productosOrdenados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            else if (criterio === 'za') productosOrdenados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+            // Orden por precio eliminado
+            renderizarProductos(productosOrdenados);
+        });
+
+        // --- 4. LÓGICA DEL MODAL ---
+        const modal = document.getElementById('product-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalGallery = document.getElementById('modal-gallery');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalTag = document.getElementById('modal-tag');
+        const modalBtn = document.getElementById('modal-btn');
+        
+        const tonosContainer = document.getElementById('modal-tonos-container');
+        const tonosList = document.getElementById('modal-tonos-list');
+        const feedbackTono = document.getElementById('tono-feedback');
+        
+        let tonoSeleccionadoActual = ''; 
+
+        function openModal(id) {
+            const producto = productosCollabs.find(p => p.id === id);
+            if(!producto) return;
+
+            // 1. Imágenes
+            const imgs = Array.isArray(producto.imagenes) ? producto.imagenes : [producto.imagenes];
+            modalImg.src = imgs[0];
+            
+            modalGallery.innerHTML = '';
+            if (imgs.length > 1) {
+                imgs.forEach((src, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = src;
+                    thumb.className = `w-16 h-16 object-cover rounded-md cursor-pointer border border-transparent hover:opacity-100 thumb-img ${index === 0 ? 'selected' : ''}`;
+                    thumb.onclick = function() {
+                        modalImg.src = src;
+                        document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('selected'));
+                        this.classList.add('selected');
+                    };
+                    modalGallery.appendChild(thumb);
+                });
+                modalGallery.classList.remove('hidden');
+            } else {
+                modalGallery.classList.add('hidden');
+            }
+
+            // 2. Info
+            modalTitle.innerText = producto.nombre;
+            modalDesc.innerText = producto.descripcion;
+            
+            if(producto.tag) {
+                modalTag.innerText = `x ${producto.tag}`;
+                modalTag.classList.remove('hidden');
+            } else {
+                modalTag.classList.add('hidden');
+            }
+
+            // 3. Tonos/Variantes
+            tonosList.innerHTML = '';
+            tonoSeleccionadoActual = '';
+            feedbackTono.innerText = '';
+
+            if (producto.tonos && producto.tonos.length > 0) {
+                tonosContainer.classList.remove('hidden');
+                
+                producto.tonos.forEach((item, index) => {
+                    const nombreTono = typeof item === 'object' ? item.nombre : item;
+                    const colorHex = typeof item === 'object' ? item.hex : null;
+
+                    const btnTono = document.createElement('button');
+                    btnTono.className = 'flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-gray-700 text-xs uppercase font-bold rounded-full transition hover:border-brand-rose focus:outline-none tono-btn';
+                    
+                    let swatchHTML = '';
+                    if(colorHex) {
+                        swatchHTML = `<span class="w-3 h-3 rounded-full border border-gray-200 shadow-sm" style="background-color: ${colorHex};"></span>`;
+                    }
+
+                    btnTono.innerHTML = `${swatchHTML} ${nombreTono}`;
+                    
+                    if (index === 0) {
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                    }
+
+                    btnTono.onclick = () => {
+                        document.querySelectorAll('.tono-btn').forEach(b => b.classList.remove('selected'));
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                        actualizarLinkWhatsapp(producto);
+                    };
+                    tonosList.appendChild(btnTono);
+                });
+            } else {
+                tonosContainer.classList.add('hidden');
+            }
+
+            actualizarLinkWhatsapp(producto);
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function actualizarLinkWhatsapp(producto) {
+            let mensaje = `Hola, me interesa la COLABORACIÓN: ${producto.nombre}`;
+            if (tonoSeleccionadoActual) {
+                mensaje += ` - Variante: ${tonoSeleccionadoActual}`;
+            }
+            modalBtn.href = `https://wa.me/50235739640?text=${encodeURIComponent(mensaje)}`;
+        }
+
+        function closeModal() {
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = 'auto'; 
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Inicializar
+        renderizarProductos();
+
+        // --- Scripts Interfaz ---
+        const btn = document.getElementById('mobile-btn');
+        const textMenu = document.getElementById('mobile-text-menu');
+        btn.addEventListener('click', () => {
+            textMenu.classList.toggle('hidden');
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times');
+        });
+
+        const slider = document.getElementById('drag-scroll');
+        let isDown = false; let startX; let scrollLeft;
+        slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('active'); startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk; });
+
+        let lastScrollTop = 0;
+        const mainHeader = document.getElementById('main-header');
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) { mainHeader.classList.add('nav-hidden'); textMenu.classList.add('hidden'); } 
+            else { mainHeader.classList.remove('nav-hidden'); }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>

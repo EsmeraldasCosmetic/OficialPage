@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="icon" href="Icono.png" type="image/png">
+    <title>Contacto | Esmeralda's Cosmetic</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'bebas': ['"Bebas Neue"', 'sans-serif'],
+                        'sans': ['"Montserrat"', 'sans-serif'],
+                        'script': ['"Playlist Script"', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            rose: '#c58c85',       
+                            roseDark: '#a66e68',   
+                            pale: '#fdf2f4',       
+                            black: '#151515',      
+                            whatsapp: '#25D366',
+                            footerPink: '#f9c5dc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Playlist Script';
+            src: url('Playlist Script.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body { background-color: #ffffff; color: #151515; -webkit-tap-highlight-color: transparent; }
+        
+        .nav-hidden { transform: translateY(-100%); }
+        #main-header { transition: transform 0.4s ease-in-out; }
+
+        /* Estilos Scrollbar Oculto */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .grab-cursor { cursor: grab; }
+        .grab-cursor:active { cursor: grabbing; }
+
+        /* Inputs del Formulario */
+        .form-input {
+            width: 100%;
+            background-color: #f9f9f9;
+            border: 1px solid #e5e5e5;
+            padding: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #c58c85;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen"> 
+
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-white shadow-sm h-[110px] md:h-[130px]">
+        <div class="bg-brand-black text-white py-2 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase flex justify-center items-center gap-2 h-[30px]">
+            <span>Catálogo Exclusivo - Envíos a todo el país</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="GT" class="h-3 w-auto">
+        </div>
+
+        <nav class="bg-white/95 backdrop-blur-md border-b border-gray-100 relative z-50 h-[80px] md:h-[100px] flex items-center">
+            <div class="w-full max-w-7xl mx-auto px-4 md:px-6">
+                <div class="flex items-center justify-between">
+                    
+                    <button id="mobile-btn" class="md:hidden text-2xl text-brand-black p-2 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <a href="index.html" class="flex-shrink-0 text-center flex-grow md:flex-grow-0 md:text-left">
+                        <h3 class="font-script text-brand-rose logo-text text-[1.8rem] md:text-[3rem] leading-none">
+                            Esmeralda's Cosmetic
+                        </h3>
+                    </a>
+
+                    <div class="hidden md:flex items-center space-x-6 lg:space-x-8 mx-auto">
+                        <a href="rostro.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ROSTRO</a>
+                        <a href="ojos.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">OJOS</a>
+                        <a href="labios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">LABIOS</a>
+                        <a href="skincare.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">SKIN CARE</a>
+                        <a href="cuerpo.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">CUERPO</a>
+                        <a href="accesorios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ACCESORIOS</a>
+                        <a href="collabs.html" class="font-bebas text-xl text-brand-rose font-bold tracking-wide">COLLABS</a>
+                    </div>
+
+                    <div class="md:hidden w-8"></div>
+                </div>
+            </div>
+
+            <div id="mobile-text-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 top-full shadow-lg z-40">
+                <div class="flex flex-col p-6 space-y-4 font-bebas text-xl tracking-wide text-brand-black">
+                    <a href="index.html" class="border-b border-gray-50 pb-2">Inicio</a>
+                    <a href="nuestrahistoria.html" class="border-b border-gray-50 pb-2">Nuestra Historia</a>
+                    <a href="contacto.html" class="pb-2 text-brand-rose">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="md:hidden bg-white border-b border-gray-200 py-3 shadow-sm z-30 relative mt-[110px]">
+        <div id="drag-scroll" class="flex overflow-x-auto gap-5 px-4 scrollbar-hide snap-x snap-mandatory grab-cursor select-none">
+            
+            <a href="rostro.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n1.webp" alt="Rostro" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ROSTRO</span>
+            </a>
+
+            <a href="ojos.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n2.webp" alt="Ojos" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">OJOS</span>
+            </a>
+
+            <a href="labios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n3.webp" alt="Labios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">LABIOS</span>
+            </a>
+
+            <a href="skincare.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n4.webp" alt="Skin Care" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black whitespace-nowrap">SKIN CARE</span>
+            </a>
+
+            <a href="cuerpo.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n5.webp" alt="Cuerpo" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">CUERPO</span>
+            </a>
+
+            <a href="accesorios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n6.webp" alt="Accesorios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ACCESORIOS</span>
+            </a>
+
+            <a href="collabs.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n7.webp" alt="Collabs" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-rose font-bold">COLLABS</span>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="hidden md:block h-[130px]"></div>
+
+    <main class="flex-grow">
+        
+        <section class="bg-brand-pale py-16 text-center px-4">
+            <h1 class="font-bebas text-5xl md:text-6xl text-brand-black tracking-wide mb-4">CONTÁCTANOS</h1>
+            <p class="font-sans text-gray-600 max-w-xl mx-auto tracking-wide">
+                Estamos aquí para ayudarte. Escríbenos o visítanos.
+            </p>
+            <div class="w-16 h-1 bg-brand-rose mx-auto mt-6"></div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
+                    
+                    <div class="space-y-10">
+                        <div>
+                            <h2 class="font-bebas text-3xl text-brand-black mb-6">Información</h2>
+                            <p class="text-gray-600 mb-8 leading-relaxed text-sm">
+                                Encuentra tus productos favoritos en nuestra tienda física en Coatepeque. También realizamos envíos seguros a toda Guatemala a través de Cargo Expreso.
+                            </p>
+                            
+                            <div class="space-y-8">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 border border-brand-rose flex items-center justify-center rounded-full text-brand-rose shrink-0">
+                                        <i class="fas fa-map-marker-alt text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold uppercase text-xs tracking-widest mb-1">Tienda Física</h4>
+                                        <p class="text-gray-600 text-sm">Coatepeque, Quetzaltenango</p>
+                                        <a href="#mapa" class="text-xs text-brand-rose underline mt-1 font-bold">Ver ubicación</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 border border-brand-rose flex items-center justify-center rounded-full text-brand-rose shrink-0">
+                                        <i class="fab fa-whatsapp text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold uppercase text-xs tracking-widest mb-1">WhatsApp</h4>
+                                        <p class="text-gray-600 text-sm">+502 3573 9640</p>
+                                        <p class="text-xs text-gray-400 mt-1">Atención personalizada</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 border border-brand-rose flex items-center justify-center rounded-full text-brand-rose shrink-0">
+                                        <i class="fas fa-clock text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold uppercase text-xs tracking-widest mb-1">Horario</h4>
+                                        <p class="text-gray-600 text-sm">Lunes a Sábado: 9:00 AM - 6:00 PM</p>
+                                        <p class="text-gray-600 text-sm">Domingo: Cerrado</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-8 border-t border-gray-100">
+                            <h3 class="font-bebas text-2xl mb-4">Preguntas Frecuentes</h3>
+                            <details class="mb-2 group cursor-pointer">
+                                <summary class="font-bold text-xs uppercase tracking-widest bg-gray-50 p-4 list-none flex justify-between items-center hover:bg-gray-100 transition">
+                                    ¿Tienen tienda física?
+                                    <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+                                </summary>
+                                <p class="p-4 text-sm text-gray-600 bg-white border border-t-0 border-gray-50">
+                                    ¡Sí! Estamos ubicados en Coatepeque. Puedes visitarnos para ver los productos en persona y recibir asesoría.
+                                </p>
+                            </details>
+                            <details class="group cursor-pointer">
+                                <summary class="font-bold text-xs uppercase tracking-widest bg-gray-50 p-4 list-none flex justify-between items-center hover:bg-gray-100 transition">
+                                    ¿Costo del envío?
+                                    <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+                                </summary>
+                                <p class="p-4 text-sm text-gray-600 bg-white border border-t-0 border-gray-50">El envío tiene un costo de Q.35.00</p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 md:p-10 shadow-2xl border border-gray-100 relative">
+                        <div class="absolute top-0 right-0 -mt-4 -mr-4 w-20 h-20 bg-brand-pale -z-10 rounded-full"></div>
+
+                        <h2 class="font-bebas text-3xl mb-6">Escríbenos</h2>
+                        <form id="contactForm" onsubmit="submitToWhatsapp(event)" class="space-y-5">
+                            <div>
+                                <label class="block text-[10px] font-bold uppercase tracking-widest mb-2 text-gray-400">Nombre Completo</label>
+                                <input type="text" id="name" required class="form-input rounded-sm" placeholder="Tu nombre">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-[10px] font-bold uppercase tracking-widest mb-2 text-gray-400">Teléfono</label>
+                                <input type="tel" id="phone" required class="form-input rounded-sm" placeholder="Ej: 5555-5555">
+                            </div>
+
+                            <div>
+                                <label class="block text-[10px] font-bold uppercase tracking-widest mb-2 text-gray-400">Asunto</label>
+                                <select id="subject" class="form-input rounded-sm cursor-pointer">
+                                    <option value="Consulta General">Consulta General</option>
+                                    <option value="Ubicación Tienda">Ubicación Tienda</option>
+                                    <option value="Estado de Pedido">Estado de Pedido</option>
+                                    <option value="Asesoría de Producto">Asesoría de Producto</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-[10px] font-bold uppercase tracking-widest mb-2 text-gray-400">Mensaje</label>
+                                <textarea id="message" required rows="4" class="form-input rounded-sm" placeholder="¿En qué podemos ayudarte hoy?"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-black text-white py-4 font-bold uppercase tracking-widest text-xs hover:bg-brand-rose transition duration-300 mt-2 shadow-lg">
+                                Enviar a WhatsApp <i class="fab fa-whatsapp ml-2 text-lg"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="mapa" class="h-[400px] w-full bg-gray-200 relative grayscale hover:grayscale-0 transition duration-700">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3856.467368673766!2d-91.87157862584556!3d14.855026985661955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858e630026f877bf%3A0x805565502f57567!2sCoatepeque!5e0!3m2!1ses-419!2sgt!4v1709665000000!5m2!1ses-419!2sgt" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </section>
+
+    </main>
+
+    <footer class="bg-brand-footerPink text-brand-black pt-16 pb-8 border-t border-white/50 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Esmeralda's</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="nuestrahistoria.html" class="hover:text-white transition">Sobre Nosotros</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Ayuda</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="contacto.html" class="hover:text-white transition">Envíos</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Devoluciones</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Síguenos</h4>
+                    <div class="flex justify-center md:justify-start space-x-4 text-xl">
+                        <a href="https://www.instagram.com/esmeraldascosmetic/" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/EsmeraldasCosmeticOficial" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@esmeraldascosmetic" target="_blank" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Contacto</h4>
+                    <div class="flex flex-col gap-2 items-center md:items-start">
+                        <a href="https://wa.me/50235739640" class="w-full md:w-auto bg-black text-white py-3 px-6 text-xs font-bold uppercase tracking-widest text-center hover:opacity-80 transition rounded-full">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-black/10 pt-8 text-center text-xs opacity-60">
+                <p>&copy; 2024 Esmeralda's Cosmetic. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- FORMULARIO A WHATSAPP ---
+        function submitToWhatsapp(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phoneInput = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const messageInput = document.getElementById('message').value;
+
+            const text = `Hola *Esmeralda's Cosmetic*, soy ${name}.%0A%0A*Motivo:* ${subject}%0A*Tel:* ${phoneInput}%0A%0A*Mensaje:*%0A${messageInput}`;
+            
+            window.open(`https://wa.me/50235739640?text=${text}`, '_blank');
+        }
+
+        // --- LÓGICA DEL MENÚ HAMBURGUESA ---
+        const btn = document.getElementById('mobile-btn');
+        const textMenu = document.getElementById('mobile-text-menu');
+        
+        btn.addEventListener('click', () => {
+            textMenu.classList.toggle('hidden');
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // --- LÓGICA DRAG & SCROLL (Menu Circular Móvil) ---
+        const slider = document.getElementById('drag-scroll');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; 
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // --- OCULTAR HEADER AL SCROLL ---
+        let lastScrollTop = 0;
+        const mainHeader = document.getElementById('main-header');
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                mainHeader.classList.add('nav-hidden');
+                textMenu.classList.add('hidden');
+                const icon = btn.querySelector('i');
+                if(icon.classList.contains('fa-times')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            } else {
+                mainHeader.classList.remove('nav-hidden');
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>

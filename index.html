@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="icon" href="Icono.png" type="image/png">
+    <title>Inicio | Esmeralda's Cosmetic</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'bebas': ['"Bebas Neue"', 'sans-serif'],
+                        'sans': ['"Montserrat"', 'sans-serif'],
+                        'script': ['"Playlist Script"', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            rose: '#c58c85',       
+                            roseDark: '#a66e68',   
+                            pale: '#fdf2f4',       
+                            black: '#151515',      
+                            whatsapp: '#25D366',
+                            footerPink: '#f9c5dc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Playlist Script';
+            src: url('Playlist Script.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body { background-color: #ffffff; color: #151515; -webkit-tap-highlight-color: transparent; }
+        
+        .btn-shop {
+            display: inline-block;
+            padding: 16px 35px;
+            background-color: #151515;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            border: 1px solid #151515;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+        @media (min-width: 768px) { .btn-shop { width: auto; } }
+        .btn-shop:hover { background-color: #c58c85; border-color: #c58c85; }
+
+        .logo-text { font-size: 1.8rem; }
+        @media (min-width: 768px) { .logo-text { font-size: 3rem; } }
+
+        .nav-hidden { transform: translateY(-100%); }
+        #main-header { transition: transform 0.4s ease-in-out; }
+
+        /* Estilos para el scroll oculto pero funcional */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Cursor de "agarrar" para la tira en PC */
+        .grab-cursor { cursor: grab; }
+        .grab-cursor:active { cursor: grabbing; }
+
+        /* --- ANIMACIÓN MARCAS INFINITA --- */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Se mueve la mitad (un set completo) */
+        }
+        .animate-scroll {
+            animation: scroll 20s linear infinite;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen"> 
+
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-white shadow-sm h-[110px] md:h-[130px]">
+        <div class="bg-brand-black text-white py-2 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase flex justify-center items-center gap-2 h-[30px]">
+            <span>Catálogo Exclusivo - Envíos a todo el país</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="GT" class="h-3 w-auto">
+        </div>
+
+        <nav class="bg-white/95 backdrop-blur-md border-b border-gray-100 relative z-50 h-[80px] md:h-[100px] flex items-center">
+            <div class="w-full max-w-7xl mx-auto px-4 md:px-6">
+                <div class="flex items-center justify-between">
+                    
+                    <button id="mobile-btn" class="md:hidden text-2xl text-brand-black p-2 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <a href="index.html" class="flex-shrink-0 text-center flex-grow md:flex-grow-0 md:text-left">
+                        <h3 class="font-script text-brand-rose logo-text leading-none">
+                            Esmeralda's Cosmetic
+                        </h3>
+                    </a>
+
+                    <div class="hidden md:flex items-center space-x-6 lg:space-x-8 mx-auto">
+                        <a href="rostro.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ROSTRO</a>
+                        <a href="ojos.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">OJOS</a>
+                        <a href="labios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">LABIOS</a>
+                        <a href="skincare.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">SKIN CARE</a>
+                        <a href="cuerpo.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">CUERPO</a>
+                        <a href="accesorios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ACCESORIOS</a>
+                        <a href="collabs.html" class="font-bebas text-xl text-brand-rose font-bold tracking-wide">COLLABS</a>
+                    </div>
+
+                    <div class="md:hidden w-8"></div>
+                </div>
+            </div>
+
+            <div id="mobile-text-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 top-full shadow-lg z-40">
+                <div class="flex flex-col p-6 space-y-4 font-bebas text-xl tracking-wide text-brand-black">
+                    <a href="index.html" class="border-b border-gray-50 pb-2">Inicio</a>
+                    <a href="nuestrahistoria.html" class="border-b border-gray-50 pb-2">Nuestra Historia</a>
+                    <a href="contacto.html" class="pb-2">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="md:hidden bg-white border-b border-gray-200 py-3 shadow-sm z-30 relative mt-[110px]">
+        <div id="drag-scroll" class="flex overflow-x-auto gap-5 px-4 scrollbar-hide snap-x snap-mandatory grab-cursor select-none">
+            
+            <a href="rostro.html" class="flex flex-col items-center min-w-[70px] snap-center pointer-events-auto draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-rose mb-1 pointer-events-none">
+                    <img src="n1.webp" alt="Rostro" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-rose">ROSTRO</span>
+            </a>
+
+            <a href="ojos.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n2.webp" alt="Ojos" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">OJOS</span>
+            </a>
+            
+            <a href="labios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n3.webp" alt="Labios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">LABIOS</span>
+            </a>
+
+            <a href="skincare.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n4.webp" alt="Skin Care" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black whitespace-nowrap">SKIN CARE</span>
+            </a>
+
+            <a href="cuerpo.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n5.webp" alt="Cuerpo" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">CUERPO</span>
+            </a>
+
+            <a href="accesorios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n6.webp" alt="Accesorios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ACCESORIOS</span>
+            </a>
+
+            <a href="collabs.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n7.webp" alt="Collabs" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-rose font-bold">COLLABS</span>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="hidden md:block h-[130px]"></div>
+
+    <header class="relative w-full h-[80vh] flex items-center justify-center overflow-hidden bg-brand-pale md:mt-[0px]" id="simple-header">
+        
+        <style>
+            .fade-slide {
+                position: absolute; inset: 0; width: 100%; height: 100%;
+                opacity: 0; z-index: 0;
+                transition: opacity 1.5s ease-in-out; 
+            }
+            .fade-slide.active { opacity: 1; z-index: 10; }
+            .fade-slide img { width: 100%; height: 100%; object-fit: cover; }
+        </style>
+
+        <div class="fade-slide active">
+            <picture>
+                <source media="(max-width: 768px)" srcset="bannerm1.png">
+                <img src="banner1.png" alt="Banner Esmeralda 1">
+            </picture>
+        </div>
+
+        <div class="fade-slide">
+            <picture>
+                <source media="(max-width: 768px)" srcset="bannerm2.png">
+                <img src="banner2.png" alt="Banner Esmeralda 2">
+            </picture>
+        </div>
+
+        <div class="fade-slide">
+            <picture>
+                <source media="(max-width: 768px)" srcset="bannerm3.png">
+                <img src="banner3.png" alt="Banner Esmeralda 3">
+            </picture>
+        </div>
+
+        <div class="fade-slide">
+            <picture>
+                <source media="(max-width: 768px)" srcset="bannerm4.png">
+                <img src="banner4.png" alt="Banner Esmeralda 4">
+            </picture>
+        </div>
+
+        <script>
+            (function() {
+                const header = document.getElementById('simple-header');
+                const slides = header.querySelectorAll('.fade-slide');
+                let current = 0;
+                const time = 5000; 
+
+                setInterval(() => {
+                    slides[current].classList.remove('active');
+                    current = (current + 1) % slides.length;
+                    slides[current].classList.add('active');
+                }, time);
+            })();
+        </script>
+    </header>
+
+    <section id="new" class="py-16 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-10">
+                <h2 class="font-bebas text-4xl md:text-5xl text-brand-black">LOS TOP DE ESMERALDA'S</h2>
+                <div class="w-12 h-0.5 bg-brand-rose mx-auto mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8">
+                
+                <div class="group cursor-pointer" onclick="window.location.href='accesorios.html'">
+                    <div class="relative overflow-hidden aspect-[4/5] mb-3 bg-gray-100 rounded-xl">
+                        <img src="img/accesorios/24brochas/dreamgirl/a.webp" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 w-[90%] bg-white/90 text-brand-black py-2 text-[10px] md:text-xs uppercase font-bold tracking-widest text-center rounded-full shadow-md">
+                            Ver Más
+                        </div>
+                    </div>
+                    <h3 class="font-bebas text-xl text-brand-black">Brochas - Set De Brochas 24 pzs - Dream Girl</h3>
+                    </div>
+                
+                <div class="group cursor-pointer" onclick="window.location.href='rostro.html'">
+                    <div class="relative overflow-hidden aspect-[4/5] mb-3 bg-gray-100 rounded-xl">
+                        <img src="https://www.beautycreationscosmetics.com/cdn/shop/files/PALETTE-RESIZE.jpg?v=1763443598&width=600" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 w-[90%] bg-white/90 text-brand-black py-2 text-[10px] md:text-xs uppercase font-bold tracking-widest text-center rounded-full shadow-md">
+                            Ver Más
+                        </div>
+                    </div>
+                    <h3 class="font-bebas text-xl text-brand-black">The Everyday Mini Palette Paleta de sombras de 12 colores</h3>
+                    </div>
+
+                <div class="group cursor-pointer" onclick="window.location.href='skincare.html'">
+                    <div class="relative overflow-hidden aspect-[4/5] mb-3 bg-gray-100 rounded-xl">
+                        <span class="absolute top-2 left-2 bg-brand-rose text-white text-[9px] px-2 py-1 uppercase font-bold rounded">Nuevo</span>
+                        <img src="https://www.beautycreationscosmetics.com/cdn/shop/files/SKIN-STRIPS_2.jpg?v=1729867860&width=600" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 w-[90%] bg-white/90 text-brand-black py-2 text-[10px] md:text-xs uppercase font-bold tracking-widest text-center rounded-full shadow-md">
+                            Ver Más
+                        </div>
+                    </div>
+                    <h3 class="font-bebas text-xl text-brand-black">Tiras para poros nasales Get Outta Here</h3>
+                    </div>
+
+                <div class="group cursor-pointer" onclick="window.location.href='labios.html'">
+                    <div class="relative overflow-hidden aspect-[4/5] mb-3 bg-gray-100 rounded-xl">
+                        <img src="https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb01-488573.jpg?v=1723481181&width=450" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 w-[90%] bg-white/90 text-brand-black py-2 text-[10px] md:text-xs uppercase font-bold tracking-widest text-center rounded-full shadow-md">
+                            Ver Más
+                        </div>
+                    </div>
+                    <h3 class="font-bebas text-xl text-brand-black">Balm N' Cute - Balsamo Labial Humectante</h3>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white border-t border-gray-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 mb-10 text-center">
+             <h2 class="font-bebas text-3xl md:text-4xl text-brand-black opacity-80">Nuestras Marcas</h2>
+             <div class="w-8 h-0.5 bg-brand-rose mx-auto mt-2 opacity-50"></div>
+        </div>
+        
+        <div class="relative w-full overflow-hidden py-4">
+            <div class="flex w-max animate-scroll hover:[animation-play-state:paused]"> 
+                
+                <div class="flex items-center gap-16 mx-8 shrink-0">
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca1.png" alt="Marca 1" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca2.png" alt="Marca 2" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca3.png" alt="Marca 3" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca4.png" alt="Marca 4" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca5.png" alt="Marca 5" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca6.png" alt="Marca 6" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-16 mx-8 shrink-0">
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca1.png" alt="Marca 1" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca2.png" alt="Marca 2" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca3.png" alt="Marca 3" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca4.png" alt="Marca 4" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca5.png" alt="Marca 5" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca6.png" alt="Marca 6" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-footerPink text-brand-black pt-16 pb-8 border-t border-white/50 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Esmeralda's</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="nuestrahistoria.html" class="hover:text-white transition">Sobre Nosotros</a></li>
+                        
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Ayuda</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="contacto.html" class="hover:text-white transition">Envíos</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Devoluciones</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Síguenos</h4>
+                    <div class="flex justify-center md:justify-start space-x-4 text-xl">
+                        <a href="https://www.instagram.com/esmeraldascosmetic/" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/EsmeraldasCosmeticOficial" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@esmeraldascosmetic" target="_blank" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Contacto</h4>
+                    <div class="flex flex-col gap-2 items-center md:items-start">
+                        <a href="https://wa.me/50235739640" class="w-full md:w-auto bg-black text-white py-3 px-6 text-xs font-bold uppercase tracking-widest text-center hover:opacity-80 transition rounded-full">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-black/10 pt-8 text-center text-xs opacity-60">
+                <p>&copy; 2024 Esmeralda's Cosmetic. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. LÓGICA DEL MENÚ HAMBURGUESA ---
+        const btn = document.getElementById('mobile-btn');
+        const textMenu = document.getElementById('mobile-text-menu');
+        
+        btn.addEventListener('click', () => {
+            textMenu.classList.toggle('hidden');
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // --- 2. LOGICA PARA DRAG & SCROLL EN LA TIRA ---
+        const slider = document.getElementById('drag-scroll');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // --- 3. OCULTAR HEADER AL SCROLLEAR ---
+        let lastScrollTop = 0;
+        const mainHeader = document.getElementById('main-header');
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                mainHeader.classList.add('nav-hidden');
+                textMenu.classList.add('hidden');
+                const icon = btn.querySelector('i');
+                if(icon.classList.contains('fa-times')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            } else {
+                mainHeader.classList.remove('nav-hidden');
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
