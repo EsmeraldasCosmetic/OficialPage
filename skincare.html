@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="icon" href="Icono.png" type="image/png">
+    <title>Skin Care | Esmeralda's Cosmetic</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'bebas': ['"Bebas Neue"', 'sans-serif'],
+                        'sans': ['"Montserrat"', 'sans-serif'],
+                        'script': ['"Playlist Script"', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            rose: '#c58c85',       
+                            roseDark: '#a66e68',   
+                            pale: '#fdf2f4',       
+                            black: '#151515',      
+                            whatsapp: '#25D366',
+                            footerPink: '#f9c5dc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Playlist Script';
+            src: url('Playlist Script.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body { background-color: #ffffff; color: #151515; -webkit-tap-highlight-color: transparent; }
+        
+        .nav-hidden { transform: translateY(-100%); }
+        #main-header { transition: transform 0.4s ease-in-out; }
+
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .grab-cursor { cursor: grab; }
+        .grab-cursor:active { cursor: grabbing; }
+
+        /* Modal Transitions */
+        #product-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #product-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+        #product-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
+        
+        .modal-content-enter { transform: scale(0.95); opacity: 0; transition: all 0.3s ease-out; }
+        .visible-modal .modal-content-enter { transform: scale(1); opacity: 1; }
+
+        /* Estilos específicos del modal avanzado */
+        .tono-btn.selected {
+            border-color: #c58c85; 
+            background-color: #fdf2f4;
+            color: #151515;
+            font-weight: 700;
+        }
+        .thumb-img.selected {
+            border: 2px solid #c58c85;
+            opacity: 1;
+        }
+        .thumb-img {
+            opacity: 0.6;
+            transition: all 0.2s;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen"> 
+
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-white shadow-sm h-[110px] md:h-[130px]">
+        <div class="bg-brand-black text-white py-2 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase flex justify-center items-center gap-2 h-[30px]">
+            <span>Catálogo Exclusivo - Envíos a todo el país</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="GT" class="h-3 w-auto">
+        </div>
+
+        <nav class="bg-white/95 backdrop-blur-md border-b border-gray-100 relative z-50 h-[80px] md:h-[100px] flex items-center">
+            <div class="w-full max-w-7xl mx-auto px-4 md:px-6">
+                <div class="flex items-center justify-between">
+                    
+                    <button id="mobile-btn" class="md:hidden text-2xl text-brand-black p-2 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <a href="index.html" class="flex-shrink-0 text-center flex-grow md:flex-grow-0 md:text-left">
+                        <h3 class="font-script text-brand-rose logo-text text-[1.8rem] md:text-[3rem] leading-none">
+                            Esmeralda's Cosmetic
+                        </h3>
+                    </a>
+
+                    <div class="hidden md:flex items-center space-x-6 lg:space-x-8 mx-auto">
+                        <a href="rostro.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ROSTRO</a>
+                        <a href="ojos.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">OJOS</a>
+                        <a href="labios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">LABIOS</a>
+                        <a href="skincare.html" class="font-bebas text-xl text-brand-rose tracking-wide border-b-2 border-brand-rose">SKIN CARE</a>
+                        <a href="cuerpo.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">CUERPO</a>
+                        <a href="accesorios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ACCESORIOS</a>
+                        <a href="collabs.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">COLLABS</a>
+                    </div>
+
+                    <div class="md:hidden w-8"></div>
+                </div>
+            </div>
+
+            <div id="mobile-text-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 top-full shadow-lg z-40">
+                <div class="flex flex-col p-6 space-y-4 font-bebas text-xl tracking-wide text-brand-black">
+                    <a href="index.html" class="border-b border-gray-50 pb-2">Inicio</a>
+                    <a href="nuestrahistoria.html" class="border-b border-gray-50 pb-2">Nuestra Historia</a>
+                    <a href="contacto.html" class="pb-2">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="md:hidden bg-white border-b border-gray-200 py-3 shadow-sm z-30 relative mt-[110px]">
+        <div id="drag-scroll" class="flex overflow-x-auto gap-5 px-4 scrollbar-hide snap-x snap-mandatory grab-cursor select-none">
+            
+            <a href="rostro.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n1.webp" alt="Rostro" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ROSTRO</span>
+            </a>
+
+            <a href="ojos.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n2.webp" alt="Ojos" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">OJOS</span>
+            </a>
+            
+            <a href="labios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n3.webp" alt="Labios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">LABIOS</span>
+            </a>
+
+            <a href="skincare.html" class="flex flex-col items-center min-w-[70px] snap-center pointer-events-auto draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-rose mb-1 pointer-events-none">
+                    <img src="n4.webp" alt="Skin Care" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-rose whitespace-nowrap">SKIN CARE</span>
+            </a>
+
+            <a href="cuerpo.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n5.webp" alt="Cuerpo" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">CUERPO</span>
+            </a>
+
+            <a href="accesorios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n6.webp" alt="Accesorios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ACCESORIOS</span>
+            </a>
+
+            <a href="collabs.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n7.webp" alt="Collabs" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">COLLABS</span>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="hidden md:block h-[130px]"></div>
+
+    <main class="flex-grow bg-white py-10 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            
+            <div class="text-center mb-8">
+                <h1 class="font-bebas text-5xl md:text-6xl text-brand-black tracking-wide">SKIN CARE</h1>
+                <p class="font-sans text-sm md:text-base text-gray-500 mt-2 tracking-widest uppercase">Serums, Hidratantes, Mascarillas y Protección Solar</p>
+                <div class="w-16 h-1 bg-brand-rose mx-auto mt-4"></div>
+            </div>
+
+            <div class="flex justify-end mb-8 border-b border-gray-100 pb-4">
+                <div class="relative inline-block text-left group">
+                    <div class="flex items-center gap-3">
+                        <label for="sort-select" class="font-bebas text-lg text-gray-500 tracking-wide">Ordenar Por:</label>
+                        <div class="relative">
+                            <select id="sort-select" class="appearance-none bg-gray-50 border border-gray-200 text-gray-700 text-sm font-sans font-medium py-2 pl-4 pr-10 rounded-full focus:outline-none focus:border-brand-rose focus:ring-1 focus:ring-brand-rose cursor-pointer transition shadow-sm hover:border-brand-rose/50">
+                                <option value="default">Relevancia</option>
+                                <option value="az">Nombre: A - Z</option>
+                                <option value="za">Nombre: Z - A</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="grid-productos" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
+                </div>
+
+        </div>
+    </main>
+
+    <div id="product-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden-modal">
+        
+        <div class="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl relative flex flex-col md:flex-row modal-content-enter">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 hover:bg-brand-black hover:text-white rounded-full flex items-center justify-center transition shadow-md">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <div class="w-full md:w-1/2 bg-gray-50 flex flex-col">
+                <div class="relative aspect-square md:aspect-auto md:h-[400px] w-full">
+                    <img id="modal-img" src="" alt="Detalle Producto" class="w-full h-full object-cover">
+                    <span id="modal-tag" class="absolute top-4 left-4 bg-brand-rose text-white text-[10px] px-3 py-1 uppercase font-bold tracking-widest rounded hidden">
+                        Best Seller
+                    </span>
+                </div>
+                <div id="modal-gallery" class="flex gap-2 p-4 overflow-x-auto scrollbar-hide h-[80px]">
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 p-6 md:p-10 flex flex-col text-left">
+                <span class="text-xs font-bold text-gray-400 tracking-[0.2em] uppercase mb-2">Esmeralda's Cosmetic</span>
+                
+                <h2 id="modal-title" class="font-bebas text-4xl md:text-5xl text-brand-black leading-none mb-4">
+                    NOMBRE
+                </h2>
+                
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-xs text-green-600 bg-green-50 px-2 py-1 rounded font-bold uppercase tracking-wider">Disponible</span>
+                </div>
+
+                <div class="w-full h-px bg-gray-100 mb-4"></div>
+
+                <div class="mb-6">
+                    <h4 class="font-bold text-xs uppercase tracking-widest mb-2">Descripción</h4>
+                    <p id="modal-desc" class="font-sans text-sm text-gray-600 leading-relaxed">
+                        Descripción...
+                    </p>
+                </div>
+
+                <div id="modal-tonos-container" class="mb-8 hidden">
+                    <h4 class="font-bold text-xs uppercase tracking-widest mb-3">Selecciona tu variante:</h4>
+                    <div id="modal-tonos-list" class="flex flex-wrap gap-2">
+                    </div>
+                    <p id="tono-feedback" class="text-xs text-brand-rose mt-2 font-medium h-4"></p>
+                </div>
+
+                <div class="mt-auto">
+                    <a id="modal-btn" href="#" target="_blank" class="w-full bg-brand-black text-white py-4 text-center font-bold text-sm uppercase tracking-[0.2em] hover:bg-brand-rose transition duration-300 rounded-sm shadow-lg flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> Consultar
+                    </a>
+                    <p class="text-[10px] text-center text-gray-400 mt-4 uppercase tracking-widest">Envíos a todo el país</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-brand-footerPink text-brand-black pt-16 pb-8 border-t border-white/50 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Esmeralda's</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="nuestrahistoria.html" class="hover:text-white transition">Sobre Nosotros</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Ayuda</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="contacto.html" class="hover:text-white transition">Envíos</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Devoluciones</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Síguenos</h4>
+                    <div class="flex justify-center md:justify-start space-x-4 text-xl">
+                        <a href="https://www.instagram.com/esmeraldascosmetic/" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/EsmeraldasCosmeticOficial" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@esmeraldascosmetic" target="_blank" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Contacto</h4>
+                    <div class="flex flex-col gap-2 items-center md:items-start">
+                        <a href="https://wa.me/50235739640" class="w-full md:w-auto bg-black text-white py-3 px-6 text-xs font-bold uppercase tracking-widest text-center hover:opacity-80 transition rounded-full">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-black/10 pt-8 text-center text-xs opacity-60">
+                <p>&copy; 2024 Esmeralda's Cosmetic. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. BASE DE DATOS DE PRODUCTOS (SKIN CARE) ---
+        const productosSkincare = [
+            {
+                id: 1,
+                nombre: "Skin Care - Agua Micelar - The Take Down",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-agua-micelar-the-take-down-skin-care-cosmetics-sk-tdm-591960.jpg?v=1723483522&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-agua-micelar-the-take-down-skin-care-cosmetics-sk-tdm-137920.jpg?v=1723483539&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-agua-micelar-the-take-down-skin-care-cosmetics-sk-tdm-871976.jpg?v=1723483564&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-agua-micelar-the-take-down-skin-care-cosmetics-sk-tdm-418260.jpg?v=1723483581&width=500"
+                ],
+                descripcion: `Después de un largo día o antes de iniciar tu rutina de maquillaje, siempre es importante que tu piel este limpia y libre de suciedad, el agua micelar será tu mejor amiga para dejar tu piel luciendo increíble.
+
+Con Beauty Creations Skin puedes complementar tu rutina del cuidado de la piel o maquillaje, usa nuestra agua micelar en un algodón o pad y descubre que nuestra formula va a refrescar tu piel, atrapar la hidratación y dejar una textura suave en un solo paso. No dudes en incluirla en tu rutina de skincare y consentirte en todo momento.`,
+                tag: "Nuevo",
+                tonos: null,
+            },
+             {
+                id: 2,
+                nombre: "Beauty Creations Skin - Limpiador En Espuma - Start Fresh Clarifying Foam Cleanser",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-limpiador-en-espuma-start-fresh-clarifying-foam-cleanser-skin-care-cosmetics-sk-sff-910344.jpg?v=1723531581&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-limpiador-en-espuma-start-fresh-clarifying-foam-cleanser-skin-care-cosmetics-sk-sff-111746.jpg?v=1723531597&width=500"
+                ],
+                descripcion: `¡Dale la bienvenida a una piel radiante y suave! con nuestro limpiador en espuma de la linea de Beauty Creations Skin podrás obtenerla, limpia tu rostro y termina el día con el pie derecho como inicio, nuestro limpiador facial esta enriquecido con vitaminas y extractos de aceites ideales para limpiar las impurezas, remover tu maquillaje e iluminar tu complexión, con lavanda y romero que calman la piel y restauran la humectación, incorpóralo a tu rutina de cuidado de la piel y no te arrepentirás de ver el cambio en tu rostro, apto para todo tipo de piel, ¡lo amaras tanto como nosotros! 💅`,
+                tag: null,
+                tonos: null,
+            },
+             {
+                id: 3,
+                nombre: "Beauty Creations Skin - Bálsamo Desmaquillante - So Balm Cleansing Balm",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-balsamo-desmaquillante-so-balm-cleansing-balm-skin-care-cosmetics-sk-sbb-324720.jpg?v=1723481722&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-balsamo-desmaquillante-so-balm-cleansing-balm-skin-care-cosmetics-sk-sbb-109079.jpg?v=1723481737&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-balsamo-desmaquillante-so-balm-cleansing-balm-skin-care-cosmetics-sk-sbb-530450.jpg?v=1723481765&width=500"
+                ],
+                descripcion: `Derrite tu día y descansa con tu rostro libre de suciedad y maquillaje 💕 Beauty Creations Skin tiene para ti su bálsamo desmaquillante listo para dejar tu piel sintiéndose limpia y suave completando tu skin care. 
+
+Este desmaquillante ayudara a quitar hasta el maquillaje a prueba de agua, gracias a que contiene morgan seed oil no permite que tu piel se reseque o maltrate evitando jalar o tallar tu piel mas de lo debido al momento de limpiar tu carita, deja una sensación suave y lista para descansar el resto de la noche, no te pierdas la oportunidad de añadir a tu rutina de cuidado de la piel los mejores productos. ¡Compra el tuyo ahora! 💅🥰💋❤️‍🔥`,
+                tag: null,
+                tonos: null,
+            },
+             {
+                id: 4,
+                nombre: "Beauty Creations Skin - Gel Exfoliante - Adios Toxins",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-gel-exfoliante-adios-toxins-skin-care-cosmetics-sk-atg-185641.webp?v=1723551260&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-gel-exfoliante-adios-toxins-skin-care-cosmetics-sk-atg-596635.jpg?v=1723551279&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-gel-exfoliante-adios-toxins-skin-care-cosmetics-sk-atg-575472.jpg?v=1723551303&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-gel-exfoliante-adios-toxins-skin-care-cosmetics-sk-atg-352194.jpg?v=1723551320&width=500"
+                ],
+                descripcion: `¡No busques más! tus mejores aleados al momento de complementar tu rutina de skin care están aquí 💕
+
+Enamórate de nuestro gel exfoliante facial, que esta compuesto con los mejores ingredientes para consentir tu piel, hecho con formulas de skincare coreano, remueve células muertas y promueve una piel suave y sana ¿Qué más se puede pedir? tu rutina del cuidado de la piel estará completa solo de los mejores productos, encuentra tu combinación perfecta dentro de nuestra linea de cuidado de la piel.  ¡Pruébalo ahora! 💅🥰`,
+                tag: null,
+                tonos: null,
+            },
+             {
+                id: 5,
+                nombre: "Beauty Creations Skin - Toner Facial - Tone Setter Brightening Toner",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-toner-facial-tone-setter-brightening-facial-skin-care-cosmetics-sk-tst-563696.jpg?v=1723582447&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-toner-facial-tone-setter-brightening-facial-skin-care-cosmetics-sk-tst-112590.jpg?v=1723582462&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-toner-facial-tone-setter-brightening-facial-skin-care-cosmetics-sk-tst-230004.jpg?v=1723582480&width=500",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-toner-facial-tone-setter-brightening-facial-skin-care-cosmetics-sk-tst-211219.jpg?v=1723582507&width=500"
+                ],
+                descripcion: `Refresca tu rostro incorporando en tu rutina del cuidado de la piel nuestro toner facial de la linea Beauty Creations Skin, este toner ayudará a tu piel a verse más radiante, dejando sin sensación grasosa la piel, por lo cual es apto para todo tipo de piel, ayuda a disminuir los poros, controla la generación de grasa en el rostro y calma la rojez.
+
+Gracias a su formulación alta en vitamina A, C y E será tu mejor aleado si tu problema es de hiperpigmentación, ayudando a su vez a incrementar la producción de colágeno. No te pierdas la oportunidad de unirlo a tu rutina de skincare y lucir un rostro suave y sano. 
+
+¡Compra el tuyo ahora! 🥰`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 6,
+                nombre: "Tiras para poros nasales Get Outta Here",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SKIN-STRIPS_1.jpg?v=1729867860&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SKIN-STRIPS_2.jpg?v=1729867860&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SKIN-STRIPS_3.jpg?v=1729867860&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SKIN-STRIPS_4.jpg?v=1729867860&width=600"
+                ],
+                descripcion: `Dile adiós a los puntos negros persistentes y a los poros obstruidos con este potente y suave set de 6 bandas limpiadoras de poros. Diseñadas para la zona de la nariz, donde los poros son más visibles y propensos a acumularse, estas bandas ayudan a eliminar los puntos negros, el exceso de grasa y la suciedad incrustada en minutos, dejando tu piel limpia, suave y fresca.
+
+Cada banda está enriquecida con ingredientes que cuidan la piel, como extracto de hoja de aloe y extracto de hoja de hamamelis , conocidos por sus propiedades calmantes y clarificantes. Juntos, ayudan a reducir la apariencia de los poros dilatados y a controlar la irritación.
+
+Perfecto para uso semanal o para un reinicio rápido de la piel, este conjunto es imprescindible para cualquiera que busque mantener una tez clara y de aspecto saludable.
+
+Beneficios:
+
+Ayuda a eliminar los puntos negros y destapar los poros.
+
+Absorbe el exceso de grasa e impurezas.
+
+Refina y suaviza visiblemente la textura de la piel.
+
+Infundido con aloe y hamamelis para un efecto suave y calmante.
+
+Aplicación fácil de usar y sin complicaciones
+
+Promesa de belleza limpia:
+
+Libre de crueldad
+
+Vegano
+
+Formulado con extractos calmantes de plantas.`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 7,
+                nombre: "Colección Sweet Dose Duo",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/cherry-sweet-dose-duo-beauty-creations-loset-3-155634.jpg?v=1744663689&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/cherry-sweet-dose-duo-beauty-creations-loset-3-953173.jpg?v=1744663689&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SWEETDOSEOIL_SCRUB.png?v=1744663689&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/grape-sweet-dose-duo-beauty-creations-loset-5-550597.jpg?v=1744663671&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/grape-sweet-dose-duo-beauty-creations-loset-5-472938.jpg?v=1744663671&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/grape-sweet-dose-duo-beauty-creations-loset-5-254945.jpg?v=1744663671&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/peach-sweet-dose-duo-beauty-creations-loset-4-911823.jpg?v=1744663671&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/peach-sweet-dose-duo-beauty-creations-loset-4-557310.jpg?v=1744663671&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/peach-sweet-dose-duo-beauty-creations-loset-4-530162.jpg?v=1744663671&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/sweet-scented-sweet-dose-duo-beauty-creations-loset-1-223555.jpg?v=1744663671&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/sweet-scented-sweet-dose-duo-beauty-creations-loset-1-348906.jpg?v=1744663671&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/sweet-scented-sweet-dose-duo-beauty-creations-loset-1-578753.jpg?v=1744663671&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/watermelon-sweet-dose-duos-beauty-creations-loset-2-535233.jpg?v=1744663671&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/watermelon-sweet-dose-duos-beauty-creations-loset-2-898011.jpg?v=1744663671&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/watermelon-sweet-dose-duos-beauty-creations-loset-2-392263.jpg?v=1744663671&width=600"
+                ],
+                descripcion: `¡El cuidado de los labios viene en dosis dulces!
+
+Nuestros dúos de cuidado labial Sweet Dose están diseñados para todas las edades y todos los labios, con deliciosos aromas que elevan tu rutina de cuidado labial. Cada dúo incluye un exfoliante labial nutritivo y un aceite labial hidratante ✨
+👄🧽 Nuestro exfoliante labial es un tratamiento exfoliante enriquecido con manteca de karité y vitamina E, que promueve labios radiantes y más saludables.
+↳ La manteca de karité actúa como un rico emoliente, proporcionando beneficios antiinflamatorios para ayudar a lograr labios más suaves y tersos.
+↳ La vitamina E sirve como un escudo protector contra los rayos UV, ayudando a restaurar y reponer los labios secos y escamosos.
+
+👄💦 Nuestro aceite labial es una mezcla nutritiva infundida con aceite de jojoba y vitamina E, diseñada para mejorar la luminosidad y la salud de los labios.
+↳ El aceite de jojoba repone, restaura e hidrata visiblemente los labios para una sensación suave y flexible.
+↳ La vitamina E no solo hidrata sino que también alivia la piel seca y escamosa, reduciendo las arrugas y ayudando con la pigmentación de la piel, promoviendo labios radiantes y brillantes.`,
+                tag: null,
+                tonos: [
+                    { nombre: "Cereza", hex: "#f8a6ac" },
+                    { nombre: "Uva", hex: "#d99ab2" },
+                    { nombre: "Durazno", hex: "#f9ab7d" },
+                    { nombre: "Sweet Dose", hex: "#f99bad" },
+                    { nombre: "Sandia", hex: "#ee8da1" }
+                ]
+            },
+            {
+                id: 8,
+                nombre: "Esponjas limpiadoras Freshness Please",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/products/freshness-please-cleansing-sponges-bcskin-beauty-creations-sk-cs2-607683.jpg?v=1723046730&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/products/freshness-please-cleansing-sponges-bcskin-beauty-creations-sk-cs2-748848.jpg?v=1723046732&width=600",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/products/freshness-please-cleansing-sponges-bcskin-beauty-creations-sk-cs2-367282.jpg?v=1723046735&width=850",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/products/freshness-please-cleansing-sponges-bcskin-beauty-creations-sk-cs2-643362.jpg?v=1723046737&width=600"
+                ],
+                descripcion: `Esponjas limpiadoras Freshness Please
+
+2 piezas sin látex
+Sin parabenos
+Sin sulfatos
+Libre de ftalatos
+Modo de empleo:
+
+Sumerge la esponja en agua tibia hasta que esté completamente expandida. Con el limpiador START FRESH, exfolia suavemente.
+Nuestra esponja limpiadora perfecta en forma de corazón es ideal para acceder a cualquier zona como alrededor de la nariz y debajo de los ojos.
+Uso diario
+Secar al aire
+Reemplazar cada 30 días
+Detalles:
+
+Limpia y elimina impurezas.
+Para todo tipo de piel`,
+                tag: null,
+                tonos: null,
+            },
+
+        ];
+
+        // --- 2. RENDERIZADO Y ORDENAMIENTO ---
+        const gridContainer = document.getElementById('grid-productos');
+        const sortSelect = document.getElementById('sort-select');
+
+        function renderizarProductos(lista = productosSkincare) {
+            gridContainer.innerHTML = ''; 
+            gridContainer.style.opacity = '0';
+            
+            setTimeout(() => {
+                lista.forEach(prod => {
+                    const tagHTML = prod.tag 
+                        ? `<div class="absolute top-2 left-2 bg-brand-rose text-white text-[9px] px-2 py-1 uppercase font-bold rounded shadow-sm z-10">${prod.tag}</div>` 
+                        : '';
+                    
+                    const imagenPrincipal = Array.isArray(prod.imagenes) ? prod.imagenes[0] : prod.imagenes;
+
+                    const card = `
+                        <div class="group cursor-pointer flex flex-col" onclick="openModal(${prod.id})">
+                            <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 rounded-xl mb-3 shadow-sm hover:shadow-md transition duration-300">
+                                ${tagHTML}
+                                <img src="${imagenPrincipal}" alt="${prod.nombre}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-in-out">
+                                <div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition duration-300 flex justify-center">
+                                    <button class="bg-white/95 text-brand-black text-[10px] uppercase font-bold tracking-widest py-3 px-6 rounded-full shadow-lg hover:bg-brand-black hover:text-white transition w-full">
+                                        Ver Detalles
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="font-bebas text-xl text-brand-black tracking-wide group-hover:text-brand-rose transition">${prod.nombre}</h3>
+                                </div>
+                        </div>
+                    `;
+                    gridContainer.innerHTML += card;
+                });
+                gridContainer.style.transition = 'opacity 0.5s ease';
+                gridContainer.style.opacity = '1';
+            }, 50);
+        }
+
+        sortSelect.addEventListener('change', (e) => {
+            const criterio = e.target.value;
+            let productosOrdenados = [...productosSkincare]; 
+            if (criterio === 'az') productosOrdenados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            else if (criterio === 'za') productosOrdenados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+            // Ordenar por precio eliminado
+            renderizarProductos(productosOrdenados);
+        });
+
+        // --- 3. LÓGICA DEL MODAL ---
+        const modal = document.getElementById('product-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalGallery = document.getElementById('modal-gallery');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalTag = document.getElementById('modal-tag');
+        const modalBtn = document.getElementById('modal-btn');
+        
+        const tonosContainer = document.getElementById('modal-tonos-container');
+        const tonosList = document.getElementById('modal-tonos-list');
+        const feedbackTono = document.getElementById('tono-feedback');
+        
+        let tonoSeleccionadoActual = ''; 
+
+        function openModal(id) {
+            const producto = productosSkincare.find(p => p.id === id);
+            if(!producto) return;
+
+            // 1. Imágenes
+            const imgs = Array.isArray(producto.imagenes) ? producto.imagenes : [producto.imagenes];
+            modalImg.src = imgs[0];
+            
+            modalGallery.innerHTML = '';
+            if (imgs.length > 1) {
+                imgs.forEach((src, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = src;
+                    thumb.className = `w-16 h-16 object-cover rounded-md cursor-pointer border border-transparent hover:opacity-100 thumb-img ${index === 0 ? 'selected' : ''}`;
+                    thumb.onclick = function() {
+                        modalImg.src = src;
+                        document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('selected'));
+                        this.classList.add('selected');
+                    };
+                    modalGallery.appendChild(thumb);
+                });
+                modalGallery.classList.remove('hidden');
+            } else {
+                modalGallery.classList.add('hidden');
+            }
+
+            // 2. Info
+            modalTitle.innerText = producto.nombre;
+            modalDesc.innerText = producto.descripcion;
+            
+            if(producto.tag) {
+                modalTag.innerText = producto.tag;
+                modalTag.classList.remove('hidden');
+            } else {
+                modalTag.classList.add('hidden');
+            }
+
+            // 3. Tonos/Variantes
+            tonosList.innerHTML = '';
+            tonoSeleccionadoActual = '';
+            feedbackTono.innerText = '';
+
+            if (producto.tonos && producto.tonos.length > 0) {
+                tonosContainer.classList.remove('hidden');
+                
+                producto.tonos.forEach((item, index) => {
+                    const nombreTono = typeof item === 'object' ? item.nombre : item;
+                    const colorHex = typeof item === 'object' ? item.hex : null;
+
+                    const btnTono = document.createElement('button');
+                    btnTono.className = 'flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-gray-700 text-xs uppercase font-bold rounded-full transition hover:border-brand-rose focus:outline-none tono-btn';
+                    
+                    let swatchHTML = '';
+                    if(colorHex) {
+                        swatchHTML = `<span class="w-3 h-3 rounded-full border border-gray-200 shadow-sm" style="background-color: ${colorHex};"></span>`;
+                    }
+
+                    btnTono.innerHTML = `${swatchHTML} ${nombreTono}`;
+                    
+                    if (index === 0) {
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                    }
+
+                    btnTono.onclick = () => {
+                        document.querySelectorAll('.tono-btn').forEach(b => b.classList.remove('selected'));
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                        actualizarLinkWhatsapp(producto);
+                    };
+                    tonosList.appendChild(btnTono);
+                });
+            } else {
+                tonosContainer.classList.add('hidden');
+            }
+
+            actualizarLinkWhatsapp(producto);
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function actualizarLinkWhatsapp(producto) {
+            let mensaje = `Hola, me interesa el producto de SKIN CARE: ${producto.nombre}`;
+            if (tonoSeleccionadoActual) {
+                mensaje += ` - Variante: ${tonoSeleccionadoActual}`;
+            }
+            modalBtn.href = `https://wa.me/50235739640?text=${encodeURIComponent(mensaje)}`;
+        }
+
+        function closeModal() {
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = 'auto'; 
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Inicializar
+        renderizarProductos();
+
+        // --- Scripts Interfaz ---
+        const btn = document.getElementById('mobile-btn');
+        const textMenu = document.getElementById('mobile-text-menu');
+        btn.addEventListener('click', () => {
+            textMenu.classList.toggle('hidden');
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times');
+        });
+
+        const slider = document.getElementById('drag-scroll');
+        let isDown = false; let startX; let scrollLeft;
+        slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('active'); startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk; });
+
+        let lastScrollTop = 0;
+        const mainHeader = document.getElementById('main-header');
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) { mainHeader.classList.add('nav-hidden'); textMenu.classList.add('hidden'); } 
+            else { mainHeader.classList.remove('nav-hidden'); }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>

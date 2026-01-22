@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="icon" href="Icono.png" type="image/png">
+    <title>Ojos | Esmeralda's Cosmetic</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'bebas': ['"Bebas Neue"', 'sans-serif'],
+                        'sans': ['"Montserrat"', 'sans-serif'],
+                        'script': ['"Playlist Script"', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            rose: '#c58c85',       
+                            roseDark: '#a66e68',   
+                            pale: '#fdf2f4',       
+                            black: '#151515',      
+                            whatsapp: '#25D366',
+                            footerPink: '#f9c5dc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Playlist Script';
+            src: url('Playlist Script.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body { background-color: #ffffff; color: #151515; -webkit-tap-highlight-color: transparent; }
+        
+        .nav-hidden { transform: translateY(-100%); }
+        #main-header { transition: transform 0.4s ease-in-out; }
+
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .grab-cursor { cursor: grab; }
+        .grab-cursor:active { cursor: grabbing; }
+
+        /* Modal Transitions */
+        #product-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #product-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+        #product-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
+        
+        .modal-content-enter { transform: scale(0.95); opacity: 0; transition: all 0.3s ease-out; }
+        .visible-modal .modal-content-enter { transform: scale(1); opacity: 1; }
+
+        /* Estilo para el tono seleccionado */
+        .tono-btn.selected {
+            border-color: #c58c85; /* brand-rose */
+            background-color: #fdf2f4; /* brand-pale */
+            color: #151515;
+            font-weight: 700;
+        }
+        /* Estilo para miniatura seleccionada */
+        .thumb-img.selected {
+            border: 2px solid #c58c85;
+            opacity: 1;
+        }
+        .thumb-img {
+            opacity: 0.6;
+            transition: all 0.2s;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen"> 
+
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-white shadow-sm h-[110px] md:h-[130px]">
+        <div class="bg-brand-black text-white py-2 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase flex justify-center items-center gap-2 h-[30px]">
+            <span>Catálogo Exclusivo - Envíos a todo el país</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="GT" class="h-3 w-auto">
+        </div>
+
+        <nav class="bg-white/95 backdrop-blur-md border-b border-gray-100 relative z-50 h-[80px] md:h-[100px] flex items-center">
+            <div class="w-full max-w-7xl mx-auto px-4 md:px-6">
+                <div class="flex items-center justify-between">
+                    
+                    <button id="mobile-btn" class="md:hidden text-2xl text-brand-black p-2 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <a href="index.html" class="flex-shrink-0 text-center flex-grow md:flex-grow-0 md:text-left">
+                        <h3 class="font-script text-brand-rose logo-text text-[1.8rem] md:text-[3rem] leading-none">
+                            Esmeralda's Cosmetic
+                        </h3>
+                    </a>
+
+                    <div class="hidden md:flex items-center space-x-6 lg:space-x-8 mx-auto">
+                        <a href="rostro.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ROSTRO</a>
+                        <a href="ojos.html" class="font-bebas text-xl text-brand-rose tracking-wide border-b-2 border-brand-rose">OJOS</a>
+                        <a href="labios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">LABIOS</a>
+                        <a href="skincare.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">SKIN CARE</a>
+                        <a href="cuerpo.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">CUERPO</a>
+                        <a href="accesorios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ACCESORIOS</a>
+                        <a href="collabs.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">COLLABS</a>
+                    </div>
+
+                    <div class="md:hidden w-8"></div>
+                </div>
+            </div>
+
+            <div id="mobile-text-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 top-full shadow-lg z-40">
+                <div class="flex flex-col p-6 space-y-4 font-bebas text-xl tracking-wide text-brand-black">
+                    <a href="index.html" class="border-b border-gray-50 pb-2">Inicio</a>
+                    <a href="nuestrahistoria.html" class="border-b border-gray-50 pb-2">Nuestra Historia</a>
+                    <a href="contacto.html" class="pb-2">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="md:hidden bg-white border-b border-gray-200 py-3 shadow-sm z-30 relative mt-[110px]">
+        <div id="drag-scroll" class="flex overflow-x-auto gap-5 px-4 scrollbar-hide snap-x snap-mandatory grab-cursor select-none">
+            
+            <a href="rostro.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n1.webp" alt="Rostro" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ROSTRO</span>
+            </a>
+
+            <a href="ojos.html" class="flex flex-col items-center min-w-[70px] snap-center pointer-events-auto draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-rose mb-1 pointer-events-none">
+                    <img src="n2.webp" alt="Ojos" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-rose">OJOS</span>
+            </a>
+
+            <a href="labios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n3.webp" alt="Labios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">LABIOS</span>
+            </a>
+
+            <a href="skincare.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n4.webp" alt="Skin Care" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black whitespace-nowrap">SKIN CARE</span>
+            </a>
+
+            <a href="cuerpo.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n5.webp" alt="Cuerpo" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">CUERPO</span>
+            </a>
+
+            <a href="accesorios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n6.webp" alt="Accesorios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ACCESORIOS</span>
+            </a>
+
+            <a href="collabs.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n7.webp" alt="Collabs" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">COLLABS</span>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="hidden md:block h-[130px]"></div>
+
+    <main class="flex-grow bg-white py-10 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            
+            <div class="text-center mb-8">
+                <h1 class="font-bebas text-5xl md:text-6xl text-brand-black tracking-wide">OJOS</h1>
+                <p class="font-sans text-sm md:text-base text-gray-500 mt-2 tracking-widest uppercase">Paletas, Delineadores, Máscaras y más</p>
+                <div class="w-16 h-1 bg-brand-rose mx-auto mt-4"></div>
+            </div>
+
+            <div class="flex justify-end mb-8 border-b border-gray-100 pb-4">
+                <div class="relative inline-block text-left group">
+                    <div class="flex items-center gap-3">
+                        <label for="sort-select" class="font-bebas text-lg text-gray-500 tracking-wide">Ordenar Por:</label>
+                        <div class="relative">
+                            <select id="sort-select" class="appearance-none bg-gray-50 border border-gray-200 text-gray-700 text-sm font-sans font-medium py-2 pl-4 pr-10 rounded-full focus:outline-none focus:border-brand-rose focus:ring-1 focus:ring-brand-rose cursor-pointer transition shadow-sm hover:border-brand-rose/50">
+                                <option value="default">Relevancia</option>
+                                <option value="az">Nombre: A - Z</option>
+                                <option value="za">Nombre: Z - A</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="grid-productos" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
+                </div>
+
+        </div>
+    </main>
+
+    <div id="product-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden-modal">
+        
+        <div class="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl relative flex flex-col md:flex-row modal-content-enter">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 hover:bg-brand-black hover:text-white rounded-full flex items-center justify-center transition shadow-md">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <div class="w-full md:w-1/2 bg-gray-50 flex flex-col">
+                <div class="relative aspect-square md:aspect-auto md:h-[400px] w-full">
+                    <img id="modal-img" src="" alt="Detalle Producto" class="w-full h-full object-cover">
+                    <span id="modal-tag" class="absolute top-4 left-4 bg-brand-rose text-white text-[10px] px-3 py-1 uppercase font-bold tracking-widest rounded hidden">
+                        Best Seller
+                    </span>
+                </div>
+                <div id="modal-gallery" class="flex gap-2 p-4 overflow-x-auto scrollbar-hide h-[80px]">
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 p-6 md:p-10 flex flex-col text-left">
+                <span class="text-xs font-bold text-gray-400 tracking-[0.2em] uppercase mb-2">Esmeralda's Cosmetic</span>
+                
+                <h2 id="modal-title" class="font-bebas text-4xl md:text-5xl text-brand-black leading-none mb-4">
+                    NOMBRE
+                </h2>
+                
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-xs text-green-600 bg-green-50 px-2 py-1 rounded font-bold uppercase tracking-wider">Disponible</span>
+                </div>
+
+                <div class="w-full h-px bg-gray-100 mb-4"></div>
+
+                <div class="mb-6">
+                    <h4 class="font-bold text-xs uppercase tracking-widest mb-2">Descripción</h4>
+                    <p id="modal-desc" class="font-sans text-sm text-gray-600 leading-relaxed">
+                        Descripción...
+                    </p>
+                </div>
+
+                <div id="modal-tonos-container" class="mb-8 hidden">
+                    <h4 class="font-bold text-xs uppercase tracking-widest mb-3">Selecciona tu tono:</h4>
+                    <div id="modal-tonos-list" class="flex flex-wrap gap-2">
+                    </div>
+                    <p id="tono-feedback" class="text-xs text-brand-rose mt-2 font-medium h-4"></p>
+                </div>
+
+                <div class="mt-auto">
+                    <a id="modal-btn" href="#" target="_blank" class="w-full bg-brand-black text-white py-4 text-center font-bold text-sm uppercase tracking-[0.2em] hover:bg-brand-rose transition duration-300 rounded-sm shadow-lg flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> Consultar
+                    </a>
+                    <p class="text-[10px] text-center text-gray-400 mt-4 uppercase tracking-widest">Envíos a todo el país</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-brand-footerPink text-brand-black pt-16 pb-8 border-t border-white/50 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Esmeralda's</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="nuestrahistoria.html" class="hover:text-white transition">Sobre Nosotros</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Ayuda</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="contacto.html" class="hover:text-white transition">Envíos</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Devoluciones</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Síguenos</h4>
+                    <div class="flex justify-center md:justify-start space-x-4 text-xl">
+                        <a href="https://www.instagram.com/esmeraldascosmetic/" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/EsmeraldasCosmeticOficial" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@esmeraldascosmetic" target="_blank" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Contacto</h4>
+                    <div class="flex flex-col gap-2 items-center md:items-start">
+                        <a href="https://wa.me/50235739640" class="w-full md:w-auto bg-black text-white py-3 px-6 text-xs font-bold uppercase tracking-widest text-center hover:opacity-80 transition rounded-full">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-black/10 pt-8 text-center text-xs opacity-60">
+                <p>&copy; 2024 Esmeralda's Cosmetic. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. BASE DE DATOS DE PRODUCTOS (OJOS) ---
+        // Estructura actualizada con 'imagenes' (array) y 'tonos' (objetos con hex)
+        const productosOjos = [
+            {
+                id: 1,
+                nombre: "Rosy McMichael X Beauty Creations - Mini Paleta De Sombras - Rosy's Essentials Vol.1",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/palette_220d84ef-1aa5-481a-8002-8c1f2727ad2f.jpg?v=1763589012&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/PALETTE.jpg?v=1763420004&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/ARMSWTCHGRAPHICSROSYMCSHADOWENGLISH_848466df-38b8-4dfb-a516-6bc2d5877cd9.jpg?v=1763588672&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/PALETTE-CLOSED.jpg?v=1763588672&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/ROSY_EYE_GRID_ENGLISH_dc101ab7-301c-43d7-bb7c-2ac178db7c83.png?v=1763589012&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/COLLECTION1-RESIZE.jpg?v=1763588672&width=900",
+                ],
+                descripcion: `Beauty Creations y Rosy McMichael se unen una vez más para traer de vuelta uno de los productos favoritos de sus fans, con un toque especial. Presentamos Rosy’s Essentials Volumen 1 (Mini Edición): Rosy ha elegido sus 12 tonos favoritos de la paleta original para traerlos de vuelta en un formato compacto, práctico y lleno de amor. Cada sombra representa un momento, una emoción, una parte del camino que hemos recorrido juntos. Desde los neutros que nos acompañan cada día, hasta esos destellos clásicos e innovadores de The Everyday Palette.
+
+En 12 hermosos tonos:
+
+Pigmento prensado
+
+5M → Mate, marrón cálido con destellos dorados
+SMH → Mate, malva rosado
+Rosita → Brillante, magenta/frambuesa
+Transición → Mate, marrón dorado cálido
+Red Wine → Mate, burdeos intenso
+Aaron → Azul brillante prensado con destellos plateados
+Tamaulipas → Mate, marrón chocolate intenso
+Sombra de ojos
+
+Hello → Mate, crema vainilla
+Focco → Brillante, oro rosa con destellos plateados
+Nick → Brillante, verde tierra con reflejos dorados y plateados
+Diego → Brillante, arándano con destellos reflectantes
+Glitter
+
+Star → Glitter, oro rosa
+Porqué la amaras:
+
+Tamaño ideal para viajar
+Formula pigmentada y fácil de difuminar
+Sombras mate con textura aterciopelada y shimmers extra brillantes
+Cobertura total
+Mínima caída de producto
+Edición Limitada, libre de crueldad animal. `,
+                tag: "Nuevo",
+                tonos: null 
+            },
+            {
+                id: 2,
+                nombre: "Tease Me - Paleta De Sombras",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-tease-me-paleta-de-sombras-cosmetics-e18t-911682.webp?v=1723581920&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-tease-me-paleta-de-sombras-cosmetics-e18t-207189.webp?v=1723581938&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-tease-me-paleta-de-sombras-cosmetics-e18t-791788.webp?v=1723581966&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-tease-me-paleta-de-sombras-cosmetics-e18t-991526.webp?v=1723581980&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-tease-me-paleta-de-sombras-cosmetics-e18t-519574.webp?v=1723581998&width=900"
+                ],
+                descripcion: `Dile a tus amigos, que le digan a sus amigos...¡Ella esta de vuelta! ✨
+
+Nuestra paleta más vendida se renueva, esta nueva formula y empaque te encantaran, 16 sombras que ya amas y seguirás amando, incluye colores malva, neutrales y bronces para que crees los maquillajes mas seductores. La paleta de sombras que todos estábamos esperando ¡Al fin esta de vuelta! 
+
+*Precaución: contiene pigmentos prensados. 
+
+¡Compra la tuya ahora! 💅🥰💋❤️🔥`,
+                tag: "Tendencia",
+                tonos: [
+                    { nombre: "Negro Intenso", hex: "#000000" }
+                ]
+            },
+         {
+                id: 3,
+                nombre: "Fairy Tale - Paleta De Sombras - Tiana",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-tiana-paleta-de-sombras-cosmetics-bce18-687376.jpg?v=1739227298&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-tiana-paleta-de-sombras-cosmetics-bce18-971865.jpg?v=1739227298&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-tiana-paleta-de-sombras-cosmetics-bce18-624016.jpg?v=1739227298&width=900"
+                ],
+                descripcion: `Esta paleta contiene una variedad de tonos para diferentes look; desde tonos brillantes y vibrantes hasta tonos más sutiles y elegantes. Prueba ahora y descubre tus tendencias de maquillaje favoritas. ¡Atrévete a explorar nuevos looks! 💅🥰💋❤️🔥`,
+                tag: null,
+                tonos: [
+                    { nombre: "Negro Intenso", hex: "#000000" }
+                ]
+            },
+             {
+                id: 4,
+                nombre: "Nude X - Paleta De Sombras - 15 Tonos",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-paleta-de-sombras-nude-x-15-paleta-de-sombras-cosmetics-nxe15-410407.webp?v=1723557682&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-paleta-de-sombras-nude-x-15-paleta-de-sombras-cosmetics-nxe15-294343.webp?v=1723557698&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-paleta-de-sombras-nude-x-15-paleta-de-sombras-cosmetics-nxe15-438229.webp?v=1723557724&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-paleta-de-sombras-nude-x-15-paleta-de-sombras-cosmetics-nxe15-446314.webp?v=1723557742&width=800",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-paleta-de-sombras-nude-x-15-paleta-de-sombras-cosmetics-nxe15-671461.webp?v=1723557758&width=800"
+                ],
+                descripcion: `De nuestra colección Nude X, esta paleta de sombras cuenta con 15 hermosos tonos entre mattes, satinados y brillantes, te ayudara a lograr un maquillaje ideal para el día a día o un look smokey de noche ideal. Pruébala y deslúmbrate con su calidad y hermosos tonos que complementan a cualquier tono de piel.
+
+¡Compra la tuya ahora! ❤️`,
+                tag: "Tendencia",
+                tonos: [
+                    { nombre: "Negro Intenso", hex: "#000000" }
+                ]
+            },
+             {
+                id: 5,
+                nombre: "Floral Bloom - Paleta De Sombras - Eye Bloom",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-floral-bloom-eye-bloom-paleta-de-sombras-cosmetics-ep12-490604.jpg?v=1757010505&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/EP12-7.png?v=1757010505&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-floral-bloom-eye-bloom-paleta-de-sombras-cosmetics-ep12-246599.jpg?v=1757010505&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-floral-bloom-eye-bloom-paleta-de-sombras-cosmetics-ep12-302575.jpg?v=1757010505&width=600"
+                ],
+                descripcion: `¡Una paleta de sombras con tonos hermosos y vibrantes para destacar tu look! Esta paleta proporciona una amplia gama de tonos para adaptarse a todas tus necesidades de maquillaje. ¡Prueba esta paleta y destaca tu look! ¡Haz tu pedido ya! 💅🥰💋`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 6,
+                nombre: "DUET - Mini Snap Palette - Paleta De Sombras 8 Tonos",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUET_1.png?v=1755121510&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/NUDE_2.png?v=1755121510&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/MX_NUDE.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/NUDE_3.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUET_2.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/MX_GREEN.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/GREENS_2.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/GREENS_3.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUET_3.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/MX_MAUVE.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/MAUVE_1.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/MAUVE_2.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUET_4.png?v=1763592080&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/PEACH_2.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/MX_PEACH.png?v=1763592080&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/PEACH_3.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUET_5.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/ROUGE_2.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/MX_ROUGE.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/ROUGE_3.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUET_6.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/GRUNGY_2.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/MX_GRUNGY.png?v=1755208647&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/GRUNGY_3.png?v=1755208646&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUET_1_8f302904-2ba2-425b-9c0d-7b89158aead5.png?v=1755208646&width=600",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUET_7.png?v=1755208646&width=600"
+                     ],
+                descripcion: `¡Descubre una nueva forma de llevar tus sombras! Nuestras paletas de sombras mini DUET hacen snap y se unen para que crees tu dúo favorito de sombras, crea tus combinaciones favoritas de colores con nuestras 6 paletas disponibles.  Desde colores neutros con acabados mate hasta los shimmer mas brillantes.
+
+Una mini paleta de sombras de ojos portátil con ocho tonos en una variedad de acabados desde mate hasta brillantes; úsela sola o combine dos paletas para crear su propia combinación personalizada.
+
+Tonos disponibles:
+
+NUDE NEUTRALS: Una colección atemporal de tonos ultra neutros, inspirados en la piel, que derrochan elegancia, suavidad y versatilidad. Desde delicados cremas hasta cálidos beiges y marrones suaves, esta paleta celebra la sutil sofisticación y la belleza natural de los tonos neutros.
+MODERN GREENS: Una paleta que ofrece una versión fresca, limpia y elevada de los tonos verdes tradicionales, combinando la esencia fundamental de la naturaleza con un refinamiento contemporáneo y lúdico.
+FEELING MAUVEY: Paleta alegre y de tonos apagados que captura la delicada elegancia del malva en todas sus facetas, desde florales hasta frescos matices ciruela. Esta paleta de colores combina un encanto sensual con un minimalismo moderno, ideal para crear una estética soñadora y serena.
+PEACHY DREAMS: Una paleta de colores suaves y soleados que captura la calidez del amanecer y la dulzura de los momentos despreocupados. Inspirada en los jugosos tonos melocotón, esta paleta combina suaves pasteles con brillantes destellos de sol para una atmósfera de ensueño y acogedora.
+ROUGE ROMANCE: Paleta atrevida y elegante que evoca pasión, feminidad intensa y glamour extremo. Su nombre sugiere una colección de tonos intensos y vibrantes, ideales para ambientes románticos, dramáticos o sutilmente seductores.
+GUNGY GREYS: Es una paleta de colores melancólicos compuesta por tonos ahumados apagados que irradian un toque chic y sobrio. Con un toque de rebeldía y mucha actitud, esta paleta es perfecta para crear el look ahumado definitivo y liberar la chica cool que llevas dentro.
+Características principales:
+
+VEGANO, SIN INGREDIENTES DE ORIGEN ANIMAL Y LIBRE DE GLUTEN
+
+La fabricación y/o desarrollo del producto y, en su caso, de sus ingredientes, no debe implicar ni haber implicado el uso de ningún producto, subproducto o derivado animal.
+
+SIN PRUEBAS EN ANIMALES
+
+Un producto registrado con la Marca Vegana no ha sido probado en animales por la empresa ni en su nombre, y no contiene ningún ingrediente de origen animal.`,
+                tag: null,
+                tonos:[
+                    { nombre: "Nude Neutrals" },
+                    { nombre: "Modern Greens" },
+                    { nombre: "Feeling Mauvey" },
+                    { nombre: "Peachy Dreams" },
+                    { nombre: "Rouge Romance" },
+                    { nombre: "Gungy Greys" }
+                ]
+            },
+            {
+                id: 7,
+                nombre: "Glitterally Perfect - Delineador en Glitter",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-01-540254.webp?v=1723498822&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-01-239490.webp?v=1723507206&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-01-426137.webp?v=1723507222&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/GRAYBGFORECOMM_1_b233fc50-71fc-4286-981e-2309030620ad.png?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-01-329245.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-02-873949.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-02-948288.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-03-441334.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-03-955749.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-04-522505.webp?v=1763592080&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-04-748176.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-05-495210.webp?v=1763592080&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-05-104393.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-06-651542.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-06-508332.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-07-750285.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-07-784510.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-08-508407.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-08-912491.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-09-319788.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-09-247484.webp?v=1739226819&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-10-137271.webp?v=1763592080&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-10-433869.webp?v=1739226819&width=650"
+                     ],
+                descripcion: `Presentamos la nueva estrella de Beauty Creations, luce brillantemente perfecto con un solo toque. Nuestra Fórmula con brillo fino a base de agua se desliza como un sueño en tu piel a prueba de manchas, la punta del pincel súper fina permite una aplicación precisa ¡Compra el tuyo ahora! 
+
+Tonos Disponibles
+
+HOURGLASS
+SENSUAL
+24k
+DIVINE
+BREATHTAKING
+BADABING
+LUSCIOUS
+MATERIAL GIRL
+MIND BLOWING
+5 STAR`,
+                tag: null,
+                tonos: [
+    { nombre: "1 - HOURGLASS", hex: "#CC9383" },
+    { nombre: "2 - SENSUAL", hex: "#A6A4A1" },
+    { nombre: "3 - 24K", hex: "#DBC075" },
+    { nombre: "4 - DIVINE", hex: "#D9B3C0" },
+    { nombre: "5 - BREATH TAKING", hex: "#9D86B3" },
+    { nombre: "6 - BADABING", hex: "#7B84B5" },
+    { nombre: "7 - LUSCIOUS", hex: "#D9DBDE" },
+    { nombre: "8 - MATERIAL GIRL", hex: "#CC937A" },
+    { nombre: "9 - MIND BLOWING", hex: "#A9B6A5" },
+    { nombre: "10 - 5 STAR", hex: "#3D3D3E" }
+]
+            },
+            {
+                id: 8,
+                nombre: "Paleta De Sombras Para Cejas - Eyebrow Definer Powder Book",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-eyebrow-definer-powder-book-paleta-de-sombras-para-cejas-cosmetics-bb01-535429.jpg?v=1753301114&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-eyebrow-definer-powder-book-paleta-de-sombras-para-cejas-cosmetics-bb01-341299.jpg?v=1753301114&width=650",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-eyebrow-definer-powder-book-paleta-de-sombras-para-cejas-cosmetics-bb01-199618.jpg?v=1753301114&width=650"
+                     ],
+                descripcion: `Esta paleta de sombras contiene ocho tonos, para ayudarte a darle la forma y estilo único que has estado buscando. ¡Toma el control de tus cejas hoy con la Eyebrow Definer Powder Book! ¡Adelante! 💅🥰💋❤️‍🔥`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 9,
+                nombre: "Victor Guadarrama X Beauty Creations - Paleta De Rostro Y Sombras - Yo Soy",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/PALETTE1-RESIZED.png?v=1746552256&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/PALETTE2-RESIZED.png?v=1746552256&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/FACE-PALETTE.jpg?v=1746552868&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/FACE-PALETTE-BOX.jpg?v=1746552868&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/BC-VICO-PALETA-DE-SOMBRAS-1_02969439-3961-4b3c-a37e-9129890983f1.png?v=1747347227&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/BC-VICO-PALETA-DE-SOMBRAS-3.png?v=1747347227&width=700"
+                     ],
+                descripcion: `Libera tu glamour interior con la Paleta de Sombras y Rostro YO SOY, un elegante compacto dorado diseñado para una elegancia natural. Incluye 12 sombras de ojos mate aterciopeladas en una gama de neutros cálidos, marrones intensos y tonos profundos y sensuales.
+
+Esta paleta es perfecta para crear desde looks suaves para el día hasta ojos atrevidos y dramáticos. Completa tu acabado impecable con un contorno esculpidor, un rubor degradado y un iluminador luminoso, todos formulados para una aplicación uniforme y una larga duración. Con un elegante diseño dorado de lujo, esta paleta todo en uno es tu opción ideal para un look radiante y esculpido, en cualquier momento y lugar.
+
+Incluye:
+
+12 Sombras Compactas
+1 Contorno
+1 Rubor Gradiante
+1 Iluminador`,
+                tag: "Colección",
+                tonos: null,
+            },
+             {
+                id: 10,
+                nombre: "Spongebob X Beauty Creations - Paleta De Sombras - Bikini Bottom",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/EYESHADOWPALETTESPONGEBOB.png?v=1733775085&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/SWATCHESPALLETE3.jpg?v=1733775097&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/SWATCHESPALLETE2.jpg?v=1733775097&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/SWATCHESSPONGEBOB.jpg?v=1733775090&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/BIKINI-BOTTOM-SHADOW-PALETTE-1.jpg?v=1742253210&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/BIKINI-BOTTOM-SHADOW-PALETTE-7.jpg?v=1733245728&width=700"
+                     ],
+                descripcion: `¡Sumérgete en un mar de color con la paleta de sombras Bob Esponja Pantalones Cuadrados X Beauty Creations Bikini Bottom Paleta de Sombras!
+
+Inspirada en el vibrante mundo de Fondo de Bikini, esta paleta de 12 tonos presenta una mezcla juguetona de mates suaves y deslumbrantes brillos que se difuminan como un sueño. Ya sea que estés canalizando la actitud soleada de Bob Esponja o los misteriosos encantos de Calamardo, estos tonos harán que tus ojos brillen con un toque de magia submarina.
+
+¡Esta paleta es perfecta para crear looks tan divertidos y fabulosos como un día en los campos de medusas! Así que adelante, ¡agrega glamour y presume de tu belleza de Fondo de Bikini!
+
+Características:
+
+8 tonos mate prensados
+4 tonos de brillo prensados
+Alta pigmentación
+Mezclable y construible
+Mínimo residuo
+
+Tip:
+Para un look audaz, comienza con un color base mate y luego coloca un brillo encima para un toque de destello. No olvides aplicar un toque de brillo ligero en las esquinas internas para iluminar tus ojos, ¡como el sol en Fondo de Bikini!`,
+                tag: null,
+                tonos: null,
+            },
+             {
+                id: 11,
+                nombre: "My Little Pony X Beauty Creations - Paleta De Sombras Y Rostro - Lost in the Clouds",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-head-in-the-clouds-shadow-and-face-palette-mlp-sfp-175087.jpg?v=1723532885&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-head-in-the-clouds-shadow-and-face-palette-mlp-sfp-906022.jpg?v=1723532918&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-head-in-the-clouds-shadow-and-face-palette-mlp-sfp-226953.jpg?v=1723532946&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-head-in-the-clouds-shadow-and-face-palette-mlp-sfp-977135.jpg?v=1723532960&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-head-in-the-clouds-shadow-and-face-palette-mlp-sfp-412475.jpg?v=1723533005&width=700"
+                     ],
+                descripcion: `Déjate envolver por la magia del cielo con "Lost in the Clouds" Shadow and Face Palette de Beauty Creations x My Little Pony. Esta deslumbrante paleta combina 5 sombras en una gama de acabados y colores inspirados en nubes y arcoíris: 3 mates de alta pigmentación, 2 shimmer prensados con un brillo estelar y mínima caída.
+También incluye un blush de acabado aterciopelado y tonos vibrantes, un bronzer para un toque de sol radiante, y un highlighter de alto brillo con un acabado similar al vidrio, ideal para todos los tonos de piel.
+
+Características:
+
+5 Sombras: 3 mates y 2 shimmer prensados
+1 Blush: Mate aterciopelado y vibrante
+1 Bronzer: Cálido y luminoso para un acabado radiante
+1 Highlighter: Brillo intenso y acabado cristalino
+
+Cada producto ofrece alta pigmentación, es mezclable y construible, con mínima caída para una aplicación impecable. ¡Añade un toque de encanto celestial a tu rutina de belleza con la "Lost in the Clouds" Palette y brilla como las estrellas!`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 12,
+                nombre: "Lotería - Paleta de Sombras y Rostro",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/FACE-PAL_RESIZED.png?v=1747069690&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/ESMEPALETTE.png?v=1747248242&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/EYESHADOWS.png?v=1747248242&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/BLUSHANDHIGHLIGHT.png?v=1747248242&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/Screenshot2025-03-25at3.20.49PM.png?v=1747248242&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/Screenshot2025-03-25at3.20.24PM.png?v=1747248242&width=700"
+                     ],
+                descripcion: `La paleta de la colección de la Lotería es una vibrante paleta todo en uno inspirada en la colorida tradición de la Lotería. Con una mezcla de sombras de ojos mate y brillantes, ofrece una gama versátil de tonos perfectos para crear looks atrevidos y llamativos.
+
+La paleta también incluye un magnífico rubor para dar un rubor natural a tus mejillas y un iluminador radiante para darle a tu piel un brillo luminoso. Ya sea que busques un toque de color divertido o un acabado más sutil, esta paleta tiene todo lo que necesitas para realzar tu belleza con un toque divertido y cultural.
+
+La paleta incluye los tonos:
+
+LA DAMA- COLOR VINO OSCURO
+EL CAZO- MIEL CALIDO
+LA GARZA- SHIMMER BLANCO CON REFLEJOS PLATA
+EL ARPA- SALMON 
+EL BANDOLÓN-LIGHT ALBARICOQUE
+LA CHALUPA- NARANJA
+LA ESCALERA-AMARILLO
+LA RANA- VERDE LIMA CON BRILLO
+EL ALACRÁN-CAFÉ MOCHA
+EL MUNDO-AZUL CIELE CON BRILLOS PLATA
+EL CORAZÓN- ROSA FLAMENCO 
+LA CAMPANA- CAFÉ
+Rubor:
+
+LA ROSA: ROSA FRÍO
+Iluminador:
+
+LA ESTRELLA: DORADO CLARO CHAMPAGNE`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 13,
+                nombre: "Bratz X Beauty Creations - Delineador De Glitter",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/Glitz-glitter-liner.jpg?v=1757109161&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUAL-GLITTER-LINER-SASHA.1.jpg?v=1757109161&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUAL-GLITTER-LINER-SASHA.jpg?v=1730428790&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/3_31a6a5c2-e60b-42fd-acea-23eb1acac931.png?v=1731455099&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/glamour-glitter-liner.jpg?v=1731454992&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUAL-GLITTER-LINER-JADE.1_0cdcae21-0067-4fbe-aa33-30633a0f7e05.jpg?v=1743004758&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUAL-GLITTER-LINER-JADE.jpg?v=1730428963&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/2_1cdf3900-5a9a-43bd-bbca-0a7bb73bf28e.png?v=1731454992&width=700"
+                     ],
+                descripcion: `¡Dale a tus ojos un toque de diversión con el Bratz X Beauty Creations Glitz Glitter Liner!
+
+Con este delineador brillante, podrás crear look únicos y llamativos. ¡Atrévete a brillar con Bratz y Beauty Creations!
+
+DESCRIPCIÓN DE COLOR:
+
+CITY GIRL: BLANCO IRRIDESCENTE
+TROUBLE COMING: MORADO CON BRILLO PLATA
+LO AMARAS PORQUE ES:
+
+LIBRE DE CRUELDAD 
+LIBRE DE SULFATOS 
+LIBRE DE PARABENOS`,
+                tag: null,
+                tonos: null,
+            },
+            {
+                id: 14,
+                nombre: "My Little Pony X Beauty Creations - Delineador Líquido De Glitter - Full of Fun",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-full-of-fun-unicorn-magic-silver-glitter-liner-mlp-gl2-385253.jpg?v=1723532225&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-full-of-fun-unicorn-magic-silver-glitter-liner-mlp-gl2-271310.jpg?v=1723532258&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-full-of-fun-unicorn-magic-silver-glitter-liner-mlp-gl1-926343.jpg?v=1723532317&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-full-of-fun-unicorn-magic-silver-glitter-liner-mlp-gl2-537392.jpg?v=1723532285&width=700",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-full-of-fun-unicorn-magic-silver-glitter-liner-mlp-gl1-408948.jpg?v=1723532345&width=700"
+                     ],
+                descripcion: `Descubre la magia y el brillo con "Full of Fun" Glitter Liner de Beauty Creations x My Little Pony. Esta colección preciosa te invita a un mundo de fantasía y resplandor, con un delineador que aporta un brillo celestial a tu mirada. Inspirado en las estrellas y el cielo lleno de arcoíris, este delineador de glitter hará que tus ojos brillen con un destello mágico.
+
+Tonos:
+Unicorn Magic
+Moonstone
+
+¡Eleva tu look al nivel de una estrella con el brillo y la magia de My Little Pony y deslumbra con una mirada llena de resplandor y encanto!"
+
+NET WEIGHT: 3ml/0.11 fl oz.`,
+                tag: null,
+                tonos: null,
+            },
+        
+        ];
+
+        // --- 2. RENDERIZADO ---
+        const gridContainer = document.getElementById('grid-productos');
+        const sortSelect = document.getElementById('sort-select');
+
+        function renderizarProductos(lista = productosOjos) {
+            gridContainer.innerHTML = ''; 
+            gridContainer.style.opacity = '0';
+            
+            setTimeout(() => {
+                lista.forEach(prod => {
+                    const tagHTML = prod.tag 
+                        ? `<div class="absolute top-2 left-2 bg-brand-rose text-white text-[9px] px-2 py-1 uppercase font-bold rounded shadow-sm z-10">${prod.tag}</div>` 
+                        : '';
+                    
+                    // Tomamos la primera imagen del array
+                    const imagenPrincipal = Array.isArray(prod.imagenes) ? prod.imagenes[0] : prod.imagenes;
+
+                    const card = `
+                        <div class="group cursor-pointer flex flex-col" onclick="openModal(${prod.id})">
+                            <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 rounded-xl mb-3 shadow-sm hover:shadow-md transition duration-300">
+                                ${tagHTML}
+                                <img src="${imagenPrincipal}" alt="${prod.nombre}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-in-out">
+                                <div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition duration-300 flex justify-center">
+                                    <button class="bg-white/95 text-brand-black text-[10px] uppercase font-bold tracking-widest py-3 px-6 rounded-full shadow-lg hover:bg-brand-black hover:text-white transition w-full">
+                                        Ver Detalles
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="font-bebas text-xl text-brand-black tracking-wide group-hover:text-brand-rose transition">${prod.nombre}</h3>
+                                </div>
+                        </div>
+                    `;
+                    gridContainer.innerHTML += card;
+                });
+                gridContainer.style.transition = 'opacity 0.5s ease';
+                gridContainer.style.opacity = '1';
+            }, 50);
+        }
+
+        sortSelect.addEventListener('change', (e) => {
+            const criterio = e.target.value;
+            let productosOrdenados = [...productosOjos];
+            if (criterio === 'az') productosOrdenados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            else if (criterio === 'za') productosOrdenados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+            // Ordenar por precio eliminado
+            renderizarProductos(productosOrdenados);
+        });
+
+        // --- 3. LÓGICA DEL MODAL ---
+        const modal = document.getElementById('product-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalGallery = document.getElementById('modal-gallery');
+        const modalTitle = document.getElementById('modal-title');
+        // modalPrice eliminado
+        const modalDesc = document.getElementById('modal-desc');
+        const modalTag = document.getElementById('modal-tag');
+        const modalBtn = document.getElementById('modal-btn');
+        
+        const tonosContainer = document.getElementById('modal-tonos-container');
+        const tonosList = document.getElementById('modal-tonos-list');
+        const feedbackTono = document.getElementById('tono-feedback');
+        
+        let tonoSeleccionadoActual = ''; 
+
+        function openModal(id) {
+            const producto = productosOjos.find(p => p.id === id);
+            if(!producto) return;
+
+            // 1. Imágenes
+            const imgs = Array.isArray(producto.imagenes) ? producto.imagenes : [producto.imagenes];
+            modalImg.src = imgs[0];
+            
+            modalGallery.innerHTML = '';
+            if (imgs.length > 1) {
+                imgs.forEach((src, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = src;
+                    thumb.className = `w-16 h-16 object-cover rounded-md cursor-pointer border border-transparent hover:opacity-100 thumb-img ${index === 0 ? 'selected' : ''}`;
+                    thumb.onclick = function() {
+                        modalImg.src = src;
+                        document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('selected'));
+                        this.classList.add('selected');
+                    };
+                    modalGallery.appendChild(thumb);
+                });
+                modalGallery.classList.remove('hidden');
+            } else {
+                modalGallery.classList.add('hidden');
+            }
+
+            // 2. Info
+            modalTitle.innerText = producto.nombre;
+            modalDesc.innerText = producto.descripcion;
+            
+            if(producto.tag) {
+                modalTag.innerText = producto.tag;
+                modalTag.classList.remove('hidden');
+            } else {
+                modalTag.classList.add('hidden');
+            }
+
+            // 3. Tonos con Hex
+            tonosList.innerHTML = '';
+            tonoSeleccionadoActual = '';
+            feedbackTono.innerText = '';
+
+            if (producto.tonos && producto.tonos.length > 0) {
+                tonosContainer.classList.remove('hidden');
+                
+                producto.tonos.forEach((item, index) => {
+                    const nombreTono = typeof item === 'object' ? item.nombre : item;
+                    const colorHex = typeof item === 'object' ? item.hex : null;
+
+                    const btnTono = document.createElement('button');
+                    btnTono.className = 'flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-gray-700 text-xs uppercase font-bold rounded-full transition hover:border-brand-rose focus:outline-none tono-btn';
+                    
+                    let swatchHTML = '';
+                    if(colorHex) {
+                        swatchHTML = `<span class="w-3 h-3 rounded-full border border-gray-200 shadow-sm" style="background-color: ${colorHex};"></span>`;
+                    }
+
+                    btnTono.innerHTML = `${swatchHTML} ${nombreTono}`;
+                    
+                    if (index === 0) {
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                    }
+
+                    btnTono.onclick = () => {
+                        document.querySelectorAll('.tono-btn').forEach(b => b.classList.remove('selected'));
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                        actualizarLinkWhatsapp(producto);
+                    };
+                    tonosList.appendChild(btnTono);
+                });
+            } else {
+                tonosContainer.classList.add('hidden');
+            }
+
+            actualizarLinkWhatsapp(producto);
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function actualizarLinkWhatsapp(producto) {
+            let mensaje = `Hola, me interesa el producto de OJOS: ${producto.nombre}`;
+            if (tonoSeleccionadoActual) {
+                mensaje += ` - Tono: ${tonoSeleccionadoActual}`;
+            }
+            modalBtn.href = `https://wa.me/50235739640?text=${encodeURIComponent(mensaje)}`;
+        }
+
+        function closeModal() {
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = 'auto'; 
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Inicializar
+        renderizarProductos();
+
+        // --- Scripts de Interfaz (Navbar, Drag) ---
+        const btn = document.getElementById('mobile-btn');
+        const textMenu = document.getElementById('mobile-text-menu');
+        btn.addEventListener('click', () => {
+            textMenu.classList.toggle('hidden');
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times');
+        });
+
+        const slider = document.getElementById('drag-scroll');
+        let isDown = false; let startX; let scrollLeft;
+        slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('active'); startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk; });
+
+        let lastScrollTop = 0;
+        const mainHeader = document.getElementById('main-header');
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) { mainHeader.classList.add('nav-hidden'); textMenu.classList.add('hidden'); } 
+            else { mainHeader.classList.remove('nav-hidden'); }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
