@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="icon" href="Icono.png" type="image/png">
+    <title>Accesorios | Esmeralda's Cosmetic</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'bebas': ['"Bebas Neue"', 'sans-serif'],
+                        'sans': ['"Montserrat"', 'sans-serif'],
+                        'script': ['"Playlist Script"', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            rose: '#c58c85',       
+                            roseDark: '#a66e68',   
+                            pale: '#fdf2f4',       
+                            black: '#151515',      
+                            whatsapp: '#25D366',
+                            footerPink: '#f9c5dc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Playlist Script';
+            src: url('Playlist Script.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body { background-color: #ffffff; color: #151515; -webkit-tap-highlight-color: transparent; }
+        
+        .nav-hidden { transform: translateY(-100%); }
+        #main-header { transition: transform 0.4s ease-in-out; }
+
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .grab-cursor { cursor: grab; }
+        .grab-cursor:active { cursor: grabbing; }
+
+        /* Modal Transitions */
+        #product-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #product-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+        #product-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
+        
+        .modal-content-enter { transform: scale(0.95); opacity: 0; transition: all 0.3s ease-out; }
+        .visible-modal .modal-content-enter { transform: scale(1); opacity: 1; }
+
+        /* Estilos específicos del modal avanzado */
+        .tono-btn.selected {
+            border-color: #c58c85; 
+            background-color: #fdf2f4;
+            color: #151515;
+            font-weight: 700;
+        }
+        .thumb-img.selected {
+            border: 2px solid #c58c85;
+            opacity: 1;
+        }
+        .thumb-img {
+            opacity: 0.6;
+            transition: all 0.2s;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen"> 
+
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-white shadow-sm h-[110px] md:h-[130px]">
+        <div class="bg-brand-black text-white py-2 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase flex justify-center items-center gap-2 h-[30px]">
+            <span>Catálogo Exclusivo - Envíos a todo el país</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="GT" class="h-3 w-auto">
+        </div>
+
+        <nav class="bg-white/95 backdrop-blur-md border-b border-gray-100 relative z-50 h-[80px] md:h-[100px] flex items-center">
+            <div class="w-full max-w-7xl mx-auto px-4 md:px-6">
+                <div class="flex items-center justify-between">
+                    
+                    <button id="mobile-btn" class="md:hidden text-2xl text-brand-black p-2 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <a href="index.html" class="flex-shrink-0 text-center flex-grow md:flex-grow-0 md:text-left">
+                        <h3 class="font-script text-brand-rose logo-text text-[1.8rem] md:text-[3rem] leading-none">
+                            Esmeralda's Cosmetic
+                        </h3>
+                    </a>
+
+                    <div class="hidden md:flex items-center space-x-6 lg:space-x-8 mx-auto">
+                        <a href="rostro.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ROSTRO</a>
+                        <a href="ojos.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">OJOS</a>
+                        <a href="labios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">LABIOS</a>
+                        <a href="skincare.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">SKIN CARE</a>
+                        <a href="cuerpo.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">CUERPO</a>
+                        <a href="accesorios.html" class="font-bebas text-xl text-brand-rose tracking-wide border-b-2 border-brand-rose">ACCESORIOS</a>
+                        <a href="collabs.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">COLLABS</a>
+                    </div>
+
+                    <div class="md:hidden w-8"></div>
+                </div>
+            </div>
+
+            <div id="mobile-text-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 top-full shadow-lg z-40">
+                <div class="flex flex-col p-6 space-y-4 font-bebas text-xl tracking-wide text-brand-black">
+                    <a href="index.html" class="border-b border-gray-50 pb-2">Inicio</a>
+                    <a href="nuestrahistoria.html" class="border-b border-gray-50 pb-2">Nuestra Historia</a>
+                    <a href="contacto.html" class="pb-2">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="md:hidden bg-white border-b border-gray-200 py-3 shadow-sm z-30 relative mt-[110px]">
+        <div id="drag-scroll" class="flex overflow-x-auto gap-5 px-4 scrollbar-hide snap-x snap-mandatory grab-cursor select-none">
+            
+            <a href="rostro.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n1.webp" alt="Rostro" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ROSTRO</span>
+            </a>
+
+            <a href="ojos.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n2.webp" alt="Ojos" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">OJOS</span>
+            </a>
+            
+            <a href="labios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n3.webp" alt="Labios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">LABIOS</span>
+            </a>
+
+            <a href="skincare.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n4.webp" alt="Skin Care" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black whitespace-nowrap">SKIN CARE</span>
+            </a>
+
+            <a href="cuerpo.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n5.webp" alt="Cuerpo" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">CUERPO</span>
+            </a>
+
+            <a href="accesorios.html" class="flex flex-col items-center min-w-[70px] snap-center pointer-events-auto draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-rose mb-1 pointer-events-none">
+                    <img src="n6.webp" alt="Accesorios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-rose">ACCESORIOS</span>
+            </a>
+
+            <a href="collabs.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n7.webp" alt="Collabs" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">COLLABS</span>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="hidden md:block h-[130px]"></div>
+
+    <main class="flex-grow bg-white py-10 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            
+            <div class="text-center mb-8">
+                <h1 class="font-bebas text-5xl md:text-6xl text-brand-black tracking-wide">ACCESORIOS</h1>
+                <p class="font-sans text-sm md:text-base text-gray-500 mt-2 tracking-widest uppercase">Brochas, Esponjas, Rizadores y todo para tu kit</p>
+                <div class="w-16 h-1 bg-brand-rose mx-auto mt-4"></div>
+            </div>
+
+            <div class="flex justify-end mb-8 border-b border-gray-100 pb-4">
+                <div class="relative inline-block text-left group">
+                    <div class="flex items-center gap-3">
+                        <label for="sort-select" class="font-bebas text-lg text-gray-500 tracking-wide">Ordenar Por:</label>
+                        <div class="relative">
+                            <select id="sort-select" class="appearance-none bg-gray-50 border border-gray-200 text-gray-700 text-sm font-sans font-medium py-2 pl-4 pr-10 rounded-full focus:outline-none focus:border-brand-rose focus:ring-1 focus:ring-brand-rose cursor-pointer transition shadow-sm hover:border-brand-rose/50">
+                                <option value="default">Relevancia</option>
+                                <option value="az">Nombre: A - Z</option>
+                                <option value="za">Nombre: Z - A</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="grid-productos" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
+                </div>
+
+        </div>
+    </main>
+
+    <div id="product-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden-modal">
+        
+        <div class="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl relative flex flex-col md:flex-row modal-content-enter">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 hover:bg-brand-black hover:text-white rounded-full flex items-center justify-center transition shadow-md">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <div class="w-full md:w-1/2 bg-gray-50 flex flex-col">
+                <div class="relative aspect-square md:aspect-auto md:h-[400px] w-full">
+                    <img id="modal-img" src="" alt="Detalle Producto" class="w-full h-full object-cover">
+                    <span id="modal-tag" class="absolute top-4 left-4 bg-brand-rose text-white text-[10px] px-3 py-1 uppercase font-bold tracking-widest rounded hidden">
+                        Best Seller
+                    </span>
+                </div>
+                <div id="modal-gallery" class="flex gap-2 p-4 overflow-x-auto scrollbar-hide h-[80px]">
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 p-6 md:p-10 flex flex-col text-left">
+                <span class="text-xs font-bold text-gray-400 tracking-[0.2em] uppercase mb-2">Esmeralda's Cosmetic</span>
+                
+                <h2 id="modal-title" class="font-bebas text-4xl md:text-5xl text-brand-black leading-none mb-4">
+                    NOMBRE
+                </h2>
+                
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-xs text-green-600 bg-green-50 px-2 py-1 rounded font-bold uppercase tracking-wider">Disponible</span>
+                </div>
+
+                <div class="w-full h-px bg-gray-100 mb-4"></div>
+
+                <div class="mb-6">
+                    <h4 class="font-bold text-xs uppercase tracking-widest mb-2">Descripción</h4>
+                    <p id="modal-desc" class="font-sans text-sm text-gray-600 leading-relaxed">
+                        Descripción...
+                    </p>
+                </div>
+
+                <div id="modal-tonos-container" class="mb-8 hidden">
+                    <h4 class="font-bold text-xs uppercase tracking-widest mb-3">Selecciona tu variante:</h4>
+                    <div id="modal-tonos-list" class="flex flex-wrap gap-2">
+                    </div>
+                    <p id="tono-feedback" class="text-xs text-brand-rose mt-2 font-medium h-4"></p>
+                </div>
+
+                <div class="mt-auto">
+                    <a id="modal-btn" href="#" target="_blank" class="w-full bg-brand-black text-white py-4 text-center font-bold text-sm uppercase tracking-[0.2em] hover:bg-brand-rose transition duration-300 rounded-sm shadow-lg flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> Consultar
+                    </a>
+                    <p class="text-[10px] text-center text-gray-400 mt-4 uppercase tracking-widest">Envíos a todo el país</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-brand-footerPink text-brand-black pt-16 pb-8 border-t border-white/50 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Esmeralda's</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="nuestrahistoria.html" class="hover:text-white transition">Sobre Nosotros</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Ayuda</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="contacto.html" class="hover:text-white transition">Envíos</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Devoluciones</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Síguenos</h4>
+                   <div class="flex justify-center md:justify-start space-x-4 text-xl">
+                        <a href="https://www.instagram.com/esmeraldascosmetic/" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/EsmeraldasCosmeticOficial" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@esmeraldascosmetic" target="_blank" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Contacto</h4>
+                    <div class="flex flex-col gap-2 items-center md:items-start">
+                        <a href="https://wa.me/50235739640" class="w-full md:w-auto bg-black text-white py-3 px-6 text-xs font-bold uppercase tracking-widest text-center hover:opacity-80 transition rounded-full">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-black/10 pt-8 text-center text-xs opacity-60">
+                <p>&copy; 2024 Esmeralda's Cosmetic. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. BASE DE DATOS DE PRODUCTOS (ACCESORIOS) ---
+        const productosAccesorios = [
+            {
+                id: 1,
+                nombre: "Brochas - Set De Brochas 24 pzs - Dream Girl",
+                imagenes: [
+                    "img/accesorios/24brochas/dreamgirl/a.webp",
+                    "img/accesorios/24brochas/dreamgirl/b.webp",
+                    "img/accesorios/24brochas/dreamgirl/c.webp",
+                    "img/accesorios/24brochas/dreamgirl/d.webp",
+                    "img/accesorios/24brochas/dreamgirl/1.webp",
+                    "img/accesorios/24brochas/dreamgirl/2.webp",
+                    "img/accesorios/24brochas/dreamgirl/3.webp",
+                    "img/accesorios/24brochas/dreamgirl/4.webp",
+                    "img/accesorios/24brochas/dreamgirl/5.webp",
+                    "img/accesorios/24brochas/dreamgirl/6.webp",
+                    "img/accesorios/24brochas/dreamgirl/7.webp",
+                    "img/accesorios/24brochas/dreamgirl/8.webp",
+                    "img/accesorios/24brochas/dreamgirl/9.webp",
+                    "img/accesorios/24brochas/dreamgirl/10.webp",
+                    "img/accesorios/24brochas/dreamgirl/11.webp",
+                    "img/accesorios/24brochas/dreamgirl/12.webp",
+                    "img/accesorios/24brochas/dreamgirl/13.webp",
+                    "img/accesorios/24brochas/dreamgirl/14.webp",
+                    "img/accesorios/24brochas/dreamgirl/15.webp",
+                    "img/accesorios/24brochas/dreamgirl/16.webp",
+                    "img/accesorios/24brochas/dreamgirl/17.webp",
+                    "img/accesorios/24brochas/dreamgirl/18.webp",
+                    "img/accesorios/24brochas/dreamgirl/19.webp",
+                    "img/accesorios/24brochas/dreamgirl/20.webp",
+                    "img/accesorios/24brochas/dreamgirl/21.webp",
+                    "img/accesorios/24brochas/dreamgirl/22.webp",
+                    "img/accesorios/24brochas/dreamgirl/23.webp",
+                    "img/accesorios/24brochas/dreamgirl/24.webp"
+                ],
+                descripcion: `Ideal para cualquiera, desde principiantes a expertos en el mundo de maquillaje, encuentra en este estuche todas las herramientas que necesitas para crear cualquier maquillaje, con su gran variedad de brochas para ojos y rostro podrás dejar volar tu imaginación. 
+
+Este estuche de brochas incluye 24 piezas y un contenedor para mantenerlas limpias y ordenadas, son ultra suaves, sintéticas y con su mango de madera que garantiza una gran durabilidad, con su estuche puedes llevarlas a donde quieras.
+
+Este set incluye:
+#1 - BROCHA FACIAL DE LUJO
+#2 - POLVERA CÓNICA GRANDE
+#3 - BASE DE MAQUILLAJE DE LUJO
+#4 - BROCHA PARA COLORETE
+#5 - CONTORNO DE LUJO
+#6 - BROCHA DE ILUMINADOR DE LUJO
+#7 - BROCHA CÓNICA PARA POLVOS
+#8 - CONTORNO EN CREMA DE LUJO
+#9 - CORRECTOR GRANDE
+#10 - BROCHA MINI PARA CORRECTOR
+#11 - BROCHA DELUXE CON PUNTA
+#12 - DIFUMINADOR EN FORMA DE CÚPULA
+#13 - BLENDER PUNTUAL DETALLADO
+#14 - BROCHA PUNTUAL PEQUEÑA
+#15 - PINCEL GRANDE PARA SOMBRAS
+#16 - PINCEL PARA SOMBRAS PEQUEÑAS
+#17 - PINCEL DIFUMINADOR GRANDE
+#18 - BROCHA PARA DIFUMINAR
+#19 - DIFUMINADOR DE PLIEGUES
+#20 - MINI DIFUMINADOR
+#21 - MINI DIFUMINADOR PLANO
+#22 - LÁPIZ DIFUMINADOR
+#23 - BROCHA PLANA
+#24 - BROCHA DUO ANGULAR`,
+                tag: "TOP",
+                tonos: null
+            },
+            {
+                id: 2,
+                nombre: "Brochas - Set De Brochas 24 Piezas - Pretty And Perfect",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-840878.webp?v=1723939064&width=950",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-464916.webp?v=1723939064&width=1100",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-370601.webp?v=1723523060&width=1100",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-259175.webp?v=1723523078&width=1100",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-929992.webp?v=1723523103&width=1100",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-254580.webp?v=1723523119&width=1100",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-280966.webp?v=1723523137&width=1100",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-865873.webp?v=1723523165&width=1100",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-882936.webp?v=1723523180&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-645174.webp?v=1723523198&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-151387.webp?v=1723523226&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-466821.webp?v=1723523240&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-227841.webp?v=1723523257&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-619415.webp?v=1723523284&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-685361.webp?v=1723523301&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-663593.webp?v=1723523320&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-667576.webp?v=1723523343&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-937559.webp?v=1723523361&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-768412.webp?v=1723523378&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-362322.webp?v=1723523403&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-708681.webp?v=1723523420&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-417928.webp?v=1723523437&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-863833.webp?v=1723523463&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-856697.webp?v=1723523479&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-560085.webp?v=1723523497&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-pink-and-perfect-set-de-brochas-cosmetics-brochas-bs-pp-307707.webp?v=1723523523&width=900"
+
+                ],
+                marca:"Beauty Creations",
+                descripcion: `Ideal para cualquiera, desde principiantes a expertos en el mundo de maquillaje, encuentra en este estuche todas las herramientas que necesitas para crear cualquier maquillaje, con su gran variedad de brochas para ojos y rostro podrás dejar volar tu imaginación. 
+
+Este estuche de brochas incluye 24 piezas y un contenedor para mantenerlas limpias y ordenadas, son ultra suaves, sintéticas y con su mango de madera que garantiza una gran durabilidad, con su estuche puedes llevarlas a donde quieras.
+
+Este set incluye:
+#1 - BROCHA FACIAL DE LUJO
+#2 - POLVERA CÓNICA GRANDE
+#3 - BASE DE MAQUILLAJE DE LUJO
+#4 - BROCHA PARA COLORETE
+#5 - CONTORNO DE LUJO
+#6 - BROCHA DE ILUMINADOR DE LUJO
+#7 - BROCHA CÓNICA PARA POLVOS
+#8 - CONTORNO EN CREMA DE LUJO
+#9 - CORRECTOR GRANDE
+#10 - BROCHA MINI PARA CORRECTOR
+#11 - BROCHA DELUXE CON PUNTA
+#12 - DIFUMINADOR EN FORMA DE CÚPULA
+#13 - BLENDER PUNTUAL DETALLADO
+#14 - BROCHA PUNTUAL PEQUEÑA
+#15 - PINCEL GRANDE PARA SOMBRAS
+#16 - PINCEL PARA SOMBRAS PEQUEÑAS
+#17 - PINCEL DIFUMINADOR GRANDE
+#18 - BROCHA PARA DIFUMINAR
+#19 - DIFUMINADOR DE PLIEGUES
+#20 - MINI DIFUMINADOR
+#21 - MINI DIFUMINADOR PLANO
+#22 - LÁPIZ DIFUMINADOR
+#23 - BROCHA PLANA
+#24 - BROCHA DUO ANGULAR`,
+                tag: "TOP",
+                tonos: null
+            },
+            {
+                id: 3,
+                nombre: "Brochas - Set De Brochas 24 Piezas - Unbothered",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-unbothered-set-de-brochas-cosmetics-bs-ub-574876.webp?v=1723939070&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-unbothered-set-de-brochas-cosmetics-bs-ub-193271.webp?v=1723939070&width=900"
+                ],
+                descripcion: `Ideal para cualquiera, desde principiantes a expertos en el mundo de maquillaje, encuentra en este estuche todas las herramientas que necesitas para crear cualquier maquillaje, con su gran variedad de brochas para ojos y rostro podrás dejar volar tu imaginación. 
+
+Este estuche de brochas incluye 24 piezas y un contenedor para mantenerlas limpias y ordenadas, son ultra suaves, sintéticas y con su mango de madera que garantiza una gran durabilidad, con su estuche puedes llevarlas a donde quieras.
+
+Este set incluye:
+#1 - BROCHA FACIAL DE LUJO
+#2 - POLVERA CÓNICA GRANDE
+#3 - BASE DE MAQUILLAJE DE LUJO
+#4 - BROCHA PARA COLORETE
+#5 - CONTORNO DE LUJO
+#6 - BROCHA DE ILUMINADOR DE LUJO
+#7 - BROCHA CÓNICA PARA POLVOS
+#8 - CONTORNO EN CREMA DE LUJO
+#9 - CORRECTOR GRANDE
+#10 - BROCHA MINI PARA CORRECTOR
+#11 - BROCHA DELUXE CON PUNTA
+#12 - DIFUMINADOR EN FORMA DE CÚPULA
+#13 - BLENDER PUNTUAL DETALLADO
+#14 - BROCHA PUNTUAL PEQUEÑA
+#15 - PINCEL GRANDE PARA SOMBRAS
+#16 - PINCEL PARA SOMBRAS PEQUEÑAS
+#17 - PINCEL DIFUMINADOR GRANDE
+#18 - BROCHA PARA DIFUMINAR
+#19 - DIFUMINADOR DE PLIEGUES
+#20 - MINI DIFUMINADOR
+#21 - MINI DIFUMINADOR PLANO
+#22 - LÁPIZ DIFUMINADOR
+#23 - BROCHA PLANA
+#24 - BROCHA DUO ANGULAR`,
+                tag: null,
+                tonos: null
+            },
+                        {
+                id: 4,
+                nombre: "Brochas - Set De Brochas 24 Piezas - Oh Darling",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-oh-darling-set-de-brochas-cosmetics-bs-od-321534.webp?v=1723939057&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-set-de-brochas-24-piezas-oh-darling-set-de-brochas-cosmetics-bs-od-509295.webp?v=1723939057&width=900"
+                ],
+                descripcion: `Ideal para cualquiera, desde principiantes a expertos en el mundo de maquillaje, encuentra en este estuche todas las herramientas que necesitas para crear cualquier maquillaje, con su gran variedad de brochas para ojos y rostro podrás dejar volar tu imaginación. 
+
+Este estuche de brochas incluye 24 piezas y un contenedor para mantenerlas limpias y ordenadas, son ultra suaves, sintéticas y con su mango de madera que garantiza una gran durabilidad, con su estuche puedes llevarlas a donde quieras.
+
+Este set incluye:
+#1 - BROCHA FACIAL DE LUJO
+#2 - POLVERA CÓNICA GRANDE
+#3 - BASE DE MAQUILLAJE DE LUJO
+#4 - BROCHA PARA COLORETE
+#5 - CONTORNO DE LUJO
+#6 - BROCHA DE ILUMINADOR DE LUJO
+#7 - BROCHA CÓNICA PARA POLVOS
+#8 - CONTORNO EN CREMA DE LUJO
+#9 - CORRECTOR GRANDE
+#10 - BROCHA MINI PARA CORRECTOR
+#11 - BROCHA DELUXE CON PUNTA
+#12 - DIFUMINADOR EN FORMA DE CÚPULA
+#13 - BLENDER PUNTUAL DETALLADO
+#14 - BROCHA PUNTUAL PEQUEÑA
+#15 - PINCEL GRANDE PARA SOMBRAS
+#16 - PINCEL PARA SOMBRAS PEQUEÑAS
+#17 - PINCEL DIFUMINADOR GRANDE
+#18 - BROCHA PARA DIFUMINAR
+#19 - DIFUMINADOR DE PLIEGUES
+#20 - MINI DIFUMINADOR
+#21 - MINI DIFUMINADOR PLANO
+#22 - LÁPIZ DIFUMINADOR
+#23 - BROCHA PLANA
+#24 - BROCHA DUO ANGULAR`,
+                tag: null,
+                tonos: null
+            },
+            {
+                id: 5,
+                nombre: "Limpiador De Brochas One Step - Brush Cleaner",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-limpiador-de-brochas-one-step-brush-cleaner-cosmetics-bcs-334104.webp?v=1723570024&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-limpiador-de-brochas-one-step-brush-cleaner-cosmetics-bcs-152855.webp?v=1723570042&width=900"
+                ],
+                descripcion: 'Esta solución de limpieza suave, a base de agua, elimina la suciedad y los residuos sin dañar tus brochas. Limpia tus brochas en minutos y mantiene el pelo suave y sedoso ¡Prueba este limpiador para obtener brochas de maquillaje profesionales! ¡Compra el tuyo ahora mismo! 🥰',
+                tag: null,
+                tonos: null
+            },
+            {
+                id: 6,
+                nombre: "Blending Sponge - Set De Esponjas De 2 Piezas- Puff Puff",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-puff-puff-set-de-2-pzas-set-de-esponjas-para-maquillaje-cosmetics-vpp-324021.jpg?v=1739293702&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-puff-puff-set-de-2-pzas-set-de-esponjas-para-maquillaje-cosmetics-vpp-661081.jpg?v=1739293702&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-puff-puff-set-de-2-pzas-set-de-esponjas-para-maquillaje-cosmetics-vpp-476797.jpg?v=1723527217&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-puff-puff-set-de-2-pzas-set-de-esponjas-para-maquillaje-cosmetics-vppb-590453.jpg?v=1723527245&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-puff-puff-set-de-2-pzas-set-de-esponjas-para-maquillaje-cosmetics-vppb-116524.jpg?v=1723527260&width=900"
+                ],
+                descripcion: `Un set de 2borlas suaves y reutilizables para aplicar de forma experta polvos sueltos o compactos en un acabado impecable.
+
+Las amaras porqué:
+
+Set de 2 almohadillas triangulares
+Sin látex
+Paleta de terciopelo
+Reutilizable
+Ultra suave
+Perfecta para aplicar polvos sueltos y compactos
+Aplicación impecable
+Lavar a mano y secar al aire`,
+                tag: null,
+                tonos: [
+                    { nombre: "PINK", hex: "#ffc0cb" },
+                    { nombre: "Black", hex: "#000000" }
+                ]
+            },
+            {
+                id: 7,
+                nombre: "Blending Sponges - Esponjas Para Maquillaje - Puff Puff Perfect Trio",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-esponjas-para-maquillaje-puff-puff-the-perfect-trio-el-trio-perfecto-cosmetics-vpp-tpt-999802.webp?v=1745969306&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-esponjas-para-maquillaje-puff-puff-the-perfect-trio-el-trio-perfecto-cosmetics-vpp-tpt-674460.webp?v=1723503140&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-esponjas-para-maquillaje-puff-puff-the-perfect-trio-el-trio-perfecto-cosmetics-vpp-tpt-908919.webp?v=1723503183&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-esponjas-para-maquillaje-puff-puff-the-perfect-trio-el-trio-perfecto-cosmetics-vpp-tpt-855981.webp?v=1723503200&width=900"
+                ],
+                descripcion: `El trío perfecto de esponjas para maquillaje, hecho especialmente para que apliques tu maquillaje sin esfuerzo ¡Compra las tuyas ahora! 💅🥰💋❤️🔥
+
+Sin látex
+Reutilizable 
+Terciopelo
+ultrasuave
+Perfectas para aplicar polvo suelto o prensado
+Aplicación impecable
+*Lavar a mano y secar al aire`,
+                tag: null,
+                tonos: null
+            },
+            {
+                id: 8,
+                nombre: "Sacapuntas Beauty Creations",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/GRAYBGFORECOMM_13.png?v=1739293905&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-sacapuntas-pps-196384.jpg?v=1739293905&width=900"
+                ],
+                descripcion: "Sacapuntas universal de Beauty Creations para cualquier lápiz delineador de madera con dos dos tamaños de navaja.",
+                tag: "Nuevo",
+                tonos: null
+            },
+               {
+                id: 9,
+                nombre: "Louie Castro X Beauty Creations - Dúo De Esponjas - The CHI CHI Blenders",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-louie-castro-the-chi-chi-blenders-duo-accessories-lcbb-274760.jpg?v=1751927122&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-louie-castro-the-chi-chi-blenders-duo-accessories-lcbb-334973.jpg?v=1723564341&width=900"
+                ],
+                descripcion: "CHI CHI BLENDERS: ¡Enfrenta el calor y mantente impecable en tu cita de maquillaje con el set Chi Chi Blender! Un dúo de esponjas de maquillaje para resaltar tu lado atrevido mientras logras un look impecable.",
+                tag: null,
+                tonos: null
+            },
+               {
+                id: 10,
+                nombre: "Betty Boop X Beauty Creations - Cosmetiquera",
+                imagenes: [
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/BAG_BW.jpg?v=1738860396&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/COLLECTION_PR_BW.jpg?v=1738860396&width=900",
+                    "https://beautycreationscosmetics.com.mx/cdn/shop/files/1-Cosmetiquera.png?v=1738860396&width=900"
+                ],
+                descripcion: "Mantén tus esenciales organizados con estilo con el Neceser Betty Boop x Beauty Creations, un imprescindible para cualquier amante de la belleza. Con un diseño rojo audaz y un adorable gráfico de Betty Boop, esta bolsa combina un encanto juguetón con la practicidad diaria.",
+                tag: null,
+                tonos: null
+            }
+        ];
+
+        // --- 2. RENDERIZADO Y ORDENAMIENTO ---
+        const gridContainer = document.getElementById('grid-productos');
+        const sortSelect = document.getElementById('sort-select');
+
+        function renderizarProductos(lista = productosAccesorios) {
+            gridContainer.innerHTML = ''; 
+            gridContainer.style.opacity = '0';
+            
+            setTimeout(() => {
+                lista.forEach(prod => {
+                    const tagHTML = prod.tag 
+                        ? `<div class="absolute top-2 left-2 bg-brand-rose text-white text-[9px] px-2 py-1 uppercase font-bold rounded shadow-sm z-10">${prod.tag}</div>` 
+                        : '';
+                    
+                    const imagenPrincipal = Array.isArray(prod.imagenes) ? prod.imagenes[0] : prod.imagenes;
+
+                    const card = `
+                        <div class="group cursor-pointer flex flex-col" onclick="openModal(${prod.id})">
+                            <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 rounded-xl mb-3 shadow-sm hover:shadow-md transition duration-300">
+                                ${tagHTML}
+                                <img src="${imagenPrincipal}" alt="${prod.nombre}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-in-out">
+                                <div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition duration-300 flex justify-center">
+                                    <button class="bg-white/95 text-brand-black text-[10px] uppercase font-bold tracking-widest py-3 px-6 rounded-full shadow-lg hover:bg-brand-black hover:text-white transition w-full">
+                                        Ver Detalles
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="font-bebas text-xl text-brand-black tracking-wide group-hover:text-brand-rose transition">${prod.nombre}</h3>
+                                </div>
+                        </div>
+                    `;
+                    gridContainer.innerHTML += card;
+                });
+                gridContainer.style.transition = 'opacity 0.5s ease';
+                gridContainer.style.opacity = '1';
+            }, 50);
+        }
+
+        sortSelect.addEventListener('change', (e) => {
+            const criterio = e.target.value;
+            let productosOrdenados = [...productosAccesorios]; 
+            if (criterio === 'az') productosOrdenados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            else if (criterio === 'za') productosOrdenados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+            // Ordenar por precio eliminado
+            renderizarProductos(productosOrdenados);
+        });
+
+        // --- 3. LÓGICA DEL MODAL ---
+        const modal = document.getElementById('product-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalGallery = document.getElementById('modal-gallery');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalTag = document.getElementById('modal-tag');
+        const modalBtn = document.getElementById('modal-btn');
+        
+        const tonosContainer = document.getElementById('modal-tonos-container');
+        const tonosList = document.getElementById('modal-tonos-list');
+        const feedbackTono = document.getElementById('tono-feedback');
+        
+        let tonoSeleccionadoActual = ''; 
+
+        function openModal(id) {
+            const producto = productosAccesorios.find(p => p.id === id);
+            if(!producto) return;
+
+            // 1. Imágenes
+            const imgs = Array.isArray(producto.imagenes) ? producto.imagenes : [producto.imagenes];
+            modalImg.src = imgs[0];
+            
+            modalGallery.innerHTML = '';
+            if (imgs.length > 1) {
+                imgs.forEach((src, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = src;
+                    thumb.className = `w-16 h-16 object-cover rounded-md cursor-pointer border border-transparent hover:opacity-100 thumb-img ${index === 0 ? 'selected' : ''}`;
+                    thumb.onclick = function() {
+                        modalImg.src = src;
+                        document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('selected'));
+                        this.classList.add('selected');
+                    };
+                    modalGallery.appendChild(thumb);
+                });
+                modalGallery.classList.remove('hidden');
+            } else {
+                modalGallery.classList.add('hidden');
+            }
+
+            // 2. Info
+            modalTitle.innerText = producto.nombre;
+            modalDesc.innerText = producto.descripcion;
+            
+            if(producto.tag) {
+                modalTag.innerText = producto.tag;
+                modalTag.classList.remove('hidden');
+            } else {
+                modalTag.classList.add('hidden');
+            }
+
+            // 3. Tonos/Variantes
+            tonosList.innerHTML = '';
+            tonoSeleccionadoActual = '';
+            feedbackTono.innerText = '';
+
+            if (producto.tonos && producto.tonos.length > 0) {
+                tonosContainer.classList.remove('hidden');
+                
+                producto.tonos.forEach((item, index) => {
+                    const nombreTono = typeof item === 'object' ? item.nombre : item;
+                    const colorHex = typeof item === 'object' ? item.hex : null;
+
+                    const btnTono = document.createElement('button');
+                    btnTono.className = 'flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-gray-700 text-xs uppercase font-bold rounded-full transition hover:border-brand-rose focus:outline-none tono-btn';
+                    
+                    let swatchHTML = '';
+                    if(colorHex) {
+                        swatchHTML = `<span class="w-3 h-3 rounded-full border border-gray-200 shadow-sm" style="background-color: ${colorHex};"></span>`;
+                    }
+
+                    btnTono.innerHTML = `${swatchHTML} ${nombreTono}`;
+                    
+                    if (index === 0) {
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                    }
+
+                    btnTono.onclick = () => {
+                        document.querySelectorAll('.tono-btn').forEach(b => b.classList.remove('selected'));
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                        actualizarLinkWhatsapp(producto);
+                    };
+                    tonosList.appendChild(btnTono);
+                });
+            } else {
+                tonosContainer.classList.add('hidden');
+            }
+
+            actualizarLinkWhatsapp(producto);
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function actualizarLinkWhatsapp(producto) {
+            let mensaje = `Hola, me interesa el producto de ACCESORIOS: ${producto.nombre}`;
+            if (tonoSeleccionadoActual) {
+                mensaje += ` - Variante: ${tonoSeleccionadoActual}`;
+            }
+            modalBtn.href = `https://wa.me/50235739640?text=${encodeURIComponent(mensaje)}`;
+        }
+
+        function closeModal() {
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = 'auto'; 
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Inicializar
+        renderizarProductos();
+
+        // --- Scripts Interfaz ---
+        const btn = document.getElementById('mobile-btn');
+        const textMenu = document.getElementById('mobile-text-menu');
+        btn.addEventListener('click', () => {
+            textMenu.classList.toggle('hidden');
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times');
+        });
+
+        const slider = document.getElementById('drag-scroll');
+        let isDown = false; let startX; let scrollLeft;
+        slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('active'); startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk; });
+
+        let lastScrollTop = 0;
+        const mainHeader = document.getElementById('main-header');
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) { mainHeader.classList.add('nav-hidden'); textMenu.classList.add('hidden'); } 
+            else { mainHeader.classList.remove('nav-hidden'); }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
