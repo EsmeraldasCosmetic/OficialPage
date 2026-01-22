@@ -6,7 +6,18 @@
     
     <link rel="icon" href="Icono.png" type="image/png">
     <title>Inicio | Esmeralda's Cosmetic</title>
-    
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://esmeraldascosmetic.github.io/OficialPage/">
+    <meta property="og:title" content="Inicio | Esmeralda's Cosmetic">
+    <meta property="og:description" content="Descubre lo mejor en cosmética y belleza. Catálogo exclusivo y novedades de Esmeraldas Cosmetic.">
+    <meta property="og:image" content="https://esmeraldascosmetic.github.io/OficialPage/bannerm2.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://esmeraldascosmetic.github.io/OficialPage/">
+    <meta name="twitter:title" content="Inicio | Esmeralda's Cosmetic">
+    <meta name="twitter:description" content="Descubre lo mejor en cosmética y belleza. Catálogo exclusivo y novedades de Esmeraldas Cosmetic.">
+    <meta name="twitter:image" content="https://esmeraldascosmetic.github.io/OficialPage/bannerm2.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -25,10 +36,10 @@
                     },
                     colors: {
                         brand: {
-                            rose: '#c58c85',       
-                            roseDark: '#a66e68',   
-                            pale: '#fdf2f4',       
-                            black: '#151515',      
+                            rose: '#c58c85',        
+                            roseDark: '#a66e68',    
+                            pale: '#fdf2f4',        
+                            black: '#151515',       
                             whatsapp: '#25D366',
                             footerPink: '#f9c5dc'
                         }
@@ -72,18 +83,15 @@
         .nav-hidden { transform: translateY(-100%); }
         #main-header { transition: transform 0.4s ease-in-out; }
 
-        /* Estilos para el scroll oculto pero funcional */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Cursor de "agarrar" para la tira en PC */
         .grab-cursor { cursor: grab; }
         .grab-cursor:active { cursor: grabbing; }
 
-        /* --- ANIMACIÓN MARCAS INFINITA --- */
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Se mueve la mitad (un set completo) */
+            100% { transform: translateX(-50%); }
         }
         .animate-scroll {
             animation: scroll 20s linear infinite;
@@ -461,4 +469,5 @@
         });
     </script>
 </body>
+
 </html>
