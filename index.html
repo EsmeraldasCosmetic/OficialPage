@@ -6,18 +6,7 @@
     
     <link rel="icon" href="Icono.png" type="image/png">
     <title>Inicio | Esmeralda's Cosmetic</title>
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://esmeraldascosmetic.github.io/OficialPage/">
-    <meta property="og:title" content="Inicio | Esmeralda's Cosmetic">
-    <meta property="og:description" content="Descubre lo mejor en cosmética y belleza. Catálogo exclusivo y novedades de Esmeraldas Cosmetic.">
-    <meta property="og:image" content="https://esmeraldascosmetic.github.io/OficialPage/bannerm2.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://esmeraldascosmetic.github.io/OficialPage/">
-    <meta name="twitter:title" content="Inicio | Esmeralda's Cosmetic">
-    <meta name="twitter:description" content="Descubre lo mejor en cosmética y belleza. Catálogo exclusivo y novedades de Esmeraldas Cosmetic.">
-    <meta name="twitter:image" content="https://esmeraldascosmetic.github.io/OficialPage/bannerm2.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -36,10 +25,10 @@
                     },
                     colors: {
                         brand: {
-                            rose: '#c58c85',        
-                            roseDark: '#a66e68',    
-                            pale: '#fdf2f4',        
-                            black: '#151515',       
+                            rose: '#c58c85',       
+                            roseDark: '#a66e68',   
+                            pale: '#fdf2f4',       
+                            black: '#151515',      
                             whatsapp: '#25D366',
                             footerPink: '#f9c5dc'
                         }
@@ -57,44 +46,57 @@
         }
         body { background-color: #ffffff; color: #151515; -webkit-tap-highlight-color: transparent; }
         
-        .btn-shop {
-            display: inline-block;
-            padding: 16px 35px;
-            background-color: #151515;
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            border: 1px solid #151515;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            text-align: center;
-        }
-        @media (min-width: 768px) { .btn-shop { width: auto; } }
-        .btn-shop:hover { background-color: #c58c85; border-color: #c58c85; }
-
         .logo-text { font-size: 1.8rem; }
         @media (min-width: 768px) { .logo-text { font-size: 3rem; } }
 
         .nav-hidden { transform: translateY(-100%); }
         #main-header { transition: transform 0.4s ease-in-out; }
 
+        /* Estilos para el scroll oculto pero funcional */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         
+        /* Cursor de "agarrar" para la tira en PC */
         .grab-cursor { cursor: grab; }
         .grab-cursor:active { cursor: grabbing; }
 
+        /* --- ANIMACIÓN MARCAS INFINITA --- */
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(-50%); } /* Se mueve la mitad (un set completo) */
         }
         .animate-scroll {
             animation: scroll 20s linear infinite;
+        }
+
+        /* --- Estilos del Modal (Copiados de labios.html) --- */
+        #product-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #product-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+        #product-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
+        
+        .modal-content-enter { transform: scale(0.95); opacity: 0; transition: all 0.3s ease-out; }
+        .visible-modal .modal-content-enter { transform: scale(1); opacity: 1; }
+
+        .tono-btn.selected {
+            border-color: #c58c85; 
+            background-color: #fdf2f4;
+            color: #151515;
+            font-weight: 700;
+        }
+        .thumb-img.selected {
+            border: 2px solid #c58c85;
+            opacity: 1;
+        }
+        .thumb-img {
+            opacity: 0.6;
+            transition: all 0.2s;
+        }
+
+        /* Estilos para asegurar que los embeds de TikTok se vean bien en la cuadrícula */
+        .tiktok-embed {
+            margin: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
         }
     </style>
 </head>
@@ -127,7 +129,7 @@
                         <a href="skincare.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">SKIN CARE</a>
                         <a href="cuerpo.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">CUERPO</a>
                         <a href="accesorios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ACCESORIOS</a>
-                        <a href="collabs.html" class="font-bebas text-xl text-brand-rose font-bold tracking-wide">COLLABS</a>
+                        <a href="collabs.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">COLLABS</a>
                     </div>
 
                     <div class="md:hidden w-8"></div>
@@ -147,11 +149,11 @@
     <div class="md:hidden bg-white border-b border-gray-200 py-3 shadow-sm z-30 relative mt-[110px]">
         <div id="drag-scroll" class="flex overflow-x-auto gap-5 px-4 scrollbar-hide snap-x snap-mandatory grab-cursor select-none">
             
-            <a href="rostro.html" class="flex flex-col items-center min-w-[70px] snap-center pointer-events-auto draggable-item">
-                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-rose mb-1 pointer-events-none">
+            <a href="rostro.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
                     <img src="n1.webp" alt="Rostro" class="w-full h-full object-cover">
                 </div>
-                <span class="font-bebas text-sm tracking-wide text-brand-rose">ROSTRO</span>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ROSTRO</span>
             </a>
 
             <a href="ojos.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
@@ -193,7 +195,7 @@
                 <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
                     <img src="n7.webp" alt="Collabs" class="w-full h-full object-cover">
                 </div>
-                <span class="font-bebas text-sm tracking-wide text-brand-rose font-bold">COLLABS</span>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">COLLABS</span>
             </a>
 
         </div>
@@ -201,7 +203,7 @@
 
     <div class="hidden md:block h-[130px]"></div>
 
-    <header class="relative w-full h-[80vh] flex items-center justify-center overflow-hidden bg-brand-pale md:mt-[0px]" id="simple-header">
+    <header class="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-brand-pale" id="simple-header">
         
         <style>
             .fade-slide {
@@ -244,7 +246,9 @@
         <script>
             (function() {
                 const header = document.getElementById('simple-header');
+                if(!header) return;
                 const slides = header.querySelectorAll('.fade-slide');
+                if(slides.length === 0) return;
                 let current = 0;
                 const time = 5000; 
 
@@ -260,53 +264,12 @@
     <section id="new" class="py-16 md:py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 md:px-6">
             <div class="text-center mb-10">
-                <h2 class="font-bebas text-4xl md:text-5xl text-brand-black">LOS TOP DE ESMERALDA'S</h2>
-                <div class="w-12 h-0.5 bg-brand-rose mx-auto mt-2"></div>
+                <h2 class="font-bebas text-4xl md:text-5xl text-brand-black tracking-wide">LOS TOP DE ESMERALDA'S</h2>
+                <div class="w-16 h-1 bg-brand-rose mx-auto mt-3"></div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8">
-                
-                <div class="group cursor-pointer" onclick="window.location.href='accesorios.html'">
-                    <div class="relative overflow-hidden aspect-[4/5] mb-3 bg-gray-100 rounded-xl">
-                        <img src="img/accesorios/24brochas/dreamgirl/a.webp" class="w-full h-full object-cover">
-                        <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 w-[90%] bg-white/90 text-brand-black py-2 text-[10px] md:text-xs uppercase font-bold tracking-widest text-center rounded-full shadow-md">
-                            Ver Más
-                        </div>
-                    </div>
-                    <h3 class="font-bebas text-xl text-brand-black">Brochas - Set De Brochas 24 pzs - Dream Girl</h3>
-                    </div>
-                
-                <div class="group cursor-pointer" onclick="window.location.href='rostro.html'">
-                    <div class="relative overflow-hidden aspect-[4/5] mb-3 bg-gray-100 rounded-xl">
-                        <img src="https://www.beautycreationscosmetics.com/cdn/shop/files/PALETTE-RESIZE.jpg?v=1763443598&width=600" class="w-full h-full object-cover">
-                        <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 w-[90%] bg-white/90 text-brand-black py-2 text-[10px] md:text-xs uppercase font-bold tracking-widest text-center rounded-full shadow-md">
-                            Ver Más
-                        </div>
-                    </div>
-                    <h3 class="font-bebas text-xl text-brand-black">The Everyday Mini Palette Paleta de sombras de 12 colores</h3>
-                    </div>
-
-                <div class="group cursor-pointer" onclick="window.location.href='skincare.html'">
-                    <div class="relative overflow-hidden aspect-[4/5] mb-3 bg-gray-100 rounded-xl">
-                        <span class="absolute top-2 left-2 bg-brand-rose text-white text-[9px] px-2 py-1 uppercase font-bold rounded">Nuevo</span>
-                        <img src="https://www.beautycreationscosmetics.com/cdn/shop/files/SKIN-STRIPS_2.jpg?v=1729867860&width=600" class="w-full h-full object-cover">
-                        <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 w-[90%] bg-white/90 text-brand-black py-2 text-[10px] md:text-xs uppercase font-bold tracking-widest text-center rounded-full shadow-md">
-                            Ver Más
-                        </div>
-                    </div>
-                    <h3 class="font-bebas text-xl text-brand-black">Tiras para poros nasales Get Outta Here</h3>
-                    </div>
-
-                <div class="group cursor-pointer" onclick="window.location.href='labios.html'">
-                    <div class="relative overflow-hidden aspect-[4/5] mb-3 bg-gray-100 rounded-xl">
-                        <img src="https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb01-488573.jpg?v=1723481181&width=450" class="w-full h-full object-cover">
-                        <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 w-[90%] bg-white/90 text-brand-black py-2 text-[10px] md:text-xs uppercase font-bold tracking-widest text-center rounded-full shadow-md">
-                            Ver Más
-                        </div>
-                    </div>
-                    <h3 class="font-bebas text-xl text-brand-black">Balm N' Cute - Balsamo Labial Humectante</h3>
-                    </div>
-            </div>
+            <div id="grid-productos-top" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                </div>
         </div>
     </section>
 
@@ -364,6 +327,56 @@
         </div>
     </section>
 
+    <section id="tiktok-feed" class="py-16 md:py-20 bg-brand-pale/50 border-t border-gray-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            
+            <div class="text-center mb-12">
+                <i class="fab fa-tiktok text-4xl text-brand-black mb-3"></i>
+                <h2 class="font-bebas text-4xl md:text-5xl text-brand-black tracking-wide">Tendencias en TikTok</h2>
+                <p class="font-sans text-sm text-gray-600 mt-2 tracking-widest uppercase">@esmeraldascosmetic</p>
+                <div class="w-16 h-1 bg-brand-black mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 items-center justify-center">
+                
+                <div class="flex justify-center h-full aspect-[9/16] max-w-[300px] mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@esmeraldascosmetic/video/7616790562653457682" data-video-id="7616790562653457682" style="width: 100%; height: 100%;">
+                        <section></section>
+                    </blockquote>
+                </div>
+
+                <div class="flex justify-center h-full aspect-[9/16] max-w-[300px] mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@esmeraldascosmetic/video/7604946192597945618" data-video-id="7604946192597945618" style="width: 100%; height: 100%;">
+                        <section></section>
+                    </blockquote>
+                </div>
+
+                <div class="flex justify-center h-full aspect-[9/16] max-w-[300px] mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@esmeraldascosmetic/video/7602281239155887367" data-video-id="7602281239155887367" style="width: 100%; height: 100%;">
+                        <section></section>
+                    </blockquote>
+                </div>
+
+                <div class="flex justify-center h-full aspect-[9/16] max-w-[300px] mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@esmeraldascosmetic/video/7603785036130815240" data-video-id="7603785036130815240" style="width: 100%; height: 100%;">
+                        <section></section>
+                    </blockquote>
+                </div>
+
+            </div>
+
+            <script async src="https://www.tiktok.com/embed.js"></script>
+
+            <div class="text-center mt-12">
+                <a href="https://www.tiktok.com/@esmeraldascosmetic" target="_blank" class="inline-flex items-center gap-2 bg-brand-black text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-brand-rose transition duration-300 shadow-lg">
+                    <i class="fab fa-tiktok text-lg"></i>
+                    Ver más en TikTok
+                </a>
+            </div>
+
+        </div>
+    </section>
+
     <footer class="bg-brand-footerPink text-brand-black pt-16 pb-8 border-t border-white/50 text-center md:text-left">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
@@ -371,7 +384,6 @@
                     <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Esmeralda's</h4>
                     <ul class="space-y-3 text-sm opacity-80">
                         <li><a href="nuestrahistoria.html" class="hover:text-white transition">Sobre Nosotros</a></li>
-                        
                     </ul>
                 </div>
                 <div>
@@ -405,69 +417,444 @@
         </div>
     </footer>
 
+    <div id="product-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden-modal overflow-y-auto">
+        
+        <div class="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl relative flex flex-col md:flex-row modal-content-enter my-8">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 hover:bg-brand-black hover:text-white rounded-full flex items-center justify-center transition shadow-md focus:outline-none">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <div class="w-full md:w-1/2 bg-gray-50 flex flex-col">
+                <div class="relative aspect-square md:aspect-auto md:h-[400px] w-full">
+                    <img id="modal-img" src="" alt="Detalle Producto" class="w-full h-full object-cover">
+                    <span id="modal-tag" class="absolute top-4 left-4 bg-brand-rose text-white text-[10px] px-3 py-1 uppercase font-bold tracking-widest rounded hidden">
+                        Nuevo
+                    </span>
+                </div>
+                <div id="modal-gallery" class="flex gap-2 p-4 overflow-x-auto scrollbar-hide h-[80px]">
+                    </div>
+            </div>
+
+            <div class="w-full md:w-1/2 p-6 md:p-10 flex flex-col text-left">
+                <span id="modal-categoria-text" class="text-xs font-bold text-gray-400 tracking-[0.2em] uppercase mb-2 font-sans">Categoría</span>
+                
+                <h2 id="modal-title" class="font-bebas text-4xl md:text-5xl text-brand-black leading-none mb-4 tracking-wide">
+                    NOMBRE PRODUCTO
+                </h2>
+                
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-xs text-green-600 bg-green-50 px-2 py-1 rounded font-bold uppercase tracking-wider font-sans">Disponible</span>
+                </div>
+
+                <div class="w-full h-px bg-gray-100 mb-4"></div>
+
+                <div class="mb-6">
+                    <h4 class="font-sans font-bold text-xs uppercase tracking-widest mb-2 text-brand-black">Descripción</h4>
+                    <p id="modal-desc" class="font-sans text-sm text-gray-600 leading-relaxed">
+                        Descripción detallada del producto...
+                    </p>
+                </div>
+
+                <div id="modal-tonos-container" class="mb-8 hidden">
+                    <h4 class="font-sans font-bold text-xs uppercase tracking-widest mb-3 text-brand-black">Selecciona tu tono:</h4>
+                    <div id="modal-tonos-list" class="flex flex-wrap gap-2">
+                        </div>
+                    <p id="tono-feedback" class="text-xs text-brand-rose mt-2 font-medium font-sans h-4"></p>
+                </div>
+
+                <div class="mt-auto pt-4">
+                    <a id="modal-btn" href="#" target="_blank" class="w-full bg-brand-black text-white py-4 text-center font-sans font-bold text-sm uppercase tracking-[0.2em] hover:bg-brand-rose transition duration-300 rounded-sm shadow-lg flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> Consultar Disponibilidad
+                    </a>
+                    <p class="text-[10px] text-center text-gray-400 mt-4 uppercase tracking-widest font-sans">Envíos rápidos a toda Guatemala</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // --- 1. LÓGICA DEL MENÚ HAMBURGUESA ---
-        const btn = document.getElementById('mobile-btn');
+        // --- 1. BASE DE DATOS DE PRODUCTOS TOP (INDEX) ACTUALIZADA CON FORMATO COMPLETO ---
+        // He añadido descripciones de ejemplo, debes editarlas.
+        const productosInicio = [
+            {
+                id: 't1',
+                nombre: "Feeling Envy 24 PC Brush Set - Beauty Creations",
+                categoria: "Accesorios",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/feeling_envy_grey.png?v=1773076284&width=1100",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/SAGE.jpg?v=1773075282&width=1100",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/BCFEB1134.jpg?v=1773075282&width=1100"
+                ],
+                descripcion: `¡Te encantará! ¡Nuestros sets de brochas son una maravilla! Ahora en un elegante tono verde frío, este set de 24 brochas incluye todo lo que necesitas para aplicar, difuminar y perfeccionar tu maquillaje con facilidad. Nuestras brochas son ultrasuaves, delicadas con tu piel y duraderas, ¡para que te duren toda la vida! Y con su estuche a juego, podrás llevar tu set de brochas contigo a donde quieras.
+
+Detalles del juego de 24 pinceles:
+
+Cabello sintético
+Mango de madera
+Casquillo de aluminio
+ El conjunto incluye:
+
+#1 - BROCHA FACIAL DE LUJO
+
+#2 - POLVO DE GRAN CÓNICO 
+
+#3 - BASE DE MAQUILLAJE DE LUJO
+
+#4 - BROCHA PARA COLORETE
+
+#5 - CONTORNO DE LUJO
+
+#6 - BROCHA ILUMINADORA DE LUJO
+
+#7 - BROCHA PARA POLVO CÓNICA
+
+#8 - CONTORNO DE CREMA DE LUJO
+
+#9 - CORRECTOR GRANDE
+
+#10 - MINI BROCHA PARA CORRECTOR
+
+#11 - LICUADORA DE LUJO PUNTA
+
+#12 - MEZCLA CON FORMA DE CÚPULA
+
+#13 - DIFUMINADOR DE DETALLE PUNTA
+
+#14 - BATIDORA PEQUEÑA PUNTA
+
+#15 - PINCEL GRANDE PARA SOMBRAS
+
+#16 - PINCEL PEQUEÑO PARA SOMBRAS
+
+#17 - BROCHA GRANDE PARA MEZCLAR
+
+#18 - BROCHA PARA MEZCLAR ESPONJOSA
+
+#19 - DIFUMINADO DE PLIEGUES
+
+#20 - MINI MEZCLA
+
+#21- MEZCLA PLANA MNI
+
+#22 - DIFUMINADO CON LÁPIZ
+
+#23 - PINCELES PLANOS
+
+#24 - PINCELES DOBLES ANGULARES `,
+                tag: "Nuevo",
+                tonos: null
+            },
+            {
+                id: 't2',
+                nombre: "Teddy Cosmetic Vanity Bag - Beauty Creations",
+                categoria: "Accesorios",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/NIGHTMARE_BEFORE_XMAS0625.jpg?v=1767483589&width=1100",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/NIGHTMARE_BEFORE_XMAS0622.jpg?v=1758149280&width=1100"
+                ],
+                descripcion: `Fluffy, cute, and handy! Upgrade your cosmetic vanity bag with The Teddy 🐻
+
+Makeup bag with multiple compartments and a durable, easy-to-clean material, it keeps your cosmetics neatly arranged and protected.
+
+Dimensions: 21 X 12 X 13 CM `,
+                tag: null,
+                tonos: [
+                    { nombre: "PINK", hex: "#ffbfcb" },
+                    { nombre: "BLACK", hex: "#000000" }
+                ]
+            },
+            {
+                id: 't3',
+                nombre: "Rosy McMichael x Beauty Creations Rosy's Essentials Vol. 1",
+                categoria: "Colaboraciones",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/COLLECTION1-RESIZE_16c1ad29-8012-4152-ac46-60aebf3bf4c2.jpg?v=1763443598&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/PhotoNov162025_13432PM_b676f574-5418-48e9-88f1-53d2cbe8ccbf.jpg?v=1763663770&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/PALETTE_ef115e70-b745-48d8-a335-596f9eed0ae0.jpg?v=1763442167&width=500",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/ARMSWTCHGRAPHICSROSYMCSHADOWENGLISH.jpg?v=1763442167&width=500"
+                ],
+                descripcion: `Beauty Creations y Rosy McMichael se han unido una vez más para traer de vuelta uno de los productos favoritos de sus fans, con un toque especial. Presentamos Rosy's Essentials Volume 1 (Mini Edición): Rosy ha elegido sus 12 tonos favoritos de la paleta original para traerlos de vuelta en un formato compacto, práctico y lleno de amor.`,
+                tag: "PR BOX",
+                tonos: null,
+            },
+            {
+                id: 't4',
+                nombre: "Tinte líquido en gel Kiss Me",
+                categoria: "Labios",
+                imagenes: [
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/56661.jpg?v=1773687599&width=1000",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/BETTER-IN-PINK-S.jpg?v=1773687434&width=1100",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/MAGENTA-MOVES.jpg?v=1773687434&width=1100",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/ARMSWATCHES-KISSME_93446286-b453-404e-ac91-30059206d049.jpg?v=1773687434&width=1000",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/MAGENTA-MOVES.jpg?v=1773687434&width=1100",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/TENDER-ROSE.jpg?v=1773687434&width=1100",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/WINE-O-CLOCK.jpg?v=1773687434&width=1100",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/CORALLY-HOT.jpg?v=1773687434&width=1100",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/BARELY-BROWN.jpg?v=1773687434&width=1100",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/RED-CRUSH.jpg?v=1773687434&width=1100",
+                    "https://www.beautycreationscosmetics.com/cdn/shop/files/TERRACOTTA-TEASE.jpg?v=1773687434&width=1100"
+                ],
+                descripcion: `Beauty Creations y Rosy McMichael se han unido una vez más para traer de vuelta uno de los productos favoritos de sus fans, con un toque especial. Presentamos Rosy's Essentials Volume 1 (Mini Edición): Rosy ha elegido sus 12 tonos favoritos de la paleta original para traerlos de vuelta en un formato compacto, práctico y lleno de amor.`,
+                tag: "Nuevo",
+                tonos: [
+                    { nombre: "Mejor en Rosa", hex: "#e3447a" },
+                    { nombre: "Magenta se mueve", hex: "#ee025b" },
+                     { nombre: "Rosa tierno", hex: "#c94b58" },
+                    { nombre: "Hora del vino", hex: "#c1345d" },
+                     { nombre: "Corally Hot", hex: "#fa1b40" },
+                    { nombre: "Marron claro", hex: "#b14340" },
+                    { nombre: "Aplastamiento Rojo", hex: "#9e042a" },
+                    { nombre: "Terracota Burlón", hex: "#e15f3c" }
+                ]
+            },
+
+        ];
+
+        // --- 2. FUNCIÓN PARA RENDERIZAR PRODUCTOS TOP (Actualizada para abrir Modal) ---
+        function cargarProductosTop() {
+            const grid = document.getElementById('grid-productos-top');
+            if (!grid) return;
+
+            grid.innerHTML = ''; // Limpiar
+
+            productosInicio.forEach(prod => {
+                // Obtenemos la primera imagen para la portada
+                const imagenPortada = Array.isArray(prod.imagenes) ? prod.imagenes[0] : prod.imagenes;
+                
+                // HTML de la tarjeta, ahora con onclick que llama a openModal
+                const card = `
+                    <div class="group cursor-pointer flex flex-col" onclick="openModal('${prod.id}')">
+                        <div class="relative overflow-hidden aspect-[4/5] mb-3 bg-gray-100 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+                            
+                            ${prod.tag ? `<span class="absolute top-2 left-2 bg-brand-rose text-white text-[9px] px-2 py-1 uppercase font-bold rounded z-10">${prod.tag}</span>` : ''}
+                            
+                            <img src="${imagenPortada}" alt="${prod.nombre}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-in-out">
+                            
+                            <div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition duration-300 flex justify-center z-10">
+                                <button class="bg-white/95 text-brand-black text-[10px] uppercase font-sans font-bold tracking-widest py-3 px-6 rounded-full shadow-lg hover:bg-brand-black hover:text-white transition w-full">
+                                    Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                        <div class="px-1 text-center md:text-left relative z-10">
+                            ${prod.categoria ? `<p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1 font-sans">${prod.categoria}</p>` : ''}
+                            <h3 class="font-bebas text-xl text-brand-black tracking-wide group-hover:text-brand-rose transition leading-tight">${prod.nombre}</h3>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        // --- 3. LÓGICA DEL MODAL (Copiada exactamente de labios.html) ---
+        const modal = document.getElementById('product-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalGallery = document.getElementById('modal-gallery');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalTag = document.getElementById('modal-tag');
+        const modalBtn = document.getElementById('modal-btn');
+        const modalCatText = document.getElementById('modal-categoria-text');
+        
+        const tonosContainer = document.getElementById('modal-tonos-container');
+        const tonosList = document.getElementById('modal-tonos-list');
+        const feedbackTono = document.getElementById('tono-feedback');
+        
+        let tonoSeleccionadoActual = ''; // Variable de estado
+
+        function openModal(id) {
+            // Buscamos el producto en la base de datos de INICIO
+            const producto = productosInicio.find(p => p.id === id);
+            if(!producto) return;
+
+            // 1. Llenar Imágenes y Galería
+            const imgs = Array.isArray(producto.imagenes) ? producto.imagenes : [producto.imagenes];
+            modalImg.src = imgs[0]; // Imagen principal por defecto
+            
+            modalGallery.innerHTML = ''; // Limpiar miniaturas anterior
+            if (imgs.length > 1) {
+                imgs.forEach((src, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = src;
+                    thumb.alt = `${producto.nombre} - vista ${index + 1}`;
+                    thumb.className = `w-16 h-16 object-cover rounded-md cursor-pointer border-2 border-transparent hover:opacity-100 thumb-img ${index === 0 ? 'selected' : ''}`;
+                    thumb.onclick = function() {
+                        modalImg.src = src; // Cambiar imagen principal
+                        // Actualizar estilo 'seleccionado' en miniaturas
+                        document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('selected'));
+                        this.classList.add('selected');
+                    };
+                    modalGallery.appendChild(thumb);
+                });
+                modalGallery.classList.remove('hidden');
+            } else {
+                modalGallery.classList.add('hidden');
+            }
+
+            // 2. Llenar Información Textual
+            modalTitle.innerText = producto.nombre;
+            modalDesc.innerText = producto.descripcion;
+            modalCatText.innerText = producto.categoria || 'Cosmético';
+            
+            // Tag (Nuevo, etc.)
+            if(producto.tag) {
+                modalTag.innerText = producto.tag;
+                modalTag.classList.remove('hidden');
+            } else {
+                modalTag.classList.add('hidden');
+            }
+
+            // 3. Llenar Lógica de Tonos
+            tonosList.innerHTML = ''; // Limpiar lista anterior
+            tonoSeleccionadoActual = ''; // Reiniciar selección
+            feedbackTono.innerText = ''; // Reiniciar feedback
+
+            if (producto.tonos && producto.tonos.length > 0) {
+                tonosContainer.classList.remove('hidden');
+                
+                producto.tonos.forEach((item, index) => {
+                    const nombreTono = typeof item === 'object' ? item.nombre : item;
+                    const colorHex = typeof item === 'object' ? item.hex : null;
+
+                    const btnTono = document.createElement('button');
+                    // Estilos base copiados de labios.html
+                    btnTono.className = 'flex items-center gap-2.5 px-4 py-2 bg-white border border-gray-300 text-gray-700 text-xs uppercase font-bold rounded-full transition hover:border-brand-rose focus:outline-none tono-btn font-sans';
+                    
+                    // Si tiene color hexadecimal, añadir círculo de color
+                    let swatchHTML = '';
+                    if(colorHex) {
+                        swatchHTML = `<span class="w-3.5 h-3.5 rounded-full border border-gray-200 shadow-inner" style="background-color: ${colorHex};"></span>`;
+                    }
+
+                    btnTono.innerHTML = `${swatchHTML} ${nombreTono}`;
+                    
+                    // Selección por defecto (primer tono)
+                    if (index === 0) {
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                    }
+
+                    // Evento click para seleccionar tono
+                    btnTono.onclick = () => {
+                        // Deseleccionar anteriores
+                        document.querySelectorAll('.tono-btn').forEach(b => b.classList.remove('selected'));
+                        // Seleccionar este
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                        actualizarLinkWhatsapp(producto); // Actualizar enlace con el tono
+                    };
+                    tonosList.appendChild(btnTono);
+                });
+            } else {
+                tonosContainer.classList.add('hidden');
+            }
+
+            // 4. Actualizar Enlace de WhatsApp final
+            actualizarLinkWhatsapp(producto);
+
+            // 5. Mostrar Modal
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
+            document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+        }
+
+        function actualizarLinkWhatsapp(producto) {
+            let mensaje = `Hola Esmeralda's Cosmetic, me interesa el producto TOP: ${producto.nombre}`;
+            if (tonoSeleccionadoActual) {
+                mensaje += ` - Tono: ${tonoSeleccionadoActual}`;
+            }
+            // Codificar el mensaje para la URL
+            modalBtn.href = `https://wa.me/50235739640?text=${encodeURIComponent(mensaje)}`;
+        }
+
+        function closeModal() {
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = 'auto'; // Restaurar scroll de fondo
+        }
+
+        // Cerrar modal al hacer clic fuera del contenido (en el fondo oscuro)
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // --- 4. LÓGICA INTERFAZ EXISTENTE (Menú, Scroll, Drag) ---
+        const mobileBtn = document.getElementById('mobile-btn');
         const textMenu = document.getElementById('mobile-text-menu');
         
-        btn.addEventListener('click', () => {
-            textMenu.classList.toggle('hidden');
-            const icon = btn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
+        if(mobileBtn && textMenu) {
+            mobileBtn.addEventListener('click', () => {
+                textMenu.classList.toggle('hidden');
+                const icon = mobileBtn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+        }
 
-        // --- 2. LOGICA PARA DRAG & SCROLL EN LA TIRA ---
         const slider = document.getElementById('drag-scroll');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
+        if(slider) {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
 
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true;
-            slider.classList.add('active');
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        });
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.classList.add('active');
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
 
-        slider.addEventListener('mouseleave', () => {
-            isDown = false;
-            slider.classList.remove('active');
-        });
+            slider.addEventListener('mouseleave', () => {
+                isDown = false;
+                slider.classList.remove('active');
+            });
 
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-            slider.classList.remove('active');
-        });
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+                slider.classList.remove('active');
+            });
 
-        slider.addEventListener('mousemove', (e) => {
-            if(!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2;
-            slider.scrollLeft = scrollLeft - walk;
-        });
+            slider.addEventListener('mousemove', (e) => {
+                if(!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2;
+                slider.scrollLeft = scrollLeft - walk;
+            });
+        }
 
-        // --- 3. OCULTAR HEADER AL SCROLLEAR ---
         let lastScrollTop = 0;
         const mainHeader = document.getElementById('main-header');
         
         window.addEventListener('scroll', function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if(!mainHeader) return;
+
             if (scrollTop > lastScrollTop && scrollTop > 100) {
                 mainHeader.classList.add('nav-hidden');
-                textMenu.classList.add('hidden');
-                const icon = btn.querySelector('i');
-                if(icon.classList.contains('fa-times')) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
+                if(textMenu) textMenu.classList.add('hidden');
+                if(mobileBtn) {
+                    const icon = mobileBtn.querySelector('i');
+                    if(icon && icon.classList.contains('fa-times')) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
                 }
             } else {
                 mainHeader.classList.remove('nav-hidden');
             }
             lastScrollTop = scrollTop;
         });
+
+        // --- INICIALIZACIÓN ---
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarProductosTop(); // Cargar productos dinámicos al iniciar
+        });
     </script>
 </body>
-
 </html>
