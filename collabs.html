@@ -205,7 +205,6 @@
         <div class="hero-slide active">
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 z-10"></div>
             <img src="https://www.beautycreationscosmetics.com/cdn/shop/products/yerimua-bad-btch-lip-duo-lips-beauty-creations-yml2-344849.jpg?v=1738014978&width=850" alt="Collab 1" class="w-full h-full object-cover">
-            
         </div>
 
         <div class="hero-slide">
@@ -231,6 +230,7 @@
             <div class="w-2 h-2 rounded-full bg-white opacity-40 transition indicator"></div>
         </div>
     </div>
+
     <main class="flex-grow bg-white py-10 md:py-16">
         <div class="max-w-7xl mx-auto px-4 md:px-6">
             
@@ -258,8 +258,11 @@
                 </div>
             </div>
             
+            <div id="categorias-container" class="flex flex-wrap justify-center gap-3 mb-10 px-4 animate-fade-in">
+            </div>
+
             <div id="grid-productos" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
-                </div>
+            </div>
 
         </div>
     </main>
@@ -361,7 +364,7 @@
     </footer>
 
     <script>
-        // --- 1. LÓGICA DEL HERO SLIDER ---
+        // --- 1. SLIDER LOGIC ---
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const indicators = document.querySelectorAll('.indicator');
@@ -389,30 +392,24 @@
             });
         }
 
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-            resetInterval();
-        }
-
-        function prevSlide() {
-            showSlide(currentSlide - 1);
-            resetInterval();
-        }
+        function nextSlide() { showSlide(currentSlide + 1); resetInterval(); }
+        function prevSlide() { showSlide(currentSlide - 1); resetInterval(); }
 
         function resetInterval() {
             clearInterval(slideInterval);
-            slideInterval = setInterval(() => {
-                showSlide(currentSlide + 1);
-            }, 5000); 
+            slideInterval = setInterval(() => { showSlide(currentSlide + 1); }, 5000);
         }
-
         resetInterval();
 
         // --- 2. BASE DE DATOS DE PRODUCTOS (COLLABS) ---
+        // Aquí deberás reemplazar con todo tu arreglo de productos original,
+        // asegurándote de añadirle la propiedad "categoria: '...', " a cada uno.
+        // He incluido unos de ejemplo para que veas cómo funciona.
         const productosCollabs = [
             {
                 id: 1,
                 nombre: "YeriMua X Beauty Creations - PR Colección Completa - PR BOX",
+                categoria: "YeriMua",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-x-yerimua-pr-coleccion-completa-yerimua-pr-cosmetics-ympr-799586.webp?v=1723545758&width=500",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-x-yerimua-pr-coleccion-completa-yerimua-pr-cosmetics-ympr-425585.jpg?v=1723545785&width=500",
@@ -443,6 +440,7 @@ Esta colección incluye:
             {
                 id: 2,
                 nombre: "Rosy McMichael x Beauty Creations Rosy's Essentials Vol. 1",
+                categoria: "Rosy McMichael",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/COLLECTION1-RESIZE_16c1ad29-8012-4152-ac46-60aebf3bf4c2.jpg?v=1763443598&width=500",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/PhotoNov162025_13432PM_b676f574-5418-48e9-88f1-53d2cbe8ccbf.jpg?v=1763663770&width=500",
@@ -456,6 +454,7 @@ Esta colección incluye:
             {
                 id: 3,
                 nombre: "Víctor Guadarrama Por Siempre Agua Hidratante de Rosas",
+                categoria: "Victor Guadarrama",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/SPRAY-RESIZED.png?v=1747259750&width=500",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/VIC10_RESIZED.png?v=1747259759&width=500",
@@ -478,6 +477,7 @@ Beneficios : Hidratante, calmante, refrescante.`,
             {
                 id: 4,
                 nombre: "Trío de Labios Seduceme de Víctor Guadarrama",
+                categoria: "Victor Guadarrama",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/LIP-TRIO-RESIZED.png?v=1747259149&width=500",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/VIC07_RESIZED.png?v=1748627617&width=500",
@@ -502,6 +502,7 @@ Libre de crueldad animal y cuidadosamente seleccionado por Vico Guadarrama, este
              {
                 id: 5,
                 nombre: "Polvos faciales Perfection de Victor Guadarrama",
+                categoria: "Victor Guadarrama",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/POWDER1-RESIZED_19327d36-c397-42f7-8b6b-918a3bd81c1f.png?v=1747265729&width=500",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/POWDER2-RESIZED_377b48c5-3ffd-4083-858d-8890aa02e002.png?v=1747265732&width=500",
@@ -520,6 +521,7 @@ Perfecto para retoques en cualquier lugar, este elegante compacto cabe perfectam
             {
                 id: 6,
                 nombre: "Set de rubor en barra Pretty Desperados de Las Chicas Superpoderosas",
+                categoria: "Chicas Superpoderosas",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/RUBORES_EN_BARRA.jpg?v=1753984625&width=500",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/BLUSH_SWATCHES_PALETTE.jpg?v=1753984625&width=500",
@@ -560,6 +562,7 @@ Sin sulfatos`,
              {
                 id: 7,
                 nombre: "The Powerpuff Girls El Dorado Hair & Body Glitter Spray",
+                categoria: "Chicas Superpoderosas",
                 imagenes: [
                     "https://lucesbeautiful.com/wp-content/uploads/2025/08/Diseno-sin-titulo-24.jpg.webp",
                     "https://lucesbeautiful.com/wp-content/uploads/2025/08/Diseno-sin-titulo-25.jpg.webp",
@@ -582,6 +585,7 @@ Entre sus principales cualidades, este spray también es: libre de crueldad anim
             {
                 id: 8,
                 nombre: "The Powerpuff Girls X Beauty Creations - Set De Colección Completa",
+                categoria: "Chicas Superpoderosas",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/PPG-COLECCION_COMPLETA_3.jpg?v=1753489039&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/PPG-COLECCION.jpg?v=1753492783&width=700",
@@ -607,6 +611,7 @@ El set incluye:
             {
                 id: 9,
                 nombre: "Velvet Stay - Set De Labiales Líquidos Lip Paint - Bundle",
+                categoria: "Velvet Stay",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-440497.jpg?v=1723578184&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-velvet-stay-lip-paint-bundle-bundle-de-labiales-cosmetics-lvset-bundle-255747.jpg?v=1723578201&width=700",
@@ -643,6 +648,7 @@ El set incluye:
             {
                 id: 10,
                 nombre: "Barbie X Beauty Creations - Bálsamo Llavero Lipgloss pH - Sunny & Stylish",
+                categoria: "Barbie",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/BARBIE3957.jpg?v=1743029066&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/KEYCHAIN.png?v=1740697645&width=700",
@@ -664,6 +670,7 @@ Incluye Llavero – Engánchalo a tu bolso o llaves para llevarlo contigo a todo
             {
                 id: 11,
                 nombre: "Barbie X Beauty Creations - Set De 5 Esponjas - Me & My BFF'S",
+                categoria: "Barbie",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/BARBIE3534LESSSHINE.jpg?v=1743029124&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/SPONGES-1.png?v=1740686863&width=700",
@@ -686,6 +693,7 @@ Esponja Doble para Difuminar – Esponja de doble uso para un difuminado impecab
             {
                 id: 12,
                 nombre: "Barbie X Beauty Creations - Polvo Suelto Fijador - Future Is Bright",
+                categoria: "Barbie",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/BARBIE3785.jpg?v=1753389631&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/SETTINGPOWDER.png?v=1754415872&width=700",
@@ -711,6 +719,7 @@ Nuevo Tono Edición Limitada – Un producto exclusivo que no puede faltar en tu
             {
                 id: 13,
                 nombre: "Betty Boop X Beauty Creations - Set Dúo De Labiales - Classy & Sassy",
+                categoria: "Betty Boop",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/LIP_DUO_STORY_SIZE_v2.jpg?v=1738860037&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/12.png?v=1738860037&width=700",
@@ -749,6 +758,7 @@ Cruelty-free`,
             {
                 id: 14,
                 nombre: "Spongebob X Beauty Creations - Espejo De Mano - I'm Ready",
+                categoria: "Bob Sponja",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/MIRRORSPONGEBOB.jpg?v=1733775611&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/I_M-READY-HAND-MIRROR-2.jpg?v=1742253210&width=700",
@@ -774,6 +784,7 @@ Tip: ¡Lleva el Espejo I'm Ready contigo a todas partes y agrega un toque divert
             {
                 id: 15,
                 nombre: "Bratz X Beauty Creations - Espejo De Mano - Lookin' Good",
+                categoria: "Bratz",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/Mirror_Collection_Bratz.jpg?v=1757109131&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/espejo-bratz-1.jpg?v=1757109131&width=700"
@@ -789,6 +800,7 @@ Con un diseño único inspirado en las Bratz, este espejo es perfecto para retoc
             {
                 id: 16,
                 nombre: "My Little Pony X Beauty Creations - Espejo De Mano - Sky's the Limit",
+                categoria: "My Little Pony",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-skys-the-limit-handheld-mirror-mlp-hm-902266.jpg?v=1723537000&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-skys-the-limit-handheld-mirror-mlp-hm-592583.jpg?v=1723545338&width=700",
@@ -804,6 +816,7 @@ Con un diseño único inspirado en las Bratz, este espejo es perfecto para retoc
             {
                 id: 17,
                 nombre: `Candy Land x Beauty Creations Sugar High Shadow Palette & 4-Piece Brush Set`,
+                categoria: "Candy Land",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/SHADOW_BRUSHES.jpg?v=1761608531&width=600",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/SUGAR-HIGH.jpg?v=1761608531&width=600",
@@ -839,6 +852,7 @@ Completo con 4 pinceles esenciales para ojos diseñados para mezclar, sombrear y
             {
                 id: 18,
                 nombre: `Candy Land x Beauty Creations Triple Treat Lip Balm Set`,
+                categoria: "Candy Land",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/LIPBALMS.jpg?v=1761591706&width=600",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/TRIPLE-TREAT-BOX.jpg?v=1762476272&width=600",
@@ -868,6 +882,7 @@ Por qué te encantará:
             {
                 id: 19,
                 nombre: `Candy Land x Beauty Creations Sweet Swirl Cream and Powder Blush & Brush Set`,
+                categoria: "Candy Land",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/BLUSH_BRUSH.jpg?v=1762457782&width=600",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/CANDYLAND-SWEET-SWIRL.jpg?v=1761608125&width=600",
@@ -900,6 +915,7 @@ Viene con un pincel para rubor de doble cara: el extremo denso es perfecto para 
             {
                 id: 20,
                 nombre: `Candy Land x Beauty Creations Sweet Tooth Wooden Lip Liner Set (6PC)`,
+                categoria: "Candy Land",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/LIP_LINERS.jpg?v=1761608281&width=600",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/SWEETTOOTH.jpg?v=1761608281&width=600",
@@ -925,22 +941,78 @@ Ahora en un empaque de edición limitada de Candy Land, dile sí a la dulce vida
                 tag: null,
                 tonos: null,
             },
-        
-
         ];
+
+        let productosActuales = [...productosCollabs];
 
         // --- 3. RENDERIZADO Y ORDENAMIENTO ---
         const gridContainer = document.getElementById('grid-productos');
         const sortSelect = document.getElementById('sort-select');
 
-        function renderizarProductos(lista = productosCollabs) {
+        // --- LÓGICA DE CATEGORÍAS AGREGADA ---
+        const categoriasContainer = document.getElementById('categorias-container');
+        const categoriasUnicas = ['Todos', ...new Set(productosCollabs.map(p => p.categoria).filter(Boolean))];
+
+        function inicializarCategorias() {
+            if(!categoriasContainer) return;
+            categoriasContainer.innerHTML = '';
+            
+            categoriasUnicas.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `
+                    px-5 py-2 rounded-full border border-gray-200 font-bebas text-sm tracking-wide 
+                    transition duration-300 hover:border-brand-rose hover:text-brand-rose 
+                    cat-filter-btn cursor-pointer
+                `;
+                btn.innerText = cat.toUpperCase();
+                
+                btn.onclick = () => {
+                    // Remover estilos activos
+                    document.querySelectorAll('.cat-filter-btn').forEach(b => {
+                        b.classList.remove('bg-brand-black', 'text-white', 'border-transparent');
+                        b.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+                    });
+                    
+                    // Activar el botón seleccionado
+                    btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+                    btn.classList.add('bg-brand-black', 'text-white', 'border-transparent');
+                    
+                    // Filtrar arreglo temporal
+                    if (cat === 'Todos') {
+                        productosActuales = [...productosCollabs];
+                    } else {
+                        productosActuales = productosCollabs.filter(p => p.categoria === cat);
+                    }
+                    
+                    // Ejecutar el filtro de "Ordenar Por" para refrescar el grid
+                    sortSelect.dispatchEvent(new Event('change'));
+                };
+
+                // Estilo inicial para "Todos"
+                if (cat === 'Todos') {
+                    btn.classList.add('bg-brand-black', 'text-white', 'border-transparent');
+                } else {
+                    btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+                }
+                
+                categoriasContainer.appendChild(btn);
+            });
+        }
+
+        function renderizarProductos(lista) {
             gridContainer.innerHTML = ''; 
             gridContainer.style.opacity = '0';
             
             setTimeout(() => {
+                if(lista.length === 0) {
+                     gridContainer.innerHTML = '<p class="col-span-full text-center text-gray-500 py-10 font-bebas text-xl tracking-wide">No se encontraron productos.</p>';
+                     gridContainer.style.opacity = '1';
+                     return;
+                }
+
                 lista.forEach(prod => {
                     const tagHTML = prod.tag 
-                        ? `<div class="absolute top-2 left-2 bg-black text-white text-[9px] px-2 py-1 uppercase font-bold rounded shadow-sm z-10 border border-white/20">x ${prod.tag}</div>` 
+                        ? `<div class="absolute top-2 left-2 bg-brand-rose text-white text-[9px] px-2 py-1 uppercase font-bold rounded shadow-sm z-10">${prod.tag}</div>` 
                         : '';
                     
                     const imagenPrincipal = Array.isArray(prod.imagenes) ? prod.imagenes[0] : prod.imagenes;
@@ -970,10 +1042,9 @@ Ahora en un empaque de edición limitada de Candy Land, dile sí a la dulce vida
 
         sortSelect.addEventListener('change', (e) => {
             const criterio = e.target.value;
-            let productosOrdenados = [...productosCollabs]; 
+            let productosOrdenados = [...productosActuales]; 
             if (criterio === 'az') productosOrdenados.sort((a, b) => a.nombre.localeCompare(b.nombre));
             else if (criterio === 'za') productosOrdenados.sort((a, b) => b.nombre.localeCompare(a.nombre));
-            // Orden por precio eliminado
             renderizarProductos(productosOrdenados);
         });
 
@@ -1023,7 +1094,7 @@ Ahora en un empaque de edición limitada de Candy Land, dile sí a la dulce vida
             modalDesc.innerText = producto.descripcion;
             
             if(producto.tag) {
-                modalTag.innerText = `x ${producto.tag}`;
+                modalTag.innerText = producto.tag;
                 modalTag.classList.remove('hidden');
             } else {
                 modalTag.classList.add('hidden');
@@ -1077,7 +1148,7 @@ Ahora en un empaque de edición limitada de Candy Land, dile sí a la dulce vida
         }
 
         function actualizarLinkWhatsapp(producto) {
-            let mensaje = `Hola, me interesa la COLABORACIÓN: ${producto.nombre}`;
+            let mensaje = `Hola, me interesa la Collab: ${producto.nombre}`;
             if (tonoSeleccionadoActual) {
                 mensaje += ` - Variante: ${tonoSeleccionadoActual}`;
             }
@@ -1095,7 +1166,8 @@ Ahora en un empaque de edición limitada de Candy Land, dile sí a la dulce vida
         });
 
         // Inicializar
-        renderizarProductos();
+        inicializarCategorias();
+        renderizarProductos(productosActuales);
 
         // --- Scripts Interfaz ---
         const btn = document.getElementById('mobile-btn');
@@ -1123,5 +1195,4 @@ Ahora en un empaque de edición limitada de Candy Land, dile sí a la dulce vida
         });
     </script>
 </body>
-
 </html>
