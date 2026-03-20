@@ -129,56 +129,48 @@
 
     <div class="md:hidden bg-white border-b border-gray-200 py-3 shadow-sm z-30 relative mt-[110px]">
         <div id="drag-scroll" class="flex overflow-x-auto gap-5 px-4 scrollbar-hide snap-x snap-mandatory grab-cursor select-none">
-            
             <a href="rostro.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
                 <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
                     <img src="n1.webp" alt="Rostro" class="w-full h-full object-cover">
                 </div>
                 <span class="font-bebas text-sm tracking-wide text-brand-black">ROSTRO</span>
             </a>
-
             <a href="ojos.html" class="flex flex-col items-center min-w-[70px] snap-center pointer-events-auto draggable-item">
                 <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-rose mb-1 pointer-events-none">
                     <img src="n2.webp" alt="Ojos" class="w-full h-full object-cover">
                 </div>
                 <span class="font-bebas text-sm tracking-wide text-brand-rose">OJOS</span>
             </a>
-
             <a href="labios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
                 <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
                     <img src="n3.webp" alt="Labios" class="w-full h-full object-cover">
                 </div>
                 <span class="font-bebas text-sm tracking-wide text-brand-black">LABIOS</span>
             </a>
-
             <a href="skincare.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
                 <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
                     <img src="n4.webp" alt="Skin Care" class="w-full h-full object-cover">
                 </div>
                 <span class="font-bebas text-sm tracking-wide text-brand-black whitespace-nowrap">SKIN CARE</span>
             </a>
-
             <a href="cuerpo.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
                 <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
                     <img src="n5.webp" alt="Cuerpo" class="w-full h-full object-cover">
                 </div>
                 <span class="font-bebas text-sm tracking-wide text-brand-black">CUERPO</span>
             </a>
-
             <a href="accesorios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
                 <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
                     <img src="n6.webp" alt="Accesorios" class="w-full h-full object-cover">
                 </div>
                 <span class="font-bebas text-sm tracking-wide text-brand-black">ACCESORIOS</span>
             </a>
-
             <a href="collabs.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
                 <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
                     <img src="n7.webp" alt="Collabs" class="w-full h-full object-cover">
                 </div>
                 <span class="font-bebas text-sm tracking-wide text-brand-black">COLLABS</span>
             </a>
-
         </div>
     </div>
 
@@ -210,8 +202,12 @@
                     </div>
                 </div>
             </div>
+
+            <div id="categorias-container" class="flex flex-wrap justify-center gap-3 mb-10 px-4 animate-fade-in">
+            </div>
+
             <div id="grid-productos" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
-                </div>
+            </div>
 
         </div>
     </main>
@@ -313,12 +309,12 @@
     </footer>
 
     <script>
-        // --- 1. BASE DE DATOS DE PRODUCTOS (OJOS) ---
-        // Estructura actualizada con 'imagenes' (array) y 'tonos' (objetos con hex)
+        // --- BASE DE DATOS DE PRODUCTOS (OJOS) ACTUALIZADA CON CATEGORÍAS ---
         const productosOjos = [
             {
                 id: 1,
                 nombre: "Rosy McMichael X Beauty Creations - Mini Paleta De Sombras - Rosy's Essentials Vol.1",
+                categoria: "Paleta de sombras",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/palette_220d84ef-1aa5-481a-8002-8c1f2727ad2f.jpg?v=1763589012&width=900",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/PALETTE.jpg?v=1763420004&width=900",
@@ -363,6 +359,7 @@ Edición Limitada, libre de crueldad animal. `,
             {
                 id: 2,
                 nombre: "Tease Me - Paleta De Sombras",
+                categoria: "Paleta de sombras",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-tease-me-paleta-de-sombras-cosmetics-e18t-911682.webp?v=1723581920&width=900",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-tease-me-paleta-de-sombras-cosmetics-e18t-207189.webp?v=1723581938&width=900",
@@ -385,6 +382,7 @@ Nuestra paleta más vendida se renueva, esta nueva formula y empaque te encantar
          {
                 id: 3,
                 nombre: "Fairy Tale - Paleta De Sombras - Tiana",
+                categoria: "Paleta de sombras",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-tiana-paleta-de-sombras-cosmetics-bce18-687376.jpg?v=1739227298&width=900",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-tiana-paleta-de-sombras-cosmetics-bce18-971865.jpg?v=1739227298&width=900",
@@ -399,6 +397,7 @@ Nuestra paleta más vendida se renueva, esta nueva formula y empaque te encantar
              {
                 id: 4,
                 nombre: "Nude X - Paleta De Sombras - 15 Tonos",
+                categoria: "Paleta de sombras",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-paleta-de-sombras-nude-x-15-paleta-de-sombras-cosmetics-nxe15-410407.webp?v=1723557682&width=900",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-paleta-de-sombras-nude-x-15-paleta-de-sombras-cosmetics-nxe15-294343.webp?v=1723557698&width=900",
@@ -417,6 +416,7 @@ Nuestra paleta más vendida se renueva, esta nueva formula y empaque te encantar
              {
                 id: 5,
                 nombre: "Floral Bloom - Paleta De Sombras - Eye Bloom",
+                categoria: "Paleta de sombras",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-floral-bloom-eye-bloom-paleta-de-sombras-cosmetics-ep12-490604.jpg?v=1757010505&width=600",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/EP12-7.png?v=1757010505&width=600",
@@ -430,6 +430,7 @@ Nuestra paleta más vendida se renueva, esta nueva formula y empaque te encantar
             {
                 id: 6,
                 nombre: "DUET - Mini Snap Palette - Paleta De Sombras 8 Tonos",
+                categoria: "Paleta de sombras",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUET_1.png?v=1755121510&width=600",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/NUDE_2.png?v=1755121510&width=600",
@@ -492,6 +493,7 @@ Un producto registrado con la Marca Vegana no ha sido probado en animales por la
             {
                 id: 7,
                 nombre: "Glitterally Perfect - Delineador en Glitter",
+                categoria: "Delinador Glitter",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-01-540254.webp?v=1723498822&width=650",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-glitterally-perfect-glitter-liner-gliters-cosmetics-bcgp-01-239490.webp?v=1723507206&width=650",
@@ -548,6 +550,7 @@ MIND BLOWING
             {
                 id: 8,
                 nombre: "Paleta De Sombras Para Cejas - Eyebrow Definer Powder Book",
+                categoria: "Paleta cejas",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-eyebrow-definer-powder-book-paleta-de-sombras-para-cejas-cosmetics-bb01-535429.jpg?v=1753301114&width=650",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-eyebrow-definer-powder-book-paleta-de-sombras-para-cejas-cosmetics-bb01-341299.jpg?v=1753301114&width=650",
@@ -560,6 +563,7 @@ MIND BLOWING
             {
                 id: 9,
                 nombre: "Victor Guadarrama X Beauty Creations - Paleta De Rostro Y Sombras - Yo Soy",
+                categoria: "Paleta de sombras",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/PALETTE1-RESIZED.png?v=1746552256&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/PALETTE2-RESIZED.png?v=1746552256&width=700",
@@ -584,6 +588,7 @@ Incluye:
              {
                 id: 10,
                 nombre: "Spongebob X Beauty Creations - Paleta De Sombras - Bikini Bottom",
+                categoria: "Paleta de sombras",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/EYESHADOWPALETTESPONGEBOB.png?v=1733775085&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/SWATCHESPALLETE3.jpg?v=1733775097&width=700",
@@ -614,6 +619,7 @@ Para un look audaz, comienza con un color base mate y luego coloca un brillo enc
              {
                 id: 11,
                 nombre: "My Little Pony X Beauty Creations - Paleta De Sombras Y Rostro - Lost in the Clouds",
+                categoria: "Paleta de sombras",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-head-in-the-clouds-shadow-and-face-palette-mlp-sfp-175087.jpg?v=1723532885&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-head-in-the-clouds-shadow-and-face-palette-mlp-sfp-906022.jpg?v=1723532918&width=700",
@@ -638,6 +644,7 @@ Cada producto ofrece alta pigmentación, es mezclable y construible, con mínima
             {
                 id: 12,
                 nombre: "Lotería - Paleta de Sombras y Rostro",
+                categoria: "Paleta de sombras",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/FACE-PAL_RESIZED.png?v=1747069690&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/ESMEPALETTE.png?v=1747248242&width=700",
@@ -676,6 +683,7 @@ LA ESTRELLA: DORADO CLARO CHAMPAGNE`,
             {
                 id: 13,
                 nombre: "Bratz X Beauty Creations - Delineador De Glitter",
+                categoria: "Delineador Glitter",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/Glitz-glitter-liner.jpg?v=1757109161&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/DUAL-GLITTER-LINER-SASHA.1.jpg?v=1757109161&width=700",
@@ -705,6 +713,7 @@ LIBRE DE PARABENOS`,
             {
                 id: 14,
                 nombre: "My Little Pony X Beauty Creations - Delineador Líquido De Glitter - Full of Fun",
+                categoria: "Delineador Glitter",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-full-of-fun-unicorn-magic-silver-glitter-liner-mlp-gl2-385253.jpg?v=1723532225&width=700",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-mx-beauty-creations-x-my-little-pony-full-of-fun-unicorn-magic-silver-glitter-liner-mlp-gl2-271310.jpg?v=1723532258&width=700",
@@ -727,6 +736,7 @@ NET WEIGHT: 3ml/0.11 fl oz.`,
             {
                 id: 15,
                 nombre: "Máscara Clásica (Negro) - Prosa",
+                categoria: "Mascara",
                 imagenes: [
                     "https://www.prosanatural.com/img/productos/primer-vista/15154.webp",
                     "https://www.prosanatural.com/img/productos/segunda-vista/15154.webp",
@@ -747,6 +757,7 @@ Fórmula resistente al agua (Waterproof).`,
              {
                 id: 16,
                 nombre: "Crystal Protein Gel - Prosa",
+                categoria: "Mascara Gel",
                 imagenes: [
                     "https://www.prosanatural.com/img/productos/primer-vista/15157.webp",
                     "https://www.prosanatural.com/img/productos/segunda-vista/15157.webp",
@@ -767,6 +778,7 @@ Es ideal para peinar baby hairs.
             {
                 id: 17,
                 nombre: "Máscara Aguacate - Prosa",
+                categoria: "Mascara",
                 imagenes: [
                     "https://www.prosanatural.com/img/productos/primer-vista/15162.webp",
                     "https://www.prosanatural.com/img/productos/segunda-vista/15162.webp",
@@ -785,6 +797,7 @@ Fórmula resistente al agua (Waterproof).`,
             {
                 id: 18,
                 nombre: "Máscara Profesional - Prosa",
+                categoria: "Mascara",
                 imagenes: [
                     "https://www.prosanatural.com/img/productos/primer-vista/15150.webp",
                     "https://www.prosanatural.com/img/productos/segunda-vista/15150.webp",
@@ -803,6 +816,7 @@ Fórmula resistente al agua (Waterproof).`,
             {
                 id: 19,
                 nombre: "Máscara Profesional Silicón - Prosa",
+                categoria: "Mascara Gel",
                 imagenes: [
                     "https://www.prosanatural.com/img/productos/primer-vista/15190.webp",
                     "https://www.prosanatural.com/img/productos/segunda-vista/15190.webp",
@@ -821,6 +835,7 @@ Fórmula resistente al agua (Waterproof).`,
             {
                 id: 20,
                 nombre: "Máscara Silicón Profesional Café 13g - Prosa",
+                categoria: "Mascara Gel",
                 imagenes: [
                     "https://www.prosanatural.com/img/productos/primer-vista/15175.webp",
                     "https://www.prosanatural.com/img/productos/segunda-vista/15175.webp",
@@ -839,6 +854,7 @@ Fórmula resistente al agua (Waterproof).`,
             {
                 id: 21,
                 nombre: "Máscara Maxi Volumen - Prosa",
+                categoria: "Mascara",
                 imagenes: [
                     "https://www.prosanatural.com/img/productos/primer-vista/15153.webp",
                     "https://www.prosanatural.com/img/productos/segunda-vista/15153.webp",
@@ -859,6 +875,7 @@ Fórmula resistente al agua (Waterproof).`,
             {
                 id: 22,
                 nombre: "Máscara Microfibras - Prosa",
+                categoria: "Mascara",
                 imagenes: [
                     "https://www.prosanatural.com/img/productos/primer-vista/15167.webp",
                     "https://www.prosanatural.com/img/productos/segunda-vista/15167.jpg",
@@ -877,6 +894,7 @@ Fórmula resistente al agua (Waterproof).`,
             {
                 id: 23,
                 nombre: "Máscara Clásica (Café) - Prosa",
+                categoria: "Mascara",
                 imagenes: [
                     "https://www.prosanatural.com/img/productos/primer-vista/15151.webp",
                     "https://www.prosanatural.com/img/productos/segunda-vista/15151.webp",
@@ -897,6 +915,7 @@ Fórmula resistente al agua (Waterproof).`,
              {
                 id: 24,
                 nombre: "Máscara Clásica (Azul) - Prosa",
+                categoria: "Mascara",
                 imagenes: [
                     "https://www.prosanatural.com/img/productos/primer-vista/15152.webp",
                     "https://www.prosanatural.com/img/productos/segunda-vista/15152.webp",
@@ -914,26 +933,78 @@ Fórmula resistente al agua (Waterproof).`,
                 tag: null,
                 tonos: null,
             },
-        
         ];
 
-        // --- 2. RENDERIZADO ---
+        let productosActuales = [...productosOjos];
         const gridContainer = document.getElementById('grid-productos');
         const sortSelect = document.getElementById('sort-select');
 
-        function renderizarProductos(lista = productosOjos) {
-            gridContainer.innerHTML = ''; 
-            gridContainer.style.opacity = '0';
-            
-            setTimeout(() => {
-                lista.forEach(prod => {
-                    const tagHTML = prod.tag 
-                        ? `<div class="absolute top-2 left-2 bg-brand-rose text-white text-[9px] px-2 py-1 uppercase font-bold rounded shadow-sm z-10">${prod.tag}</div>` 
-                        : '';
-                    
-                    // Tomamos la primera imagen del array
-                    const imagenPrincipal = Array.isArray(prod.imagenes) ? prod.imagenes[0] : prod.imagenes;
+        // --- LÓGICA DE CATEGORÍAS AGREGADA ---
+        const categoriasContainer = document.getElementById('categorias-container');
+        const categoriasUnicas = ['Todos', ...new Set(productosOjos.map(p => p.categoria).filter(Boolean))];
 
+        function inicializarCategorias() {
+            if(!categoriasContainer) return;
+            categoriasContainer.innerHTML = '';
+            
+            categoriasUnicas.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `
+                    px-5 py-2 rounded-full border border-gray-200 font-bebas text-sm tracking-wide 
+                    transition duration-300 hover:border-brand-rose hover:text-brand-rose 
+                    cat-filter-btn cursor-pointer
+                `;
+                btn.innerText = cat.toUpperCase();
+                
+                btn.onclick = () => {
+                    // Remover estilos activos
+                    document.querySelectorAll('.cat-filter-btn').forEach(b => {
+                        b.classList.remove('bg-brand-black', 'text-white', 'border-transparent');
+                        b.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+                    });
+                    
+                    // Activar el botón seleccionado
+                    btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+                    btn.classList.add('bg-brand-black', 'text-white', 'border-transparent');
+                    
+                    // Filtrar arreglo temporal
+                    if (cat === 'Todos') {
+                        productosActuales = [...productosOjos];
+                    } else {
+                        productosActuales = productosOjos.filter(p => p.categoria === cat);
+                    }
+                    
+                    // Ejecutar el filtro de "Ordenar Por" para refrescar el grid
+                    sortSelect.dispatchEvent(new Event('change'));
+                };
+
+                // Estilo inicial para "Todos"
+                if (cat === 'Todos') {
+                    btn.classList.add('bg-brand-black', 'text-white', 'border-transparent');
+                } else {
+                    btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+                }
+                
+                categoriasContainer.appendChild(btn);
+            });
+        }
+
+        // --- LÓGICA DE RENDERIZACIÓN Y ORDEN ---
+        function renderizarProductos(productosArray) {
+            gridContainer.style.opacity = '0';
+            setTimeout(() => {
+                gridContainer.innerHTML = '';
+                if(productosArray.length === 0) {
+                     gridContainer.innerHTML = '<p class="col-span-full text-center text-gray-500 py-10 font-bebas text-xl tracking-wide">No se encontraron productos.</p>';
+                     gridContainer.style.opacity = '1';
+                     return;
+                }
+                productosArray.forEach(prod => {
+                    let tagHTML = '';
+                    if (prod.tag) {
+                        tagHTML = `<span class="absolute top-2 left-2 bg-brand-rose text-white text-[10px] px-2 py-1 uppercase font-bold tracking-widest rounded z-10">${prod.tag}</span>`;
+                    }
+                    const imagenPrincipal = Array.isArray(prod.imagenes) ? prod.imagenes[0] : prod.imagenes;
                     const card = `
                         <div class="group cursor-pointer flex flex-col" onclick="openModal(${prod.id})">
                             <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 rounded-xl mb-3 shadow-sm hover:shadow-md transition duration-300">
@@ -947,7 +1018,7 @@ Fórmula resistente al agua (Waterproof).`,
                             </div>
                             <div class="text-center">
                                 <h3 class="font-bebas text-xl text-brand-black tracking-wide group-hover:text-brand-rose transition">${prod.nombre}</h3>
-                                </div>
+                            </div>
                         </div>
                     `;
                     gridContainer.innerHTML += card;
@@ -959,135 +1030,19 @@ Fórmula resistente al agua (Waterproof).`,
 
         sortSelect.addEventListener('change', (e) => {
             const criterio = e.target.value;
-            let productosOrdenados = [...productosOjos];
-            if (criterio === 'az') productosOrdenados.sort((a, b) => a.nombre.localeCompare(b.nombre));
-            else if (criterio === 'za') productosOrdenados.sort((a, b) => b.nombre.localeCompare(a.nombre));
-            // Ordenar por precio eliminado
+            // IMPORTANTE: Ahora ordena los productos actuales filtrados en lugar del global
+            let productosOrdenados = [...productosActuales];
+            
+            if (criterio === 'az') {
+                productosOrdenados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            } else if (criterio === 'za') {
+                productosOrdenados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+            }
+            
             renderizarProductos(productosOrdenados);
         });
 
-        // --- 3. LÓGICA DEL MODAL ---
-        const modal = document.getElementById('product-modal');
-        const modalImg = document.getElementById('modal-img');
-        const modalGallery = document.getElementById('modal-gallery');
-        const modalTitle = document.getElementById('modal-title');
-        // modalPrice eliminado
-        const modalDesc = document.getElementById('modal-desc');
-        const modalTag = document.getElementById('modal-tag');
-        const modalBtn = document.getElementById('modal-btn');
-        
-        const tonosContainer = document.getElementById('modal-tonos-container');
-        const tonosList = document.getElementById('modal-tonos-list');
-        const feedbackTono = document.getElementById('tono-feedback');
-        
-        let tonoSeleccionadoActual = ''; 
-
-        function openModal(id) {
-            const producto = productosOjos.find(p => p.id === id);
-            if(!producto) return;
-
-            // 1. Imágenes
-            const imgs = Array.isArray(producto.imagenes) ? producto.imagenes : [producto.imagenes];
-            modalImg.src = imgs[0];
-            
-            modalGallery.innerHTML = '';
-            if (imgs.length > 1) {
-                imgs.forEach((src, index) => {
-                    const thumb = document.createElement('img');
-                    thumb.src = src;
-                    thumb.className = `w-16 h-16 object-cover rounded-md cursor-pointer border border-transparent hover:opacity-100 thumb-img ${index === 0 ? 'selected' : ''}`;
-                    thumb.onclick = function() {
-                        modalImg.src = src;
-                        document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('selected'));
-                        this.classList.add('selected');
-                    };
-                    modalGallery.appendChild(thumb);
-                });
-                modalGallery.classList.remove('hidden');
-            } else {
-                modalGallery.classList.add('hidden');
-            }
-
-            // 2. Info
-            modalTitle.innerText = producto.nombre;
-            modalDesc.innerText = producto.descripcion;
-            
-            if(producto.tag) {
-                modalTag.innerText = producto.tag;
-                modalTag.classList.remove('hidden');
-            } else {
-                modalTag.classList.add('hidden');
-            }
-
-            // 3. Tonos con Hex
-            tonosList.innerHTML = '';
-            tonoSeleccionadoActual = '';
-            feedbackTono.innerText = '';
-
-            if (producto.tonos && producto.tonos.length > 0) {
-                tonosContainer.classList.remove('hidden');
-                
-                producto.tonos.forEach((item, index) => {
-                    const nombreTono = typeof item === 'object' ? item.nombre : item;
-                    const colorHex = typeof item === 'object' ? item.hex : null;
-
-                    const btnTono = document.createElement('button');
-                    btnTono.className = 'flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-gray-700 text-xs uppercase font-bold rounded-full transition hover:border-brand-rose focus:outline-none tono-btn';
-                    
-                    let swatchHTML = '';
-                    if(colorHex) {
-                        swatchHTML = `<span class="w-3 h-3 rounded-full border border-gray-200 shadow-sm" style="background-color: ${colorHex};"></span>`;
-                    }
-
-                    btnTono.innerHTML = `${swatchHTML} ${nombreTono}`;
-                    
-                    if (index === 0) {
-                        btnTono.classList.add('selected');
-                        tonoSeleccionadoActual = nombreTono;
-                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
-                    }
-
-                    btnTono.onclick = () => {
-                        document.querySelectorAll('.tono-btn').forEach(b => b.classList.remove('selected'));
-                        btnTono.classList.add('selected');
-                        tonoSeleccionadoActual = nombreTono;
-                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
-                        actualizarLinkWhatsapp(producto);
-                    };
-                    tonosList.appendChild(btnTono);
-                });
-            } else {
-                tonosContainer.classList.add('hidden');
-            }
-
-            actualizarLinkWhatsapp(producto);
-            modal.classList.remove('hidden-modal');
-            modal.classList.add('visible-modal');
-            document.body.style.overflow = 'hidden'; 
-        }
-
-        function actualizarLinkWhatsapp(producto) {
-            let mensaje = `Hola, me interesa el producto de OJOS: ${producto.nombre}`;
-            if (tonoSeleccionadoActual) {
-                mensaje += ` - Tono: ${tonoSeleccionadoActual}`;
-            }
-            modalBtn.href = `https://wa.me/50235739640?text=${encodeURIComponent(mensaje)}`;
-        }
-
-        function closeModal() {
-            modal.classList.remove('visible-modal');
-            modal.classList.add('hidden-modal');
-            document.body.style.overflow = 'auto'; 
-        }
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-
-        // Inicializar
-        renderizarProductos();
-
-        // --- Scripts de Interfaz (Navbar, Drag) ---
+        // --- LÓGICA DEL MENÚ MÓVIL Y SCROLL ---
         const btn = document.getElementById('mobile-btn');
         const textMenu = document.getElementById('mobile-text-menu');
         btn.addEventListener('click', () => {
@@ -1111,6 +1066,127 @@ Fórmula resistente al agua (Waterproof).`,
             else { mainHeader.classList.remove('nav-hidden'); }
             lastScrollTop = scrollTop;
         });
+
+        // --- LÓGICA DEL MODAL ---
+        const modal = document.getElementById('product-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalGallery = document.getElementById('modal-gallery');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalBtn = document.getElementById('modal-btn');
+        const modalTag = document.getElementById('modal-tag');
+        const modalTonosContainer = document.getElementById('modal-tonos-container');
+        const modalTonosList = document.getElementById('modal-tonos-list');
+        const feedbackTono = document.getElementById('tono-feedback');
+
+        let tonoSeleccionadoActual = null;
+
+        function openModal(id) {
+            const producto = productosOjos.find(p => p.id === id);
+            if (!producto) return;
+            
+            tonoSeleccionadoActual = null;
+            feedbackTono.innerText = '';
+
+            // Etiquetas
+            if(producto.tag) {
+                modalTag.innerText = producto.tag;
+                modalTag.classList.remove('hidden');
+            } else {
+                modalTag.classList.add('hidden');
+            }
+
+            // Imágenes y Galería
+            const imgs = Array.isArray(producto.imagenes) ? producto.imagenes : [producto.imagenes];
+            modalImg.src = imgs[0];
+            modalGallery.innerHTML = '';
+            
+            if (imgs.length > 1) {
+                imgs.forEach((src, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = src;
+                    thumb.className = `w-16 h-16 object-cover rounded-md cursor-pointer border border-transparent hover:opacity-100 thumb-img ${index === 0 ? 'selected' : ''}`;
+                    thumb.onclick = function() {
+                        modalImg.src = src;
+                        document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('selected'));
+                        this.classList.add('selected');
+                    };
+                    modalGallery.appendChild(thumb);
+                });
+                modalGallery.classList.remove('hidden');
+            } else {
+                modalGallery.classList.add('hidden');
+            }
+
+            // Textos
+            modalTitle.innerText = producto.nombre;
+            modalDesc.innerHTML = producto.descripcion.replace(/\n/g, '<br>');
+            
+            // Tonos
+            if (producto.tonos && producto.tonos.length > 0) {
+                modalTonosContainer.classList.remove('hidden');
+                modalTonosList.innerHTML = '';
+                
+                producto.tonos.forEach((tono, index) => {
+                    const nombreTono = typeof tono === 'string' ? tono : tono.nombre;
+                    const colorHex = typeof tono === 'object' && tono.hex ? tono.hex : null;
+                    
+                    const btnTono = document.createElement('button');
+                    btnTono.className = 'flex items-center gap-2 border border-gray-200 px-3 py-1.5 rounded-full text-[10px] uppercase font-bold tracking-widest hover:border-brand-rose transition tono-btn';
+                    
+                    let swatchHTML = '';
+                    if(colorHex) {
+                        swatchHTML = `<span class="w-3 h-3 rounded-full border border-gray-200 shadow-sm" style="background-color: ${colorHex};"></span>`;
+                    }
+                    
+                    btnTono.innerHTML = `${swatchHTML} ${nombreTono}`;
+                    
+                    if (index === 0) {
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                    }
+                    
+                    btnTono.onclick = () => {
+                        document.querySelectorAll('.tono-btn').forEach(b => b.classList.remove('selected'));
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                    };
+                    
+                    modalTonosList.appendChild(btnTono);
+                });
+            } else {
+                modalTonosContainer.classList.add('hidden');
+            }
+
+            modalBtn.onclick = (e) => {
+                let mensaje = `¡Hola Esmeralda's Cosmetic! Me interesa el producto: ${producto.nombre}`;
+                if (tonoSeleccionadoActual) {
+                    mensaje += ` en el tono: ${tonoSeleccionadoActual}`;
+                }
+                modalBtn.href = `https://wa.me/50235739640?text=${encodeURIComponent(mensaje)}`;
+            };
+
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = 'auto';
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // INICIALIZACIÓN DE LA PÁGINA
+        inicializarCategorias();
+        renderizarProductos(productosActuales);
+
     </script>
 </body>
 </html>
