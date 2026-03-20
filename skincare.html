@@ -209,8 +209,12 @@
                     </div>
                 </div>
             </div>
+
+            <div id="categorias-container" class="flex flex-wrap justify-center gap-3 mb-10 px-4 animate-fade-in">
+            </div>
+
             <div id="grid-productos" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
-                </div>
+            </div>
 
         </div>
     </main>
@@ -312,11 +316,12 @@
     </footer>
 
     <script>
-        // --- 1. BASE DE DATOS DE PRODUCTOS (SKIN CARE) ---
+        // --- 1. BASE DE DATOS DE PRODUCTOS (SKIN CARE) ACTUALIZADA CON CATEGORÍAS ---
         const productosSkincare = [
             {
                 id: 1,
                 nombre: "Skin Care - Agua Micelar - The Take Down",
+                categoria: "Agua Micelar",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-agua-micelar-the-take-down-skin-care-cosmetics-sk-tdm-591960.jpg?v=1723483522&width=500",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-agua-micelar-the-take-down-skin-care-cosmetics-sk-tdm-137920.jpg?v=1723483539&width=500",
@@ -332,6 +337,7 @@ Con Beauty Creations Skin puedes complementar tu rutina del cuidado de la piel o
              {
                 id: 2,
                 nombre: "Beauty Creations Skin - Limpiador En Espuma - Start Fresh Clarifying Foam Cleanser",
+                categoria: "Espuma Limpiadora",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-limpiador-en-espuma-start-fresh-clarifying-foam-cleanser-skin-care-cosmetics-sk-sff-910344.jpg?v=1723531581&width=500",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-limpiador-en-espuma-start-fresh-clarifying-foam-cleanser-skin-care-cosmetics-sk-sff-111746.jpg?v=1723531597&width=500"
@@ -343,6 +349,7 @@ Con Beauty Creations Skin puedes complementar tu rutina del cuidado de la piel o
              {
                 id: 3,
                 nombre: "Beauty Creations Skin - Bálsamo Desmaquillante - So Balm Cleansing Balm",
+                categoria: "Desmaquillante",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-balsamo-desmaquillante-so-balm-cleansing-balm-skin-care-cosmetics-sk-sbb-324720.jpg?v=1723481722&width=500",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-balsamo-desmaquillante-so-balm-cleansing-balm-skin-care-cosmetics-sk-sbb-109079.jpg?v=1723481737&width=500",
@@ -357,6 +364,7 @@ Este desmaquillante ayudara a quitar hasta el maquillaje a prueba de agua, graci
              {
                 id: 4,
                 nombre: "Beauty Creations Skin - Gel Exfoliante - Adios Toxins",
+                categoria: "Exfoliante",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-gel-exfoliante-adios-toxins-skin-care-cosmetics-sk-atg-185641.webp?v=1723551260&width=500",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-gel-exfoliante-adios-toxins-skin-care-cosmetics-sk-atg-596635.jpg?v=1723551279&width=500",
@@ -372,6 +380,7 @@ Enamórate de nuestro gel exfoliante facial, que esta compuesto con los mejores 
              {
                 id: 5,
                 nombre: "Beauty Creations Skin - Toner Facial - Tone Setter Brightening Toner",
+                categoria: "Toners",
                 imagenes: [
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-toner-facial-tone-setter-brightening-facial-skin-care-cosmetics-sk-tst-563696.jpg?v=1723582447&width=500",
                     "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-skin-toner-facial-tone-setter-brightening-facial-skin-care-cosmetics-sk-tst-112590.jpg?v=1723582462&width=500",
@@ -389,6 +398,7 @@ Gracias a su formulación alta en vitamina A, C y E será tu mejor aleado si tu 
             {
                 id: 6,
                 nombre: "Tiras para poros nasales Get Outta Here",
+                categoria: "Tira poro",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/SKIN-STRIPS_1.jpg?v=1729867860&width=600",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/SKIN-STRIPS_2.jpg?v=1729867860&width=600",
@@ -426,6 +436,7 @@ Formulado con extractos calmantes de plantas.`,
             {
                 id: 7,
                 nombre: "Colección Sweet Dose Duo",
+                categoria: "Labios",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/cherry-sweet-dose-duo-beauty-creations-loset-3-155634.jpg?v=1744663689&width=600",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/cherry-sweet-dose-duo-beauty-creations-loset-3-953173.jpg?v=1744663689&width=600",
@@ -465,6 +476,7 @@ Nuestros dúos de cuidado labial Sweet Dose están diseñados para todas las eda
             {
                 id: 8,
                 nombre: "Esponjas limpiadoras Freshness Please",
+                categoria: "Esponjas",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/products/freshness-please-cleansing-sponges-bcskin-beauty-creations-sk-cs2-607683.jpg?v=1723046730&width=600",
                     "https://www.beautycreationscosmetics.com/cdn/shop/products/freshness-please-cleansing-sponges-bcskin-beauty-creations-sk-cs2-748848.jpg?v=1723046732&width=600",
@@ -494,15 +506,73 @@ Para todo tipo de piel`,
 
         ];
 
+        let productosActuales = [...productosSkincare];
+
         // --- 2. RENDERIZADO Y ORDENAMIENTO ---
         const gridContainer = document.getElementById('grid-productos');
         const sortSelect = document.getElementById('sort-select');
 
-        function renderizarProductos(lista = productosSkincare) {
+        // --- LÓGICA DE CATEGORÍAS AGREGADA ---
+        const categoriasContainer = document.getElementById('categorias-container');
+        const categoriasUnicas = ['Todos', ...new Set(productosSkincare.map(p => p.categoria).filter(Boolean))];
+
+        function inicializarCategorias() {
+            if(!categoriasContainer) return;
+            categoriasContainer.innerHTML = '';
+            
+            categoriasUnicas.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `
+                    px-5 py-2 rounded-full border border-gray-200 font-bebas text-sm tracking-wide 
+                    transition duration-300 hover:border-brand-rose hover:text-brand-rose 
+                    cat-filter-btn cursor-pointer
+                `;
+                btn.innerText = cat.toUpperCase();
+                
+                btn.onclick = () => {
+                    // Remover estilos activos
+                    document.querySelectorAll('.cat-filter-btn').forEach(b => {
+                        b.classList.remove('bg-brand-black', 'text-white', 'border-transparent');
+                        b.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+                    });
+                    
+                    // Activar el botón seleccionado
+                    btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+                    btn.classList.add('bg-brand-black', 'text-white', 'border-transparent');
+                    
+                    // Filtrar arreglo temporal
+                    if (cat === 'Todos') {
+                        productosActuales = [...productosSkincare];
+                    } else {
+                        productosActuales = productosSkincare.filter(p => p.categoria === cat);
+                    }
+                    
+                    // Ejecutar el filtro de "Ordenar Por" para refrescar el grid
+                    sortSelect.dispatchEvent(new Event('change'));
+                };
+
+                // Estilo inicial para "Todos"
+                if (cat === 'Todos') {
+                    btn.classList.add('bg-brand-black', 'text-white', 'border-transparent');
+                } else {
+                    btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+                }
+                
+                categoriasContainer.appendChild(btn);
+            });
+        }
+
+        function renderizarProductos(lista) {
             gridContainer.innerHTML = ''; 
             gridContainer.style.opacity = '0';
             
             setTimeout(() => {
+                if(lista.length === 0) {
+                     gridContainer.innerHTML = '<p class="col-span-full text-center text-gray-500 py-10 font-bebas text-xl tracking-wide">No se encontraron productos.</p>';
+                     gridContainer.style.opacity = '1';
+                     return;
+                }
+
                 lista.forEach(prod => {
                     const tagHTML = prod.tag 
                         ? `<div class="absolute top-2 left-2 bg-brand-rose text-white text-[9px] px-2 py-1 uppercase font-bold rounded shadow-sm z-10">${prod.tag}</div>` 
@@ -535,10 +605,9 @@ Para todo tipo de piel`,
 
         sortSelect.addEventListener('change', (e) => {
             const criterio = e.target.value;
-            let productosOrdenados = [...productosSkincare]; 
+            let productosOrdenados = [...productosActuales]; 
             if (criterio === 'az') productosOrdenados.sort((a, b) => a.nombre.localeCompare(b.nombre));
             else if (criterio === 'za') productosOrdenados.sort((a, b) => b.nombre.localeCompare(a.nombre));
-            // Ordenar por precio eliminado
             renderizarProductos(productosOrdenados);
         });
 
@@ -660,7 +729,8 @@ Para todo tipo de piel`,
         });
 
         // Inicializar
-        renderizarProductos();
+        inicializarCategorias();
+        renderizarProductos(productosActuales);
 
         // --- Scripts Interfaz ---
         const btn = document.getElementById('mobile-btn');
