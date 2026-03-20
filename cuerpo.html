@@ -209,8 +209,12 @@
                     </div>
                 </div>
             </div>
+
+            <div id="categorias-container" class="flex flex-wrap justify-center gap-3 mb-10 px-4 animate-fade-in">
+            </div>
+
             <div id="grid-productos" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
-                </div>
+            </div>
 
         </div>
     </main>
@@ -312,11 +316,12 @@
     </footer>
 
     <script>
-        // --- 1. BASE DE DATOS DE PRODUCTOS (CUERPO) ---
+        // --- 1. BASE DE DATOS DE PRODUCTOS (CUERPO) CON CATEGORÍAS ---
         const productosCuerpo = [
            {
                 id: 1,
                 nombre: "Bratz Forever Shimmerin Hair & Body Shimmer",
+                categoria: "Brillos Corporales",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/Hair_and_Body_Glitter_Spray_1.jpg?v=1731038043&width=500",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/HAIR-_-BODY-GLITTER-SPRAY.1.jpg?v=1730415385&width=500",
@@ -345,8 +350,9 @@ SIN PARABENOS`,
             {
                 id: 2,
                 nombre: "The Powerpuff Girls El Dorado Hair & Body Glitter Spray",
+                categoria: "Brillos Corporales",
                 imagenes: [
-                     "https://lucesbeautiful.com/wp-content/uploads/2025/08/Diseno-sin-titulo-24.jpg.webp",
+                    "https://lucesbeautiful.com/wp-content/uploads/2025/08/Diseno-sin-titulo-24.jpg.webp",
                     "https://lucesbeautiful.com/wp-content/uploads/2025/08/Diseno-sin-titulo-25.jpg.webp",
                     "https://lucesbeautiful.com/wp-content/uploads/2025/08/Diseno-sin-titulo-26.jpg.webp"
                 ],
@@ -367,6 +373,7 @@ Entre sus principales cualidades, este spray también es: libre de crueldad anim
             {
                 id: 3,
                 nombre: "Sweet Dose Double Layer Lotion",
+                categoria: "Lociones",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/Body_Lotion.jpg?v=1740703163&width=500",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/MELON-TIMES-LOTION.jpg?v=1740703163&width=500",
@@ -401,6 +408,7 @@ Paraben-free`,
             {
                 id: 4,
                 nombre: "Loción corporal Better Together de My Little Pony",
+                categoria: "Lociones",
                 imagenes: [
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/beauty-creations-x-my-little-pony-better-together-body-lotion-beauty-creations-mlp-bl-406436.jpg?v=1768579190&width=500",
                     "https://www.beautycreationscosmetics.com/cdn/shop/files/beauty-creations-x-my-little-pony-better-together-body-lotion-beauty-creations-mlp-bl-879351.jpg?v=1768579190&width=500",
@@ -417,15 +425,73 @@ Paraben-free`,
             
         ];
 
+        let productosActuales = [...productosCuerpo];
+
         // --- 2. RENDERIZADO Y ORDENAMIENTO ---
         const gridContainer = document.getElementById('grid-productos');
         const sortSelect = document.getElementById('sort-select');
 
-        function renderizarProductos(lista = productosCuerpo) {
+        // --- LÓGICA DE CATEGORÍAS AGREGADA ---
+        const categoriasContainer = document.getElementById('categorias-container');
+        const categoriasUnicas = ['Todos', ...new Set(productosCuerpo.map(p => p.categoria).filter(Boolean))];
+
+        function inicializarCategorias() {
+            if(!categoriasContainer) return;
+            categoriasContainer.innerHTML = '';
+            
+            categoriasUnicas.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `
+                    px-5 py-2 rounded-full border border-gray-200 font-bebas text-sm tracking-wide 
+                    transition duration-300 hover:border-brand-rose hover:text-brand-rose 
+                    cat-filter-btn cursor-pointer
+                `;
+                btn.innerText = cat.toUpperCase();
+                
+                btn.onclick = () => {
+                    // Remover estilos activos
+                    document.querySelectorAll('.cat-filter-btn').forEach(b => {
+                        b.classList.remove('bg-brand-black', 'text-white', 'border-transparent');
+                        b.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+                    });
+                    
+                    // Activar el botón seleccionado
+                    btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+                    btn.classList.add('bg-brand-black', 'text-white', 'border-transparent');
+                    
+                    // Filtrar arreglo temporal
+                    if (cat === 'Todos') {
+                        productosActuales = [...productosCuerpo];
+                    } else {
+                        productosActuales = productosCuerpo.filter(p => p.categoria === cat);
+                    }
+                    
+                    // Ejecutar el filtro de "Ordenar Por" para refrescar el grid
+                    sortSelect.dispatchEvent(new Event('change'));
+                };
+
+                // Estilo inicial para "Todos"
+                if (cat === 'Todos') {
+                    btn.classList.add('bg-brand-black', 'text-white', 'border-transparent');
+                } else {
+                    btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+                }
+                
+                categoriasContainer.appendChild(btn);
+            });
+        }
+
+        function renderizarProductos(lista) {
             gridContainer.innerHTML = ''; 
             gridContainer.style.opacity = '0';
             
             setTimeout(() => {
+                if(lista.length === 0) {
+                     gridContainer.innerHTML = '<p class="col-span-full text-center text-gray-500 py-10 font-bebas text-xl tracking-wide">No se encontraron productos.</p>';
+                     gridContainer.style.opacity = '1';
+                     return;
+                }
+
                 lista.forEach(prod => {
                     const tagHTML = prod.tag 
                         ? `<div class="absolute top-2 left-2 bg-brand-rose text-white text-[9px] px-2 py-1 uppercase font-bold rounded shadow-sm z-10">${prod.tag}</div>` 
@@ -458,10 +524,9 @@ Paraben-free`,
 
         sortSelect.addEventListener('change', (e) => {
             const criterio = e.target.value;
-            let productosOrdenados = [...productosCuerpo]; 
+            let productosOrdenados = [...productosActuales]; 
             if (criterio === 'az') productosOrdenados.sort((a, b) => a.nombre.localeCompare(b.nombre));
             else if (criterio === 'za') productosOrdenados.sort((a, b) => b.nombre.localeCompare(a.nombre));
-            // Ordenar por precio eliminado
             renderizarProductos(productosOrdenados);
         });
 
@@ -583,7 +648,8 @@ Paraben-free`,
         });
 
         // Inicializar
-        renderizarProductos();
+        inicializarCategorias();
+        renderizarProductos(productosActuales);
 
         // --- Scripts Interfaz ---
         const btn = document.getElementById('mobile-btn');
@@ -611,5 +677,4 @@ Paraben-free`,
         });
     </script>
 </body>
-
 </html>
