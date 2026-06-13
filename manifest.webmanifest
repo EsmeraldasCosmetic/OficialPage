@@ -1,0 +1,13 @@
+{
+  "name": "Esmeralda's Cosmetic",
+  "short_name": "Esmeralda's",
+  "description": "Catálogo oficial de maquillaje, skin care, accesorios y colaboraciones.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#c58c85",
+  "icons": [
+    { "src": "Icono.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "Logo.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

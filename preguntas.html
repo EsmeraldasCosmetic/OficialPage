@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#c58c85">
+    <meta name="description" content="Preguntas frecuentes de Esmeralda's Cosmetic: cómo comprar, envíos, tonos, disponibilidad y pedidos por WhatsApp.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Esmeralda's Cosmetic">
+    <meta property="og:image" content="Logo.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="Icono.png" type="image/png">
+    <title>Preguntas Frecuentes | Esmeralda's Cosmetic</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'bebas': ['"Bebas Neue"', 'sans-serif'],
+                        'sans': ['"Montserrat"', 'sans-serif'],
+                        'script': ['"Playlist Script"', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            rose: '#c58c85',
+                            roseDark: '#a66e68',
+                            pale: '#fdf2f4',
+                            black: '#151515',
+                            whatsapp: '#25D366',
+                            footerPink: '#f9c5dc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Playlist Script';
+            src: url('assets/fonts/PlaylistScript.otf') format('opentype'),
+                 url('Playlist Script.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        body { background-color: #ffffff; color: #151515; -webkit-tap-highlight-color: transparent; }
+        .logo-text { font-size: 1.8rem; }
+        @media (min-width: 768px) { .logo-text { font-size: 3rem; } }
+        .nav-hidden { transform: translateY(-100%); }
+        #main-header { transition: transform 0.4s ease-in-out; }
+    </style>
+    <link rel="stylesheet" href="assets/css/tienda-oficial.css">
+</head>
+<body class="flex flex-col min-h-screen">
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-white shadow-sm h-[110px] md:h-[130px]">
+        <div class="bg-brand-black text-white py-2 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase flex justify-center items-center gap-2 h-[30px]">
+            <span>Compra asistida por WhatsApp - Envíos coordinados</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="GT" class="h-3 w-auto">
+        </div>
+        <nav class="bg-white/95 backdrop-blur-md border-b border-gray-100 relative z-50 h-[80px] md:h-[100px] flex items-center">
+            <div class="w-full max-w-7xl mx-auto px-4 md:px-6">
+                <div class="flex items-center justify-between">
+                    <button id="mobile-btn" class="md:hidden text-2xl text-brand-black p-2 focus:outline-none"><i class="fas fa-bars"></i></button>
+                    <a href="index.html" class="flex-shrink-0 text-center flex-grow md:flex-grow-0 md:text-left"><h3 class="font-script text-brand-rose logo-text leading-none">Esmeralda's Cosmetic</h3></a>
+                    <div class="hidden md:flex items-center space-x-6 lg:space-x-8 mx-auto">
+                        <a href="index.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">INICIO</a>
+                        <a href="rostro.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ROSTRO</a>
+                        <a href="ojos.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">OJOS</a>
+                        <a href="labios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">LABIOS</a>
+                        <a href="nuestrahistoria.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">NOSOTROS</a>
+                        <a href="contacto.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">CONTACTO</a>
+                    </div>
+                    <div class="md:hidden w-8"></div>
+                </div>
+            </div>
+            <div id="mobile-text-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 top-full shadow-lg z-40">
+                <div class="flex flex-col p-6 space-y-4 font-bebas text-xl tracking-wide text-brand-black">
+                    <a href="index.html" class="border-b border-gray-50 pb-2">Inicio</a>
+                    <a href="rostro.html" class="border-b border-gray-50 pb-2">Rostro</a>
+                    <a href="ojos.html" class="border-b border-gray-50 pb-2">Ojos</a>
+                    <a href="labios.html" class="border-b border-gray-50 pb-2">Labios</a>
+                    <a href="nuestrahistoria.html" class="border-b border-gray-50 pb-2">Nuestra Historia</a>
+                    <a href="contacto.html" class="pb-2">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="h-[110px] md:h-[130px]"></div>
+
+    <main>
+        <section class="bg-brand-pale py-16 md:py-24 px-4 text-center">
+            <p class="text-xs font-bold tracking-[0.35em] text-brand-rose uppercase mb-3">Guía de compra</p>
+            <h1 class="font-bebas text-5xl md:text-7xl text-brand-black tracking-wide leading-none">Preguntas frecuentes</h1>
+            <p class="font-sans text-sm text-gray-500 max-w-2xl mx-auto mt-4 leading-relaxed">Aquí reunimos lo esencial para comprar con confianza. La página funciona como catálogo oficial y los pedidos se confirman por WhatsApp.</p>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
+            <div class="ec-policy-grid">
+                <article class="ec-policy-card"><i class="fas fa-bag-shopping"></i><h3>¿Cómo compro?</h3><p>Abre el producto, selecciona tono o variante cuando aplique, agrégalo a tu pedido y envíalo por WhatsApp. Confirmamos disponibilidad antes de cerrar la compra.</p></article>
+                <article class="ec-policy-card"><i class="fas fa-truck"></i><h3>¿Hacen envíos?</h3><p>Los envíos se coordinan por WhatsApp según ubicación. La entrega, costo y tiempo se confirman antes de finalizar el pedido.</p></article>
+                <article class="ec-policy-card"><i class="fas fa-palette"></i><h3>¿Me ayudan con tonos?</h3><p>Sí. Puedes escribirnos para elegir base, corrector, labial, rubor, sombras o sets según tu necesidad, estilo y acabado favorito.</p></article>
+                <article class="ec-policy-card"><i class="fas fa-box-open"></i><h3>¿Todo está disponible?</h3><p>El catálogo muestra productos publicados, pero la disponibilidad puede cambiar. Por eso cada pedido se confirma manualmente por WhatsApp.</p></article>
+                <article class="ec-policy-card"><i class="fas fa-gift"></i><h3>¿Puedo pedir regalos?</h3><p>Sí. Puedes armar un pedido con varios productos o pedir asesoría para un regalo según presupuesto, ocasión y gustos de la persona.</p></article>
+                <article class="ec-policy-card"><i class="fas fa-shield-heart"></i><h3>¿Es compra segura?</h3><p>La página no solicita datos de tarjeta ni contraseñas. La compra se conversa directamente por WhatsApp con Esmeralda's Cosmetic.</p></article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-brand-footerPink text-brand-black py-16 px-6 mt-auto">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-1"><h3 class="font-script text-4xl mb-4">Esmeralda's Cosmetic</h3><p class="text-sm opacity-70 leading-relaxed">Maquillaje, skin care, accesorios y colaboraciones.</p></div>
+                <div><h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Categorías</h4><ul class="space-y-3 text-sm"><li><a href="rostro.html" class="hover:underline">Rostro</a></li><li><a href="ojos.html" class="hover:underline">Ojos</a></li><li><a href="labios.html" class="hover:underline">Labios</a></li><li><a href="skincare.html" class="hover:underline">Skin Care</a></li></ul></div>
+                <div><h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Ayuda</h4><ul class="space-y-3 text-sm"><li><a href="preguntas.html" class="hover:underline">Preguntas frecuentes</a></li><li><a href="contacto.html" class="hover:underline">Contacto</a></li><li><a href="nuestrahistoria.html" class="hover:underline">Nuestra historia</a></li></ul></div>
+                <div><h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Contacto rápido</h4><a href="https://wa.me/50235739640" class="w-full bg-black text-white py-3 px-4 text-xs font-bold uppercase tracking-widest text-center hover:opacity-80 transition inline-block">WhatsApp</a></div>
+            </div>
+            <div class="border-t border-black/10 pt-8 text-center text-xs opacity-60"><p>&copy; 2026 Esmeralda's Cosmetic. Todos los derechos reservados.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('mobile-btn');
+        const textMenu = document.getElementById('mobile-text-menu');
+        if (btn) btn.addEventListener('click', () => { textMenu.classList.toggle('hidden'); const icon = btn.querySelector('i'); icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times'); });
+        let lastScrollTop = 0;
+        const mainHeader = document.getElementById('main-header');
+        window.addEventListener('scroll', function() { let scrollTop = window.pageYOffset || document.documentElement.scrollTop; if (scrollTop > lastScrollTop && scrollTop > 100) { mainHeader.classList.add('nav-hidden'); if(textMenu) textMenu.classList.add('hidden'); } else { mainHeader.classList.remove('nav-hidden'); } lastScrollTop = scrollTop; });
+    </script>
+    <script src="assets/js/tienda-oficial.js"></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="Icono.png" type="image/png">
+        <meta name="theme-color" content="#c58c85">
+    <meta name="description" content="Esmeralda's Cosmetic: catálogo de maquillaje, skin care, accesorios y colaboraciones. Compra asistida por WhatsApp en Guatemala.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Esmeralda's Cosmetic">
+    <meta property="og:image" content="Logo.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <title>Agregar Producto | Esmeralda's Cosmetic</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'bebas': ['"Bebas Neue"', 'sans-serif'],
+                        'sans': ['"Montserrat"', 'sans-serif'],
+                        'script': ['"Playlist Script"', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            rose: '#c58c85',
+                            roseDark: '#a66e68',
+                            pale: '#fdf2f4',
+                            black: '#151515',
+                            footerPink: '#f9c5dc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @font-face {
+            font-family: 'Playlist Script';
+            src: url('assets/fonts/PlaylistScript.otf') format('opentype'),
+                 url('Playlist Script.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        body { background-color: #ffffff; color: #151515; -webkit-tap-highlight-color: transparent; }
+        .logo-text { font-size: 1.8rem; }
+        @media (min-width: 768px) { .logo-text { font-size: 3rem; } }
+        textarea, input, select { outline: none; }
+    </style>
+    <link rel="stylesheet" href="assets/css/tienda-oficial.css">
+</head>
+<body class="min-h-screen bg-white font-sans">
+    <header class="bg-white border-b border-gray-100 shadow-sm">
+        <div class="bg-brand-black text-white py-2 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase">
+            Herramienta privada para generar productos
+        </div>
+        <nav class="max-w-7xl mx-auto px-4 md:px-6 h-[86px] flex items-center justify-between">
+            <a href="index.html" class="font-script text-brand-rose logo-text leading-none">Esmeralda's Cosmetic</a>
+            <a href="index.html" class="font-bebas text-xl tracking-wide hover:text-brand-rose transition">Volver</a>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-16">
+        <div class="text-center mb-10">
+            <p class="text-xs font-bold tracking-[0.35em] text-brand-rose uppercase mb-2">Ruta privada</p>
+            <h1 class="font-bebas text-5xl md:text-7xl tracking-wide text-brand-black">Agregar producto</h1>
+            <p class="text-sm text-gray-500 max-w-2xl mx-auto mt-3">
+                Esta página no usa base de datos. Te genera el bloque listo para pegar en el archivo JS de cada sección, por ejemplo <strong>assets/js/productos/rostro.js</strong>.
+            </p>
+        </div>
+
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <form id="product-form" class="bg-brand-pale/60 border border-brand-rose/20 rounded-2xl p-5 md:p-8 shadow-sm space-y-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <label class="block">
+                        <span class="font-bebas text-xl tracking-wide">Categoría principal</span>
+                        <select id="categoriaPrincipal" class="mt-1 w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm">
+                            <option value="rostro">Rostro</option>
+                            <option value="ojos">Ojos</option>
+                            <option value="labios">Labios</option>
+                            <option value="skincare">Skin Care</option>
+                            <option value="cuerpo">Cuerpo</option>
+                            <option value="accesorios">Accesorios</option>
+                            <option value="collabs">Collabs</option>
+                        </select>
+                    </label>
+                    <label class="block">
+                        <span class="font-bebas text-xl tracking-wide">ID sugerido</span>
+                        <input id="idProducto" type="number" class="mt-1 w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm">
+                    </label>
+                </div>
+
+                <label class="block">
+                    <span class="font-bebas text-xl tracking-wide">Nombre del producto</span>
+                    <input id="nombre" type="text" placeholder="Ej. Paleta de sombras..." class="mt-1 w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm">
+                </label>
+
+                <label class="block">
+                    <span class="font-bebas text-xl tracking-wide">Marca</span>
+                    <input id="marca" type="text" placeholder="Ej. Beauty Creations, Prosa, YeriMua x Beauty Creations..." class="mt-1 w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm">
+                    <span class="text-xs text-gray-500">Si lo dejas vacío, la tienda intentará detectarla desde el nombre.</span>
+                </label>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <label class="block">
+                        <span class="font-bebas text-xl tracking-wide">Subcategoría</span>
+                        <input id="categoria" type="text" placeholder="Ej. Paleta de sombras" class="mt-1 w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm">
+                    </label>
+                    <label class="block">
+                        <span class="font-bebas text-xl tracking-wide">Etiqueta opcional</span>
+                        <input id="tag" type="text" placeholder="Ej. Nuevo, Best Seller" class="mt-1 w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm">
+                    </label>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <label class="block">
+                        <span class="font-bebas text-xl tracking-wide">Precio opcional</span>
+                        <input id="precio" type="number" step="0.01" placeholder="Ej. 125" class="mt-1 w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm">
+                        <span class="text-xs text-gray-500">Si lo dejas vacío, el producto dirá Precio pendiente.</span>
+                    </label>
+                    <label class="block">
+                        <span class="font-bebas text-xl tracking-wide">Estado opcional</span>
+                        <select id="estado" class="mt-1 w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm">
+                            <option value="">Normal</option>
+                            <option value="Disponible">Disponible</option>
+                            <option value="Pocas unidades">Pocas unidades</option>
+                            <option value="Agotado temporalmente">Agotado temporalmente</option>
+                            <option value="Preventa">Preventa</option>
+                        </select>
+                    </label>
+                    <label class="block md:col-span-2 bg-white border border-gray-100 rounded-2xl px-4 py-4">
+                        <span class="font-bebas text-xl tracking-wide">Colaboración</span>
+                        <span class="mt-2 flex items-center gap-3 text-sm text-gray-600">
+                            <input id="colaboracion" type="checkbox" class="w-5 h-5 accent-brand-rose">
+                            Mostrar también este producto en la sección Collabs
+                        </span>
+                        <span class="text-xs text-gray-500">Esto no es una etiqueta visual. Es una propiedad de organización.</span>
+                    </label>
+                </div>
+
+                <label class="block">
+                    <span class="font-bebas text-xl tracking-wide">Fecha de agregado</span>
+                    <input id="fechaAgregado" type="date" class="mt-1 w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm">
+                    <span class="text-xs text-gray-500">El inicio usa esta fecha para mostrar automáticamente los productos más nuevos.</span>
+                </label>
+
+                <label class="block">
+                    <span class="font-bebas text-xl tracking-wide">Imágenes</span>
+                    <textarea id="imagenes" rows="4" placeholder="Pega una imagen por línea. Puede ser ruta local img/... o URL https://..." class="mt-1 w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm"></textarea>
+                </label>
+
+                <label class="block">
+                    <span class="font-bebas text-xl tracking-wide">Descripción</span>
+                    <textarea id="descripcion" rows="5" placeholder="Descripción del producto..." class="mt-1 w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm"></textarea>
+                </label>
+
+                <label class="block">
+                    <span class="font-bebas text-xl tracking-wide">Tonos o variantes opcionales</span>
+                    <textarea id="tonos" rows="4" placeholder="Uno por línea. Ejemplos:&#10;Rosa | #ffb6c1 | img/rostro/producto/rosa.webp&#10;Tono 01&#10;Set completo" class="mt-1 w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm"></textarea>
+                    <span class="text-xs text-gray-500">Puedes escribir solo el nombre, nombre | color HEX, o nombre | color HEX | imagen del tono.</span>
+                </label>
+
+                <div class="flex flex-col md:flex-row gap-3">
+                    <button type="button" id="generar" class="flex-1 bg-brand-black text-white py-4 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-brand-rose transition">
+                        Generar código
+                    </button>
+                    <button type="reset" class="md:w-40 border border-brand-black py-4 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-brand-black hover:text-white transition">
+                        Limpiar
+                    </button>
+                </div>
+            </form>
+
+            <aside class="space-y-5">
+                <div class="bg-white border border-gray-100 rounded-2xl p-5 md:p-8 shadow-sm">
+                    <h2 class="font-bebas text-3xl tracking-wide mb-2">Vista previa</h2>
+                    <div class="grid grid-cols-[120px,1fr] gap-4 items-start">
+                        <div class="aspect-[4/5] bg-gray-100 rounded-xl overflow-hidden">
+                            <img id="preview-img" src="Logo.png" alt="Vista previa" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <p id="preview-cat" class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Categoría</p>
+                            <h3 id="preview-name" class="font-bebas text-2xl leading-none">Nombre del producto</h3>
+                            <p id="preview-desc" class="text-xs text-gray-500 mt-2 line-clamp-5">Aquí aparecerá la descripción.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-black text-white rounded-2xl p-5 md:p-8 shadow-sm">
+                    <div class="flex items-center justify-between gap-4 mb-3">
+                        <h2 class="font-bebas text-3xl tracking-wide">Código listo</h2>
+                        <button id="copiar" class="bg-white text-brand-black px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brand-rose hover:text-white transition">Copiar</button>
+                    </div>
+                    <p class="text-xs text-white/60 mb-4">Pega este bloque dentro del arreglo de la sección elegida, antes del cierre <strong>];</strong>. Abajo te indica el archivo exacto.</p>
+                    <textarea id="resultado" rows="18" readonly class="w-full bg-white/10 border border-white/10 rounded-xl p-4 text-xs font-mono text-white"></textarea>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <script src="assets/js/productos/core.js"></script>
+    <script src="assets/js/productos/rostro.js"></script>
+    <script src="assets/js/productos/ojos.js"></script>
+    <script src="assets/js/productos/labios.js"></script>
+    <script src="assets/js/productos/skincare.js"></script>
+    <script src="assets/js/productos/cuerpo.js"></script>
+    <script src="assets/js/productos/accesorios.js"></script>
+    <script src="assets/js/productos/collabs.js"></script>
+    <script>
+        const categoriaPrincipal = document.getElementById('categoriaPrincipal');
+        const idProducto = document.getElementById('idProducto');
+        const nombre = document.getElementById('nombre');
+        const marca = document.getElementById('marca');
+        const categoria = document.getElementById('categoria');
+        const tag = document.getElementById('tag');
+        const precio = document.getElementById('precio');
+        const estado = document.getElementById('estado');
+        const colaboracion = document.getElementById('colaboracion');
+        const fechaAgregado = document.getElementById('fechaAgregado');
+        const imagenes = document.getElementById('imagenes');
+        const descripcion = document.getElementById('descripcion');
+        const tonos = document.getElementById('tonos');
+        const resultado = document.getElementById('resultado');
+
+        const previewImg = document.getElementById('preview-img');
+        const previewCat = document.getElementById('preview-cat');
+        const previewName = document.getElementById('preview-name');
+        const previewDesc = document.getElementById('preview-desc');
+
+        function escaparTemplate(texto) {
+            return String(texto || '').replace(/`/g, '\\`').replace(/\$\{/g, '\\${');
+        }
+
+        function archivoDestino() {
+            return `assets/js/productos/${categoriaPrincipal.value}.js`;
+        }
+
+        function siguienteId() {
+            const lista = (window.EC_PRODUCTS && window.EC_PRODUCTS[categoriaPrincipal.value]) || [];
+            const ids = lista.map(p => Number(p.id)).filter(n => !Number.isNaN(n));
+            idProducto.value = ids.length ? Math.max(...ids) + 1 : 1;
+        }
+
+        function obtenerImagenes() {
+            return imagenes.value.split('\n').map(x => x.trim()).filter(Boolean);
+        }
+
+        function obtenerTonos() {
+            return tonos.value.split('\n').map(linea => linea.trim()).filter(Boolean).map(linea => {
+                const partes = linea.split('|').map(x => x.trim()).filter(Boolean);
+                const tono = { nombre: partes[0] };
+                if (partes[1]) tono.hex = partes[1];
+                if (partes[2]) tono.imagen = partes[2];
+                return tono;
+            });
+        }
+
+        function generar() {
+            const imgs = obtenerImagenes();
+            const variantes = obtenerTonos();
+            const data = {
+                id: Number(idProducto.value || 1),
+                nombre: nombre.value.trim() || 'Nombre del producto',
+                categoria: categoria.value.trim() || 'General',
+                imagenes: imgs.length ? imgs : ['Logo.png'],
+                descripcion: descripcion.value.trim() || 'Descripción del producto.'
+            };
+            if (marca.value.trim()) data.marca = marca.value.trim();
+            if (tag.value.trim()) data.tag = tag.value.trim();
+            if (precio.value.trim()) data.precio = Number(precio.value.trim());
+            if (estado.value.trim()) data.estado = estado.value.trim();
+            if (colaboracion && colaboracion.checked) data.colaboracion = true;
+            if (fechaAgregado.value.trim()) data.fechaAgregado = fechaAgregado.value.trim();
+            if (variantes.length) data.tonos = variantes;
+
+            let codigo = '            {\n';
+            codigo += `                id: ${data.id},\n`;
+            codigo += `                nombre: ${JSON.stringify(data.nombre)},\n`;
+            codigo += `                categoria: ${JSON.stringify(data.categoria)},\n`;
+            if (data.marca) codigo += `                marca: ${JSON.stringify(data.marca)},\n`;
+            if (data.tag) codigo += `                tag: ${JSON.stringify(data.tag)},\n`;
+            if (data.precio) codigo += `                precio: ${data.precio},\n`;
+            if (data.estado) codigo += `                estado: ${JSON.stringify(data.estado)},\n`;
+            if (data.colaboracion) codigo += `                colaboracion: true,\n`;
+            if (data.fechaAgregado) codigo += `                fechaAgregado: ${JSON.stringify(data.fechaAgregado)},\n`; 
+            codigo += '                imagenes: [\n';
+            data.imagenes.forEach((img, i) => {
+                codigo += `                    ${JSON.stringify(img)}${i < data.imagenes.length - 1 ? ',' : ''}\n`;
+            });
+            codigo += '                ],\n';
+            codigo += `                descripcion: \`${escaparTemplate(data.descripcion)}\``;
+            if (data.tonos) {
+                codigo += ',\n                tonos: [\n';
+                data.tonos.forEach((tono, i) => {
+                    const propsArray = [`nombre: ${JSON.stringify(tono.nombre)}`];
+                    if (tono.hex) propsArray.push(`hex: ${JSON.stringify(tono.hex)}`);
+                    if (tono.imagen) propsArray.push(`imagen: ${JSON.stringify(tono.imagen)}`);
+                    codigo += `                    { ${propsArray.join(', ')} }${i < data.tonos.length - 1 ? ',' : ''}\n`;
+                });
+                codigo += '                ]\n';
+            } else {
+                codigo += '\n';
+            }
+            codigo += '            },';
+            resultado.value = `// Archivo destino: ${archivoDestino()}\n` + codigo;
+            actualizarPreview();
+        }
+
+        function actualizarPreview() {
+            const imgs = obtenerImagenes();
+            previewImg.src = imgs[0] || 'Logo.png';
+            previewCat.innerText = categoria.value.trim() || categoriaPrincipal.value;
+            previewName.innerText = nombre.value.trim() || 'Nombre del producto';
+            const marcaTxt = marca && marca.value.trim() ? `${marca.value.trim()} · ` : '';
+            const precioTxt = precio && precio.value.trim() ? `Q${Number(precio.value).toFixed(2)} · ` : '';
+            const collabTxt = colaboracion && colaboracion.checked ? 'Colaboración · ' : '';
+            previewDesc.innerText = marcaTxt + precioTxt + collabTxt + (descripcion.value.trim() || 'Aquí aparecerá la descripción.');
+        }
+
+        document.getElementById('generar').addEventListener('click', generar);
+        document.getElementById('copiar').addEventListener('click', async () => {
+            if (!resultado.value.trim()) generar();
+            await navigator.clipboard.writeText(resultado.value);
+            document.getElementById('copiar').innerText = 'Copiado';
+            setTimeout(() => document.getElementById('copiar').innerText = 'Copiar', 1200);
+        });
+
+        [nombre, marca, categoria, imagenes, descripcion, precio, fechaAgregado].forEach(el => el.addEventListener('input', actualizarPreview));
+        estado.addEventListener('change', generar);
+        colaboracion.addEventListener('change', generar);
+        categoriaPrincipal.addEventListener('change', () => { siguienteId(); generar(); });
+        fechaAgregado.value = new Date().toISOString().slice(0, 10);
+        if (!tag.value.trim()) tag.value = 'Nuevo';
+        siguienteId();
+        generar();
+    </script>
+</body>
+</html>

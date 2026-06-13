@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="icon" href="Icono.png" type="image/png">
+        <meta name="theme-color" content="#c58c85">
+    <meta name="description" content="Esmeralda's Cosmetic: catálogo de maquillaje, skin care, accesorios y colaboraciones. Compra asistida por WhatsApp en Guatemala.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Esmeralda's Cosmetic">
+    <meta property="og:image" content="Logo.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <title>Inicio | Esmeralda's Cosmetic</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'bebas': ['"Bebas Neue"', 'sans-serif'],
+                        'sans': ['"Montserrat"', 'sans-serif'],
+                        'script': ['"Playlist Script"', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            rose: '#c58c85',       
+                            roseDark: '#a66e68',   
+                            pale: '#fdf2f4',       
+                            black: '#151515',      
+                            whatsapp: '#25D366',
+                            footerPink: '#f9c5dc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Playlist Script';
+            src: url('assets/fonts/PlaylistScript.otf') format('opentype'),
+                 url('Playlist Script.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        body { background-color: #ffffff; color: #151515; -webkit-tap-highlight-color: transparent; }
+        
+        .logo-text { font-size: 1.8rem; }
+        @media (min-width: 768px) { .logo-text { font-size: 3rem; } }
+
+        .nav-hidden { transform: translateY(-100%); }
+        #main-header { transition: transform 0.4s ease-in-out; }
+
+        /* Estilos para el scroll oculto pero funcional */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Cursor de "agarrar" para la tira en PC */
+        .grab-cursor { cursor: grab; }
+        .grab-cursor:active { cursor: grabbing; }
+
+        /* --- ANIMACIÓN MARCAS INFINITA --- */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Se mueve la mitad (un set completo) */
+        }
+        .animate-scroll {
+            animation: scroll 20s linear infinite;
+        }
+
+        /* --- Estilos del Modal (Copiados de labios.html) --- */
+        #product-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #product-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+        #product-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
+        
+        .modal-content-enter { transform: scale(0.95); opacity: 0; transition: all 0.3s ease-out; }
+        .visible-modal .modal-content-enter { transform: scale(1); opacity: 1; }
+
+        .tono-btn.selected {
+            border-color: #c58c85; 
+            background-color: #fdf2f4;
+            color: #151515;
+            font-weight: 700;
+        }
+        .thumb-img.selected {
+            border: 2px solid #c58c85;
+            opacity: 1;
+        }
+        .thumb-img {
+            opacity: 0.6;
+            transition: all 0.2s;
+        }
+
+        /* Estilos para asegurar que los embeds de TikTok se vean bien en la cuadrícula */
+        .tiktok-embed {
+            margin: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+    <link rel="stylesheet" href="assets/css/tienda-oficial.css">
+</head>
+<body class="flex flex-col min-h-screen"> 
+
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-white shadow-sm h-[110px] md:h-[130px]">
+        <div class="bg-brand-black text-white py-2 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase flex justify-center items-center gap-2 h-[30px]">
+            <span>Catálogo Exclusivo - Envíos a todo el país</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="GT" class="h-3 w-auto">
+        </div>
+
+        <nav class="bg-white/95 backdrop-blur-md border-b border-gray-100 relative z-50 h-[80px] md:h-[100px] flex items-center">
+            <div class="w-full max-w-7xl mx-auto px-4 md:px-6">
+                <div class="flex items-center justify-between">
+                    
+                    <button id="mobile-btn" class="md:hidden text-2xl text-brand-black p-2 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <a href="index.html" class="flex-shrink-0 text-center flex-grow md:flex-grow-0 md:text-left">
+                        <h3 class="font-script text-brand-rose logo-text leading-none">
+                            Esmeralda's Cosmetic
+                        </h3>
+                    </a>
+
+                    <div class="hidden md:flex items-center space-x-6 lg:space-x-8 mx-auto">
+                        <a href="rostro.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ROSTRO</a>
+                        <a href="ojos.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">OJOS</a>
+                        <a href="labios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">LABIOS</a>
+                        <a href="skincare.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">SKIN CARE</a>
+                        <a href="cuerpo.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">CUERPO</a>
+                        <a href="accesorios.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">ACCESORIOS</a>
+                        <a href="collabs.html" class="font-bebas text-xl text-brand-black hover:text-brand-rose tracking-wide">COLLABS</a>
+                    </div>
+
+                    <div class="md:hidden w-8"></div>
+                </div>
+            </div>
+
+            <div id="mobile-text-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 top-full shadow-lg z-40">
+                <div class="flex flex-col p-6 space-y-4 font-bebas text-xl tracking-wide text-brand-black">
+                    <a href="index.html" class="border-b border-gray-50 pb-2">Inicio</a>
+                    <a href="nuestrahistoria.html" class="border-b border-gray-50 pb-2">Nuestra Historia</a>
+                    <a href="contacto.html" class="pb-2">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="md:hidden bg-white border-b border-gray-200 py-3 shadow-sm z-30 relative mt-[110px]">
+        <div id="drag-scroll" class="flex overflow-x-auto gap-5 px-4 scrollbar-hide snap-x snap-mandatory grab-cursor select-none">
+            
+            <a href="rostro.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n1.webp" alt="Rostro" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ROSTRO</span>
+            </a>
+
+            <a href="ojos.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n2.webp" alt="Ojos" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">OJOS</span>
+            </a>
+            
+            <a href="labios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n3.webp" alt="Labios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">LABIOS</span>
+            </a>
+
+            <a href="skincare.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n4.webp" alt="Skin Care" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black whitespace-nowrap">SKIN CARE</span>
+            </a>
+
+            <a href="cuerpo.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n5.webp" alt="Cuerpo" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">CUERPO</span>
+            </a>
+
+            <a href="accesorios.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n6.webp" alt="Accesorios" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">ACCESORIOS</span>
+            </a>
+
+            <a href="collabs.html" class="flex flex-col items-center min-w-[70px] snap-center draggable-item">
+                <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200 mb-1 pointer-events-none">
+                    <img src="n7.webp" alt="Collabs" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bebas text-sm tracking-wide text-brand-black">COLLABS</span>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="hidden md:block h-[130px]"></div>
+
+    <header class="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-brand-pale" id="simple-header">
+        
+        <style>
+            .fade-slide {
+                position: absolute; inset: 0; width: 100%; height: 100%;
+                opacity: 0; z-index: 0;
+                transition: opacity 1.5s ease-in-out; 
+            }
+            .fade-slide.active { opacity: 1; z-index: 10; }
+            .fade-slide img { width: 100%; height: 100%; object-fit: cover; }
+        </style>
+
+        <div class="fade-slide active">
+            <picture>
+                <source media="(max-width: 768px)" srcset="bannerm1.png">
+                <img src="banner1.png" alt="Banner Esmeralda 1">
+            </picture>
+        </div>
+
+        <div class="fade-slide">
+            <picture>
+                <source media="(max-width: 768px)" srcset="bannerm2.png">
+                <img src="banner2.png" alt="Banner Esmeralda 2">
+            </picture>
+        </div>
+
+        <div class="fade-slide">
+            <picture>
+                <source media="(max-width: 768px)" srcset="bannerm3.png">
+                <img src="banner3.png" alt="Banner Esmeralda 3">
+            </picture>
+        </div>
+
+        <div class="fade-slide">
+            <picture>
+                <source media="(max-width: 768px)" srcset="bannerm4.png">
+                <img src="banner4.png" alt="Banner Esmeralda 4">
+            </picture>
+        </div>
+
+        <script>
+            (function() {
+                const header = document.getElementById('simple-header');
+                if(!header) return;
+                const slides = header.querySelectorAll('.fade-slide');
+                if(slides.length === 0) return;
+                let current = 0;
+                const time = 5000; 
+
+                setInterval(() => {
+                    slides[current].classList.remove('active');
+                    current = (current + 1) % slides.length;
+                    slides[current].classList.add('active');
+                }, time);
+            })();
+        </script>
+    </header>
+
+    <section id="new" class="py-16 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-10">
+                <h2 class="font-bebas text-4xl md:text-5xl text-brand-black tracking-wide">LOS TOP DE ESMERALDA'S</h2>
+                <div class="w-16 h-1 bg-brand-rose mx-auto mt-3"></div>
+            </div>
+
+            <div id="grid-productos-top" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white border-t border-gray-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 mb-10 text-center">
+             <h2 class="font-bebas text-3xl md:text-4xl text-brand-black opacity-80">Nuestras Marcas</h2>
+             <div class="w-8 h-0.5 bg-brand-rose mx-auto mt-2 opacity-50"></div>
+        </div>
+        
+        <div class="relative w-full overflow-hidden py-4">
+            <div class="flex w-max animate-scroll hover:[animation-play-state:paused]"> 
+                
+                <div class="flex items-center gap-16 mx-8 shrink-0">
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca1.png" alt="Marca 1" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca2.png" alt="Marca 2" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca3.png" alt="Marca 3" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca4.png" alt="Marca 4" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca5.png" alt="Marca 5" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca6.png" alt="Marca 6" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-16 mx-8 shrink-0">
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca1.png" alt="Marca 1" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca2.png" alt="Marca 2" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca3.png" alt="Marca 3" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca4.png" alt="Marca 4" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca5.png" alt="Marca 5" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-32 h-20 flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300 transform hover:scale-110">
+                        <img src="marca6.png" alt="Marca 6" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tiktok-feed" class="py-16 md:py-20 bg-brand-pale/50 border-t border-gray-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            
+            <div class="text-center mb-12">
+                <i class="fab fa-tiktok text-4xl text-brand-black mb-3"></i>
+                <h2 class="font-bebas text-4xl md:text-5xl text-brand-black tracking-wide">Tendencias en TikTok</h2>
+                <p class="font-sans text-sm text-gray-600 mt-2 tracking-widest uppercase">@esmeraldascosmetic</p>
+                <div class="w-16 h-1 bg-brand-black mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 items-center justify-center">
+                
+                <div class="flex justify-center h-full aspect-[9/16] max-w-[300px] mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@esmeraldascosmetic/video/7616790562653457682" data-video-id="7616790562653457682" style="width: 100%; height: 100%;">
+                        <section></section>
+                    </blockquote>
+                </div>
+
+                <div class="flex justify-center h-full aspect-[9/16] max-w-[300px] mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@esmeraldascosmetic/video/7604946192597945618" data-video-id="7604946192597945618" style="width: 100%; height: 100%;">
+                        <section></section>
+                    </blockquote>
+                </div>
+
+                <div class="flex justify-center h-full aspect-[9/16] max-w-[300px] mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@esmeraldascosmetic/video/7602281239155887367" data-video-id="7602281239155887367" style="width: 100%; height: 100%;">
+                        <section></section>
+                    </blockquote>
+                </div>
+
+                <div class="flex justify-center h-full aspect-[9/16] max-w-[300px] mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@esmeraldascosmetic/video/7603785036130815240" data-video-id="7603785036130815240" style="width: 100%; height: 100%;">
+                        <section></section>
+                    </blockquote>
+                </div>
+
+            </div>
+
+            <script async src="https://www.tiktok.com/embed.js"></script>
+
+            <div class="text-center mt-12">
+                <a href="https://www.tiktok.com/@esmeraldascosmetic" target="_blank" class="inline-flex items-center gap-2 bg-brand-black text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-brand-rose transition duration-300 shadow-lg">
+                    <i class="fab fa-tiktok text-lg"></i>
+                    Ver más en TikTok
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-brand-footerPink text-brand-black pt-16 pb-8 border-t border-white/50 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Esmeralda's</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="nuestrahistoria.html" class="hover:text-white transition">Sobre Nosotros</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Ayuda</h4>
+                    <ul class="space-y-3 text-sm opacity-80">
+                        <li><a href="contacto.html" class="hover:text-white transition">Envíos</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Devoluciones</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Síguenos</h4>
+                    <div class="flex justify-center md:justify-start space-x-4 text-xl">
+                        <a href="https://www.instagram.com/esmeraldascosmetic/" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/EsmeraldasCosmeticOficial" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@esmeraldascosmetic" target="_blank" class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition rounded-full"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-xs mb-6 border-b border-black/10 pb-2 inline-block">Contacto</h4>
+                    <div class="flex flex-col gap-2 items-center md:items-start">
+                        <a href="https://wa.me/50235739640" class="w-full md:w-auto bg-black text-white py-3 px-6 text-xs font-bold uppercase tracking-widest text-center hover:opacity-80 transition rounded-full">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-black/10 pt-8 text-center text-xs opacity-60">
+                <p>&copy; 2024 Esmeralda's Cosmetic. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="product-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden-modal overflow-y-auto">
+        
+        <div class="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl relative flex flex-col md:flex-row modal-content-enter my-8">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 hover:bg-brand-black hover:text-white rounded-full flex items-center justify-center transition shadow-md focus:outline-none">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <div class="w-full md:w-1/2 bg-gray-50 flex flex-col">
+                <div class="relative aspect-square md:aspect-auto md:h-[400px] w-full">
+                    <img id="modal-img" src="" alt="Detalle Producto" class="w-full h-full object-cover">
+                    <span id="modal-tag" class="absolute top-4 left-4 bg-brand-rose text-white text-[10px] px-3 py-1 uppercase font-bold tracking-widest rounded hidden">
+                        Nuevo
+                    </span>
+                </div>
+                <div id="modal-gallery" class="flex gap-2 p-4 overflow-x-auto scrollbar-hide h-[80px]">
+                    </div>
+            </div>
+
+            <div class="w-full md:w-1/2 p-6 md:p-10 flex flex-col text-left">
+                <span id="modal-categoria-text" class="text-xs font-bold text-gray-400 tracking-[0.2em] uppercase mb-2 font-sans">Categoría</span>
+                
+                <h2 id="modal-title" class="font-bebas text-4xl md:text-5xl text-brand-black leading-none mb-4 tracking-wide">
+                    NOMBRE PRODUCTO
+                </h2>
+                
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-xs text-green-600 bg-green-50 px-2 py-1 rounded font-bold uppercase tracking-wider font-sans">Disponible</span>
+                </div>
+
+                <div class="w-full h-px bg-gray-100 mb-4"></div>
+
+                <div class="mb-6">
+                    <h4 class="font-sans font-bold text-xs uppercase tracking-widest mb-2 text-brand-black">Descripción</h4>
+                    <p id="modal-desc" class="font-sans text-sm text-gray-600 leading-relaxed">
+                        Descripción detallada del producto...
+                    </p>
+                </div>
+
+                <div id="modal-tonos-container" class="mb-8 hidden">
+                    <h4 class="font-sans font-bold text-xs uppercase tracking-widest mb-3 text-brand-black">Selecciona tu tono:</h4>
+                    <div id="modal-tonos-list" class="flex flex-wrap gap-2">
+                        </div>
+                    <p id="tono-feedback" class="text-xs text-brand-rose mt-2 font-medium font-sans h-4"></p>
+                </div>
+
+                <div class="mt-auto pt-4">
+                    <a id="modal-btn" href="#" target="_blank" class="w-full bg-brand-black text-white py-4 text-center font-sans font-bold text-sm uppercase tracking-[0.2em] hover:bg-brand-rose transition duration-300 rounded-sm shadow-lg flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> Consultar Disponibilidad
+                    </a>
+                    <p class="text-[10px] text-center text-gray-400 mt-4 uppercase tracking-widest font-sans">Envíos rápidos a toda Guatemala</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/productos/core.js"></script>
+    <script src="assets/js/productos/rostro.js"></script>
+    <script src="assets/js/productos/ojos.js"></script>
+    <script src="assets/js/productos/labios.js"></script>
+    <script src="assets/js/productos/skincare.js"></script>
+    <script src="assets/js/productos/cuerpo.js"></script>
+    <script src="assets/js/productos/accesorios.js"></script>
+    <script src="assets/js/productos/collabs.js"></script>
+    <script>
+        const EC_HOME_SECTIONS = ['rostro', 'ojos', 'labios', 'skincare', 'cuerpo', 'accesorios', 'collabs'];
+        const EC_HOME_LABELS = window.EC_SECTION_LABELS || {
+            rostro: 'Rostro', ojos: 'Ojos', labios: 'Labios', skincare: 'Skin Care', cuerpo: 'Cuerpo', accesorios: 'Accesorios', collabs: 'Collabs'
+        };
+        const EC_HOME_PAGES = window.EC_SECTION_PAGES || {
+            rostro: 'rostro.html', ojos: 'ojos.html', labios: 'labios.html', skincare: 'skincare.html', cuerpo: 'cuerpo.html', accesorios: 'accesorios.html', collabs: 'collabs.html'
+        };
+        const EC_HOME_ICONS = {
+            rostro: 'n1.webp', ojos: 'n2.webp', labios: 'n3.webp', skincare: 'n4.webp', cuerpo: 'n5.webp', accesorios: 'n6.webp', collabs: 'n7.webp'
+        };
+
+        function ecNormalize(value) {
+            return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+        function ecEscape(value) {
+            return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+        }
+        function ecProductName(product) { return product?.nombre || product?.name || 'Producto'; }
+        function ecProductImage(product) {
+            if (Array.isArray(product?.imagenes)) return product.imagenes[0] || 'Logo.png';
+            return product?.imagenes || product?.imagen || product?.img || 'Logo.png';
+        }
+        function ecProductPrice(product) {
+            const value = product?.precio ?? product?.price;
+            if (value === undefined || value === null || value === '') return '';
+            const number = Number(value);
+            if (Number.isNaN(number)) return String(value);
+            return `Q${number.toFixed(2)}`;
+        }
+        function ecProductPriceLabel(product) { return ecProductPrice(product) || 'Precio pendiente'; }
+        function ecProductSection(product) { return product?._ecSection || product?.seccion || 'rostro'; }
+        function ecProductDateScore(product) {
+            const raw = product?.fechaAgregado || product?.fecha || product?.createdAt || '';
+            const time = raw ? Date.parse(raw) : NaN;
+            if (!Number.isNaN(time)) return time;
+            return Number(product?._ecGlobalOrder || product?._ecSectionIndex || 0);
+        }
+        function ecProductIsNew(product) {
+            const tag = ecNormalize(product?.tag || product?.etiqueta || '');
+            return tag.includes('nuevo') || tag.includes('new') || product?.nuevo === true;
+        }
+        function ecAllProducts() {
+            if (window.EC_GET_ALL_PRODUCTS) return window.EC_GET_ALL_PRODUCTS();
+            return EC_HOME_SECTIONS.flatMap(section => (window.EC_PRODUCTS?.[section] || []).map((p, i) => ({ ...p, _ecSection: section, _ecSectionIndex: i })));
+        }
+        function ecProductUrl(product) {
+            return `producto.html?categoria=${encodeURIComponent(ecProductSection(product))}&id=${encodeURIComponent(String(product.id))}`;
+        }
+        function ecScoreLatest(product) {
+            return (ecProductIsNew(product) ? 10000000000000 : 0) + ecProductDateScore(product);
+        }
+        function ecRecentProducts(limit = 8) {
+            const all = ecAllProducts().filter(Boolean);
+            const lastPerSection = EC_HOME_SECTIONS.map(section => {
+                const list = (window.EC_PRODUCTS?.[section] || []).filter(Boolean);
+                return list[list.length - 1];
+            }).filter(Boolean);
+            const merged = [...lastPerSection, ...all.filter(ecProductIsNew), ...all].filter(Boolean);
+            const seen = new Set();
+            return merged
+                .filter(product => {
+                    const key = `${ecProductSection(product)}-${product.id}`;
+                    if (seen.has(key)) return false;
+                    seen.add(key);
+                    return true;
+                })
+                .sort((a, b) => ecScoreLatest(b) - ecScoreLatest(a))
+                .slice(0, limit);
+        }
+        function ecToneProducts(limit = 4) {
+            return [];
+        }
+        function ecFindProduct(id, section) {
+            const target = String(id);
+            const products = section ? (window.EC_PRODUCTS?.[section] || []) : ecAllProducts();
+            return products.find(product => String(product.id) === target) || ecAllProducts().find(product => String(product.id) === target);
+        }
+        function ecProductCard(product, options = {}) {
+            const section = ecProductSection(product);
+            const tag = product.tag || (options.forceNew ? 'Nuevo' : '');
+            return `
+                <div class="group ec-product-card" onclick="window.location.href='${ecEscape(ecProductUrl(product))}'">
+                    <div class="relative overflow-hidden aspect-[4/5] mb-3 bg-gray-100 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+                        ${tag ? `<span class="ec-new-badge">${ecEscape(tag)}</span>` : ''}
+                        <img src="${ecEscape(ecProductImage(product))}" alt="${ecEscape(ecProductName(product))}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-in-out">
+                        <div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition duration-300 flex justify-center z-10">
+                            <button class="bg-white/95 text-brand-black text-[10px] uppercase font-sans font-bold tracking-widest py-3 px-6 rounded-full shadow-lg hover:bg-brand-black hover:text-white transition w-full">
+                                Ver producto
+                            </button>
+                        </div>
+                    </div>
+                    <div class="px-1 text-center relative z-10">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1 font-sans">${ecEscape(EC_HOME_LABELS[section] || product.categoria || 'Producto')}</p>
+                        <h3 data-product-title class="font-bebas text-xl text-brand-black tracking-wide group-hover:text-brand-rose transition leading-tight">${ecEscape(ecProductName(product))}</h3>
+                        <p class="ec-card-price ${ecProductPrice(product) ? 'is-ready' : 'is-pending'}">${ecEscape(ecProductPriceLabel(product))}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function cargarProductosTop() {
+            const grid = document.getElementById('grid-productos-top');
+            if (!grid) return;
+            const productos = ecRecentProducts(8);
+            grid.innerHTML = productos.map((product, index) => ecProductCard(product, { forceNew: index === 0 || ecProductIsNew(product) })).join('');
+        }
+
+        function renderHomeDynamicSections() {
+            if (document.getElementById('ec-home-dynamic')) return;
+            const anchor = document.getElementById('new');
+            if (!anchor) return;
+            const sectionCounts = EC_HOME_SECTIONS.map(section => ({ section, count: (window.EC_PRODUCTS?.[section] || []).length }));
+            const dynamic = document.createElement('section');
+            dynamic.id = 'ec-home-dynamic';
+            dynamic.className = 'ec-home-dynamic py-16 md:py-20';
+            dynamic.innerHTML = `
+                <div class="max-w-7xl mx-auto px-4 md:px-6 space-y-16">
+                    <div>
+                        <div class="ec-home-section-head">
+                            <small>Explora la tienda</small>
+                            <h2>Compra por categoría</h2>
+                        </div>
+                        <div class="ec-category-cards">
+                            ${sectionCounts.map(item => `
+                                <a class="ec-category-card" href="${EC_HOME_PAGES[item.section]}">
+                                    <img src="${EC_HOME_ICONS[item.section]}" alt="${EC_HOME_LABELS[item.section]}">
+                                    <strong>${EC_HOME_LABELS[item.section]}</strong>
+                                    <span>${item.count} productos</span>
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            anchor.insertAdjacentElement('afterend', dynamic);
+        }
+
+        const modal = document.getElementById('product-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalGallery = document.getElementById('modal-gallery');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalTag = document.getElementById('modal-tag');
+        const modalBtn = document.getElementById('modal-btn');
+        const modalCatText = document.getElementById('modal-categoria-text');
+        const tonosContainer = document.getElementById('modal-tonos-container');
+        const tonosList = document.getElementById('modal-tonos-list');
+        const feedbackTono = document.getElementById('tono-feedback');
+        let tonoSeleccionadoActual = '';
+
+        function openModal(id, section = '') {
+            const producto = ecFindProduct(id, section);
+            if(!producto) return;
+            const imgs = Array.isArray(producto.imagenes) ? producto.imagenes : [producto.imagenes || 'Logo.png'];
+            modalImg.src = imgs[0];
+            modalGallery.innerHTML = '';
+            if (imgs.length > 1) {
+                imgs.forEach((src, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = src;
+                    thumb.alt = `${producto.nombre} - vista ${index + 1}`;
+                    thumb.className = `w-16 h-16 object-cover rounded-md cursor-pointer border-2 border-transparent hover:opacity-100 thumb-img ${index === 0 ? 'selected' : ''}`;
+                    thumb.onclick = function() {
+                        modalImg.src = src;
+                        document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('selected'));
+                        this.classList.add('selected');
+                    };
+                    modalGallery.appendChild(thumb);
+                });
+                modalGallery.classList.remove('hidden');
+            } else {
+                modalGallery.classList.add('hidden');
+            }
+
+            modalTitle.innerText = producto.nombre;
+            modalDesc.innerText = producto.descripcion || '';
+            modalCatText.innerText = EC_HOME_LABELS[ecProductSection(producto)] || producto.categoria || 'Cosmético';
+            if(producto.tag) {
+                modalTag.innerText = producto.tag;
+                modalTag.classList.remove('hidden');
+            } else {
+                modalTag.classList.add('hidden');
+            }
+
+            tonosList.innerHTML = '';
+            tonoSeleccionadoActual = '';
+            feedbackTono.innerText = '';
+            if (producto.tonos && producto.tonos.length > 0) {
+                tonosContainer.classList.remove('hidden');
+                producto.tonos.forEach((item, index) => {
+                    const nombreTono = typeof item === 'object' ? item.nombre : item;
+                    const colorHex = typeof item === 'object' ? (item.hex || item.color) : null;
+                    const btnTono = document.createElement('button');
+                    btnTono.className = 'flex items-center gap-2.5 px-4 py-2 bg-white border border-gray-300 text-gray-700 text-xs uppercase font-bold rounded-full transition hover:border-brand-rose focus:outline-none tono-btn font-sans';
+                    let swatchHTML = '';
+                    if(colorHex) swatchHTML = `<span class="w-3.5 h-3.5 rounded-full border border-gray-200 shadow-inner" style="background-color: ${colorHex};"></span>`;
+                    btnTono.innerHTML = `${swatchHTML} ${nombreTono}`;
+                    if (index === 0) {
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                    }
+                    btnTono.onclick = () => {
+                        document.querySelectorAll('.tono-btn').forEach(b => b.classList.remove('selected'));
+                        btnTono.classList.add('selected');
+                        tonoSeleccionadoActual = nombreTono;
+                        feedbackTono.innerText = `Seleccionado: ${nombreTono}`;
+                        actualizarLinkWhatsapp(producto);
+                    };
+                    tonosList.appendChild(btnTono);
+                });
+            } else {
+                tonosContainer.classList.add('hidden');
+            }
+            actualizarLinkWhatsapp(producto);
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function actualizarLinkWhatsapp(producto) {
+            let mensaje = `Hola Esmeralda's Cosmetic, me interesa: ${producto.nombre}`;
+            if (tonoSeleccionadoActual) mensaje += ` - Tono: ${tonoSeleccionadoActual}`;
+            mensaje += ` - Precio: ${ecProductPriceLabel(producto)}`;
+            modalBtn.href = `https://wa.me/50235739640?text=${encodeURIComponent(mensaje)}`;
+        }
+
+        function closeModal() {
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = 'auto';
+        }
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+        const mobileBtn = document.getElementById('mobile-btn');
+        const textMenu = document.getElementById('mobile-text-menu');
+        if(mobileBtn && textMenu) {
+            mobileBtn.addEventListener('click', () => {
+                textMenu.classList.toggle('hidden');
+                const icon = mobileBtn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+        }
+
+        const slider = document.getElementById('drag-scroll');
+        if(slider) {
+            let isDown = false, startX, scrollLeft;
+            slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('active'); startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+            slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('active'); });
+            slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('active'); });
+            slider.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk; });
+        }
+
+        let lastScrollTop = 0;
+        const mainHeader = document.getElementById('main-header');
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if(!mainHeader) return;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                mainHeader.classList.add('nav-hidden');
+                if(textMenu) textMenu.classList.add('hidden');
+            } else {
+                mainHeader.classList.remove('nav-hidden');
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarProductosTop();
+            renderHomeDynamicSections();
+        });
+    </script>
+    <script src="assets/js/tienda-oficial.js"></script>
+</body>
+</html>
