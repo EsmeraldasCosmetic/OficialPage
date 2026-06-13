@@ -1,0 +1,1183 @@
+// Productos Labios - Esmeralda's Cosmetic
+// Edita solo este archivo para agregar, quitar o cambiar productos de Labios.
+(function () {
+  const productosLabios = [
+           {
+              id: 1,
+              nombre: "YeriMua X Beauty Creations - Set Dúo De Labios - Bad B*tch",
+              marca: "Beauty Creations",
+              precio: "Q 140",
+              colaboracion: "true",
+              categoria: "Set",
+              imagenes: [
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-x-yerimua-duo-de-labios-bad-btch-labial-y-delineador-cosmetics-yml2-627452.jpg?v=1723545578&width=900",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-x-yerimua-duo-de-labios-bad-btch-labial-y-delineador-cosmetics-yml2-700007.jpg?v=1723545605&width=900",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-x-yerimua-duo-de-labios-bad-btch-labial-y-delineador-cosmetics-yml2-165715.jpg?v=1723545621&width=900",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-x-yerimua-duo-de-labios-bad-btch-labial-y-delineador-cosmetics-yml2-872631.webp?v=1723545639&width=900",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-x-yerimua-duo-de-labios-bad-btch-labial-y-delineador-cosmetics-yml2-864814.jpg?v=1723545665&width=900"
+              ],
+              descripcion: `Beauty Creations X Yerimua - Dúo De Labios Bad B*tch - Labial Y Delineador Un dúo solo para lxs valientes 🫦 Este kit de delineador de labios en gel y gloss ultra brillante es digno de una diva, si quieres lucir una sonrisa envidiable, labios hidratados y un color de infarto, no busques mas que te presentamos el Bad B*tch dúo. 
+
+Este kit incluye: 
+
+💕MORENA: un gloss café nude con un sub tono caramelo, da una apariencia hidratada y efecto vidrio a los labios, dejando una apariencia impecable por varias horas. 
+💕YUMMY: un delineador de labios en gel tono café medio con un sub tono caramelo, es cremoso, fácil de aplicar y preciso, dejara en conjunto con el gloss, los labios perfectos. 
+
+* El dúo no incluye el llavero de colección.
+
+Los productos de edición limitada de esta colección se convertirán sin duda en tus favoritos, consigue esta exclusiva colección YeriMua X Beauty Creations. `,
+              tag: "Yeri Mua",
+              tonos: null,
+          },
+           {
+              id: 2,
+              nombre: "Balm N' Cute - Balsamo Labial Humectante",
+              categoria: "Balsamo",
+                marca: "Beauty Creations",
+                precio: "Q 75",
+              imagenes: [
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb01-488573.jpg?v=1723481181&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb01-167414.jpg?v=1723481199&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb01-489706.jpg?v=1723481225&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb01-546705.jpg?v=1723481241&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb02-223089.jpg?v=1723481258&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb02-124647.jpg?v=1723481286&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb02-242458.jpg?v=1723481302&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb03-678673.jpg?v=1723481318&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb03-444849.jpg?v=1723481346&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb03-219733.jpg?v=1723481361&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb04-874215.jpg?v=1723481380&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb04-118671.jpg?v=1723481407&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb04-241768.jpg?v=1723481422&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb05-841466.jpg?v=1723481440&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb05-393262.jpg?v=1723481466&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb05-518793.jpg?v=1723481480&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb06-405147.jpg?v=1723481498&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb06-688618.jpg?v=1723481525&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb06-196136.jpg?v=1723481541&width=450"
+              ],
+              descripcion: `¡Luce linda mientras cuidas tus labios con Balm N' Cute! Nuestros bálsamos hidratantes agregan un toque natural de color mientras protegen tus labios con su fórmula de larga duración, ¡para que puedas sonreír sin preocupaciones! Es fácil de aplicar y con un olor delicioso, Balm N' Cute es el complemento perfecto para tu rutina de belleza. Donde la ternura se encuentra con el cuidado perfecto de tus labios.
+
+6 tonos.
+6 aromas: cereza, vainilla, rosa, coco, frambuesa y ponche de frutas.
+Hidratación de larga duración.
+Enriquecido con aceite de semilla de girasol.
+Sutil rubor de color. 
+Textura suave.
+
+Estos bálsamos labiales perfumados te darán un look fresco y natural mientras cuidan tus labios. ¡Encuentra tu favorito y presume unos labios irresistibles!`,
+              tag: null,
+              tonos: [
+                  { nombre: "Coconut", hex: "#e46b63",
+                    imagen: "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb01-489706.jpg?v=1723481225&width=450",
+                   },
+                  { nombre: "Raspberry", hex: "#cb2845",
+                    imagen: "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb02-124647.jpg?v=1723481286&width=450",
+                   },
+                  { nombre: "Rose", hex: "#ee6b8b",
+                    imagen: "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb03-444849.jpg?v=1723481346&width=450",
+                   },
+                  { nombre: "Fruit Punch", hex: "#f22c2d",
+                    imagen: "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb04-118671.jpg?v=1723481407&width=450",
+                   },
+                  { nombre: "Cherry", hex: "#4f2526",
+                    imagen: "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb05-393262.jpg?v=1723481466&width=450",
+                   },
+                  { nombre: "Vanilla", hex: "#f9d8b9",
+                    imagen: "https://beautycreationscosmetics.com.mx/cdn/shop/files/beauty-creations-cosmetics-mx-beauty-creations-balm-n-cute-bcbnc-lb06-688618.jpg?v=1723481525&width=450"
+                   }
+              ]
+          },
+           {
+              id: 3,
+              nombre: "Rosy McMichael X Beauty Creations - Set De Labios - The Not So Classic Kit",
+              categoria: "Set",
+              marca: "Rosy McMichael x Beauty Creations",
+              precio: "Q 199",
+              imagenes: [
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-kit-de-labios-the-not-so-classic-kit-rosy-mcmichael-x-beauty-creations-vol-2-cosmetics-rmv2ls1-731090.jpg?v=1723551758&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-kit-de-labios-the-not-so-classic-kit-rosy-mcmichael-x-beauty-creations-vol-2-cosmetics-rmv2ls1-923393.jpg?v=1723551784&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-kit-de-labios-the-not-so-classic-kit-rosy-mcmichael-x-beauty-creations-vol-2-cosmetics-rmv2ls1-608064.jpg?v=1723551801&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-kit-de-labios-the-not-so-classic-kit-rosy-mcmichael-x-beauty-creations-vol-2-cosmetics-rmv2ls1-685338.webp?v=1723551818&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-kit-de-labios-the-not-so-classic-kit-rosy-mcmichael-x-beauty-creations-vol-2-cosmetics-rmv2ls1-380890.jpg?v=1723551843&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/bcc-backup-beauty-creations-kit-de-labios-the-not-so-classic-kit-rosy-mcmichael-x-beauty-creations-vol-2-cosmetics-rmv2ls1-959162.jpg?v=1723551861&width=450"
+              ],
+              descripcion: `Prepárate para tener los mas brillantes y perfectos labios pensado en ti que te encanta brillar
+
+El Kit The Not So Classic incluye:
+
+1. The Classic Lip Liner - Delineador de Labios Especia de Canela en un tono mate, acabado cremoso que se deslizará sin mínimo esfuerzo
+2. Lip Lift Plumper - Gloss Melocotón Claro, levanta tus labios con un acabado brillante 
+3. Rosy´s Neutral Matte Lipstick - Labial Azúcar Marrón en un tono mate, luce espectacular tus labios con este hermoso tono y deja que tus labios digan todo
+Tip: Aplica el delineador en modo degradado y después el labial en barra con terminado mate. Y si quieres que tus labios luzcan aún más voluminosos, usa el plumper como primer, dejándolo actuar y removiendo antes de delinear.`,
+              tag: "Rosy McMichael",
+              tonos: null,
+          },
+           {
+              id: 4,
+              nombre: "Bratz X Beauty Creations - Aceite De Labios",
+              categoria: "Lip Oil",
+                marca: "Bratz x Beauty Creations",
+                precio: "Q 125",
+                colaboracion: "true",
+              imagenes: [
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/Lip-oil-JADE_3196b717-56b0-4b7a-9053-c00c8b21ea0a.jpg?v=1757109264&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/LIP-OIL-JADE-2.jpg?v=1757109264&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/Alexis_Lip_Gloss-3.png?v=1731455242&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/LIP-OIL-JADE.jpg?v=1730427508&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/Jade-Bratz-SWATCH.png?v=1747698613&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/Lip-oil-CLOE_a89ff993-3141-4fc8-81fd-209786c20b02.jpg?v=1731454394&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/LIP-OIL-CLOE-2_42c027ad-0ecf-472f-9c21-c59979ee6ea5.jpg?v=1743004758&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/LIP-OIL-CLOE_6314724f-f5e8-43fa-a3ce-186e17ab0685.jpg?v=1731454394&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/Cloe-SWATCH.png?v=1747698640&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/Sasha_Lipstick_1.jpg?v=1731456969&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/LIP-OIL-SHASA-1_b121ddf0-7a85-4e37-85d8-2ae630e1e34f.jpg?v=1747174393&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/LIP-OIL-SHASA.jpg?v=1747174393&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/Sasha-SWATCH.png?v=1747698663&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/Yasmin-Lip-Oil.jpg?v=1731457391&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/LIP-OIL-YASMIN-1.jpg?v=1730428083&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/LIP-OIL-YASMIN.jpg?v=1730428083&width=450",
+                  "https://beautycreationscosmetics.com.mx/cdn/shop/files/Yasmin-SWATCH.png?v=1747698691&width=450"
+              ],
+              descripcion: `¡Brilla como una estrella con Lip Oil de Bratz X Beauty Creations!
+
+Hidrata y nutre tus labios, este aceite labial también te dará un brillo sutil. ¡Añade un toque de color y un suave aroma a tu sonrisa con Jade Lip Oil!
+
+LIBRE DE CRUELDAD 
+LIBRE DE SULFATOS 
+LIBRE DE PARABENOS`,
+              tag: "Tendencia",
+              tonos: [
+                  { nombre: "Jade", hex: "#f3aec0",
+                    imagen: "https://beautycreationscosmetics.com.mx/cdn/shop/files/Jade-Bratz-SWATCH.png?v=1747698613&width=450"
+                   },
+                  { nombre: "Cloe", hex: "#e5e5e5",
+                    imagen: "https://beautycreationscosmetics.com.mx/cdn/shop/files/Cloe-SWATCH.png?v=1747698640&width=450",
+                   },
+                  { nombre: "Sasha", hex: "#cd8f92",
+                    imagen: "https://beautycreationscosmetics.com.mx/cdn/shop/files/Sasha-SWATCH.png?v=1747698663&width=450",
+                   },
+                  { nombre: "Yasmin", hex: "#e3999a",
+                    imagen: "https://beautycreationscosmetics.com.mx/cdn/shop/files/Yasmin-SWATCH.png?v=1747698691&width=450",
+                   }
+              ]
+          },
+          {
+              id: 5,
+              nombre: `Victor Guadarrama x Beauty Creations Trío de labios "Séduceme"`,
+              categoria: "Set",
+                marca: "Victor Guadarrama x Beauty Creations",
+                precio: "Q 185",
+                colaboracion: "true",
+              imagenes: [
+                  "https://res.cloudinary.com/dfcf6gxei/image/upload/v1781372406/WhatsApp-Image-2025-06-14-at-11.26.15-AM-4.jpeg_kut396.webp",
+                  "https://res.cloudinary.com/dfcf6gxei/image/upload/v1781372406/WhatsApp-Image-2025-06-14-at-11.26.15-AM-5.jpeg_dkbryp.webp",
+                  "https://res.cloudinary.com/dfcf6gxei/image/upload/v1781372405/WhatsApp-Image-2025-06-14-at-11.26.15-AM-3.jpeg_w9zgk0.webp",
+                  "https://res.cloudinary.com/dfcf6gxei/image/upload/v1781372405/WhatsApp-Image-2025-06-14-at-11.26.15-AM-1.jpeg_eh7qhi.webp",
+                  "https://res.cloudinary.com/dfcf6gxei/image/upload/v1781372405/WhatsApp-Image-2025-06-14-at-11.26.15-AM-2.jpeg_uipui5.webp",
+                  "https://res.cloudinary.com/dfcf6gxei/image/upload/v1781372405/WhatsApp-Image-2025-06-14-at-11.26.15-AM.jpeg_e0s0bo.webp"
+                   ],
+              descripcion: `Mejora tus labios con el Trío de Labios Sedúceme , un set imprescindible diseñado para un glamour sin esfuerzo y unos labios atrevidos y hermosos. Presentado en un elegante envase dorado, este trío incluye:
+
+Lápiz labial con acabado satinado CÓMEME : un tono nude melocotón cremoso y rico en pigmentos que se desliza suavemente y ofrece un color lujoso con un acabado satinado cómodo.
+
+ENAMÓRATE Brillo Labial Volumen – Un brillo labial voluminizador de alto brillo en dorado con toques rosas y lilas. Proporciona un efecto volumen instantáneo con un acabado suave y no pegajoso.
+
+Delineador de labios retráctil BÉSAME MUCHO : Un delineador marrón melocotón que define y realza los labios con una textura cremosa que se difumina fácilmente. Su diseño retráctil lo hace perfecto para retoques en cualquier lugar.
+
+Libre de crueldad animal y cuidadosamente seleccionado por Vico Guadarrama, este trío ofrece la armonía perfecta de definición, color y brillo, todo en un lujoso conjunto.`,
+              tag: null,
+              tonos: null,
+          },
+          {
+              id: 6,
+              nombre: `Lápiz labial Nude X Soft Matte`,
+		categoria: "Lipstick",
+        marca: "Beauty Creations",
+        precio: "Q 65",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/GRAYBGFORECOMM_1_8bfaeb4a-2341-40b8-8d85-a1dc1e39ee70.png?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls01-691279.jpg?v=1737594083&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls01-359549.jpg?v=1737594083&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/GRAYBGFORECOMM_1_8bfaeb4a-2341-40b8-8d85-a1dc1e39ee70.png?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls01-157827.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls02-516113.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls02-875050.jpg?v=1744145805&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls03-233605.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls03-797770.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls04-389045.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls04-327237.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls05-116469.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls05-737874.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls06-762504.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls06-683040.jpg?v=1744145805&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls07-880491.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls07-760646.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls08-512558.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls08-540458.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls09-159122.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls09-567160.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls10-485743.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls10-838193.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls11-190283.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls11-791035.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls12-488473.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls12-418189.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls13-823334.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls13-193160.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls14-573131.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls14-862699.jpg?v=1744145805&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls15-790367.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls15-331351.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls16-199759.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls16-733544.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls17-141628.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls17-251694.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls18-974615.jpg?v=1738265053&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-soft-matte-lipstick-various-shades-beauty-creations-nxls18-682659.jpg?v=1738265053&width=600"
+              
+                   ],
+              descripcion: `Presentamos Nude X: una sofisticada colección de labiales mate suaves con 18 tonos cautivadores, con un enfoque en tonos nude diseñados para complementar cualquier tono de piel. Disfruta de una suavidad aterciopelada que se desliza con facilidad, ofreciendo un acabado mate duradero y lujoso. Desde delicados beiges hasta caramelos intensos, Nude X encarna la elegancia moderna, convirtiéndose en el complemento perfecto para realzar tu rutina de belleza.`,
+              tag: null,
+              tonos: [
+  // Fila de arriba (Izquierda a Derecha)
+  { nombre: "Better Off Alone", hex: "#E2A58D" },
+  { nombre: "Casual Lover", hex: "#CCA183" },
+  { nombre: "Best of Me", hex: "#D49076" },
+  { nombre: "Most Popular", hex: "#C48667" },
+  { nombre: "On The Daily", hex: "#BC785B" },
+  { nombre: "My Honey", hex: "#B38066" },
+  { nombre: "Sweet Tweet", hex: "#AF8869" },
+  { nombre: "Never Tied Down", hex: "#BD724F" },
+  { nombre: "Im Committed", hex: "#AC6B4E" },
+  { nombre: "Worth The Wait", hex: "#8E5140" },
+
+  // Fila de abajo (Izquierda a Derecha)
+  { nombre: "Miss Perfect", hex: "#B2765C" },
+  { nombre: "My Go to", hex: "#854936" },
+  { nombre: "Keep Me Satisfied", hex: "#7D4B35" },
+  { nombre: "Get Into It", hex: "#824C3B" },
+  { nombre: "Never Too Much", hex: "#613527" },
+  { nombre: "Mixed Feelings", hex: "#483024" },
+  { nombre: "Cant Blame You", hex: "#37221C" },
+  { nombre: "True Icon", hex: "#332424" }
+]
+          },
+          {
+              id: 7,
+              nombre: `Velvet Stay Liquid Lipstick`,
+		categoria: "Lipstick",
+        marca: "Beauty Creations",
+        precio: "Q 75",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs01-954611.jpg?v=1723047688&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs01-597450.jpg?v=1723047691&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs01-870924.jpg?v=1739919827&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs01-910976.jpg?v=1739919827&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/GRAYBGFORECOMM_24.png?v=1739919827&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs02-898248.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs02-706256.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs02-185686.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs03-709738.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs03-967274.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs03-875413.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs04-274744.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs04-603838.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs04-438678.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs05-441499.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs05-916410.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs05-652383.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs06-956322.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs06-570029.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs06-299837.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs07-502083.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs07-485394.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs07-380170.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs08-114879.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs08-418638.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs08-330100.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs09-669823.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs09-573172.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs09-297034.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs10-453117.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs10-651615.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs10-370104.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs11-559060.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs11-432701.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs11-240572.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs12-856358.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs12-378320.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs12-584673.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs13-652181.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs13-497042.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/CHOCO_433e219e-295e-4abb-9192-a95658540c8a.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/14-FriendZone_9e736932-c3da-47d4-b7e6-7732d36547b5.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/FZZ_c71e30da-aee3-4ca9-ac7f-ec48052e4f05.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/FZ_62eb4174-a843-4744-86fa-3f9479139954.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/15-SweetAffair_573a5f23-73eb-4306-a1d9-de0a6c53fea1.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/SWEET_b7a6f089-3c80-449d-974e-29eda6c55e01.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/SA_9707158c-674b-4573-8101-63d96f15bc99.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/16-MadAboutYou_72528ecc-34ca-4715-8a34-79bbe3fa38dd.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/MADAB_154c6377-0920-4dbd-a3ce-1d72981ea01a.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/MAD_b739037c-b276-4d7f-b2e3-7ac2eccf8efe.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/17-Muah_4e482adb-e5ed-43f9-867b-b32843848203.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/MUAHH_870b7355-ef84-40e6-978f-8dbed829f514.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/MM_8e69b383-b50f-4f37-89df-1631b387c18f.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/18-PinkyPromise_a6a1b597-d611-47df-9370-5993f3d04889.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/PINKY_50a66c5a-0fb0-41a9-95ab-acf36f2e0176.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/PP_3ea5cf4f-a633-4e8d-b59e-b1373f021ab6.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/19-Nova_dfb59f37-d6ca-461d-b13e-f0cb29dbd875.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/NOV_580c7d88-a6da-4d4a-9953-0ea84234344d.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/NOVAA_cefca66a-8bca-41fa-bf45-b78e1f2bf873.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/20-BerryMe_f4ba9cb5-6a1c-4f68-a0f7-9bac2a936742.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/BERRYY_4b869864-9175-4b74-9b04-457437358790.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/BERRY_1fa9a833-5aae-4146-91ca-2d50742aa9cc.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/21-RedAffair_fe2dfbd1-41d6-4989-9b1e-55743b59c6dd.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/RED_933bed0f-870f-4931-8ec2-245c17277cd3.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/REDA_0fbfc6bc-f6bc-4cd8-8d32-c83829412c79.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/22-GuiltyPleasure_ae5f4e0b-8726-43de-b7a0-926e996e7b81.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/GUILTY_7d129333-61b8-4b47-b06b-233344e725cc.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/GUILT_340266c6-aa53-403c-960a-b64a0a206f06.png?v=1739919770",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/23-Juiced_70bb7a76-01a6-4d07-b5a2-a530bb08e9fd.jpg?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/JUICE_c82ec511-e030-4405-be4c-c2b939d375c6.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/JUICC_8167ef9e-d576-4d07-a9fa-39aa5eeeeedc.png?v=1739919770&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/24-DarkSide_5fd3814a-159f-4387-ad2d-4e70d8e5eb5b.jpg?v=1739919770",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/DARK_4dead86e-152b-441a-95df-57ff569f7ea7.png?v=1739919770",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/DARKSID_45553c90-512c-4821-ae07-5699cf23973a.png?v=1739919770"
+                   ],
+              descripcion: `Elige nuestras pinturas labiales multiusos para un acabado nutritivo, que no se reseca y de larga duración que se siente tan bien como se ve.
+Estas pinturas labiales ligeras y ricas en pigmentos brindan un toque de color sin la sensación pesada de las barras de labios tradicionales, lo que las convierte en tu opción diaria para una belleza sin esfuerzo
+
+Los labiales Velvet Stay son mucho más que un simple color de labios: son un verdadero multiusos. Aplícalos en las mejillas como un rubor en crema o difumínalos en los párpados para lograr un look de sombra de ojos suave y monocromático. Su fórmula suave y aterciopelada se difumina a la perfección sobre la piel, dejando un acabado natural y difuminado que realza tus rasgos sin acumularse en las líneas de expresión.
+
+Ya sea que estés creando un rostro completo o un retoque rápido, estos versátiles labiales agregan un toque de color donde lo necesites, mientras mantienen tu apariencia fresca, hidratada y cómodamente liviana durante todo el día.`,
+              tag: null,
+              tonos: [
+  // Primera fila
+  { nombre: "STAY CALM", hex: "#E6A88E",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs01-910976.jpg?v=1739919827&width=600"
+   },
+  { nombre: "CAPPUCCINO", hex: "#CA8269",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs02-706256.jpg?v=1739919770&width=600"
+   },
+  { nombre: "TRUFFLE", hex: "#B5887C",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs03-967274.jpg?v=1739919770&width=600"
+   },
+  { nombre: "LIMITED", hex: "#D99890",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs04-603838.jpg?v=1739919770&width=600"
+   },
+  { nombre: "SOFT SIDE", hex: "#E97B66",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs05-916410.jpg?v=1739919770&width=600"
+   },
+  { nombre: "HIGH END", hex: "#F37C88",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs06-570029.jpg?v=1739919770&width=600"
+   },
+
+  // Segunda fila
+  { nombre: "STARDUM", hex: "#D67078",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs07-485394.jpg?v=1739919770&width=600"
+   },
+  { nombre: "HIGH CLASS", hex: "#CF5C6E",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs08-418638.jpg?v=1739919770&width=600"
+   },
+  { nombre: "ROMANCE ME", hex: "#D07C6A",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs09-573172.jpg?v=1739919770&width=600"
+   },
+  { nombre: "SUGGA BABY", hex: "#A84F45",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs10-651615.jpg?v=1739919770&width=600"
+   },
+  { nombre: "FOXY", hex: "#BC4F3E",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs11-432701.jpg?v=1739919770&width=600"
+   },
+  { nombre: "ON THE EDGE", hex: "#834A42",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs12-378320.jpg?v=1739919770&width=600"
+   },
+
+  // Tercera fila
+  { nombre: "CHOCO LATTE", hex: "#B6755D",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/velvet-stay-liquid-lipstick-various-shades-beauty-creations-lvs13-497042.jpg?v=1739919770&width=600"
+   },
+  { nombre: "FRIENDZONE", hex: "#A3695C",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/files/FZZ_c71e30da-aee3-4ca9-ac7f-ec48052e4f05.png?v=1739919770&width=600"
+   },
+  { nombre: "SWEET AFFAIR", hex: "#D07469",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/files/SWEET_b7a6f089-3c80-449d-974e-29eda6c55e01.png?v=1739919770&width=600"
+   },
+  { nombre: "MAD ABOUT YOU", hex: "#6B4236",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/files/MADAB_154c6377-0920-4dbd-a3ce-1d72981ea01a.png?v=1739919770&width=600"
+   },
+  { nombre: "MUAH", hex: "#F64639",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/files/MUAHH_870b7355-ef84-40e6-978f-8dbed829f514.png?v=1739919770&width=600"
+   },
+  { nombre: "PINK POISE", hex: "#E90C83",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/files/PINKY_50a66c5a-0fb0-41a9-95ab-acf36f2e0176.png?v=1739919770&width=600"
+   },
+
+  // Cuarta fila
+  { nombre: "NOVA", hex: "#AD4859",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/files/NOV_580c7d88-a6da-4d4a-9953-0ea84234344d.png?v=1739919770&width=600"
+   },
+  { nombre: "BERRY ME", hex: "#D62548",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/files/BERRYY_4b869864-9175-4b74-9b04-457437358790.png?v=1739919770&width=600"
+   },
+  { nombre: "RED AFFAIR", hex: "#C21524",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/files/RED_933bed0f-870f-4931-8ec2-245c17277cd3.png?v=1739919770&width=600"
+   },
+  { nombre: "GUILTY PLEASURE", hex: "#A81822",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/files/GUILTY_7d129333-61b8-4b47-b06b-233344e725cc.png?v=1739919770&width=600"
+   },
+  { nombre: "JUICED", hex: "#78181F",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/files/JUICE_c82ec511-e030-4405-be4c-c2b939d375c6.png?v=1739919770&width=600"
+   },
+  { nombre: "DARK SIDE", hex: "#4A181C",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/files/DARK_4dead86e-152b-441a-95df-57ff569f7ea7.png?v=1739919770"
+   }
+]
+          },
+          {
+              id: 8,
+              nombre: `Seal The Deal Liquid Matte Liquid Lipstick`,
+		        categoria: "Liquid Lipstick",
+                marca: "Beauty Creations",
+                precio: "Q 75",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/2_3e53e6e2-2bd6-4a12-ad09-c7f66d310696.png?v=1723047474",,
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/1_dc9cb4e2-8bb6-41b7-a9c9-164f774b59b4.png?v=1723047467",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/GRAYBGFORECOMM_25.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/8_a22210cd-8e97-447d-8b40-bde9dbced263.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/12_95d63c72-3ca5-4235-9991-9746271b2744.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/16_5f6de390-06fd-4c6e-b48f-e46064c0b48e.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/20_bef57f44-8ee2-44d1-8926-60a675ff8816.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/4_15978371-4b2d-4d33-9aab-fe70a3e9c538.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/8_d6adc2ca-0be7-4361-ac0c-f8b0c46b6e2d.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/12_9217da37-a5c3-439d-9c63-16b85b63990f.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/16_e31b71df-151a-4d4a-b491-944b81b016e8.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/20_7dc07143-61fd-46a8-81c8-1da3646d0d76.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/4_c7833487-3411-443b-ab74-2485a5421d4b.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/8_7cdaf772-18a6-4e46-b5bc-809c1abbdb7c.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/12_5487e1c3-156d-40d6-9566-1035b7ff50b8.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/16_51a889bc-78a7-4ed2-b1a1-2486366b8f9b.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/20_a4fb2352-ade9-40e6-9414-0f6009dd285c.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/4_edc45d65-ca8e-4f1c-b1d5-ac6e0b69eed8.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/8_145ab16d-eca4-4ff2-81c9-0e05371d7642.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/12_846b4524-9b23-4ada-aafd-2b91ebc31e7c.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/16_ced42eba-5598-4a85-995f-2c82aaa20e52.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/20_c2968ffc-7f96-4a3a-9fe2-5f55b5097d3a.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/4_949e851b-5385-4e17-9ddb-864b9a6be1cc.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/8_23606d46-3615-4328-8e1b-315369cd36f5.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/12_9db0c295-0c6c-4ee1-ae34-5c3c14c11990.png?v=1739920660",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/15_2973ecf9-243b-4dd1-b07c-1d516772f682.png?v=1739920660",
+                  "https://zoharacosmeticos.com.mx/wp-content/uploads/2024/08/3431d0_6ffcf5ea8f344a1eb00025ea557c2dd9mv2.jpg"
+                   ],
+              descripcion: `¿Buscas un labial con pigmentación INTENSA y larga duración? ¡Elige nuestros labiales líquidos Seal The Deal! Son súper saturados y dejan tus labios con un acabado mate suave.`,
+              tag: null,
+              tonos: [
+  // Primera fila
+  { nombre: "ATTRACTIVE", hex: "#D62F26" },
+  { nombre: "BARE", hex: "#D38590" },
+  { nombre: "BOSS UP", hex: "#DFA896" },
+  { nombre: "CLASS ACT", hex: "#D982A8" },
+
+  // Segunda fila
+  { nombre: "DON'T JUDGE ME", hex: "#A8688A" },
+  { nombre: "DOUBLE TAKE", hex: "#9E352F" },
+  { nombre: "DRAMA MAMA", hex: "#6E363E" },
+  { nombre: "DROPPING HINTS", hex: "#AC6C73" },
+
+  // Tercera fila
+  { nombre: "FEMINIST", hex: "#E06C7A" },
+  { nombre: "HYPNOTIZE", hex: "#D43477" },
+  { nombre: "IT'S SERIOUS", hex: "#B5749D" },
+  { nombre: "LADY LIKE", hex: "#945B6D" },
+
+  // Cuarta fila
+  { nombre: "LAST CHANCE", hex: "#D96E88" },
+  { nombre: "LAST TOUCH", hex: "#C99182" },
+  { nombre: "LIONESS", hex: "#C47547" },
+  { nombre: "LOTS TO LOVE", hex: "#CC2B26" },
+
+  // Quinta fila
+  { nombre: "NOW OR NEVER", hex: "#CF707A" },
+  { nombre: "OPPOSITES ATTRACT", hex: "#CF4068" },
+  { nombre: "RICH RICH", hex: "#E33928" },
+  { nombre: "SHHH", hex: "#E0B3BC" },
+
+  // Sexta fila
+  { nombre: "SKEPTICAL", hex: "#7A2837" },
+  { nombre: "SNATCHED", hex: "#C69892" },
+  { nombre: "SO IDEAL", hex: "#3B2626" },
+  { nombre: "TANGO", hex: "#E85338" }
+]
+          },
+          {
+              id: 9,
+              nombre: `Nude X - Lipliner`,
+				categoria: "Lipliner",
+                marca: "Beauty Creations",
+                precio: "Q 65",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/Screenshot2025-01-22at10.06.27AM.png?v=1737594154&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/Screenshot2025-01-22at10.07.25AM.png?v=1737594154&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-pr-box-beauty-creations-nxl-pr-489443.jpg?v=1737592974&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-pr-box-beauty-creations-nxl-pr-888681.jpg?v=1737592974&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/nude-x-pr-box-beauty-creations-nxl-pr-571232.jpg?v=1737592974&width=600"
+                  
+                   ],
+              descripcion: `Formulado para una larga duración y máxima comodidad, cada producto se desliza fácilmente con un acabado cremoso e hidratante. Perfecto para profesionales, amantes de la belleza o para quienes buscan un delineador de labios nude perfecto.`,
+              tag: null,
+              tonos: [
+  { nombre: "NUDE ALERT", hex: "#EBCDA9" },
+  { nombre: "TWISTED LOVE", hex: "#CE9F9B" },
+  { nombre: "MY NECESSITY", hex: "#D4A895" },
+  { nombre: "COMFORT ZONE", hex: "#C99589" },
+  { nombre: "MORNING PEACH", hex: "#DCA289" },
+  { nombre: "BASIC ESSENTIAL", hex: "#C08C78" },
+  { nombre: "WEEKEND FLING", hex: "#B58069" },
+  { nombre: "TOXIC", hex: "#AB7980" },
+  { nombre: "SO BARE", hex: "#A8705C" },
+  { nombre: "NEXT LEVEL", hex: "#996B74" },
+  { nombre: "ON YOUR MIND", hex: "#C68F74" },
+  { nombre: "NO SHAME", hex: "#915D56" },
+  { nombre: "YOUR EVERYDAY", hex: "#AD897D" },
+  { nombre: "LOVE LETTER", hex: "#A37A71" },
+  { nombre: "STILL THE ONE", hex: "#BD8E83" },
+  { nombre: "ALWAYS XTRA", hex: "#A17468" },
+  { nombre: "STAY THE NIGHT", hex: "#8F695F" },
+  { nombre: "TASTE OF ME", hex: "#A87D75" },
+  { nombre: "WHATEVER YOU WANT", hex: "#997165" },
+  { nombre: "IMPULSIVE", hex: "#8F6256" },
+  { nombre: "CAN'T HANDLE", hex: "#855E53" },
+  { nombre: "MISBEHAVED", hex: "#734F44" },
+  { nombre: "XXX", hex: "#5F413B" },
+  { nombre: "CALL ME YOURS", hex: "#573A34" }
+]
+          },
+          {
+              id: 10,
+              nombre: `Aceite labial con pH All About You`,
+		        categoria: "Lip Oil",
+                marca: "Beauty Creations",
+                precio: "Q 60",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/all-about-you-ph-lip-oil-beauty-creations-loph-1-552706.jpg?v=1755274967&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/my-fave-topper-ALL_ABOUT_YOU_PH_LIP_OILS1552-3.jpg?v=1740011083&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/GRAYBGFORECOMM_32_c3337a77-e489-470a-bb9b-3557fa90b9d6.png?v=1755274967&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/all-about-you-ph-lip-oil-beauty-creations-loph-1-691106.jpg?v=1740011083&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/all-about-you-ph-lip-oil-beauty-creations-loph-2-101059.jpg?v=1740011083&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/all-about-you-ph-lip-oil-beauty-creations-loph-2-858074.jpg?v=1740011083&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/all-about-you-ph-lip-oil-beauty-creations-loph-3-303576.jpg?v=1740011083&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/all-about-you-ph-lip-oil-beauty-creations-loph-3-741339.jpg?v=1740011083&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/all-about-you-ph-lip-oil-beauty-creations-loph-4-237896.jpg?v=1740011083&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/all-about-you-ph-lip-oil-beauty-creations-loph-4-535942.jpg?v=1740011083&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/all-about-you-ph-lip-oil-beauty-creations-loph-5-657072.jpg?v=1740011083&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/all-about-you-ph-lip-oil-beauty-creations-loph-5-413067.jpg?v=1740011083&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/all-about-you-ph-lip-oil-beauty-creations-loph-6-397981.jpg?v=1740011083&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/all-about-you-ph-lip-oil-beauty-creations-loph-6-605618.jpg?v=1740011080&width=600"
+                   ],
+              descripcion: ``,
+              tag: null,
+              tonos: [
+  // Primera fila
+  { nombre: "MY FAV TOPPER", hex: "#F3F0F1" },   // Tono claro/transparente (Lychee)
+  { nombre: "DROP IT LOW", hex: "#EE9286" },     // Tono coral rojizo (Watermelon)
+
+  // Segunda fila
+  { nombre: "SUNDAY FUNDAY", hex: "#F7AE83" },   // Tono durazno (Peach)
+  { nombre: "PRETTY FLING", hex: "#D19ED6" },    // Tono lila/morado (Dragonfruit)
+
+  // Tercera fila
+  { nombre: "LOVER TING", hex: "#EE5699" },      // Tono rosa intenso (Strawberry)
+  { nombre: "POP BOTTLES", hex: "#F58790" }      // Tono rosa coral (Guava)
+]
+          },
+          {
+              id: 11,
+              nombre: `Ultra Dazzle Lipgloss`,
+		categoria: "Lipgloss",
+                marca: "Beauty Creations",
+                precio: "Q 75",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg01-457860.jpg?v=1723047937&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg01-832830.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/ULTRADAZZLELIPGLOSS-PRETTYGIRL.png?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg03-251782.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg05-573476.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg06-246208.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg07-929354.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg08-546096.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg09-401321.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg10-529684.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg11-407611.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg12-772016.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg13-209674.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg14-731850.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg15-827713.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg16-336144.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg17-844618.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg18-702262.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg19-586883.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/foxy_81452941-105b-425b-92f9-f844d75970e1.png?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg21-228547.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg22-971188.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg23-876175.jpg?v=1744664540&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg24-374543.jpg?v=1744664540&width=600"
+                   ],
+              descripcion: `Si quieres que tus labios luzcan como el cristal y se mantengan hidratados todo el día, compra nuestro brillo labial Ultra Dazzle. Su fórmula ultrabrillante se desliza fácilmente, ofreciendo una textura cómoda y no pegajosa que deja tus labios con un aspecto voluminoso y sedoso. Enriquecido con ingredientes nutritivos, ayuda a retener la humedad y a dar a tus labios un brillo radiante.
+
+Perfecto para usar sobre los labios y lograr un brillo natural o sobre tu labial favorito para un acabado deslumbrante y dimensional. Ya sea que busques un look suave para el día o un glamour intenso para la noche, Ultra Dazzle es tu brillo ideal para un brillo e hidratación instantáneos.`,
+              tag: null,
+              tonos: [
+  // Fila 1
+  { nombre: "#1 Pretty Girl", hex: "#DFC6C8",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/files/ULTRADAZZLELIPGLOSS-PRETTYGIRL.png?v=1744664540&width=600"
+   },
+  { nombre: "#2 Gold Digger", hex: "#DBC0B0",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg03-251782.jpg?v=1744664540&width=600"
+   },
+  { nombre: "#3 Golden Girl", hex: "#CFA692",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg05-573476.jpg?v=1744664540&width=600"
+   },
+  { nombre: "#4 Merry Go Round", hex: "#D99BA3",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg06-246208.jpg?v=1744664540&width=600"
+   },
+  { nombre: "#5 Sugar Daddy", hex: "#D4ABA2",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg07-929354.jpg?v=1744664540&width=600"
+   },
+  { nombre: "#6 Hot Shot", hex: "#C9968E",
+    imagen: "https://www.beautycreationscosmetics.com/cdn/shop/products/ultra-dazzle-lipgloss-various-shades-beauty-creations-bclg08-546096.jpg?v=1744664540&width=600"
+   },
+  { nombre: "#7 Hello Darling", hex: "#CC9A94" },
+  { nombre: "#8 Vanity", hex: "#CE969C" },
+
+  // Fila 2
+  { nombre: "#9 Stunner", hex: "#D4B2B8" },
+  { nombre: "#10 Go Getter", hex: "#DE7A79" },
+  { nombre: "#11 Whipped", hex: "#D2A292" },
+  { nombre: "#12 Exposed", hex: "#C9979E" },
+  { nombre: "#13 Royalty", hex: "#BD8B7E" },
+  { nombre: "#14 Born To Shine", hex: "#C29294" },
+  { nombre: "#15 Get It Girl", hex: "#BE807D" },
+  { nombre: "#16 Fairytale", hex: "#B6808D" },
+
+  // Fila 3
+  { nombre: "#17 Main Squeeze", hex: "#A97A85" },
+  { nombre: "#18 Doll Face", hex: "#E08AA0" },
+  { nombre: "#19 Brown Sugar", hex: "#C97D63" },
+  { nombre: "#20 Foxy", hex: "#B58C86" },
+  { nombre: "#21 Exclusive", hex: "#AB7569" },
+  { nombre: "#22 BFF", hex: "#9E7472" },
+  { nombre: "#23 Makeover", hex: "#D63036" },
+  { nombre: "#24 Bossy", hex: "#783A45" }
+]
+          },
+          {
+              id: 12,
+              nombre: `Plump & Pout Plumping Gloss Stick`,
+		        categoria: "Plumping Gloss",
+                marca: "Beauty Creations",
+                precio: "Q 85",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/BEAUTY_CREATIONS_PLUMP_Gloss_model.jpg?v=1738257566&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/BEAUTY_CREATIONS_PORTADA_PLUMP_gloss_swatch.jpg?v=1738257566&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/BEAUTY_CREATIONS_PORTADA_PLUMP_gloss.jpg?v=1738257566&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/3_08c270bb-ecb2-4b35-bdf4-37becb4c98d2.png?v=1738257489&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/LINER_900x900_BEAUTYCREATIONS0168_T.png?v=1738257566&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/LINER_900x900_BEAUTYCREATIONS0173_T.png?v=1738257566&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/LINER_900x900_BEAUTYCREATIONS0178_T.png?v=1738257566&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/LINER_900x900_BEAUTYCREATIONS0183_T.png?v=1738257566&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/LINER_900x900_BEAUTYCREATIONS0191_T.png?v=1738257566&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/LINER_900x900_BEAUTYCREATIONS0198_T.png?v=1738257566&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/LINER_900x900_BEAUTYCREATIONS0205_T.png?v=1738257566&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/LINER_900x900_BEAUTYCREATIONS0213_T.png?v=1738257566&width=600",
+                  "https://ikatehouse.com/cdn/shop/files/beauty-creation-plump-pout-lip-plumper-gloss-stick-006oz18g-342493_720x.jpg?v=1726184125"
+                   ],
+              descripcion: `Experimenta lo último en realce de labios con nuestro Plumping Gloss Stick , una fórmula multiusos todo en uno diseñada para hidratar, dar volumen y un acabado brillante. Este brillo semiadherente da volumen a tus labios al instante, creando un look más voluminoso y definido con un hermoso tono. Su fórmula está enriquecida con vitamina E , raíz de jengibre y aceite de jojoba , que nutre y deja tus labios suaves y sedosos.
+
+Con cada pasada, sentirás un delicioso cosquilleo que realza el volumen natural de tus labios, mientras que su acabado ultrabrillante les da un aspecto magnífico y voluminoso. Para liberar el producto, simplemente presiona la base del componente: ¡fácil, divertido y sin complicaciones!
+
+Por qué te encantará:
+
+Brillo voluminizador en barra : añade volumen a los labios al instante para una apariencia más completa y definida.
+
+Alto brillo : acabado brillante que capta la luz para unos labios impresionantes.
+
+Semi-pegajoso : proporciona un brillo duradero sin sentirse demasiado pesado.
+
+Tiñe e hidrata : agrega un hermoso tinte mientras mantiene los labios suaves y nutridos.
+
+Sensación de hormigueo : un efecto de hormigueo temporal que aumenta la tersura.
+
+Infundido con:
+
+Vitamina E : hidrata y nutre los labios
+
+Raíz de jengibre : conocida por sus propiedades calmantes y sus beneficios para dar volumen a los labios.
+
+Aceite de jojoba : ayuda a hidratar y suavizar los labios.`,
+              tag: null,
+              tonos: [
+  // Fila superior (Izquierda a Derecha)
+  { nombre: "LET'S BE CLEAR", hex: "#F2F2F2" },   // Tono transparente/blanquecino
+  { nombre: "XOXO", hex: "#EA96B2" },              // Rosa claro
+  { nombre: "DREAM GIRL", hex: "#F08E9D" },        // Rosa coral
+  { nombre: "PLATONIC", hex: "#E866AC" },          // Fucsia brillante
+
+  // Fila inferior (Izquierda a Derecha)
+  { nombre: "GLAZING FOR U", hex: "#CC8E7B" },     // Nude cálido
+  { nombre: "DELUSION CRUSH", hex: "#C26B5C" },    // Terracota rojizo
+  { nombre: "ONLY U", hex: "#7A473E" },            // Marrón chocolate intenso
+  { nombre: "LOVE TRAP", hex: "#C43251" },         // Rojo baya
+  { nombre: "DEVOTION", hex: "#C54E91" }           // Morado rosado
+]
+          },
+          {
+              id: 13,
+              nombre: `Aceite labial Sweet Dose`,
+		        categoria: "Lip Oil",
+                marca: "Beauty Creations",
+                precio: "Q 75",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/cherry-lip-oil-beauty-creations-lo-3-899904.jpg?v=1723586502&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/grape-lip-oil-beauty-creations-950630.jpg?v=1723586502&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/peach-lip-oil-beauty-creations-lo-4-912802.jpg?v=1723586503&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/sweet-lip-oil-beauty-creations-lo-1-188176.jpg?v=1723586504&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/watermelon-lip-oil-beauty-creations-lo-2-976449.jpg?v=1723586505&width=600"
+                   ],
+              descripcion: `Nuestro aceite labial nutritivo con aceite de jojoba y vitamina E ayuda a lucir unos labios radiantes y saludables.
+↳ El aceite de jojoba repone, restaura e hidrata visiblemente los labios.
+↳ La vitamina E hidrata y suaviza la piel seca y escamosa, reduce las arrugas y favorece la pigmentación. Luce unos labios radiantes, brillantes y saludables.`,
+              tag: null,
+              tonos: null,
+          },
+          {
+              id: 14,
+              nombre: `Trío de aceites labiales con pH neutro Pinch of Sweetness`,
+		categoria: "Set",
+                marca: "Beauty Creations",
+                precio: "Q 150",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/GRAYBGFORECOMM_1_d5519c0d-c1c0-4d38-8e9f-52c8249ed1ad.png?v=1739204481&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/pinch.png?v=1739204481&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/3_50f9f741-d904-4888-9a32-d23f3e15c45b.png?v=1739204481&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/Screenshot_2025-01-10_at_1.44.33_PM.png?v=1739204481&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/Untitled_design_16.png?v=1739204481&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/PRETTY_FLING.png?v=1739204481&width=600"
+                   ],
+              descripcion: ``,
+              tag: null,
+              tonos: [
+                  { nombre: "Los Rosas" },
+                  { nombre: "Los Rojos" }
+              ]
+          },
+          {
+              id: 15,
+              nombre: `Dúo labial Deer Kisses`,
+		        categoria: "Set",
+                marca: "Beauty Creations",
+                precio: "Q 125",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/a9dc31c2-f501-45a2-a244-33ce04797123.jpg?v=1762466111&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/Post-10.jpg?v=1741822625&width=600"
+                   ],
+              descripcion: `Prepárate para deslumbrar esta temporada navideña con nuestro dúo labial Deer Kisses
+
+Este set de edición limitada incluye todo lo necesario para unos labios perfectamente definidos y voluminosos. Contiene un delineador de labios de alta pigmentación que se desliza suavemente para una definición precisa y un brillo labial voluminizador ultrabrillante que proporciona volumen al instante para un toque navideño. `,
+              tag: "Navidad",
+              tonos: null,
+          },
+          {
+              id: 16,
+              nombre: `Delineador de labios voluminizador Plump & Pout`,
+		        categoria: "Lipliner",
+                marca: "Beauty Creations",
+                precio: "Q 85",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/BEAUTY_CREATIONS_PORTADA_PLUMP.jpg?v=1751060782&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/BEAUTY_CREATIONS_PLUMP_Lip_liner_model_2.jpg?v=1751060782&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/BEAUTY_CREATIONS_PLUMP_Lip_liner_model.jpg?v=1751060782&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/17.png?v=1751060782&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/19.png?v=1751060782&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/14.png?v=1751060782&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/15.png?v=1751060782&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/12.png?v=1751060782&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/13.png?v=1751060782&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/18.png?v=1751060782&width=600",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/16.png?v=1751060782&width=600"
+                   ],
+              descripcion: `Nuestro juego de voluminizadores ha mejorado con el delineador de labios Plump & Pout , el delineador de labios definitivo para definir, dar volumen y realzar tus labios. Especialmente formulado para dar un efecto voluminizador natural, este delineador de labios crea un aspecto más voluminoso y definido que dura todo el día. Ya sea que delinees tus labios o lo uses para rellenarlos, su textura cremosa se desliza suavemente, proporcionando la base perfecta para tu color de labios
+
+Enriquecido con manteca de karité nutritiva y aceite de semilla de jojoba , este delineador de labios garantiza una aplicación suave y cómoda con cada uso. Disfruta de una sensación de hormigueo que dura solo unos minutos, potenciando el efecto voluminizador para una apariencia más voluminosa y atractiva.
+
+Características principales:
+
+Efecto voluminizador : realza instantáneamente los labios para lograr unos labios más llenos y definidos.
+
+A prueba de manchas : permanece en su lugar durante todo el día sin decolorarse ni sangrar.
+
+Larga duración : disfruta de un look de labios definido y audaz durante todo el día.
+
+Sensación de hormigueo : un efecto de hormigueo temporal que mejora el volumen.
+
+Infundido con:
+
+Manteca de karité : hidrata y nutre los labios
+
+Aceite de semilla de jojoba : proporciona una aplicación suave y cómoda.`,
+              tag: null,
+              tonos: [
+  // Fila superior (Izquierda a Derecha)
+  { nombre: "Pinch Me", hex: "#CC948B" },        // Nude rosado suave
+  { nombre: "So Flirty", hex: "#E090A6" },       // Rosa claro frío
+  { nombre: "Love Status", hex: "#CF8092" },     // Rosa medio
+  { nombre: "Mind Trapped", hex: "#C07D72" },    // Terracota suave
+
+  // Fila inferior (Izquierda a Derecha)
+  { nombre: "Attracted To You", hex: "#A36E62" },// Marrón neutro oscuro
+  { nombre: "Infatuation", hex: "#CD8C75" },     // Nude cálido/melocotón
+  { nombre: "Risque", hex: "#E06972" },          // Rojo coral rosado
+  { nombre: "Obsession", hex: "#D16A7D" }        // Rosa baya intenso
+]
+          },
+          {
+              id: 17,
+              nombre: `Mousse Matte Lipstick`,
+		        categoria: "Lipstick",
+                marca: "Italia Deluxe",
+                precio: "Q 35",
+              imagenes: [
+                  "https://italiadeluxemakeup.com/cdn/shop/products/mousse_matte_lipstick_mother.png?v=1610654484&width=600",,
+                  "https://italiadeluxemakeup.com/cdn/shop/files/slide1.png?v=1716482819&width=600",
+                  "https://italiadeluxemakeup.com/cdn/shop/files/slide2.png?v=1716482819&width=600",
+                  "https://italiadeluxemakeup.com/cdn/shop/files/slide3.png?v=1716482819&width=600",
+                  "https://italiadeluxemakeup.com/cdn/shop/files/slide4.png?v=1716482819&width=600"
+                   ],
+              descripcion: `Nuestros labiales Mousse Matte son tan hermosos como se ven y ¡uno de nuestros productos más populares! Su fórmula única en mousse suave luce pigmentada y se siente ligera en los labios. Es aterciopelada y de larga duración. La colección tiene todos los tonos que necesitas para cualquier look de maquillaje y viene en una variedad de subtonos cálidos y fríos para embellecer todo tipo de piel.`,
+              tag: null,
+              tonos: [
+  // Imagen 1
+  { nombre: "01-GODDESS", hex: "#48253A" },
+  { nombre: "02-REBEL", hex: "#491E2C" },
+  { nombre: "03-MARILYN", hex: "#6F242C" },
+  { nombre: "04-STILLETO RED", hex: "#C12928" },
+  { nombre: "05-POISON APPLE", hex: "#9B2D3C" },
+  { nombre: "06-TERRA COTTA", hex: "#CA7D71" },
+  { nombre: "07-BARELY NUDE", hex: "#CF9581" },
+  { nombre: "08-BALLET SLIPPER", hex: "#CC7E8A" },
+
+  // Imagen 2
+  { nombre: "09-VINTAGE ROSE", hex: "#BD787E" },
+  { nombre: "10-TEMPTRESS", hex: "#A7656D" },
+  { nombre: "11-PINK CHARM", hex: "#B53F5E" },
+  { nombre: "13-CALIENTE", hex: "#CA2E2A" },
+  { nombre: "14-LOVELACE", hex: "#871524" },
+  { nombre: "15-NATURAL", hex: "#C28675" },
+  { nombre: "16-SAINT", hex: "#BE746B" },
+  { nombre: "17-REINA", hex: "#DD8D9A" },
+
+  // Imagen 3
+  { nombre: "21-BLACK CHERRY", hex: "#4F222F" },
+  { nombre: "23-SWEET CHOCOLATE", hex: "#995B4E" },
+  { nombre: "24-HAZELNUT", hex: "#986968" },
+  { nombre: "25-MAROON", hex: "#6E2221" },
+  { nombre: "26- BROWNIE", hex: "#5F392E" },
+  { nombre: "27- SANGRIA", hex: "#401821" },
+  { nombre: "29- FUDGE POP", hex: "#8F5248" },
+  { nombre: "31-MAUVELOUS", hex: "#A66079" },
+
+  // Imagen 4
+  { nombre: "32-WINE NOT", hex: "#5E2D4B" },
+  { nombre: "34-GINGERBREAD", hex: "#964230" },
+  { nombre: "36 OSITO", hex: "#61403A" },
+  { nombre: "37 SPICE", hex: "#A65D40" },
+  { nombre: "38 RED BOTTOM", hex: "#AB1F27" },
+  { nombre: "39 BRICK", hex: "#A13B39" }
+]
+          },
+           {
+              id: 18,
+              nombre: `Mousse Matte Liquid Lipstick`,
+		        categoria: "Liquid Lipstick",
+                marca: "Italia Deluxe",
+                precio: "Q 40",
+              imagenes: [
+                  "https://italiadeluxemakeup.com/cdn/shop/files/190-01-PO.jpg?v=1718993936&width=600",
+                  "https://italiadeluxemakeup.com/cdn/shop/files/190-PO_bigger.jpg?v=1718993924&width=600",
+                  "https://italiadeluxemakeup.com/cdn/shop/files/190-STY-4.jpg?v=1718993936&width=600",
+                  "https://dubellay.mx/cdn/shop/files/ITA-SER-190_600x.jpg?v=1712706191"
+                   ],
+              descripcion: `¡Presentamos nuestro nuevo labial líquido Mousse Matte! Con una suave textura mousse y un aplicador de precisión, consigue looks atrevidos y sensuales sin esfuerzo. Acabado mate cómodo, 12 tonos. ¡Mejora tus labios hoy mismo!
+
+💋Acabado aterciopelado cómodo
+💋Aplicador triangular de precisión
+💋De larga duración
+💋Sutil aroma a chocolate 🍫`,
+              tag: null,
+              tonos: [
+  { nombre: "01 ALMOND", hex: "#BA777B" },       // Rosa almendra suave
+  { nombre: "02 COCOA", hex: "#573836" },        // Marrón café oscuro
+  { nombre: "03 FLIRTY", hex: "#96606E" },       // Malva agrisado
+  { nombre: "04 LETHAL", hex: "#A35443" },       // Terracota rojizo
+  { nombre: "05 NAKED", hex: "#C58C89" },        // Nude rosado pálido
+  { nombre: "06 HEARTBREAKER", hex: "#C42634" }, // Rojo intenso clásico
+  { nombre: "07 SIRENA", hex: "#AD4652" },       // Rojo frambuesa suave
+  { nombre: "08 POISON APPLE", hex: "#903840" }, // Rojo ladrillo oscuro
+  { nombre: "09 SPANISH ROSE", hex: "#A15C64" }, // Rosa oscuro quemado
+  { nombre: "10 SWEETIE", hex: "#B26B7E" },      // Rosa medio
+  { nombre: "11 COGNAC", hex: "#562F39" },       // Vino oscuro / Ciruela
+  { nombre: "12 TEDDY", hex: "#7E4B49" }         // Marrón chocolate con leche
+]
+          },
+          {
+              id: 19,
+              nombre: `Locked in Place Matte Lippies`,
+		        categoria: "Lipstick",
+                marca: "Italia Deluxe",
+                precio: "Q 50",
+              imagenes: [
+                  "https://italiadeluxemakeup.com/cdn/shop/files/193LPL-01-PO.jpg?v=1754670012&width=600",
+                  "https://italiadeluxemakeup.com/cdn/shop/files/193LPL-STY-2.jpg?v=1754670112&width=600",
+                  "https://italiadeluxemakeup.com/cdn/shop/files/193LPL-STY-LIP1.jpg?v=1754670012&width=600",
+                  "https://italiadeluxemakeup.com/cdn/shop/files/193LPL-STY-LIP2.jpg?v=1754670012&width=600",
+                  "https://italiadeluxemakeup.com/cdn/shop/files/193LPL-STY-LIP3.jpg?v=1754670012&width=600",
+                  "https://italiadeluxemakeup.com/cdn/shop/files/193LPL-STY-LIP4.jpg?v=1754670012&width=600"
+                   ],
+              descripcion: `LOCKED IN PLACE – Labial Mate de Larga Duración
+. Labios mate. Fijos todo el día.
+
+Descubre Locked In Place, tu nuevo labial mate de larga duración favorito, que ofrece un color intenso y se mantiene en su lugar. Su fórmula ligera y resistente a las transferencias se desliza suavemente y se fija con un acabado mate suave que se siente cómodo durante todo el día.
+
+Ya sea para ir al trabajo, a un brunch o a salir por la noche, este labial mate se mantiene en su lugar sin sacrificar la comodidad.
+
+✔️ Larga duración
+✔️ Resistente a las transferencias
+✔️ Acabado mate suave
+✔️ Ligero y cómodo
+✔️ Disponible en 8 tonos impresionantes`,
+              tag: null,
+              tonos: [
+  { nombre: "01 PODEROSA", hex: "#6B4A3E", descripcion: "Marrón medio-oscuro cálido" },
+  { nombre: "02 BESITOS", hex: "#D45079", descripcion: "Rosa brillante tono frío" },
+  { nombre: "03 LOVER", hex: "#8C4A57", descripcion: "Malva suave con toques de rosa y mora" },
+  { nombre: "04 BOMBSHELL", hex: "#B51F28", descripcion: "Rojo vívido tono frío" },
+  { nombre: "05 DESIRE", hex: "#B06456", descripcion: "Terracota con subtonos naranjas" },
+  { nombre: "06 AMORCITO", hex: "#E42530", descripcion: "Rojo fuego con subtonos naranjas/rosas" },
+  { nombre: "07 ATREVIDA", hex: "#782029", descripcion: "Vino tinto profundo" },
+  { nombre: "08 TEASE", hex: "#9E7063", descripcion: "Marrón medio suave" }
+]
+          },
+           
+            {
+              id: 21,
+              nombre: `UltraFine Lip Liner`,
+		        categoria: "Lipliner",
+                marca: "Italia Deluxe",
+                precio: "Q 20",
+              imagenes: [
+                  "https://italiadeluxemakeup.com/cdn/shop/files/1031-PO.jpg?v=1691515561&width=600",
+                  "https://beautysupplyhn.com/cdn/shop/files/RegeneristMicro-SculptingCreamwithSunscreenBroadSpectrumSPF30esunhumectantelivianoqueinmediatamentedejalapielhidratadaysuavizalaaparienciadelineasfinasyarrugas_-2024-01-27T142004.695.jpg?v=1706387266&width=600",
+                  "https://beautysupplyhn.com/cdn/shop/files/RegeneristMicro-SculptingCreamwithSunscreenBroadSpectrumSPF30esunhumectantelivianoqueinmediatamentedejalapielhidratadaysuavizalaaparienciadelineasfinasyarrugas_-2024-01-27T142308.637.jpg?v=1706387267&width=600"
+                   ],
+              descripcion: `Nuestros delineadores de labios UltraFine están creados de forma única con un color superior en una fórmula cremosa y aterciopelada. Se aplican con suavidad y precisión y nunca se secan durante el día. Estos delineadores de labios son imprescindibles en tu neceser. ¡Te prometemos que no te decepcionarán!`,
+              tag: null,
+              tonos: [
+  // Fila 1
+  { nombre: "#LVS01 STAY CALM", hex: "#E4AB9B" },      // Nude melocotón claro
+  { nombre: "#LVS02 CAPPUCCINO", hex: "#CE8674" },     // Marrón cálido medio
+  { nombre: "#LVS03 TRUFFLE", hex: "#C29188" },        // Nude malva grisáceo
+  { nombre: "#LVS04 LIMITED", hex: "#D19694" },        // Rosa palo suave
+  { nombre: "#LVS05 SOFT SIDE", hex: "#EB7D68" },      // Coral terracota vibrante
+  { nombre: "#LVS06 HIGH END", hex: "#F37B90" },       // Rosa chicle
+
+  // Fila 2
+  { nombre: "#LVS07 STARDUM", hex: "#DB7A88" },        // Rosa medio
+  { nombre: "#LVS08 HIGH CLASS", hex: "#CD6173" },     // Frambuesa apagado
+  { nombre: "#LVS09 ROMANCE ME", hex: "#D98071" },     // Terracota suave
+  { nombre: "#LVS10 SUGGA BABY", hex: "#B05A53" },     // Rojo ladrillo quemado
+  { nombre: "#LVS11 FOXY", hex: "#C15143" },           // Rojo anaranjado quemado
+  { nombre: "#LVS12 ON THE EDGE", hex: "#914A45" },    // Marrón rojizo oscuro
+
+  // Fila 3
+  { nombre: "#LVS13 CHOCO LATTE", hex: "#BE7A62" },    // Marrón café con leche
+  { nombre: "#LVS14 FRIENDZONE", hex: "#AB6F68" },     // Marrón topo (taupe)
+  { nombre: "#LVS15 SWEET AFFAIR", hex: "#DA7871" },   // Rosa coral
+  { nombre: "#LVS16 MAD ABOUT YOU", hex: "#7F4E40" },  // Marrón chocolate oscuro
+  { nombre: "#LVS17 MUAH", hex: "#F2544A" },           // Rojo coral neón
+  { nombre: "#LVS18 PINK POISE", hex: "#EB2676" },     // Fucsia vibrante
+
+  // Fila 4
+  { nombre: "#LVS19 NOVA", hex: "#BF4B64" },           // Cereza oscuro
+  { nombre: "#LVS20 BERRY ME", hex: "#DC2F50" },       // Rojo frambuesa
+  { nombre: "#LVS21 RED AFFAIR", hex: "#D22030" },     // Rojo clásico intenso
+  { nombre: "#LVS22 GUILTY PLEASURE", hex: "#BB2131" },// Rojo sangre profundo
+  { nombre: "#LVS23 JUICED", hex: "#7A1F26" },         // Vino tinto / Burgundy
+  { nombre: "#LVS24 DARK SIDE", hex: "#50222A" }       // Mora profundo casi negro
+]
+          },
+            {
+              id: 22,
+              nombre: `labiales Chic Satin`,
+		        categoria: "Lipstick",
+                marca: "Moira",
+                precio: "Q 75",
+              imagenes: [
+                  "https://www.moirabeauty.com/cdn/shop/files/001_06001f7f-703a-4016-bc14-0b9c9541a4be.jpg?v=1760549538&width=700",
+                  "https://www.moirabeauty.com/cdn/shop/files/2_3x-100_139fd3be-6433-459f-bdb9-6dc2a9374b56.jpg?v=1761178743&width=700",
+                  "https://www.moirabeauty.com/cdn/shop/files/L.jpg?v=1761178628&width=1000",
+                  "https://www.moirabeauty.com/cdn/shop/files/1STICKSWATCH-100_ac34c681-2da4-44a7-b649-afe16426bdec.jpg?v=1761351505&width=700",
+                  "https://www.moirabeauty.com/cdn/shop/files/Artboard1copy_3x-80_22e5c8fd-48e7-4afa-b7fb-dcf1b857aee9.jpg?v=1761351505&width=700"
+                   ],
+              descripcion: `Barra de labios Chic Satin: un guiño moderno al estilo Y2K, que combina una actitud audaz con la sofisticación urbana chic. Su fórmula cremosa e hidratante se desliza sin esfuerzo, brindando un color de cobertura total con un suave acabado satinado que define y realza tus labios. Enriquecida con escualano vegano nutritivo, aceite de rosa mosqueta, aceite de semilla de camelia, aceite de argán e hialuronato de sodio, esta barra de labios mantiene los labios hidratados, suaves e irresistiblemente cómodos
+
+
+Sin crueldad animal
+Vegano
+Sin parabenos
+Sin sulfatos
+Sin ftalatos
+Sin gluten`,
+              tag: null,
+              tonos: [
+{ nombre: "001 Chic Nude", hex: "#E2A3A4" },
+{ nombre: "002 Y2K", hex: "#BD5C5C" },
+{ nombre: "003 Rewind", hex: "#9E6044" },
+{ nombre: "004 Time Capsule", hex: "#7A5E58" },
+{ nombre: "005 Modern", hex: "#54382C" },
+{ nombre: "006 Millennium", hex: "#7A5053" },
+{ nombre: "007 Inspire", hex: "#472829" },
+{ nombre: "008 Bold", hex: "#8A1A21" },
+]
+          },
+          {
+              id: 23,
+              nombre: `Lip Chic Shimmer Gloss`,
+		        categoria: "Liquid Lipstick",
+                marca: "Moira",
+                precio: "Q 75",
+              imagenes: [
+                  "https://www.moirabeauty.com/cdn/shop/files/007_6ee6ff7e-5854-4fa9-be92-0e28460b8e50.jpg?v=1760549490&width=700",
+                  "https://www.moirabeauty.com/cdn/shop/files/CSG_LCL_dark_G7L7_a40d98c3-5195-402c-9e10-0e75b0e6d96e.jpg?v=1761064460&width=700",
+                  "https://www.moirabeauty.com/cdn/shop/files/9_3x-100_aa77c2a2-6a8f-4daf-83e8-170452836c94.jpg?v=1761064476&width=700",
+                  "https://www.moirabeauty.com/cdn/shop/files/ChicCollection_Group_All_a3b2cf00-c932-4c75-aab9-058d78812ee9.jpg?v=1761064478&width=700"
+                   ],
+              descripcion: `Brilla con confianza con el brillo labial MOIRA Lip Chic Shimmer Gloss. Este brillo ligero y no pegajoso ofrece un brillo radiante y multidimensional con un acabado brillante más suave, perfecto para crear labios de aspecto naturalmente más voluminoso con comodidad durante todo el día. Úsalo solo para un brillo nude brillante o aplícalo sobre tu lápiz labial favorito para un toque de elegancia moderna
+
+ 
+
+Enriquecida con aceite de rosa mosqueta y aceite de semilla de frambuesa, su fórmula nutritiva hidrata y suaviza, dejando los labios suaves, tersos y nunca pegajosos. El aplicador plano se desliza fácilmente, envolviéndolos para un color uniforme y un brillo modulable que realza el color sin sobrecargarlo.
+
+ 
+
+Disponible en 8 tonos nude, incluido un brillo en tono frío, Lip Chic Shimmer Gloss es tu opción ideal para lograr un brillo sin esfuerzo con un brillo sutil y favorecedor.
+
+ 
+
+Sin crueldad animal
+Vegano
+Sin parabenos
+Sin sulfatos
+Sin ftalatos
+Sin gluten
+
+MODO DE EMPLEO:
+
+1. Aplicar en el centro del labio superior y seguir el contorno de la boca.
+2. Deslizar por todo el labio inferior y rellenar`,
+              tag: null,
+              tonos: [
+{ nombre: "001 XOXO", hex: "#E6A592" },
+{ nombre: "002 Signature", hex: "#E08590" },
+{ nombre: "003 Lit", hex: "#CC8572" },
+{ nombre: "004 Chillax", hex: "#C6805A" },
+{ nombre: "005 Sassy", hex: "#A36A59" },
+{ nombre: "006 TTYL", hex: "#945253" },
+{ nombre: "007 Sleek", hex: "#662E2E" },
+{ nombre: "008 2000", hex: "#452020" },
+]
+          },
+          {
+              id: 24,
+              nombre: `Lip Chic Liner`,
+		        categoria: "Lipliner",
+                marca: "Moira",
+                precio: "Q 45",
+              imagenes: [
+                  "https://www.moirabeauty.com/cdn/shop/files/005_5dc20a04-eeef-4458-a7b2-252c375b2797.jpg?v=1759786887&width=700",
+                  "https://www.moirabeauty.com/cdn/shop/files/LCL_Model_Group_60444e12-7c2c-4b24-88c8-5c0bd90a6173.jpg?v=1761265978&width=700",
+                  "https://www.moirabeauty.com/cdn/shop/files/1LINERSWATCH-100_9aef1905-f3ac-458e-ba87-c6b47450bb4f.jpg?v=1761323824&width=700",
+                  "https://www.moirabeauty.com/cdn/shop/files/ChicCollection_Group_All_a339a147-b9f9-4dd2-be17-c3dd310e8c92.jpg?v=1761323824&width=700"
+                   ],
+              descripcion: `El delineador de labios MOIRA Lip Chic es un delineador de labios suave y duradero, elaborado con madera de cedro de California de primera calidad para una aplicación suave y precisa en todo momento. Esta fórmula ligera y que no reseca se desliza sin esfuerzo, ofreciendo un color intenso que se puede aplicar en capas para una definición audaz o difuminar suavemente con brillo y bálsamo para un acabado natural y elegante
+
+
+Inspirado en los íconos de los 2000, el delineador Lip Chic aporta un toque moderno a la estética Y2K con un empaque elegante y sostenible y ocho tonos versátiles: desde nude y melocotón hasta marrón, marrón ceniza y borgoña. Perfecto para lograr looks de chica limpia, belleza francesa o de inspiración retro, el delineador Lip Chic es tu opción ideal para un color personalizable que luce naturalmente impecable. 
+
+
+Sin crueldad animal
+Sin parabenos
+Sin sulfatos
+Sin ftalatos
+Sin gluten
+Hecho en Italia
+
+MODO DE EMPLEO:
+
+Define delineando los labios superior e inferior antes del lápiz labial. 
+
+Consejo:
+Prueba un tono un poco más oscuro que tu lápiz labial y difumina con una brocha para lograr un aspecto de labios más voluminoso
+
+`,
+              tag: null,
+              tonos: [
+{ nombre: "001 Timeless", hex: "#A8624D" },
+{ nombre: "002 Luxe", hex: "#8C5346" },
+{ nombre: "003 Muse", hex: "#995F57" },
+{ nombre: "004 Nostalgia", hex: "#614C45" },
+{ nombre: "005 Retro", hex: "#52433E" },
+{ nombre: "006 Edgy", hex: "#4A382F" },
+{ nombre: "007 Icon", hex: "#3E302F" },
+{ nombre: "008 Cool Girl", hex: "#4D322F" },
+]
+          },
+			{
+              id: 25,
+              nombre: "Tinte líquido en gel Kiss Me",
+              categoria: "Lip Tint",
+                marca: "Beauty Creations",
+                precio: "Q 85",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/56661.jpg?v=1773687599&width=1000",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/BETTER-IN-PINK-S.jpg?v=1773687434&width=1100",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/MAGENTA-MOVES.jpg?v=1773687434&width=1100",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/ARMSWATCHES-KISSME_93446286-b453-404e-ac91-30059206d049.jpg?v=1773687434&width=1000",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/MAGENTA-MOVES.jpg?v=1773687434&width=1100",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/TENDER-ROSE.jpg?v=1773687434&width=1100",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/WINE-O-CLOCK.jpg?v=1773687434&width=1100",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/CORALLY-HOT.jpg?v=1773687434&width=1100",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/BARELY-BROWN.jpg?v=1773687434&width=1100",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/RED-CRUSH.jpg?v=1773687434&width=1100",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/TERRACOTTA-TEASE.jpg?v=1773687434&width=1100"
+              ],
+              descripcion: `Beauty Creations y Rosy McMichael se han unido una vez más para traer de vuelta uno de los productos favoritos de sus fans, con un toque especial. Presentamos Rosy's Essentials Volume 1 (Mini Edición): Rosy ha elegido sus 12 tonos favoritos de la paleta original para traerlos de vuelta en un formato compacto, práctico y lleno de amor.`,
+              tag: "Nuevo",
+              tonos: [
+                  { nombre: "Mejor en Rosa", hex: "#e3447a" },
+                  { nombre: "Magenta se mueve", hex: "#ee025b" },
+                   { nombre: "Rosa tierno", hex: "#c94b58" },
+                  { nombre: "Hora del vino", hex: "#c1345d" },
+                   { nombre: "Corally Hot", hex: "#fa1b40" },
+                  { nombre: "Marron claro", hex: "#b14340" },
+                  { nombre: "Aplastamiento Rojo", hex: "#9e042a" },
+                  { nombre: "Terracota Burlón", hex: "#e15f3c" }
+              ]
+          },
+      ];
+
+  if (window.EC_REGISTER_PRODUCTS) {
+    window.EC_REGISTER_PRODUCTS('labios', productosLabios);
+  } else {
+    window.EC_PRODUCTS = window.EC_PRODUCTS || {};
+    window.EC_PRODUCTS.labios = productosLabios;
+  };
+})();
