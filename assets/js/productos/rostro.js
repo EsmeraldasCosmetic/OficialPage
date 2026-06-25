@@ -1150,6 +1150,55 @@ Eleva tu juego de contorno con una fórmula que se difumina como un sueño para 
   { nombre: "Tono 12", hex: "#B55C2D", imagen:"https://italiadeluxemakeup.com/cdn/shop/products/129-12-toast.jpg?v=1724182624&width=600" }
 ]
           },
+{
+              id: 27,
+              nombre: "Flawless Stay Shimmer Veil PR",
+              marca: "Beauty Creations",
+              categoria: "Cream to Powder",
+              precio: "Q 750",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/0666_resized.jpg?v=1778710332&width=1000",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/0344_resized.jpg?v=1778710332&width=1000",
+		  "https://www.beautycreationscosmetics.com/cdn/shop/files/SV-ARM-SWATCHES.png?v=1779832411&width=1000"
+              ],
+              descripcion: `Presentamos el set Shimmer Veil Collection: una cuidada selección de 6 iluminadores universales multiusos en crema que se transforman en polvo, diseñados para brindar un brillo suave y luminoso a cualquier tono de piel. Incluye radiantes tonos oro rosa, oro fundido, perlas heladas y champán luminosos con un brillo multidimensional.
+
+Cada tono se funde a la perfección con la piel para un acabado suave y modulable en ojos, rostro y cuerpo. Úsalo solo o combínalo con otros.`,
+              tag: "Nuevo",
+              tonos: null,
+          },
+{
+              id: 28,
+              nombre: "Flawless Stay Shimmer Veil",
+              marca: "Beauty Creations",
+              categoria: "Cream to Powder",
+              precio: "Q 125",
+              imagenes: [
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/0495_resized.jpg?v=1780425969&width=1000",
+                  "https://www.beautycreationscosmetics.com/cdn/shop/files/0094_resized.jpg?v=1780422447&width=1000",
+		  "https://www.beautycreationscosmetics.com/cdn/shop/files/PEARLECENT-O2_b849c9e8-3f99-40d6-b5cd-c7cd5a9b8305.jpg?v=1778714103&width=1100",
+		  "https://www.beautycreationscosmetics.com/cdn/shop/files/MOONLACE-BOX-O2_a3ac98b9-d9ac-40a1-9cd9-ef044e4db7ec.jpg?v=1778714140&width=1100",
+		"https://www.beautycreationscosmetics.com/cdn/shop/files/ROSE-GLOW-O2.jpg?v=1778714163&width=1100",
+		"https://www.beautycreationscosmetics.com/cdn/shop/files/CHAMPAGNE-KISS-O2_d2468a18-f370-40bb-be7d-bc0cc24039d1.jpg?v=1778714179&width=1100",
+		"https://www.beautycreationscosmetics.com/cdn/shop/files/MELTED-GOLD-O2_97ca7edc-45b0-410b-acb7-ca7d291bbf5e.jpg?v=1778714191&width=1100",
+		"https://www.beautycreationscosmetics.com/cdn/shop/files/BRONZE-AFAIR-O2_e46e1056-fb7c-48f3-beb6-441194134dc2.jpg?v=1778714208&width=1100",
+		"https://www.beautycreationscosmetics.com/cdn/shop/files/0344_resized.jpg?v=1778710332&width=1000",
+		"https://www.beautycreationscosmetics.com/cdn/shop/files/0259_resized.jpg?v=1778710332&width=1000",
+		"https://www.beautycreationscosmetics.com/cdn/shop/files/0137_resized.jpg?v=1778710332&width=1000",
+		"https://www.beautycreationscosmetics.com/cdn/shop/files/SV-ARM-SWATCHES_391cde38-9ae5-4eb9-b5ff-9a1465399464.png?v=1779990450&width=360"
+              ],
+              descripcion: `¡Un brillo radiante de pies a cabeza! Realza tu luminosidad con este velo iluminador multiusos. Su fórmula suave y ligera se desliza sin esfuerzo sobre la piel, dejando un acabado luminoso y radiante, ideal para rostro y cuerpo.`,
+              tag: "Nuevo",
+              tonos: [
+  { nombre: "Pearlescent", hex: "#eeece9", imagen:"https://www.beautycreationscosmetics.com/cdn/shop/files/PEARLECENT-O2_b849c9e8-3f99-40d6-b5cd-c7cd5a9b8305.jpg?v=1778714103&width=1100" },
+  { nombre: "Moonlace", hex: "#d9b5a1", imagen:"https://www.beautycreationscosmetics.com/cdn/shop/files/MOONLACE-BOX-O2_a3ac98b9-d9ac-40a1-9cd9-ef044e4db7ec.jpg?v=1778714140&width=1100" },
+{ nombre: "Rose Glow", hex: "#d2a298", imagen:"https://www.beautycreationscosmetics.com/cdn/shop/files/ROSE-GLOW-O2.jpg?v=1778714163&width=1100" },
+  { nombre: "Champagne Kiss", hex: "#ddae90", imagen:"https://www.beautycreationscosmetics.com/cdn/shop/files/CHAMPAGNE-KISS-O2_d2468a18-f370-40bb-be7d-bc0cc24039d1.jpg?v=1778714179&width=1100" },
+{ nombre: "Melted Gold", hex: "#9f5c41", imagen:"https://www.beautycreationscosmetics.com/cdn/shop/files/MELTED-GOLD-O2_97ca7edc-45b0-410b-acb7-ca7d291bbf5e.jpg?v=1778714191&width=1100" },
+  { nombre: "Bronze Affair", hex: "#bf8670", imagen:"https://www.beautycreationscosmetics.com/cdn/shop/files/BRONZE-AFAIR-O2_e46e1056-fb7c-48f3-beb6-441194134dc2.jpg?v=1778714208&width=1100" },
+
+]
+          },
 
 
       ];
