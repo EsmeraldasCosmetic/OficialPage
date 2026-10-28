@@ -9,7 +9,8 @@
     "build": "node scripts/build.mjs",
     "test": "node --test tests/*.test.mjs",
     "admin": "node scripts/admin.mjs",
-    "validate": "node scripts/validate.mjs"
+    "validate": "node scripts/validate.mjs",
+    "stock:sql": "node scripts/export-supabase-stock.mjs"
   },
   "engines": {
     "node": ">=22.13"

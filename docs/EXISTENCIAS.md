@@ -11,11 +11,12 @@ La ficha muestra las unidades al elegir un tono y el carrito limita la cantidad 
 
 ## Guardarlas en Supabase
 
-1. Ejecuta `docs/supabase-stock.sql` en SQL Editor del proyecto `nekbrpqthteyeymjnxwk`. Añade dos columnas y una protección contra cambios públicos de stock. No se ha ejecutado remotamente: la clave pública no permite administrar el esquema. Si ya existe alguna columna, el script aborta completo para poder revisar su definición.
-2. En **Table Editor → productos**, completa `stock` para productos sin tonos. En **producto_tonos**, completa `stock` por tono. Conserva `seccion`, IDs y nombres exactos: se utilizan para vincular el inventario a los productos locales. Confirma que `activo` es booleano y vale `true` en los productos publicados.
-3. Ejecuta la auditoría de permisos de `docs/supabase-audit.sql`. Las tablas deben tener RLS y políticas de lectura para productos publicados y sus hijos. El script de stock no reemplaza esa revisión. No otorgues UPDATE a visitantes ni publiques una service_role.
-4. En `assets/js/productos/supabase-config.js`, cambia `inventorySource: "local"` a `inventorySource: "supabase"`. Compila y publica. Las fotos y descripciones seguirán en el catálogo local; las existencias se consultarán en Supabase al cargar la página.
-5. Prueba un producto sin tonos con 2 unidades y un tono con 0. El primero debe limitar el carrito a 2 y el segundo aparecer agotado. Recarga después de editar en Supabase. Los productos sin correspondencia remota, inactivos o sin un tono coincidente se bloquean; duplicados provocan un error de carga. Un fallo remoto tampoco usa cantidades locales antiguas como sustituto.
+1. Las columnas `stock` y su protección ya están aplicadas en el proyecto `nekbrpqthteyeymjnxwk`.
+2. Edita las existencias en Rubí y ejecuta `npm run stock:sql` para generar el SQL correspondiente al catálogo actual.
+3. Revisa el resultado y ejecuta el SQL completo en **Supabase → SQL Editor**. Para eliminar cantidades individuales usa `null`; cero muestra el producto o tono como agotado.
+4. También puedes editar directamente **Table Editor → productos** y **producto_tonos**. Conserva `seccion`, IDs y nombres exactos: se utilizan para vincular el inventario al catálogo local.
+5. La tienda consulta Supabase desde `assets/js/productos/supabase-config.js` mediante `inventorySource: "supabase"`.
+6. Prueba un producto sin tonos con 2 unidades y un tono con 0. El primero limita el carrito a 2 y el segundo aparece agotado.
 
 Rubí local y Supabase son dos fuentes distintas: editar Rubí no sincroniza Supabase. Elige una fuente de inventario. En modo Supabase administra las cantidades desde Table Editor.
 
