@@ -1,0 +1,17 @@
+{
+  "name": "esmeraldas-cosmetic",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Catálogo oficial de Esmeralda's Cosmetic, Guatemala",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "admin": "node scripts/admin.mjs",
+    "validate": "node scripts/validate.mjs"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}
