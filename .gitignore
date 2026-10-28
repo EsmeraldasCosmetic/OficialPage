@@ -1,0 +1,15 @@
+.reference/
+node_modules/
+dist/
+test-results/
+.DS_Store
+*.log
+*.zip
+.private/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.tmp
+.env
+.env.*
+!.env.example
